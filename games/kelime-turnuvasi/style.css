@@ -48,6 +48,49 @@ textarea {
   font-weight: 700;
 }
 
+.unit-toggle-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ghost-btn.small {
+  padding: 6px 16px;
+  font-size: 13px;
+}
+
+.unit-checkboxes {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.unit-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border: 2px solid #d8dae6;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.unit-checkbox.checked,
+.unit-checkbox:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.07);
+}
+
+.unit-checkbox input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
 .primary-btn {
   background: var(--primary);
   color: #fff;

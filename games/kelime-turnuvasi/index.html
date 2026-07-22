@@ -25,10 +25,16 @@
         <span>Sınıf</span>
         <select id="grade-select"></select>
       </label>
-      <label class="field">
-        <span>Ünite</span>
-        <select id="unit-select"></select>
-      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
       <button id="to-players-btn" type="button" class="primary-btn">Devam Et</button>
     </div>
   </section>

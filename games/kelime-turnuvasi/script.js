@@ -11,7 +11,9 @@ var state = {
 
 var screens = document.querySelectorAll(".screen");
 var gradeSelect = document.getElementById("grade-select");
-var unitSelect = document.getElementById("unit-select");
+var unitCheckboxesEl = document.getElementById("unit-checkboxes");
+var unitWordCountEl = document.getElementById("unit-word-count");
+var unitErrorEl = document.getElementById("unit-error");
 var playerNamesEl = document.getElementById("player-names");
 var playersErrorEl = document.getElementById("players-error");
 var bracketViewEl = document.getElementById("bracket-view");
@@ -37,24 +39,88 @@ function populateGrades() {
 
 function populateUnits() {
   var grade = CURRICULUM[gradeSelect.value];
-  unitSelect.innerHTML = "";
+  unitCheckboxesEl.innerHTML = "";
   grade.units.forEach(function (unit) {
-    var option = document.createElement("option");
-    option.value = unit.id;
-    option.textContent = unit.title;
-    unitSelect.appendChild(option);
+    var label = document.createElement("label");
+    label.className = "unit-checkbox";
+
+    var input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = unit.id;
+    input.addEventListener("change", function () {
+      label.classList.toggle("checked", input.checked);
+      updateWordCount();
+    });
+
+    var span = document.createElement("span");
+    span.textContent = unit.title;
+
+    label.appendChild(input);
+    label.appendChild(span);
+    unitCheckboxesEl.appendChild(label);
   });
+  updateWordCount();
+}
+
+function getCheckedUnitIds() {
+  return Array.prototype.slice
+    .call(unitCheckboxesEl.querySelectorAll("input:checked"))
+    .map(function (input) { return input.value; });
+}
+
+function buildWordPool(unitIds) {
+  var grade = CURRICULUM[gradeSelect.value];
+  var seen = {};
+  var words = [];
+  grade.units
+    .filter(function (u) { return unitIds.indexOf(u.id) !== -1; })
+    .forEach(function (u) {
+      u.words.forEach(function (w) {
+        var key = w.en.toLowerCase() + "|" + w.tr.toLowerCase();
+        if (!seen[key]) {
+          seen[key] = true;
+          words.push(w);
+        }
+      });
+    });
+  return words;
+}
+
+function updateWordCount() {
+  var count = buildWordPool(getCheckedUnitIds()).length;
+  unitWordCountEl.textContent = count > 0 ? count + " kelime seçildi" : "";
 }
 
 gradeSelect.addEventListener("change", populateUnits);
 
+document.getElementById("select-all-units").addEventListener("click", function () {
+  unitCheckboxesEl.querySelectorAll("input").forEach(function (input) {
+    input.checked = true;
+    input.closest(".unit-checkbox").classList.add("checked");
+  });
+  updateWordCount();
+});
+
+document.getElementById("clear-all-units").addEventListener("click", function () {
+  unitCheckboxesEl.querySelectorAll("input").forEach(function (input) {
+    input.checked = false;
+    input.closest(".unit-checkbox").classList.remove("checked");
+  });
+  updateWordCount();
+});
+
 document.getElementById("to-players-btn").addEventListener("click", function () {
+  var unitIds = getCheckedUnitIds();
+  if (unitIds.length === 0) {
+    unitErrorEl.textContent = "En az bir ünite seçmelisin.";
+    unitErrorEl.hidden = false;
+    return;
+  }
+  unitErrorEl.hidden = true;
+
   state.grade = gradeSelect.value;
-  state.unitId = unitSelect.value;
-  var unit = CURRICULUM[state.grade].units.filter(function (u) {
-    return u.id === state.unitId;
-  })[0];
-  state.words = unit.words;
+  state.unitIds = unitIds;
+  state.words = buildWordPool(unitIds);
   showScreen("screen-players");
 });
 

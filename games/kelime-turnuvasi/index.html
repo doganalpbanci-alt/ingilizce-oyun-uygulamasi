@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelime Turnuvası - İngilizce Oyun Merkezi</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+
+<header class="hub-header">
+  <h1>🏆 Kelime Turnuvası</h1>
+  <p class="tagline">1'e 1 kelime yarışması — turları geç, şampiyon ol!</p>
+</header>
+
+<main>
+
+  <!-- 1) Sınıf / ünite seçimi -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <label class="field">
+        <span>Ünite</span>
+        <select id="unit-select"></select>
+      </label>
+      <button id="to-players-btn" type="button" class="primary-btn">Devam Et</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyuncu isimleri -->
+  <section id="screen-players" class="screen" hidden>
+    <div class="panel">
+      <h2>Katılımcılar</h2>
+      <p class="hint">Her satıra bir öğrenci adı yaz (en az 2 kişi).</p>
+      <textarea id="player-names" rows="8" placeholder="Ali&#10;Ayşe&#10;Mehmet&#10;Zeynep"></textarea>
+      <p id="players-error" class="error-text" hidden></p>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Geri</button>
+        <button id="start-tournament-btn" type="button" class="primary-btn">Turnuvayı Oluştur</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Turnuva ağacı / sıradaki maç -->
+  <section id="screen-bracket" class="screen" hidden>
+    <div class="panel">
+      <h2>Turnuva Durumu</h2>
+      <div id="bracket-view" class="bracket-view"></div>
+      <div id="next-match-box" class="next-match-box"></div>
+    </div>
+  </section>
+
+  <!-- 4) Maç ekranı -->
+  <section id="screen-match" class="screen" hidden>
+    <div class="match-header">
+      <div class="match-score">
+        <span id="player-a-name"></span>
+        <strong id="score-a">0</strong>
+        <span class="score-sep">:</span>
+        <strong id="score-b">0</strong>
+        <span id="player-b-name"></span>
+      </div>
+      <div class="timer-track"><div id="timer-bar" class="timer-bar"></div></div>
+    </div>
+
+    <div id="round-word" class="round-word"></div>
+
+    <div class="match-columns">
+      <div class="match-column">
+        <h3 id="col-a-name"></h3>
+        <div id="options-a" class="options"></div>
+      </div>
+      <div class="match-column">
+        <h3 id="col-b-name"></h3>
+        <div id="options-b" class="options"></div>
+      </div>
+    </div>
+
+    <p id="round-feedback" class="round-feedback"></p>
+  </section>
+
+  <!-- 5) Şampiyon ekranı -->
+  <section id="screen-champion" class="screen" hidden>
+    <div class="panel champion-panel">
+      <div class="champion-emoji">🏆</div>
+      <h2 id="champion-name"></h2>
+      <p>Turnuvanın şampiyonu!</p>
+      <button id="restart-btn" type="button" class="primary-btn">Yeni Turnuva</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="../../data/curriculum.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

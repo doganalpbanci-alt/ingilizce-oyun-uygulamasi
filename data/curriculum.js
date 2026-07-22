@@ -83,7 +83,24 @@ var CURRICULUM = {
           { en: "Türkiye", tr: "Türkiye" },
           { en: "uniform", tr: "üniforma" },
           { en: "utterance", tr: "ifade" },
-          { en: "Uzbekistan", tr: "Özbekistan" }
+          { en: "Uzbekistan", tr: "Özbekistan" },
+          { en: "welcome", tr: "hoş geldin(iz)" },
+          { en: "introduce", tr: "tanıtmak" },
+          { en: "join", tr: "katılmak" },
+          { en: "favourite", tr: "favori" },
+          { en: "decide", tr: "karar vermek" },
+          { en: "poster", tr: "poster" },
+          { en: "genius", tr: "dahi" },
+          { en: "celebrate", tr: "kutlamak" },
+          { en: "glad", tr: "memnun" },
+          { en: "contact", tr: "iletişime geçmek" },
+          { en: "enjoy", tr: "keyif almak" },
+          { en: "corridor", tr: "koridor" },
+          { en: "noise", tr: "gürültü" },
+          { en: "kind", tr: "nazik" },
+          { en: "late", tr: "geç" },
+          { en: "clean", tr: "temiz" },
+          { en: "activity", tr: "etkinlik" }
         ]
       },
       {
@@ -146,7 +163,16 @@ var CURRICULUM = {
           { en: "Turkish", tr: "Türkçe" },
           { en: "Wednesday", tr: "Çarşamba" },
           { en: "weekday", tr: "hafta içi" },
-          { en: "wrestling", tr: "güreş" }
+          { en: "wrestling", tr: "güreş" },
+          { en: "attention", tr: "dikkat" },
+          { en: "question", tr: "soru" },
+          { en: "quarter past", tr: "çeyrek geçiyor" },
+          { en: "half past", tr: "buçuk" },
+          { en: "lesson", tr: "ders" },
+          { en: "double lesson", tr: "çift ders" },
+          { en: "hold on", tr: "bekle" },
+          { en: "have a look", tr: "bir bakmak" },
+          { en: "hang", tr: "asmak" }
         ]
       },
       {
@@ -218,7 +244,21 @@ var CURRICULUM = {
           { en: "watch", tr: "kol saati" },
           { en: "wavy", tr: "dalgalı" },
           { en: "winter", tr: "kış" },
-          { en: "wool", tr: "yün" }
+          { en: "wool", tr: "yün" },
+          { en: "character", tr: "karakter" },
+          { en: "mission", tr: "görev" },
+          { en: "adventurer", tr: "maceracı" },
+          { en: "journey", tr: "yolculuk" },
+          { en: "map", tr: "harita" },
+          { en: "treasure", tr: "hazine" },
+          { en: "hidden", tr: "gizli" },
+          { en: "inventor", tr: "mucit" },
+          { en: "material", tr: "malzeme" },
+          { en: "lost", tr: "kayıp" },
+          { en: "route", tr: "rota" },
+          { en: "clue", tr: "ipucu" },
+          { en: "puzzle", tr: "bulmaca" },
+          { en: "creative", tr: "yaratıcı" }
         ]
       },
       {
@@ -253,7 +293,22 @@ var CURRICULUM = {
           { en: "tidy up", tr: "toparlamak" },
           { en: "unusual", tr: "alışılmadık" },
           { en: "visit", tr: "ziyaret etmek" },
-          { en: "weekend", tr: "hafta sonu" }
+          { en: "weekend", tr: "hafta sonu" },
+          { en: "photo album", tr: "fotoğraf albümü" },
+          { en: "memories", tr: "anılar" },
+          { en: "festival", tr: "festival" },
+          { en: "camera", tr: "kamera" },
+          { en: "active", tr: "aktif" },
+          { en: "relax", tr: "rahatlamak" },
+          { en: "museum", tr: "müze" },
+          { en: "painting", tr: "tablo" },
+          { en: "aunt", tr: "hala, teyze" },
+          { en: "grandmother", tr: "büyükanne" },
+          { en: "grandfather", tr: "büyükbaba" },
+          { en: "guitar", tr: "gitar" },
+          { en: "event", tr: "etkinlik" },
+          { en: "role", tr: "rol" },
+          { en: "task", tr: "görev" }
         ]
       },
       {
@@ -317,7 +372,14 @@ var CURRICULUM = {
           { en: "tower", tr: "kule" },
           { en: "wide", tr: "geniş" },
           { en: "wooden", tr: "ahşap" },
-          { en: "wardrobe", tr: "gardırop" }
+          { en: "wardrobe", tr: "gardırop" },
+          { en: "agent", tr: "emlakçı" },
+          { en: "mosque", tr: "cami" },
+          { en: "windsurfing", tr: "rüzgar sörfü" },
+          { en: "furnished", tr: "eşyalı" },
+          { en: "repair", tr: "tamir etmek" },
+          { en: "oven", tr: "fırın" },
+          { en: "artist", tr: "sanatçı" }
         ]
       },
       {
@@ -389,7 +451,16 @@ var CURRICULUM = {
           { en: "tasty", tr: "lezzetli" },
           { en: "teaspoon", tr: "çay kaşığı" },
           { en: "tuna", tr: "ton balığı" },
-          { en: "waiter", tr: "garson" }
+          { en: "waiter", tr: "garson" },
+          { en: "menu", tr: "menü" },
+          { en: "rare", tr: "az pişmiş" },
+          { en: "well-done", tr: "iyi pişmiş" },
+          { en: "fatty", tr: "yağlı" },
+          { en: "smoothie", tr: "smoothie" },
+          { en: "allergic", tr: "alerjik" },
+          { en: "marinate", tr: "marine etmek" },
+          { en: "pan", tr: "tava" },
+          { en: "garlic", tr: "sarımsak" }
         ]
       },
       {
@@ -445,7 +516,13 @@ var CURRICULUM = {
           { en: "whale", tr: "balina" },
           { en: "wild", tr: "vahşi" },
           { en: "wing", tr: "kanat" },
-          { en: "wolf", tr: "kurt" }
+          { en: "wolf", tr: "kurt" },
+          { en: "leaf", tr: "yaprak" },
+          { en: "tree", tr: "ağaç" },
+          { en: "king", tr: "kral" },
+          { en: "survive", tr: "hayatta kalmak" },
+          { en: "swing", tr: "sallanmak" },
+          { en: "skill", tr: "beceri" }
         ]
       },
       {
@@ -498,7 +575,17 @@ var CURRICULUM = {
           { en: "trip", tr: "gezi" },
           { en: "valley", tr: "vadi" },
           { en: "view", tr: "manzara" },
-          { en: "zoo", tr: "hayvanat bahçesi" }
+          { en: "zoo", tr: "hayvanat bahçesi" },
+          { en: "sunscreen", tr: "güneş kremi" },
+          { en: "sunrise", tr: "gün doğumu" },
+          { en: "cosy", tr: "rahat, samimi" },
+          { en: "hotel", tr: "otel" },
+          { en: "wave", tr: "dalga" },
+          { en: "roller coaster", tr: "hız treni" },
+          { en: "bridge", tr: "köprü" },
+          { en: "cousin", tr: "kuzen" },
+          { en: "pack", tr: "eşya hazırlamak" },
+          { en: "unforgettable", tr: "unutulmaz" }
         ]
       }
     ]

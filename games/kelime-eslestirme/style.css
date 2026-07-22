@@ -1,0 +1,79 @@
+.game-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.game-status button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.game-status button:hover {
+  filter: brightness(1.1);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  aspect-ratio: 3 / 2;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: clamp(16px, 2.4vw, 22px);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.1s ease;
+}
+
+.card:active {
+  transform: scale(0.97);
+}
+
+.card.is-face-down .card-label {
+  display: none;
+}
+
+.card.is-face-down::before {
+  content: "?";
+  font-size: 28px;
+}
+
+.card.is-face-up-selected {
+  background: #fff;
+  color: var(--text);
+  border: 3px solid var(--accent);
+}
+
+.card.is-matched {
+  background: #35c37f;
+  cursor: default;
+  opacity: 0.85;
+}
+
+.win-message {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 28px;
+}

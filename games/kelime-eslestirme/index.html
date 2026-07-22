@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelime Eşleştirme - İngilizce Oyun Merkezi</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+
+<header class="hub-header">
+  <h1>🧩 Kelime Eşleştirme</h1>
+  <p>Kartlara tıkla, İngilizce kelimeyi Türkçe anlamıyla eşleştir.</p>
+</header>
+
+<main>
+  <div class="game-status">
+    <span>Hamle: <strong id="move-count">0</strong></span>
+    <button id="restart-btn" type="button">Yeniden Başlat</button>
+  </div>
+
+  <div id="board" class="board"></div>
+
+  <p id="win-message" class="win-message" hidden>🎉 Tebrikler! Tüm kelimeleri <strong id="final-moves"></strong> hamlede eşleştirdin.</p>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

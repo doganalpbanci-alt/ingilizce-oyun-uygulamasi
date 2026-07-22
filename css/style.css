@@ -1,0 +1,114 @@
+:root {
+  --bg: #eef2ff;
+  --text: #1f2333;
+  --muted: #5b6072;
+  --card-bg: #ffffff;
+  --accent: #4f8cff;
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hub-header {
+  text-align: center;
+  padding: 48px 24px 24px;
+  background: linear-gradient(135deg, #4f8cff, #7c5cff);
+  color: #fff;
+}
+
+.hub-header h1 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 5vw, 48px);
+}
+
+.hub-header p {
+  margin: 0;
+  font-size: clamp(16px, 2vw, 22px);
+  opacity: 0.9;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.game-card {
+  display: block;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-decoration: none;
+  color: var(--text);
+  border: 3px solid transparent;
+  border-top: 6px solid var(--card-color, var(--accent));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.game-card:hover,
+.game-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  border-color: var(--card-color, var(--accent));
+}
+
+.game-icon {
+  font-size: 44px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.game-card h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.game-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.hub-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 16px 0 0 16px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}

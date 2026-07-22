@@ -1,10 +1,18 @@
 :root {
-  --bg: #eef2ff;
-  --text: #1f2333;
-  --muted: #5b6072;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --secondary: #06b6d4;
+  --accent: #4f46e5;
+  --bg: #f4f5fb;
+  --text: #1e1b2e;
+  --muted: #676c7e;
   --card-bg: #ffffff;
-  --accent: #4f8cff;
-  --radius: 18px;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --shadow-sm: 0 2px 8px rgba(30, 27, 46, 0.06);
+  --shadow-md: 0 8px 20px rgba(30, 27, 46, 0.10);
+  --shadow-lg: 0 16px 36px rgba(30, 27, 46, 0.16);
+  --font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Tahoma, Verdana, sans-serif;
 }
 
 * {
@@ -14,77 +22,188 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
-  background: var(--bg);
+  font-family: var(--font);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(79, 70, 229, 0.08), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.08), transparent 40%),
+    var(--bg);
   color: var(--text);
 }
 
+/* ---------- Header ---------- */
+
 .hub-header {
+  position: relative;
+  overflow: hidden;
   text-align: center;
-  padding: 48px 24px 24px;
-  background: linear-gradient(135deg, #4f8cff, #7c5cff);
+  padding: 56px 24px 44px;
+  background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 55%, var(--secondary) 100%);
   color: #fff;
 }
 
-.hub-header h1 {
-  margin: 0 0 8px;
-  font-size: clamp(28px, 5vw, 48px);
+.header-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.35;
+  background: #fff;
+  pointer-events: none;
 }
 
-.hub-header p {
-  margin: 0;
-  font-size: clamp(16px, 2vw, 22px);
-  opacity: 0.9;
+.header-blob-1 {
+  width: 220px;
+  height: 220px;
+  top: -90px;
+  left: -60px;
 }
+
+.header-blob-2 {
+  width: 260px;
+  height: 260px;
+  bottom: -140px;
+  right: -80px;
+  background: #ffe27a;
+  opacity: 0.25;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+
+.hub-header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  margin: 0 0 24px;
+  font-size: clamp(15px, 2vw, 19px);
+  opacity: 0.92;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+/* ---------- Main / grid ---------- */
 
 main {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 40px 24px 24px;
+}
+
+.section-title {
+  margin: 0 0 20px;
+  font-size: 22px;
+  font-weight: 700;
+  padding-left: 14px;
+  border-left: 5px solid var(--primary);
 }
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
 }
 
 .game-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 28px 20px;
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
   text-decoration: none;
   color: var(--text);
-  border: 3px solid transparent;
-  border-top: 6px solid var(--card-color, var(--accent));
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  border-top: 5px solid var(--card-color, var(--primary));
+  opacity: 0;
+  transform: translateY(14px);
+  animation: card-enter 0.5s ease forwards;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes card-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .game-card:hover,
 .game-card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-  border-color: var(--card-color, var(--accent));
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
 
 .game-icon {
-  font-size: 44px;
-  display: block;
-  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  font-size: 28px;
+  background: rgba(79, 70, 229, 0.12);
+  background: color-mix(in srgb, var(--card-color, var(--primary)) 15%, white);
 }
 
 .game-card h2 {
   margin: 0 0 8px;
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .game-card p {
-  margin: 0;
+  margin: 0 0 18px;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 14.5px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.play-link {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--card-color, var(--primary));
 }
 
 .empty-state {
@@ -93,22 +212,39 @@ main {
   font-size: 18px;
 }
 
+/* ---------- Footer ---------- */
+
 .hub-footer {
   text-align: center;
-  padding: 24px;
+  padding: 40px 24px 28px;
   color: var(--muted);
   font-size: 14px;
 }
 
+.footer-credit {
+  margin-top: 4px;
+  opacity: 0.75;
+}
+
+/* ---------- Shared game-page elements ---------- */
+
 .back-link {
-  display: inline-block;
-  margin: 16px 0 0 16px;
-  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 18px 0 0 20px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--primary);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .back-link:hover {
-  text-decoration: underline;
+  transform: translateX(-3px);
+  box-shadow: var(--shadow-md);
 }

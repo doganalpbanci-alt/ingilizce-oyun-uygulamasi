@@ -9,16 +9,30 @@
 </head>
 <body>
 <header class="hub-header">
-  <h1>🎮 İngilizce Oyun Merkezi</h1>
-  <p>Bir oyun seç ve başla!</p>
+  <div class="header-blob header-blob-1" aria-hidden="true"></div>
+  <div class="header-blob header-blob-2" aria-hidden="true"></div>
+
+  <div class="header-content">
+    <div class="logo-badge">EN</div>
+    <h1>İngilizce Oyun Merkezi</h1>
+    <p class="tagline">Derste, teneffüste, her yerde — eğlenerek İngilizce öğren.</p>
+
+    <div class="badge-row">
+      <span class="badge">🎮 <span id="game-count">0</span> oyun</span>
+      <span class="badge">📶 İnternetsiz çalışır</span>
+      <span class="badge">🖥️ Akıllı tahta uyumlu</span>
+    </div>
+  </div>
 </header>
 
 <main>
+  <h2 class="section-title">Oyunlar</h2>
   <div id="game-grid" class="game-grid"></div>
 </main>
 
 <footer class="hub-footer">
   <p>Bu dosyaları internetsiz de açabilirsin, internete atınca da site olarak çalışır.</p>
+  <p class="footer-credit">Öğretmenler için ❤️ ile yapılıyor.</p>
 </footer>
 
 <script src="js/games-registry.js"></script>

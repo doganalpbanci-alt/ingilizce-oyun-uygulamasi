@@ -11,10 +11,11 @@
   padding: 10px 20px;
   font-size: 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-md, 10px);
   background: var(--accent);
   color: #fff;
   cursor: pointer;
+  box-shadow: var(--shadow-sm, none);
 }
 
 .game-status button:hover {

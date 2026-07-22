@@ -24,11 +24,54 @@ var playerNamesEl = document.getElementById("player-names");
 var playersErrorEl = document.getElementById("players-error");
 var bracketViewEl = document.getElementById("bracket-view");
 var nextMatchBoxEl = document.getElementById("next-match-box");
+var soundToggleBtn = document.getElementById("sound-toggle");
 
 function showScreen(id) {
   screens.forEach(function (el) {
     el.hidden = el.id !== id;
   });
+}
+
+/* ---------- Sound toggle & effects ---------- */
+
+function refreshSoundToggleIcon() {
+  soundToggleBtn.textContent = SoundManager.isMuted() ? "🔇" : "🔊";
+}
+
+soundToggleBtn.addEventListener("click", function () {
+  SoundManager.setMuted(!SoundManager.isMuted());
+  refreshSoundToggleIcon();
+});
+
+refreshSoundToggleIcon();
+
+function showGoalPopup() {
+  var el = document.getElementById("goal-popup");
+  el.hidden = false;
+  el.classList.remove("show");
+  void el.offsetWidth;
+  el.classList.add("show");
+  setTimeout(function () {
+    el.hidden = true;
+    el.classList.remove("show");
+  }, 900);
+}
+
+function triggerConfetti() {
+  var container = document.getElementById("confetti-container");
+  var colors = ["#facc15", "#22c55e", "#3b82f6", "#ef4444", "#a855f7", "#ffffff"];
+  for (var i = 0; i < 40; i++) {
+    var piece = document.createElement("div");
+    piece.className = "confetti-piece";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (2.2 + Math.random() * 1.6) + "s";
+    piece.style.animationDelay = (Math.random() * 0.6) + "s";
+    container.appendChild(piece);
+    (function (el) {
+      setTimeout(function () { el.remove(); }, 4500);
+    })(piece);
+  }
 }
 
 /* ---------- Setup screen ---------- */
@@ -330,6 +373,7 @@ function startMatch(roundIndex, matchIndex, match) {
   taUi.hidden = state.mode === "race";
 
   showScreen("screen-match");
+  SoundManager.playWhistle();
 
   if (state.mode === "race") {
     playRound();
@@ -378,9 +422,13 @@ function finishMatch() {
   var winnerName = m.scoreA > m.scoreB ? m.a : m.b;
   state.rounds[m.roundIndex][m.matchIndex].winner = winnerName;
   state.match = null;
+  SoundManager.playFullTimeWhistle();
   renderBracketScreen();
   if (document.getElementById("screen-champion").hidden) {
     showScreen("screen-bracket");
+  } else {
+    SoundManager.playCheer();
+    triggerConfetti();
   }
 }
 
@@ -442,6 +490,15 @@ function startTimer() {
   bar.style.transition = "width " + ROUND_SECONDS + "s linear";
   bar.style.width = "0%";
 
+  var m = state.match;
+  m.tickTimerIds = [3, 2, 1].filter(function (secondsLeft) {
+    return secondsLeft < ROUND_SECONDS;
+  }).map(function (secondsLeft) {
+    return setTimeout(function () {
+      if (!m.roundDecided) SoundManager.playTick();
+    }, (ROUND_SECONDS - secondsLeft) * 1000);
+  });
+
   state.match.timerId = setTimeout(function () {
     if (!state.match.roundDecided) {
       endRound(null);
@@ -454,6 +511,10 @@ function clearTimer() {
     clearTimeout(state.match.timerId);
     state.match.timerId = null;
   }
+  if (state.match.tickTimerIds) {
+    state.match.tickTimerIds.forEach(clearTimeout);
+    state.match.tickTimerIds = [];
+  }
 }
 
 function handleOptionClick(side, isCorrect, btnEl) {
@@ -464,10 +525,13 @@ function handleOptionClick(side, isCorrect, btnEl) {
 
   if (isCorrect) {
     btnEl.classList.add("correct");
+    SoundManager.playGoal();
+    showGoalPopup();
     endRound(side);
     return;
   }
 
+  SoundManager.playWrong();
   btnEl.classList.add("wrong");
   btnEl.disabled = true;
   if (side === "a") m.sideALocked = true;
@@ -530,6 +594,7 @@ function startTimeAttackRun(side) {
   var m = state.match;
   document.getElementById("ta-ready").hidden = true;
   document.getElementById("ta-playing").hidden = false;
+  SoundManager.playWhistle();
 
   var name = side === "a" ? m.a : m.b;
   document.getElementById("ta-playing-name").textContent = name;
@@ -598,9 +663,12 @@ function taHandleAnswer(isCorrect, btnEl) {
 
   if (isCorrect) {
     btnEl.classList.add("correct");
+    SoundManager.playGoal();
+    showGoalPopup();
     if (side === "a") m.taScoreA++;
     else m.taScoreB++;
   } else {
+    SoundManager.playWrong();
     btnEl.classList.add("wrong");
   }
 

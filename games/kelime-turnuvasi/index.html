@@ -9,10 +9,13 @@
 </head>
 <body>
 <a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
 
-<header class="hub-header">
+<header class="hub-header pitch-header">
+  <span class="pitch-ball pitch-ball-1" aria-hidden="true">⚽</span>
+  <span class="pitch-ball pitch-ball-2" aria-hidden="true">⚽</span>
   <h1>🏆 Kelime Turnuvası</h1>
-  <p class="tagline">1'e 1 kelime yarışması — raunt raunt geç, şampiyon ol!</p>
+  <p class="tagline">1'e 1 kelime maçı — raunt raunt geç, şampiyon ol!</p>
 </header>
 
 <main>
@@ -163,7 +166,11 @@
 
 </main>
 
+<div id="goal-popup" class="goal-popup" hidden>GOL!</div>
+<div id="confetti-container" class="confetti-container"></div>
+
 <script src="../../data/curriculum.js"></script>
+<script src="sounds.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

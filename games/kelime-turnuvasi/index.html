@@ -12,7 +12,7 @@
 
 <header class="hub-header">
   <h1>🏆 Kelime Turnuvası</h1>
-  <p class="tagline">1'e 1 kelime yarışması — turları geç, şampiyon ol!</p>
+  <p class="tagline">1'e 1 kelime yarışması — raunt raunt geç, şampiyon ol!</p>
 </header>
 
 <main>
@@ -35,6 +35,43 @@
         <p id="unit-word-count" class="hint"></p>
         <p id="unit-error" class="error-text" hidden></p>
       </div>
+
+      <div class="field">
+        <span>Oyun Modu</span>
+        <div class="mode-options">
+          <label class="mode-option checked">
+            <input type="radio" name="game-mode" value="race" checked>
+            <span class="mode-option-title">🏁 Yarışma Modu</span>
+            <span class="mode-option-desc">İki öğrenci aynı kelimeyi aynı anda görür, doğru cevaba önce basan raundu kazanır.</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="game-mode" value="time-attack">
+            <span class="mode-option-title">⏱️ Bireysel Süre Modu</span>
+            <span class="mode-option-desc">Öğrenciler sırayla kendi süresinde yarışır, süre bitene kadar en çok doğru bilen raundu kazanır.</span>
+          </label>
+        </div>
+      </div>
+
+      <label class="field" id="time-per-player-field" hidden>
+        <span>Kişi başı süre</span>
+        <select id="time-per-player-select">
+          <option value="20">20 saniye</option>
+          <option value="30" selected>30 saniye</option>
+          <option value="45">45 saniye</option>
+          <option value="60">60 saniye</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Raunt sayısı</span>
+        <select id="round-count-select">
+          <option value="1">1 raunt (ani ölüm)</option>
+          <option value="3">3 raunt (2 kazanan maçı alır)</option>
+          <option value="5" selected>5 raunt (3 kazanan maçı alır)</option>
+          <option value="7">7 raunt (4 kazanan maçı alır)</option>
+        </select>
+      </label>
+
       <button id="to-players-btn" type="button" class="primary-btn">Devam Et</button>
     </div>
   </section>
@@ -72,23 +109,46 @@
         <strong id="score-b">0</strong>
         <span id="player-b-name"></span>
       </div>
+      <p id="round-progress" class="round-progress"></p>
+    </div>
+
+    <!-- Yarışma Modu arayüzü -->
+    <div id="race-ui" class="mode-ui" hidden>
       <div class="timer-track"><div id="timer-bar" class="timer-bar"></div></div>
+      <div id="round-word" class="round-word"></div>
+      <div class="match-columns">
+        <div class="match-column">
+          <h3 id="col-a-name"></h3>
+          <div id="options-a" class="options"></div>
+        </div>
+        <div class="match-column">
+          <h3 id="col-b-name"></h3>
+          <div id="options-b" class="options"></div>
+        </div>
+      </div>
+      <p id="round-feedback" class="round-feedback"></p>
     </div>
 
-    <div id="round-word" class="round-word"></div>
+    <!-- Bireysel Süre Modu arayüzü -->
+    <div id="time-attack-ui" class="mode-ui" hidden>
+      <div id="ta-ready" class="ta-ready">
+        <h3 id="ta-ready-name"></h3>
+        <p>Hazır olduğunda başlat!</p>
+        <button id="ta-start-btn" type="button" class="primary-btn">Başlat</button>
+      </div>
 
-    <div class="match-columns">
-      <div class="match-column">
-        <h3 id="col-a-name"></h3>
-        <div id="options-a" class="options"></div>
+      <div id="ta-playing" class="ta-playing" hidden>
+        <div class="ta-status">
+          <span id="ta-playing-name"></span>
+          <span class="ta-score">Doğru: <strong id="ta-live-score">0</strong></span>
+        </div>
+        <div class="timer-track"><div id="ta-timer-bar" class="timer-bar"></div></div>
+        <div id="ta-word" class="round-word"></div>
+        <div id="ta-options" class="options ta-options"></div>
       </div>
-      <div class="match-column">
-        <h3 id="col-b-name"></h3>
-        <div id="options-b" class="options"></div>
-      </div>
+
+      <div id="ta-round-result" class="ta-round-result" hidden></div>
     </div>
-
-    <p id="round-feedback" class="round-feedback"></p>
   </section>
 
   <!-- 5) Şampiyon ekranı -->

@@ -1,3 +1,7 @@
+[hidden] {
+  display: none !important;
+}
+
 .screen {
   max-width: 900px;
   margin: 0 auto;
@@ -89,6 +93,49 @@ textarea {
   height: 20px;
   accent-color: var(--primary);
   flex-shrink: 0;
+}
+
+.mode-options {
+  display: grid;
+  gap: 10px;
+}
+
+.mode-option {
+  display: block;
+  padding: 14px 16px;
+  border: 2px solid #d8dae6;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.mode-option.checked,
+.mode-option:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.07);
+}
+
+.mode-option input {
+  accent-color: var(--primary);
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.mode-option-title {
+  font-weight: 700;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.mode-option-desc {
+  display: block;
+  margin-top: 6px;
+  margin-left: 26px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.4;
 }
 
 .primary-btn {
@@ -206,6 +253,13 @@ textarea {
   opacity: 0.4;
 }
 
+.round-progress {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: -6px 0 22px;
+}
+
 .timer-track {
   height: 10px;
   border-radius: 999px;
@@ -296,6 +350,53 @@ textarea {
   .match-columns {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Time Attack mode ---------- */
+
+.ta-ready {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.ta-ready h3 {
+  font-size: clamp(24px, 4vw, 30px);
+  margin: 0 0 8px;
+}
+
+.ta-ready p {
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+
+.ta-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto 14px;
+  padding: 0 24px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.ta-score strong {
+  color: var(--primary);
+}
+
+.ta-options {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ta-round-result {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 40px 24px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* ---------- Champion ---------- */

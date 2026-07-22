@@ -1,10 +1,13 @@
-var TARGET_SCORE = 3;
 var ROUND_SECONDS = 8;
 
 var state = {
   grade: null,
-  unitId: null,
+  unitIds: [],
   words: [],
+  mode: "race",
+  roundCount: 5,
+  roundTargetWins: 3,
+  timePerPlayer: 30,
   rounds: [],
   match: null
 };
@@ -14,6 +17,9 @@ var gradeSelect = document.getElementById("grade-select");
 var unitCheckboxesEl = document.getElementById("unit-checkboxes");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
+var timePerPlayerField = document.getElementById("time-per-player-field");
+var timePerPlayerSelect = document.getElementById("time-per-player-select");
+var roundCountSelect = document.getElementById("round-count-select");
 var playerNamesEl = document.getElementById("player-names");
 var playersErrorEl = document.getElementById("players-error");
 var bracketViewEl = document.getElementById("bracket-view");
@@ -109,6 +115,20 @@ document.getElementById("clear-all-units").addEventListener("click", function ()
   updateWordCount();
 });
 
+function getSelectedMode() {
+  var checked = document.querySelector('input[name="game-mode"]:checked');
+  return checked ? checked.value : "race";
+}
+
+document.querySelectorAll('input[name="game-mode"]').forEach(function (radio) {
+  radio.addEventListener("change", function () {
+    document.querySelectorAll(".mode-option").forEach(function (label) {
+      label.classList.toggle("checked", label.querySelector("input").checked);
+    });
+    timePerPlayerField.hidden = getSelectedMode() !== "time-attack";
+  });
+});
+
 document.getElementById("to-players-btn").addEventListener("click", function () {
   var unitIds = getCheckedUnitIds();
   if (unitIds.length === 0) {
@@ -121,6 +141,11 @@ document.getElementById("to-players-btn").addEventListener("click", function () 
   state.grade = gradeSelect.value;
   state.unitIds = unitIds;
   state.words = buildWordPool(unitIds);
+  state.mode = getSelectedMode();
+  state.roundCount = parseInt(roundCountSelect.value, 10);
+  state.roundTargetWins = Math.ceil(state.roundCount / 2);
+  state.timePerPlayer = parseInt(timePerPlayerSelect.value, 10);
+
   showScreen("screen-players");
 });
 
@@ -267,7 +292,7 @@ function renderBracketScreen() {
   });
 }
 
-/* ---------- Match screen ---------- */
+/* ---------- Match screen (shared) ---------- */
 
 function startMatch(roundIndex, matchIndex, match) {
   state.match = {
@@ -277,11 +302,19 @@ function startMatch(roundIndex, matchIndex, match) {
     b: match.b,
     scoreA: 0,
     scoreB: 0,
+    roundNumber: 1,
     usedWords: [],
     timerId: null,
     roundDecided: false,
     sideALocked: false,
-    sideBLocked: false
+    sideBLocked: false,
+    currentWord: null,
+    taScoreA: 0,
+    taScoreB: 0,
+    taTimerId: null,
+    taUsedWords: [],
+    taCurrentSide: null,
+    taCurrentWord: null
   };
 
   document.getElementById("player-a-name").textContent = state.match.a;
@@ -289,15 +322,69 @@ function startMatch(roundIndex, matchIndex, match) {
   document.getElementById("col-a-name").textContent = state.match.a;
   document.getElementById("col-b-name").textContent = state.match.b;
   updateScoreDisplay();
+  updateRoundProgress();
+
+  var raceUi = document.getElementById("race-ui");
+  var taUi = document.getElementById("time-attack-ui");
+  raceUi.hidden = state.mode !== "race";
+  taUi.hidden = state.mode === "race";
 
   showScreen("screen-match");
-  playRound();
+
+  if (state.mode === "race") {
+    playRound();
+  } else {
+    startTimeAttackRoundReady("a");
+  }
 }
 
 function updateScoreDisplay() {
   document.getElementById("score-a").textContent = state.match.scoreA;
   document.getElementById("score-b").textContent = state.match.scoreB;
 }
+
+function updateRoundProgress() {
+  var m = state.match;
+  document.getElementById("round-progress").textContent =
+    "Raunt " + m.roundNumber + " / " + state.roundCount + " • Kazanmak için " + state.roundTargetWins + " raunt gerekli";
+}
+
+function checkMatchProgress() {
+  var m = state.match;
+  if (m.scoreA >= state.roundTargetWins || m.scoreB >= state.roundTargetWins) {
+    finishMatch();
+    return;
+  }
+  m.roundNumber++;
+  updateRoundProgress();
+  if (state.mode === "race") {
+    playRound();
+  } else {
+    startTimeAttackRoundReady("a");
+  }
+}
+
+function buildOptions(correctWord) {
+  var distractPool = state.words.filter(function (w) { return w !== correctWord; });
+  shuffle(distractPool);
+  var distractors = distractPool.slice(0, Math.min(3, distractPool.length));
+  var options = distractors.map(function (w) { return { tr: w.tr, correct: false }; });
+  options.push({ tr: correctWord.tr, correct: true });
+  return shuffle(options);
+}
+
+function finishMatch() {
+  var m = state.match;
+  var winnerName = m.scoreA > m.scoreB ? m.a : m.b;
+  state.rounds[m.roundIndex][m.matchIndex].winner = winnerName;
+  state.match = null;
+  renderBracketScreen();
+  if (document.getElementById("screen-champion").hidden) {
+    showScreen("screen-bracket");
+  }
+}
+
+/* ---------- Race mode ---------- */
 
 function pickWord() {
   var used = state.match.usedWords;
@@ -310,15 +397,6 @@ function pickWord() {
   var pickIndex = state.words.indexOf(pick);
   state.match.usedWords.push(pickIndex);
   return pick;
-}
-
-function buildOptions(correctWord) {
-  var distractPool = state.words.filter(function (w) { return w !== correctWord; });
-  shuffle(distractPool);
-  var distractors = distractPool.slice(0, Math.min(3, distractPool.length));
-  var options = distractors.map(function (w) { return { tr: w.tr, correct: false }; });
-  options.push({ tr: correctWord.tr, correct: true });
-  return shuffle(options);
 }
 
 function playRound() {
@@ -426,24 +504,144 @@ function endRound(winningSide) {
   }
   updateScoreDisplay();
 
-  setTimeout(function () {
-    if (m.scoreA >= TARGET_SCORE || m.scoreB >= TARGET_SCORE) {
-      finishMatch();
-    } else {
-      playRound();
-    }
-  }, 1200);
+  setTimeout(checkMatchProgress, 1200);
 }
 
-function finishMatch() {
+/* ---------- Time attack mode ---------- */
+
+function startTimeAttackRoundReady(side) {
   var m = state.match;
-  var winnerName = m.scoreA > m.scoreB ? m.a : m.b;
-  state.rounds[m.roundIndex][m.matchIndex].winner = winnerName;
-  state.match = null;
-  renderBracketScreen();
-  if (document.getElementById("screen-champion").hidden) {
-    showScreen("screen-bracket");
+  var name = side === "a" ? m.a : m.b;
+
+  document.getElementById("ta-ready").hidden = false;
+  document.getElementById("ta-playing").hidden = true;
+  document.getElementById("ta-round-result").hidden = true;
+  document.getElementById("ta-ready-name").textContent = name + ", hazır mısın?";
+
+  var startBtn = document.getElementById("ta-start-btn");
+  var freshBtn = startBtn.cloneNode(true);
+  startBtn.parentNode.replaceChild(freshBtn, startBtn);
+  freshBtn.addEventListener("click", function () {
+    startTimeAttackRun(side);
+  });
+}
+
+function startTimeAttackRun(side) {
+  var m = state.match;
+  document.getElementById("ta-ready").hidden = true;
+  document.getElementById("ta-playing").hidden = false;
+
+  var name = side === "a" ? m.a : m.b;
+  document.getElementById("ta-playing-name").textContent = name;
+  document.getElementById("ta-live-score").textContent = "0";
+
+  m.taCurrentSide = side;
+  m.taUsedWords = [];
+  if (side === "a") m.taScoreA = 0;
+  else m.taScoreB = 0;
+
+  var bar = document.getElementById("ta-timer-bar");
+  bar.style.transition = "none";
+  bar.style.width = "100%";
+  void bar.offsetWidth;
+  bar.style.transition = "width " + state.timePerPlayer + "s linear";
+  bar.style.width = "0%";
+
+  m.taTimerId = setTimeout(function () {
+    finishTimeAttackSide(side);
+  }, state.timePerPlayer * 1000);
+
+  taPlayNextWord();
+}
+
+function taPickWord() {
+  var m = state.match;
+  var used = m.taUsedWords;
+  var available = state.words.filter(function (w, i) { return used.indexOf(i) === -1; });
+  if (available.length === 0) {
+    m.taUsedWords = [];
+    available = state.words;
   }
+  var pick = available[Math.floor(Math.random() * available.length)];
+  m.taUsedWords.push(state.words.indexOf(pick));
+  return pick;
+}
+
+function taPlayNextWord() {
+  var m = state.match;
+  var word = taPickWord();
+  m.taCurrentWord = word;
+  var options = buildOptions(word);
+
+  document.getElementById("ta-word").textContent = word.en;
+  var container = document.getElementById("ta-options");
+  container.innerHTML = "";
+  options.forEach(function (opt) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "option-btn";
+    btn.textContent = opt.tr;
+    btn.addEventListener("click", function () {
+      taHandleAnswer(opt.correct, btn);
+    });
+    container.appendChild(btn);
+  });
+}
+
+function taHandleAnswer(isCorrect, btnEl) {
+  var m = state.match;
+  var side = m.taCurrentSide;
+
+  document.querySelectorAll("#ta-options .option-btn").forEach(function (btn) {
+    btn.disabled = true;
+  });
+
+  if (isCorrect) {
+    btnEl.classList.add("correct");
+    if (side === "a") m.taScoreA++;
+    else m.taScoreB++;
+  } else {
+    btnEl.classList.add("wrong");
+  }
+
+  document.getElementById("ta-live-score").textContent = side === "a" ? m.taScoreA : m.taScoreB;
+
+  setTimeout(function () {
+    if (m.taTimerId === null) return;
+    taPlayNextWord();
+  }, 250);
+}
+
+function finishTimeAttackSide(side) {
+  var m = state.match;
+  clearTimeout(m.taTimerId);
+  m.taTimerId = null;
+  document.getElementById("ta-options").innerHTML = "";
+
+  if (side === "a") {
+    startTimeAttackRoundReady("b");
+    return;
+  }
+
+  var scoreA = m.taScoreA;
+  var scoreB = m.taScoreB;
+  var winningSide = scoreA > scoreB ? "a" : (scoreB > scoreA ? "b" : null);
+
+  if (winningSide === "a") m.scoreA++;
+  else if (winningSide === "b") m.scoreB++;
+  updateScoreDisplay();
+
+  document.getElementById("ta-playing").hidden = true;
+  var resultEl = document.getElementById("ta-round-result");
+  resultEl.hidden = false;
+
+  var resultText = m.a + ": " + scoreA + " doğru • " + m.b + ": " + scoreB + " doğru. ";
+  if (winningSide === "a") resultText += m.a + " bu raundu kazandı!";
+  else if (winningSide === "b") resultText += m.b + " bu raundu kazandı!";
+  else resultText += "Bu raunt berabere, kimse puan almadı.";
+  resultEl.textContent = resultText;
+
+  setTimeout(checkMatchProgress, 2000);
 }
 
 /* ---------- Restart ---------- */

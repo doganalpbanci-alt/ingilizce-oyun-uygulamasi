@@ -21,9 +21,20 @@ var SoundManager = (function () {
     if (audio.state === "suspended") {
       audio.resume().catch(function () {});
     }
+    // Some iOS contexts (in particular standalone "Add to Home Screen"
+    // apps) need an actual source node started within the gesture, not
+    // just resume() — a one-sample silent buffer does the trick and is
+    // inaudible either way.
+    try {
+      var buffer = audio.createBuffer(1, 1, audio.sampleRate);
+      var source = audio.createBufferSource();
+      source.buffer = buffer;
+      source.connect(audio.destination);
+      source.start(0);
+    } catch (e) {}
   }
 
-  ["click", "touchend"].forEach(function (evt) {
+  ["click", "touchend", "touchstart"].forEach(function (evt) {
     document.addEventListener(evt, primeOnce, { capture: true, passive: true });
   });
 
@@ -193,9 +204,16 @@ var SoundManager = (function () {
     });
   }
 
+  function unlockAndTest() {
+    muted = false;
+    primeOnce();
+    playWhistle();
+  }
+
   return {
     isMuted: isMuted,
     setMuted: setMuted,
+    unlockAndTest: unlockAndTest,
     playWhistle: playWhistle,
     playFullTimeWhistle: playFullTimeWhistle,
     playGoal: playGoal,

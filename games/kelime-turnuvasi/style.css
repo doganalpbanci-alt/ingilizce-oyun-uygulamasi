@@ -52,6 +52,28 @@ body {
   animation-delay: 0s;
 }
 
+.enable-sound-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 10px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.enable-sound-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 .pitch-ball-2 {
   bottom: 16px;
   right: 10%;

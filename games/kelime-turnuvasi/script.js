@@ -45,6 +45,13 @@ soundToggleBtn.addEventListener("click", function () {
 
 refreshSoundToggleIcon();
 
+var enableSoundBtn = document.getElementById("enable-sound-btn");
+enableSoundBtn.addEventListener("click", function () {
+  SoundManager.unlockAndTest();
+  refreshSoundToggleIcon();
+  enableSoundBtn.hidden = true;
+});
+
 function showGoalPopup() {
   var el = document.getElementById("goal-popup");
   el.hidden = false;

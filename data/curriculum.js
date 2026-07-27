@@ -798,5 +798,214 @@ var CURRICULUM = {
         ]
       }
     ]
+  },
+  "7": {
+    label: "7. Sınıf",
+    units: [
+      {
+        id: "unit1-appearance-personality",
+        title: "Ünite 1 - Appearance and Personality (Görünüş ve Kişilik)",
+        words: [
+          { en: "beautiful", tr: "güzel" },
+          { en: "easy-going", tr: "sakin, uyumlu" },
+          { en: "generous", tr: "cömert" },
+          { en: "handsome", tr: "yakışıklı" },
+          { en: "headscarf", tr: "başörtüsü" },
+          { en: "honest", tr: "dürüst" },
+          { en: "outgoing", tr: "girişken, sosyal" },
+          { en: "plump", tr: "tombul, dolgun" },
+          { en: "punctual", tr: "dakik" },
+          { en: "selfish", tr: "bencil" }
+        ]
+      },
+      {
+        id: "unit2-sports",
+        title: "Ünite 2 - Sports (Spor)",
+        words: [
+          { en: "achieve", tr: "başarmak" },
+          { en: "beat", tr: "yenmek" },
+          { en: "draw", tr: "berabere kalmak" },
+          { en: "equipment", tr: "ekipman, malzeme" },
+          { en: "hit", tr: "vurmak" },
+          { en: "indoor", tr: "kapalı mekanda" },
+          { en: "injury", tr: "sakatlık, yaralanma" },
+          { en: "lose", tr: "kaybetmek" },
+          { en: "medal", tr: "madalya" },
+          { en: "outdoor", tr: "açık havada" },
+          { en: "score", tr: "sayı/skor yapmak" },
+          { en: "success", tr: "başarı" },
+          { en: "train", tr: "antrenman yapmak, eğitmek" }
+        ]
+      },
+      {
+        id: "unit3-biographies",
+        title: "Ünite 3 - Biographies (Biyografiler)",
+        words: [
+          { en: "alone", tr: "yalnız" },
+          { en: "award", tr: "ödül" },
+          { en: "brilliant", tr: "parlak zekalı, zeki" },
+          { en: "die", tr: "ölmek" },
+          { en: "get engaged", tr: "nişanlanmak" },
+          { en: "get married", tr: "evlenmek" },
+          { en: "graduate", tr: "mezun olmak" },
+          { en: "grow up", tr: "büyümek" },
+          { en: "move", tr: "taşınmak" },
+          { en: "own", tr: "sahip olmak" },
+          { en: "prize", tr: "ödül" },
+          { en: "raise children/kids", tr: "çocuk büyütmek" }
+        ]
+      },
+      {
+        id: "unit4-animals",
+        title: "Ünite 4 - Animals (Hayvanlar)",
+        words: [
+          { en: "afraid", tr: "korkmuş" },
+          { en: "attack", tr: "saldırmak" },
+          { en: "desert", tr: "çöl" },
+          { en: "enormous", tr: "kocaman, devasa" },
+          { en: "extinct", tr: "nesli tükenmiş" },
+          { en: "habitat", tr: "yaşam alanı" },
+          { en: "harm", tr: "zarar vermek" },
+          { en: "human", tr: "insan" },
+          { en: "hunt", tr: "avlamak" },
+          { en: "jungle", tr: "vahşi orman" },
+          { en: "mammal", tr: "memeli" },
+          { en: "poison", tr: "zehir" },
+          { en: "poisonous", tr: "zehirli" },
+          { en: "prey", tr: "av" },
+          { en: "reptiles", tr: "sürüngenler" },
+          { en: "survive", tr: "hayatta kalmak" }
+        ]
+      },
+      {
+        id: "unit5-television",
+        title: "Ünite 5 - Television (Televizyon)",
+        words: [
+          { en: "appear", tr: "görünmek, ortaya çıkmak" },
+          { en: "channel", tr: "kanal" },
+          { en: "commercial", tr: "reklam" },
+          { en: "director", tr: "yönetmen" },
+          { en: "discussion", tr: "tartışma" },
+          { en: "documentary", tr: "belgesel" },
+          { en: "news", tr: "haberler" },
+          { en: "quiz show", tr: "yarışma programı" },
+          { en: "reality show", tr: "gerçeklik programı" },
+          { en: "recommend", tr: "tavsiye etmek" },
+          { en: "remote control", tr: "uzaktan kumanda" },
+          { en: "series", tr: "dizi" },
+          { en: "sitcom", tr: "durum komedisi" },
+          { en: "soap opera", tr: "pembe dizi" },
+          { en: "talk show", tr: "sohbet programı" }
+        ]
+      },
+      {
+        id: "unit6-celebrations",
+        title: "Ünite 6 - Celebrations (Kutlamalar)",
+        words: [
+          { en: "arrange", tr: "düzenlemek" },
+          { en: "attend", tr: "katılmak" },
+          { en: "beverage", tr: "içecek" },
+          { en: "decorate", tr: "süslemek" },
+          { en: "fancy", tr: "istemek, arzu etmek" },
+          { en: "guest", tr: "misafir" },
+          { en: "host", tr: "ev sahibi" },
+          { en: "invitation card", tr: "davetiye" },
+          { en: "invite", tr: "davet etmek" },
+          { en: "message", tr: "mesaj" },
+          { en: "organize", tr: "organize etmek" },
+          { en: "refuse", tr: "reddetmek" },
+          { en: "wrap", tr: "sarmak, paketlemek" }
+        ]
+      },
+      {
+        id: "unit7-future-plans",
+        title: "Ünite 7 - Future Plans (Gelecek Planları)",
+        words: [
+          { en: "believe", tr: "inanmak" },
+          { en: "career", tr: "kariyer" },
+          { en: "dream", tr: "hayal, rüya" },
+          { en: "excellent", tr: "mükemmel" },
+          { en: "guess", tr: "tahmin etmek" },
+          { en: "imagine", tr: "hayal etmek" },
+          { en: "peaceful", tr: "huzurlu, barışçıl" },
+          { en: "predict", tr: "tahmin etmek" },
+          { en: "probably", tr: "muhtemelen" },
+          { en: "receive", tr: "almak" },
+          { en: "trick", tr: "hile, oyun" }
+        ]
+      },
+      {
+        id: "unit8-places-in-town",
+        title: "Ünite 8 - Places in Town (Şehirdeki Yerler)",
+        words: [
+          { en: "amusement park", tr: "lunapark" },
+          { en: "art gallery", tr: "sanat galerisi" },
+          { en: "bakery", tr: "fırın" },
+          { en: "chemist's", tr: "eczane" },
+          { en: "city hall", tr: "belediye binası" },
+          { en: "coffee shop", tr: "kafe" },
+          { en: "department store", tr: "büyük mağaza" },
+          { en: "fire station", tr: "itfaiye" },
+          { en: "game/music store", tr: "oyun/müzik mağazası" },
+          { en: "governorship", tr: "valilik" },
+          { en: "grocery", tr: "bakkal, market" },
+          { en: "movie theater", tr: "sinema" },
+          { en: "municipality", tr: "belediye" },
+          { en: "municipal office", tr: "belediye dairesi" },
+          { en: "police station", tr: "karakol" },
+          { en: "shopping mall", tr: "alışveriş merkezi" }
+        ]
+      },
+      {
+        id: "unit9-environment",
+        title: "Ünite 9 - Environment (Çevre)",
+        words: [
+          { en: "balance", tr: "denge" },
+          { en: "climate", tr: "iklim" },
+          { en: "eco-friendly", tr: "çevre dostu" },
+          { en: "efficient", tr: "verimli" },
+          { en: "global warming", tr: "küresel ısınma" },
+          { en: "green house effect", tr: "sera etkisi" },
+          { en: "increase", tr: "artmak, artırmak" },
+          { en: "nature", tr: "doğa" },
+          { en: "pollute", tr: "kirletmek" },
+          { en: "pollution", tr: "kirlilik" },
+          { en: "protect", tr: "korumak" },
+          { en: "recycle", tr: "geri dönüştürmek" },
+          { en: "renewable", tr: "yenilenebilir" },
+          { en: "responsible", tr: "sorumlu" },
+          { en: "solar energy", tr: "güneş enerjisi" },
+          { en: "take action", tr: "harekete geçmek" },
+          { en: "temperature", tr: "sıcaklık" },
+          { en: "threaten", tr: "tehdit etmek" },
+          { en: "waste", tr: "israf etmek" },
+          { en: "wind energy", tr: "rüzgar enerjisi" }
+        ]
+      },
+      {
+        id: "unit10-space",
+        title: "Ünite 10 - Space (Uzay)",
+        words: [
+          { en: "atmosphere", tr: "atmosfer" },
+          { en: "evidence", tr: "kanıt" },
+          { en: "explore", tr: "keşfetmek" },
+          { en: "galaxy", tr: "galaksi" },
+          { en: "gravity", tr: "yerçekimi" },
+          { en: "meteor", tr: "meteor" },
+          { en: "moon", tr: "ay" },
+          { en: "observe", tr: "gözlemlemek" },
+          { en: "orbit", tr: "yörünge" },
+          { en: "planet", tr: "gezegen" },
+          { en: "proof", tr: "kanıt" },
+          { en: "rescue", tr: "kurtarmak" },
+          { en: "satellite", tr: "uydu" },
+          { en: "shower", tr: "sağanak (yağmur/meteor)" },
+          { en: "solar system", tr: "güneş sistemi" },
+          { en: "space shuttle", tr: "uzay mekiği" },
+          { en: "surface", tr: "yüzey" },
+          { en: "universe", tr: "evren" }
+        ]
+      }
+    ]
   }
 };

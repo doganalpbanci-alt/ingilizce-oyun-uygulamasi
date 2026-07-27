@@ -1120,7 +1120,18 @@ var CURRICULUM = {
           { en: "skateboarding", tr: "kaykay yapmak" },
           { en: "practice", tr: "pratik yapmak, antrenman" },
           { en: "correct", tr: "doğru" },
-          { en: "idea", tr: "fikir" }
+          { en: "idea", tr: "fikir" },
+          { en: "wash your face and hands", tr: "yüzünü ve ellerini yıkamak" },
+          { en: "alone", tr: "yalnız" },
+          { en: "attend", tr: "katılmak" },
+          { en: "backpack", tr: "sırt çantası" },
+          { en: "be fond of", tr: "düşkün olmak" },
+          { en: "behave fairly", tr: "adil davranmak" },
+          { en: "board game", tr: "masa oyunu" },
+          { en: "cultural heritage", tr: "kültürel miras" },
+          { en: "do exercise", tr: "egzersiz yapmak" },
+          { en: "downtown", tr: "şehir merkezi" },
+          { en: "elderly", tr: "yaşlı" }
         ]
       },
       {
@@ -1157,7 +1168,20 @@ var CURRICULUM = {
           { en: "oil", tr: "sıvı yağ" },
           { en: "meal", tr: "yemek" },
           { en: "dessert", tr: "tatlı (yemek sonrası)" },
-          { en: "dish", tr: "yemek" }
+          { en: "dish", tr: "yemek" },
+          { en: "unhealthy", tr: "sağlıksız" },
+          { en: "flavor", tr: "lezzet" },
+          { en: "popcorn", tr: "patlamış mısır" },
+          { en: "pasta", tr: "makarna" },
+          { en: "ice cream", tr: "dondurma" },
+          { en: "croissant", tr: "kruvasan" },
+          { en: "pie", tr: "turta" },
+          { en: "barbecue", tr: "mangal" },
+          { en: "chef", tr: "şef" },
+          { en: "cuisine", tr: "mutfak (yemek kültürü)" },
+          { en: "milky", tr: "sütlü" },
+          { en: "necessary", tr: "gerekli" },
+          { en: "well-known", tr: "iyi bilinen, ünlü" }
         ]
       },
       {
@@ -1206,7 +1230,11 @@ var CURRICULUM = {
           { en: "social networking site", tr: "sosyal ağ sitesi" },
           { en: "account", tr: "hesap" },
           { en: "attachment", tr: "ek" },
-          { en: "comment", tr: "yorum, yorum yapmak" }
+          { en: "comment", tr: "yorum, yorum yapmak" },
+          { en: "do online shopping", tr: "internetten alışveriş yapmak" },
+          { en: "play online games", tr: "çevrimiçi oyun oynamak" },
+          { en: "safe", tr: "güvenli" },
+          { en: "unsafe", tr: "güvensiz" }
         ]
       },
       {
@@ -1229,7 +1257,15 @@ var CURRICULUM = {
           { en: "take risks", tr: "risk almak" },
           { en: "challenging", tr: "zorlayıcı" },
           { en: "unbearable", tr: "dayanılmaz" },
-          { en: "safety", tr: "güvenlik" }
+          { en: "safety", tr: "güvenlik" },
+          { en: "hiking", tr: "doğa yürüyüşü" },
+          { en: "jeep safari", tr: "cip safarisi" },
+          { en: "hot-air balloon", tr: "sıcak hava balonu" },
+          { en: "riding an elephant", tr: "file binme" },
+          { en: "motorcycle tour", tr: "motosiklet turu" },
+          { en: "prefer", tr: "tercih etmek" },
+          { en: "would rather", tr: "tercih etmek, yeğlemek" },
+          { en: "relaxing", tr: "rahatlatıcı" }
         ]
       },
       {
@@ -1253,7 +1289,17 @@ var CURRICULUM = {
           { en: "fascinating", tr: "büyüleyici" },
           { en: "impressive", tr: "etkileyici" },
           { en: "abandon", tr: "terk etmek" },
-          { en: "adventurous", tr: "maceracı" }
+          { en: "adventurous", tr: "maceracı" },
+          { en: "tourist attraction", tr: "turistik yer" },
+          { en: "travel brochure", tr: "gezi broşürü" },
+          { en: "advertisement", tr: "reklam" },
+          { en: "visitor", tr: "ziyaretçi" },
+          { en: "spectator", tr: "izleyici, seyirci" },
+          { en: "historical architecture", tr: "tarihi mimari" },
+          { en: "modern building", tr: "modern yapı" },
+          { en: "natural port", tr: "doğal liman" },
+          { en: "must-see place", tr: "görülmesi gereken yer" },
+          { en: "destination", tr: "varılacak/gidilecek yer" }
         ]
       },
       {
@@ -1284,7 +1330,11 @@ var CURRICULUM = {
           { en: "look after", tr: "bakmak, ilgilenmek" },
           { en: "lawn", tr: "çim alanı" },
           { en: "cook a meal", tr: "yemek pişirmek" },
-          { en: "delicious", tr: "lezzetli" }
+          { en: "delicious", tr: "lezzetli" },
+          { en: "household", tr: "eve/hane ile ilgili" },
+          { en: "do the grocery shopping", tr: "market alışverişi yapmak" },
+          { en: "separate the laundry", tr: "çamaşırları ayırmak" },
+          { en: "fold the clothes", tr: "çamaşırları katlamak" }
         ]
       },
       {
@@ -1306,7 +1356,18 @@ var CURRICULUM = {
           { en: "high-tech", tr: "yüksek teknoloji" },
           { en: "vaccination", tr: "aşı" },
           { en: "cure", tr: "tedavi" },
-          { en: "cell", tr: "hücre" }
+          { en: "cell", tr: "hücre" },
+          { en: "chemist", tr: "kimyager" },
+          { en: "physicist", tr: "fizikçi" },
+          { en: "scientific development", tr: "bilimsel gelişme" },
+          { en: "Nobel Prize", tr: "Nobel Ödülü" },
+          { en: "astronomy", tr: "astronomi" },
+          { en: "medicine", tr: "tıp" },
+          { en: "gravity", tr: "yerçekimi" },
+          { en: "black hole", tr: "kara delik" },
+          { en: "inventor", tr: "mucit" },
+          { en: "discovery", tr: "keşif" },
+          { en: "light bulb", tr: "ampul" }
         ]
       },
       {
@@ -1336,7 +1397,12 @@ var CURRICULUM = {
           { en: "take precaution", tr: "önlem almak" },
           { en: "significant", tr: "önemli" },
           { en: "run out", tr: "tükenmek, bitmek" },
-          { en: "burst", tr: "patlamak" }
+          { en: "burst", tr: "patlamak" },
+          { en: "natural phenomena", tr: "doğal olaylar" },
+          { en: "lightning", tr: "yıldırım, şimşek" },
+          { en: "power outage", tr: "elektrik kesintisi" },
+          { en: "forest fire", tr: "orman yangını" },
+          { en: "aftershock", tr: "artçı sarsıntı" }
         ]
       }
     ]

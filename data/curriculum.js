@@ -589,5 +589,214 @@ var CURRICULUM = {
         ]
       }
     ]
+  },
+  "6": {
+    label: "6. Sınıf",
+    units: [
+      {
+        id: "unit1-life",
+        title: "Ünite 1 - Life (Hayat)",
+        words: [
+          { en: "attend", tr: "katılmak" },
+          { en: "date", tr: "tarih" },
+          { en: "diary", tr: "günlük" },
+          { en: "rest", tr: "dinlenme" },
+          { en: "run errands", tr: "getir götür işleri yapmak" },
+          { en: "step dance", tr: "step dansı" },
+          { en: "take a nap", tr: "şekerleme yapmak, kestirmek" },
+          { en: "take care of something", tr: "bir şeyle ilgilenmek" },
+          { en: "take courses", tr: "kurs görmek/almak" },
+          { en: "visit", tr: "ziyaret etmek" },
+          { en: "traditional/folk dance", tr: "geleneksel/halk dansı" }
+        ]
+      },
+      {
+        id: "unit2-yummy-breakfast",
+        title: "Ünite 2 - Yummy Breakfast (Nefis Kahvaltı)",
+        words: [
+          { en: "bagel", tr: "simit" },
+          { en: "bread", tr: "ekmek" },
+          { en: "butter", tr: "tereyağı" },
+          { en: "cereal", tr: "mısır gevreği" },
+          { en: "cheese", tr: "peynir" },
+          { en: "coffee", tr: "kahve" },
+          { en: "croissant", tr: "kruvasan" },
+          { en: "egg", tr: "yumurta" },
+          { en: "fruit juice", tr: "meyve suyu" },
+          { en: "jam", tr: "reçel" },
+          { en: "junk food", tr: "abur cubur" },
+          { en: "healthy", tr: "sağlıklı" },
+          { en: "honey", tr: "bal" },
+          { en: "milk", tr: "süt" },
+          { en: "muffin", tr: "çörek, kek" },
+          { en: "pancake", tr: "krep" },
+          { en: "sausage", tr: "sosis, sucuk" },
+          { en: "nutritious", tr: "besleyici" },
+          { en: "tea", tr: "çay" },
+          { en: "toast", tr: "tost" }
+        ]
+      },
+      {
+        id: "unit3-downtown",
+        title: "Ünite 3 - Downtown (Şehir Merkezi)",
+        words: [
+          { en: "busy", tr: "meşgul, yoğun" },
+          { en: "crowded", tr: "kalabalık" },
+          { en: "downtown", tr: "şehir merkezi" },
+          { en: "feed", tr: "beslemek" },
+          { en: "hometown", tr: "memleket" },
+          { en: "high", tr: "yüksek" },
+          { en: "kiosk", tr: "kulübe" },
+          { en: "sell", tr: "satmak" },
+          { en: "skyscraper", tr: "gökdelen" },
+          { en: "street", tr: "cadde, sokak" },
+          { en: "town", tr: "kasaba" },
+          { en: "traffic jam", tr: "trafik sıkışıklığı" }
+        ]
+      },
+      {
+        id: "unit4-weather-emotions",
+        title: "Ünite 4 - Weather and Emotions (Hava Durumu ve Duygular)",
+        words: [
+          { en: "anxious", tr: "endişeli" },
+          { en: "cloudy", tr: "bulutlu" },
+          { en: "desert", tr: "çöl" },
+          { en: "energetic", tr: "enerjik" },
+          { en: "fabulous", tr: "harika, mükemmel" },
+          { en: "foggy", tr: "sisli" },
+          { en: "freezing", tr: "dondurucu" },
+          { en: "hailing", tr: "dolu yağması" },
+          { en: "happy", tr: "mutlu" },
+          { en: "lightning", tr: "şimşek" },
+          { en: "moody", tr: "kaprisli, karamsar" },
+          { en: "okay", tr: "iyi, tamam" },
+          { en: "scared", tr: "korkmuş" },
+          { en: "sleepy", tr: "uykulu" },
+          { en: "stormy", tr: "fırtınalı" },
+          { en: "windy", tr: "rüzgarlı" }
+        ]
+      },
+      {
+        id: "unit5-at-the-fair",
+        title: "Ünite 5 - At the Fair (Panayırda)",
+        words: [
+          { en: "amazing", tr: "inanılmaz" },
+          { en: "boring", tr: "sıkıcı" },
+          { en: "bumper car", tr: "çarpışan araba" },
+          { en: "carnival", tr: "karnaval" },
+          { en: "carousel", tr: "atlıkarınca" },
+          { en: "crazy", tr: "çılgın" },
+          { en: "dull", tr: "sıkıcı" },
+          { en: "exciting", tr: "heyecan verici" },
+          { en: "fair", tr: "fuar, panayır" },
+          { en: "fantastic", tr: "fantastik" },
+          { en: "Ferris wheel", tr: "dönme dolap" },
+          { en: "ghost train", tr: "korku tüneli treni" },
+          { en: "horrible", tr: "korkunç" },
+          { en: "interesting", tr: "ilginç" },
+          { en: "roller coaster", tr: "hız treni" },
+          { en: "train ride", tr: "tren yolculuğu" }
+        ]
+      },
+      {
+        id: "unit6-occupations",
+        title: "Ünite 6 - Occupations (Meslekler)",
+        words: [
+          { en: "architect", tr: "mimar" },
+          { en: "cook", tr: "aşçı" },
+          { en: "dentist", tr: "dişçi" },
+          { en: "driver", tr: "şoför" },
+          { en: "engineer", tr: "mühendis" },
+          { en: "farmer", tr: "çiftçi" },
+          { en: "hairdresser", tr: "kuaför, berber" },
+          { en: "lawyer", tr: "avukat" },
+          { en: "manager", tr: "müdür" },
+          { en: "mechanic", tr: "tamirci" },
+          { en: "salesman/saleswoman", tr: "satıcı" },
+          { en: "teacher", tr: "öğretmen" },
+          { en: "waiter/waitress", tr: "erkek garson/kadın garson" }
+        ]
+      },
+      {
+        id: "unit7-holidays",
+        title: "Ünite 7 - Holidays (Tatiller)",
+        words: [
+          { en: "forest", tr: "orman" },
+          { en: "flower", tr: "çiçek" },
+          { en: "fruit", tr: "meyve" },
+          { en: "lake", tr: "göl" },
+          { en: "mountain", tr: "dağ" },
+          { en: "pick", tr: "toplamak" },
+          { en: "river", tr: "nehir" },
+          { en: "sailing", tr: "deniz yolculuğu" },
+          { en: "seaside", tr: "deniz kenarı" },
+          { en: "sightseeing", tr: "gezi" },
+          { en: "skiing", tr: "kayma" },
+          { en: "snowball", tr: "kartopu" },
+          { en: "snowman", tr: "kardan adam" },
+          { en: "tent", tr: "çadır" },
+          { en: "tree", tr: "ağaç" }
+        ]
+      },
+      {
+        id: "unit8-bookworms",
+        title: "Ünite 8 - Bookworms (Kitap Kurtları)",
+        words: [
+          { en: "author/writer", tr: "yazar" },
+          { en: "borrow/lend", tr: "ödünç almak/ödünç vermek" },
+          { en: "bookshelf", tr: "kitap rafı" },
+          { en: "dictionary", tr: "sözlük" },
+          { en: "e-book", tr: "elektronik kitap" },
+          { en: "important", tr: "önemli" },
+          { en: "information", tr: "bilgi" },
+          { en: "library", tr: "kütüphane" },
+          { en: "look at/for/up", tr: "bakmak/aramak/sözlükte aramak" },
+          { en: "magazine", tr: "dergi" },
+          { en: "newspaper", tr: "gazete" },
+          { en: "novel", tr: "roman" },
+          { en: "poetry", tr: "şiir" },
+          { en: "story", tr: "öykü" }
+        ]
+      },
+      {
+        id: "unit9-saving-the-planet",
+        title: "Ünite 9 - Saving the Planet (Gezegeni Kurtarmak)",
+        words: [
+          { en: "air/water/noise pollution", tr: "hava/su/gürültü kirliliği" },
+          { en: "cut down", tr: "kesmek" },
+          { en: "damage", tr: "hasar, zarar" },
+          { en: "garbage", tr: "çöp" },
+          { en: "electrical device", tr: "elektrikli cihaz" },
+          { en: "harm", tr: "zarar" },
+          { en: "litter", tr: "çöp" },
+          { en: "plug/unplug", tr: "fişe takmak/fişten çıkarmak" },
+          { en: "recycle", tr: "geri dönüştürmek" },
+          { en: "rubbish", tr: "çöp" },
+          { en: "reduce", tr: "azaltmak" },
+          { en: "save", tr: "kurtarmak" },
+          { en: "trash", tr: "çöp" },
+          { en: "waste", tr: "atık" }
+        ]
+      },
+      {
+        id: "unit10-democracy",
+        title: "Ünite 10 - Democracy (Demokrasi)",
+        words: [
+          { en: "ballot box", tr: "oy sandığı" },
+          { en: "campaign", tr: "kampanya" },
+          { en: "candidate", tr: "aday" },
+          { en: "child/human right", tr: "çocuk/insan hakkı" },
+          { en: "election", tr: "seçim" },
+          { en: "fair law", tr: "adil hukuk" },
+          { en: "make/give a speech", tr: "konuşma yapmak" },
+          { en: "president", tr: "başkan" },
+          { en: "poll", tr: "anket" },
+          { en: "public", tr: "halk" },
+          { en: "respect", tr: "saygı" },
+          { en: "republic", tr: "cumhuriyet" },
+          { en: "vote", tr: "oy" }
+        ]
+      }
+    ]
   }
 };

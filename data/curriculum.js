@@ -1021,6 +1021,7 @@ var CURRICULUM = {
           { en: "true friend", tr: "doğru/gerçek arkadaş" },
           { en: "buddy", tr: "kanka, dost" },
           { en: "mate", tr: "arkadaş" },
+          { en: "helpmate", tr: "can yoldaşı, arkadaş" },
           { en: "honest", tr: "dürüst" },
           { en: "loyal", tr: "sadık" },
           { en: "generous", tr: "cömert" },
@@ -1272,7 +1273,9 @@ var CURRICULUM = {
           { en: "motorcycle tour", tr: "motosiklet turu" },
           { en: "prefer", tr: "tercih etmek" },
           { en: "would rather", tr: "tercih etmek, yeğlemek" },
-          { en: "relaxing", tr: "rahatlatıcı" }
+          { en: "relaxing", tr: "rahatlatıcı" },
+          { en: "swimming", tr: "yüzme" },
+          { en: "heli-skiing", tr: "helikopterle kayak" }
         ]
       },
       {
@@ -1306,7 +1309,18 @@ var CURRICULUM = {
           { en: "modern building", tr: "modern yapı" },
           { en: "natural port", tr: "doğal liman" },
           { en: "must-see place", tr: "görülmesi gereken yer" },
-          { en: "destination", tr: "varılacak/gidilecek yer" }
+          { en: "destination", tr: "varılacak/gidilecek yer" },
+          { en: "offer", tr: "teklif etmek" },
+          { en: "patience", tr: "sabır" },
+          { en: "plateau", tr: "plato" },
+          { en: "popular", tr: "popüler" },
+          { en: "population", tr: "nüfus" },
+          { en: "pottery", tr: "çömlek" },
+          { en: "province", tr: "il, vilayet" },
+          { en: "rediscover", tr: "yeniden keşfetmek" },
+          { en: "religious", tr: "dini" },
+          { en: "remarkable", tr: "göze çarpan, dikkat çekici" },
+          { en: "season", tr: "mevsim" }
         ]
       },
       {
@@ -1341,7 +1355,10 @@ var CURRICULUM = {
           { en: "household", tr: "eve/hane ile ilgili" },
           { en: "do the grocery shopping", tr: "market alışverişi yapmak" },
           { en: "separate the laundry", tr: "çamaşırları ayırmak" },
-          { en: "fold the clothes", tr: "çamaşırları katlamak" }
+          { en: "fold the clothes", tr: "çamaşırları katlamak" },
+          { en: "dust the furniture", tr: "mobilyaların tozunu almak" },
+          { en: "feed the pet", tr: "evcil hayvanı beslemek" },
+          { en: "housework", tr: "ev işleri" }
         ]
       },
       {
@@ -1409,7 +1426,13 @@ var CURRICULUM = {
           { en: "lightning", tr: "yıldırım, şimşek" },
           { en: "power outage", tr: "elektrik kesintisi" },
           { en: "forest fire", tr: "orman yangını" },
-          { en: "aftershock", tr: "artçı sarsıntı" }
+          { en: "aftershock", tr: "artçı sarsıntı" },
+          { en: "occur", tr: "meydana gelmek" },
+          { en: "rescue", tr: "kurtarmak" },
+          { en: "tsunami", tr: "tsunami" },
+          { en: "wave", tr: "dalga" },
+          { en: "wind", tr: "rüzgar" },
+          { en: "wildfire", tr: "orman/kır yangını" }
         ]
       }
     ]

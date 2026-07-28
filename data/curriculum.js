@@ -1206,7 +1206,9 @@ var CURRICULUM = {
           { en: "leave a message", tr: "mesaj bırakmak" },
           { en: "contact", tr: "iletişim kurmak" },
           { en: "confirm", tr: "onaylamak" },
-          { en: "available", tr: "uygun, müsait" }
+          { en: "available", tr: "uygun, müsait" },
+          { en: "wrong number", tr: "yanlış numara" },
+          { en: "put through", tr: "telefonda bağlamak, aktarmak" }
         ]
       },
       {
@@ -1234,7 +1236,12 @@ var CURRICULUM = {
           { en: "do online shopping", tr: "internetten alışveriş yapmak" },
           { en: "play online games", tr: "çevrimiçi oyun oynamak" },
           { en: "safe", tr: "güvenli" },
-          { en: "unsafe", tr: "güvensiz" }
+          { en: "unsafe", tr: "güvensiz" },
+          { en: "password", tr: "şifre" },
+          { en: "access", tr: "erişmek, erişim" },
+          { en: "attach a file", tr: "dosya eklemek" },
+          { en: "research on", tr: "hakkında araştırma yapmak" },
+          { en: "visit a website", tr: "internet sitesi ziyaret etmek" }
         ]
       },
       {

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelime Kartları - İngilizce Oyun Merkezi</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+
+<header class="hub-header">
+  <h1>📚 Kelime Kartları</h1>
+  <p class="tagline">Ünite ünite kelime listesi incele veya flashcard ile kendini test et.</p>
+</header>
+
+<main>
+
+  <!-- 1) Sınıf / ünite seçimi -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+      <button id="view-btn" type="button" class="primary-btn">Görüntüle</button>
+    </div>
+  </section>
+
+  <!-- 2) İçerik ekranı -->
+  <section id="screen-view" class="screen" hidden>
+    <div class="view-toolbar">
+      <button type="button" class="ghost-btn" data-action="back-to-setup">← Seçimi Değiştir</button>
+      <div class="mode-tabs">
+        <button type="button" id="tab-list" class="mode-tab active">📋 Liste</button>
+        <button type="button" id="tab-flashcard" class="mode-tab">🎴 Flashcard</button>
+      </div>
+    </div>
+
+    <!-- Liste görünümü -->
+    <div id="list-view" class="list-view">
+      <label class="hide-toggle">
+        <input type="checkbox" id="hide-meanings-toggle">
+        <span>🙈 Anlamları gizle (kendini test et)</span>
+      </label>
+      <div id="list-container"></div>
+    </div>
+
+    <!-- Flashcard görünümü -->
+    <div id="flashcard-view" class="flashcard-view" hidden>
+      <div class="flashcard-toolbar">
+        <span id="flashcard-progress" class="flashcard-progress"></span>
+        <button type="button" id="shuffle-btn" class="ghost-btn small">🔀 Karıştır</button>
+        <button type="button" id="restart-cards-btn" class="ghost-btn small">↺ Baştan</button>
+      </div>
+
+      <div class="flashcard-scene">
+        <div id="flashcard" class="flashcard">
+          <div class="flashcard-face flashcard-front">
+            <span id="flashcard-front-text"></span>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <span id="flashcard-back-text"></span>
+          </div>
+        </div>
+      </div>
+      <p class="hint flashcard-hint">Kartın üzerine dokun/tıkla, çevrilsin</p>
+
+      <div class="flashcard-nav">
+        <button type="button" id="prev-card-btn" class="ghost-btn">◀ Önceki</button>
+        <button type="button" id="next-card-btn" class="primary-btn">Sonraki ▶</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../../data/curriculum.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -14,5 +14,13 @@ var GAMES = [
     icon: "🏆",
     path: "games/kelime-turnuvasi/index.html",
     color: "#f59e0b"
+  },
+  {
+    id: "kelime-kartlari",
+    title: "Kelime Kartları",
+    description: "Ünite ünite kelime listesi incele veya flashcard ile kendini test et.",
+    icon: "📚",
+    path: "games/kelime-kartlari/index.html",
+    color: "#0ea5e9"
   }
 ];

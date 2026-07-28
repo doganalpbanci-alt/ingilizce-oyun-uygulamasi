@@ -22,5 +22,13 @@ var GAMES = [
     icon: "📚",
     path: "games/kelime-kartlari/index.html",
     color: "#0ea5e9"
+  },
+  {
+    id: "kelime-yakala",
+    title: "Kelime Yakala",
+    description: "Sevimli baykuşu yönet, doğru anlamı yakala, yanlışlardan kaç. Aksiyon dolu bir kelime oyunu!",
+    icon: "🦉",
+    path: "games/kelime-yakala/index.html",
+    color: "#7c5cff"
   }
 ];

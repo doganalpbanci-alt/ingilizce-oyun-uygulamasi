@@ -20,6 +20,7 @@ Hiçbir kurulum, sunucu veya internet bağlantısı gerekmez.
 | 🏆 Kelime Turnuvası | 1'e 1 eleme usulü sınıf turnuvası. Yarışma ve bireysel süre modları. |
 | 🎯 Adam Asmaca | Türkçe ipucundan İngilizce kelimeyi harf harf bul. |
 | 🎨 Çiz Bakalım | Kelimeyi tahtaya çiz, takımın tahmin etsin. Takım skoru tutulur. |
+| 🔎 Kelime Avı | Harf bulmacasında gizli İngilizce kelimeleri bul. Sürükle veya iki dokunuşla seç. |
 | 🧩 Kelime Eşleştirme | Hafıza kartlarıyla kelime-anlam eşleştirme. |
 
 ### Çalışma Araçları
@@ -59,6 +60,7 @@ games/
   kelime-turnuvasi/
   adam-asmaca/
   ciz-bakalim/
+  kelime-avi/
   kelime-eslestirme/
   kelime-kartlari/
 ```

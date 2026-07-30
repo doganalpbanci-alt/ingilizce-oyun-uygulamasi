@@ -47,6 +47,16 @@ var GAMES = [
     tags: ["Takımlı", "Akıllı tahta"]
   },
   {
+    id: "kelime-avi",
+    title: "Kelime Avı",
+    description: "Harflerin arasına gizlenen İngilizce kelimeleri bul. Süreye karşı yarış!",
+    icon: "🔎",
+    path: "games/kelime-avi/index.html",
+    color: "#14b8a6",
+    category: "oyun",
+    tags: ["Sınıfça", "Bulmaca"]
+  },
+  {
     id: "kelime-eslestirme",
     title: "Kelime Eşleştirme",
     description: "Hafıza kartlarıyla İngilizce kelimeleri anlamlarıyla eşleştir.",

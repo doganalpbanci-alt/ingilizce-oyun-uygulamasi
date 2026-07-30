@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Kelime Avı - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header hunt-header">
+  <h1>🔎 Kelime Avı</h1>
+  <p class="tagline">Harflerin arasına gizlenen İngilizce kelimeleri bul!</p>
+</header>
+
+<main>
+
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+
+      <label class="field">
+        <span>Kaç kelime saklansın?</span>
+        <select id="word-count-select">
+          <option value="5">5 kelime (kolay)</option>
+          <option value="7" selected>7 kelime (orta)</option>
+          <option value="9">9 kelime (zor)</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Zorluk</span>
+        <select id="difficulty-select">
+          <option value="easy">Kolay — sadece düz ve aşağı</option>
+          <option value="normal" selected>Normal — çaprazlar da var</option>
+          <option value="hard">Zor — ters yazılanlar da var</option>
+        </select>
+      </label>
+
+      <button id="start-btn" type="button" class="primary-btn">Bulmacayı Oluştur</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyun -->
+  <section id="screen-game" class="screen" hidden>
+    <div class="hunt-topbar">
+      <span class="hunt-chip">✅ <strong id="found-count">0</strong>/<strong id="total-count">0</strong> bulundu</span>
+      <span class="hunt-chip">⏱️ <strong id="timer-text">00:00</strong></span>
+      <button type="button" id="new-puzzle-btn" class="ghost-btn small">🔄 Yeni Bulmaca</button>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+    </div>
+
+    <div class="hunt-layout">
+      <div class="grid-wrap">
+        <div id="grid" class="grid"></div>
+      </div>
+
+      <aside class="word-list-panel">
+        <h3>Aranan Kelimeler</h3>
+        <ul id="word-list" class="word-list"></ul>
+        <p class="hint small-hint">Harflerin üzerinde parmağını/fareyi sürükleyerek kelimeyi seç.</p>
+      </aside>
+    </div>
+
+    <div id="win-banner" class="win-banner" hidden>
+      <span class="win-emoji">🎉</span>
+      <p>Tüm kelimeleri buldun! Süre: <strong id="final-time"></strong></p>
+      <button type="button" id="win-new-btn" class="primary-btn">Yeni Bulmaca</button>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="sounds.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

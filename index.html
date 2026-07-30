@@ -3,31 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>İngilizce Oyun Merkezi</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>İngilizce Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="hub-header">
   <div class="header-blob header-blob-1" aria-hidden="true"></div>
   <div class="header-blob header-blob-2" aria-hidden="true"></div>
+  <div class="header-blob header-blob-3" aria-hidden="true"></div>
 
   <div class="header-content">
     <div class="logo-badge">EN</div>
-    <h1>İngilizce Oyun Merkezi</h1>
-    <p class="tagline">Derste, teneffüste, her yerde — eğlenerek İngilizce öğren.</p>
+    <h1>İngilizce Hub</h1>
+    <p class="tagline">Oyunlar, kelime çalışması ve ders araçları — hepsi tek merkezde.</p>
 
     <div class="badge-row">
       <span class="badge">🎮 <span id="game-count">0</span> oyun</span>
+      <span class="badge">🧰 <span id="tool-count">0</span> araç</span>
+      <span class="badge">📖 <span id="word-count">0</span> kelime</span>
       <span class="badge">📶 İnternetsiz çalışır</span>
-      <span class="badge">🖥️ Akıllı tahta uyumlu</span>
     </div>
+  </div>
+
+  <div class="header-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+      <path d="M0,64 C240,96 480,16 720,32 C960,48 1200,96 1440,64 L1440,90 L0,90 Z"></path>
+    </svg>
   </div>
 </header>
 
 <main>
-  <h2 class="section-title">Oyunlar</h2>
-  <div id="game-grid" class="game-grid"></div>
+  <section class="hub-section">
+    <h2 class="section-title"><span class="section-icon">🎮</span> Oyunlar</h2>
+    <p class="section-desc">Sınıfça oynanan yarışmalar ve tek kişilik alıştırmalar.</p>
+    <div id="game-grid" class="game-grid"></div>
+  </section>
+
+  <section class="hub-section">
+    <h2 class="section-title"><span class="section-icon">🧰</span> Çalışma Araçları</h2>
+    <p class="section-desc">Kelime listeleri ve tekrar için hazırlanan yardımcılar.</p>
+    <div id="tool-grid" class="game-grid"></div>
+  </section>
 </main>
 
 <footer class="hub-footer">
@@ -35,6 +53,7 @@
   <p class="footer-credit">Öğretmenler için ❤️ ile yapılıyor.</p>
 </footer>
 
+<script src="data/curriculum.js"></script>
 <script src="js/games-registry.js"></script>
 <script src="js/hub.js"></script>
 </body>

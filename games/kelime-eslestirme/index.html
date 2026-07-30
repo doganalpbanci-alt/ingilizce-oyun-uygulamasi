@@ -3,29 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kelime Eşleştirme - İngilizce Oyun Merkezi</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Kelime Eşleştirme - İngilizce Hub</title>
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="back-link" href="../../index.html">← Menüye Dön</a>
 
-<header class="hub-header">
+<header class="hub-header memory-header">
   <h1>🧩 Kelime Eşleştirme</h1>
   <p class="tagline">Kartlara tıkla, İngilizce kelimeyi Türkçe anlamıyla eşleştir.</p>
 </header>
 
 <main>
-  <div class="game-status">
-    <span>Hamle: <strong id="move-count">0</strong></span>
-    <button id="restart-btn" type="button">Yeniden Başlat</button>
-  </div>
 
-  <div id="board" class="board"></div>
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
 
-  <p id="win-message" class="win-message" hidden>🎉 Tebrikler! Tüm kelimeleri <strong id="final-moves"></strong> hamlede eşleştirdin.</p>
+      <label class="field">
+        <span>Kaç kelime çifti olsun?</span>
+        <select id="pair-count-select">
+          <option value="6">6 çift (kolay)</option>
+          <option value="8" selected>8 çift (orta)</option>
+          <option value="10">10 çift (zor)</option>
+          <option value="12">12 çift (çok zor)</option>
+        </select>
+      </label>
+
+      <button id="start-btn" type="button" class="primary-btn">Başla</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyun -->
+  <section id="screen-game" class="screen" hidden>
+    <div class="game-status">
+      <span>Hamle: <strong id="move-count">0</strong></span>
+      <span>Eşleşen: <strong id="match-count">0</strong>/<strong id="pair-total">0</strong></span>
+      <button id="restart-btn" type="button">Yeniden Başlat</button>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+    </div>
+
+    <div id="board" class="board"></div>
+
+    <p id="win-message" class="win-message" hidden>🎉 Tebrikler! Tüm kelimeleri <strong id="final-moves"></strong> hamlede eşleştirdin.</p>
+  </section>
+
 </main>
 
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

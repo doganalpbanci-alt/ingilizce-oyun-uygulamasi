@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Adam Asmaca - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header chalk-header">
+  <h1>🎯 Adam Asmaca</h1>
+  <p class="tagline">Türkçe ipucundan yola çıkıp İngilizce kelimeyi harf harf bul!</p>
+</header>
+
+<main>
+
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+      <button id="start-btn" type="button" class="primary-btn">Başla</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyun -->
+  <section id="screen-game" class="screen" hidden>
+    <div class="score-bar">
+      <span class="score-chip">✅ <strong id="stat-solved">0</strong> bilindi</span>
+      <span class="score-chip">❌ <strong id="stat-failed">0</strong> kaçtı</span>
+      <span class="score-chip streak">🔥 <strong id="stat-streak">0</strong> seri</span>
+    </div>
+
+    <div class="game-layout">
+      <div class="gallows-col">
+        <svg viewBox="0 0 200 240" class="gallows">
+          <line class="beam" x1="20" y1="230" x2="120" y2="230"></line>
+          <line class="beam" x1="60" y1="230" x2="60" y2="20"></line>
+          <line class="beam" x1="60" y1="20" x2="140" y2="20"></line>
+          <line class="beam" x1="140" y1="20" x2="140" y2="45"></line>
+          <line class="beam brace" x1="60" y1="55" x2="95" y2="20"></line>
+
+          <circle class="body-part" data-part="1" cx="140" cy="68" r="23"></circle>
+          <line class="body-part" data-part="2" x1="140" y1="91" x2="140" y2="158"></line>
+          <line class="body-part" data-part="3" x1="140" y1="108" x2="108" y2="134"></line>
+          <line class="body-part" data-part="4" x1="140" y1="108" x2="172" y2="134"></line>
+          <line class="body-part" data-part="5" x1="140" y1="158" x2="112" y2="200"></line>
+          <line class="body-part" data-part="6" x1="140" y1="158" x2="168" y2="200"></line>
+
+          <g class="face" id="face-alive">
+            <circle class="eye" cx="132" cy="63" r="2.6"></circle>
+            <circle class="eye" cx="148" cy="63" r="2.6"></circle>
+            <path class="mouth" d="M131 77 Q140 82 149 77"></path>
+          </g>
+          <g class="face" id="face-dead">
+            <path class="eye-x" d="M127 58 L137 68 M137 58 L127 68"></path>
+            <path class="eye-x" d="M143 58 L153 68 M153 58 L143 68"></path>
+            <path class="mouth" d="M131 80 Q140 73 149 80"></path>
+          </g>
+        </svg>
+        <p class="lives-left"><span id="lives-left">6</span> hakkın kaldı</p>
+      </div>
+
+      <div class="play-col">
+        <div class="hint-box">
+          <span class="hint-label">Türkçe anlamı</span>
+          <strong id="hint-text"></strong>
+        </div>
+
+        <div id="word-display" class="word-display"></div>
+
+        <p id="wrong-letters" class="wrong-letters"></p>
+
+        <div id="keyboard" class="keyboard"></div>
+
+        <div id="round-result" class="round-result" hidden>
+          <p id="round-result-text"></p>
+          <button id="next-word-btn" type="button" class="primary-btn">Sıradaki Kelime →</button>
+        </div>
+
+        <div class="play-actions">
+          <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+          <button type="button" id="skip-btn" class="ghost-btn small">Pas Geç</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../../data/curriculum.js"></script>
+<script src="sounds.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

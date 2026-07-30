@@ -431,6 +431,10 @@ function updateBubbles(dt) {
 
   for (var i = state.bubbles.length - 1; i >= 0; i--) {
     var b = state.bubbles[i];
+    // onCorrectCatch bütün dalgayı temizlediği için dizi bu döngü sırasında
+    // kısalabilir; kalan indeksler boş kalmasın diye kontrol ediyoruz.
+    if (!b) continue;
+
     b.y += b.speed * dt;
     b.el.style.transform = "translate(" + b.x + "px," + b.y + "px)";
 
@@ -441,8 +445,12 @@ function updateBubbles(dt) {
       state.bubbles.splice(i, 1);
       popBubble(b);
       spawnParticles(b.x + b.width / 2, b.y + b.height / 2, b.correct);
-      if (b.correct) onCorrectCatch(b);
-      else onWrongCatch(b);
+      if (b.correct) {
+        // Doğru yakalandı: dalganın tamamı temizlendi, bu kareyi burada bitir.
+        onCorrectCatch(b);
+        return;
+      }
+      onWrongCatch(b);
       continue;
     }
 
@@ -455,6 +463,10 @@ function updateBubbles(dt) {
 }
 
 function loop(ts) {
+  // Bir sonraki kareyi en başta planla: aşağıdaki kodda beklenmedik bir hata
+  // olsa bile oyun döngüsü kalıcı olarak durmasın.
+  requestAnimationFrame(loop);
+
   if (state.lastTs == null) state.lastTs = ts;
   var dt = Math.min((ts - state.lastTs) / 1000, 0.05);
   state.lastTs = ts;
@@ -463,7 +475,6 @@ function loop(ts) {
     updateCharacter(dt);
     updateBubbles(dt);
   }
-  requestAnimationFrame(loop);
 }
 
 requestAnimationFrame(loop);

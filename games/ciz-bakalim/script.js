@@ -38,7 +38,21 @@ var ctx2d = canvas.getContext("2d");
 function showScreen(id) {
   screens.forEach(function (el) { el.hidden = el.id !== id; });
   document.body.classList.toggle("compact", id === "screen-draw");
-  if (id === "screen-draw") resizeCanvas();
+  if (id === "screen-draw") {
+    syncDrawHeight();
+    resizeCanvas();
+  }
+}
+
+// Çizim ekranının sayfadaki gerçek başlangıç noktasını ölçüp altında kalan
+// yüksekliği CSS'e aktarır; böylece tuval + araçlar + aksiyon butonları
+// ekrana tam sığar. (Başlığın altını değil ekranın kendi üstünü ölçüyoruz,
+// çünkü aradaki main dolgusu da yer kaplıyor.)
+function syncDrawHeight() {
+  var screenEl = document.getElementById("screen-draw");
+  var top = screenEl.getBoundingClientRect().top;
+  var avail = Math.max(window.innerHeight - top - 10, 320);
+  document.documentElement.style.setProperty("--draw-avail", avail + "px");
 }
 
 function shuffle(array) {
@@ -290,7 +304,10 @@ function resizeCanvas() {
 }
 
 window.addEventListener("resize", function () {
-  if (!document.getElementById("screen-draw").hidden) resizeCanvas();
+  if (!document.getElementById("screen-draw").hidden) {
+    syncDrawHeight();
+    resizeCanvas();
+  }
 });
 
 function redraw() {

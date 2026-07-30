@@ -139,6 +139,10 @@ body.compact .hub-header .tagline {
   display: none;
 }
 
+body.compact main {
+  padding-top: 10px;
+}
+
 /* ---------- Turn screen ---------- */
 
 .turn-panel { text-align: center; }
@@ -171,9 +175,29 @@ body.compact .hub-header .tagline {
 
 /* ---------- Draw screen ---------- */
 
+/* Çizim ekranı, başlığın altında kalan yüksekliğe tam oturur; tuval
+   esner, böylece "Bildi!" butonları her ekranda görünür kalır.
+   --draw-avail değeri script.js tarafından ölçülüp yazılır. */
 #screen-draw.screen {
   max-width: 1150px;
-  padding-top: 18px;
+  padding: 12px 24px 14px;
+  height: var(--draw-avail, auto);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+#screen-draw .draw-topbar { margin-bottom: 0; }
+#screen-draw .tools { margin: 0; }
+
+.canvas-wrap {
+  flex: 1 1 auto;
+  min-height: 120px;
+}
+
+#screen-draw #board {
+  height: 100%;
 }
 
 .draw-topbar {

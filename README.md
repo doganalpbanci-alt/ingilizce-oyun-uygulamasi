@@ -72,9 +72,22 @@ games/
 3. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle.
 4. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle (`category: "oyun"` veya `"arac"`).
 
+## PWA / güncelleme
+
+Uygulama `manifest.json` + `sw.js` (service worker) içerir. Ana ekrana eklendiğinde
+tam ekran bir uygulama gibi açılır ve internetsiz çalışır.
+
+Güncelleme stratejisi **önce ağ, olmazsa önbellek**: internet varken her açılışta
+sunucudaki güncel dosyalar alınır (yani yeni sürüm anında ulaşır), internet yokken
+önbellekteki son sürüm gösterilir.
+
+Yeni bir dosya eklendiğinde `sw.js` içindeki `PRECACHE` listesine eklemeyi ve
+`CACHE_VERSION` değerini artırmayı unutma.
+
 ## Teknik notlar
 
 - Sayfalar arası geçiş `<a href="...">` ile, veriler düz JS dosyalarıyla yüklenir (`fetch` kullanılmaz). Sebep: tarayıcılar `file://` üzerinden açılan sayfalarda yerel dosya okuma isteklerini güvenlik gereği engeller. Bu yapı sayesinde uygulama hem dosya olarak hem site olarak çalışır.
 - `<script type="module">` kullanılmaz, çünkü modüller de `file://` üzerinde engellenir.
 - Ses efektleri Web Audio API ile kod içinde üretilir; ses dosyası indirilmez, telif sorunu olmaz, offline çalışır. Safari/iOS'ta ses açılışı ilk dokunuşta yapılır.
+- Service worker sadece http(s) üzerinden çalışır; klasörü USB ile taşıyıp `index.html`'e çift tıklama (file://) senaryosu bundan etkilenmez, orada kayıt sessizce atlanır.
 - Her oyun bağımsızdır (kendi CSS/JS/ses dosyaları) — biri değişince diğerleri etkilenmez.

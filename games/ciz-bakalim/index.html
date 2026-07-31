@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Çiz Bakalım - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header paint-header">
+  <h1>🎨 Çiz Bakalım</h1>
+  <p class="tagline">Kelimeyi tahtaya çiz, takımın tahmin etsin!</p>
+</header>
+
+<main>
+
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+
+      <label class="field">
+        <span>Çizim süresi</span>
+        <select id="duration-select">
+          <option value="45">45 saniye</option>
+          <option value="60" selected>60 saniye</option>
+          <option value="90">90 saniye</option>
+          <option value="120">120 saniye</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Her takımın kaç turu olsun?</span>
+        <select id="rounds-select">
+          <option value="2">2 tur</option>
+          <option value="3" selected>3 tur</option>
+          <option value="5">5 tur</option>
+        </select>
+      </label>
+
+      <button id="to-teams-btn" type="button" class="primary-btn">Devam Et</button>
+    </div>
+  </section>
+
+  <!-- 2) Takımlar -->
+  <section id="screen-teams" class="screen" hidden>
+    <div class="panel">
+      <h2>Takımlar</h2>
+      <p class="hint">Her satıra bir takım adı yaz (en az 2 takım).</p>
+      <textarea id="team-names" rows="6" placeholder="Kırmızı Takım&#10;Mavi Takım"></textarea>
+      <p id="teams-error" class="error-text" hidden></p>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Geri</button>
+        <button id="start-btn" type="button" class="primary-btn">Oyunu Başlat</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Sıra kimde -->
+  <section id="screen-turn" class="screen" hidden>
+    <div class="panel turn-panel">
+      <div class="turn-emoji">🖍️</div>
+      <p class="turn-round" id="turn-round"></p>
+      <h2 id="turn-team"></h2>
+      <p class="hint">Takımdan bir kişi tahtaya gelsin. Kelimeyi sadece o görecek!</p>
+      <button id="reveal-btn" type="button" class="primary-btn">Kelimeyi Göster</button>
+    </div>
+  </section>
+
+  <!-- 4) Çizim -->
+  <section id="screen-draw" class="screen" hidden>
+    <div class="draw-topbar">
+      <div class="draw-word-box">
+        <span class="draw-word-label">Çizilecek kelime</span>
+        <strong id="draw-word" class="draw-word"></strong>
+        <button type="button" id="peek-btn" class="ghost-btn small">👁️ Gizle</button>
+      </div>
+      <div class="draw-timer">
+        <span id="timer-text" class="timer-text">60</span>
+        <div class="timer-track"><div id="timer-bar" class="timer-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="board"></canvas>
+    </div>
+
+    <div class="tools">
+      <div class="tool-group" id="color-tools"></div>
+      <div class="tool-group" id="size-tools"></div>
+      <div class="tool-group">
+        <button type="button" id="undo-btn" class="tool-btn wide">↩︎ Geri Al</button>
+        <button type="button" id="clear-btn" class="tool-btn wide">🗑️ Temizle</button>
+      </div>
+    </div>
+
+    <div class="draw-actions">
+      <button type="button" id="correct-btn" class="primary-btn big">✅ Bildi!</button>
+      <button type="button" id="pass-btn" class="ghost-btn">⏭️ Bilemedi / Pas</button>
+    </div>
+  </section>
+
+  <!-- 5) Skor tablosu / tur arası -->
+  <section id="screen-score" class="screen" hidden>
+    <div class="panel">
+      <h2 id="score-title">Skor Tablosu</h2>
+      <p id="score-subtitle" class="hint"></p>
+      <div id="scoreboard" class="scoreboard"></div>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Menüye Dön</button>
+        <button id="continue-btn" type="button" class="primary-btn">Devam Et →</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="sounds.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

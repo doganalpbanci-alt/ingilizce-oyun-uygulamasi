@@ -1,0 +1,371 @@
+[hidden] {
+  display: none !important;
+}
+
+.screen {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+.panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.panel h2 { margin-top: 0; }
+
+.field { display: block; margin-bottom: 18px; }
+
+.field span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid #d8dae6;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.hint { color: var(--muted); margin-top: -6px; margin-bottom: 14px; }
+.error-text { color: #dc2626; font-weight: 700; }
+
+.unit-toggle-row { display: flex; gap: 10px; margin-bottom: 10px; }
+
+.ghost-btn {
+  background: transparent;
+  border: 2px solid #d8dae6;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.ghost-btn.small { padding: 7px 16px; font-size: 13px; }
+
+.primary-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.primary-btn:hover { filter: brightness(1.08); }
+
+.unit-checkboxes { display: grid; gap: 10px; margin-bottom: 6px; }
+
+.unit-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border: 2px solid #d8dae6;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.unit-checkbox.checked,
+.unit-checkbox:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.07);
+}
+
+.unit-checkbox input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
+.sound-toggle {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 30;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-md);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ---------- Chalkboard theme ---------- */
+
+.chalk-header {
+  background: linear-gradient(135deg, #1f3d2b 0%, #2d5540 55%, #1a3326 100%);
+  position: relative;
+}
+
+.chalk-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 7px);
+  pointer-events: none;
+}
+
+/* ---------- Score bar ---------- */
+
+.score-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.score-chip {
+  background: var(--card-bg);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.score-chip strong { font-size: 17px; }
+.score-chip.streak strong { color: #f59e0b; }
+
+/* ---------- Layout ---------- */
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 780px) {
+  .game-layout { grid-template-columns: 1fr; }
+  .gallows-col { max-width: 240px; margin: 0 auto; }
+}
+
+/* ---------- Gallows ---------- */
+
+.gallows-col {
+  background: #24402f;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.gallows {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+}
+
+.gallows .beam {
+  stroke: #d9f0e2;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.gallows .brace { stroke-width: 5; opacity: 0.75; }
+
+.gallows .body-part {
+  stroke: #ffe9a8;
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.gallows .body-part.shown {
+  opacity: 1;
+  animation: part-draw 0.35s ease;
+}
+
+/* Kafa dolu olsun ki yüz ifadesi üstünde okunabilsin */
+.gallows .body-part[data-part="1"] { fill: #ffe9a8; }
+
+@keyframes part-draw {
+  from { opacity: 0; transform: scale(0.7); transform-origin: 140px 100px; }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.gallows .face { opacity: 0; transition: opacity 0.25s ease; }
+.gallows .face.shown { opacity: 1; }
+.gallows .eye { fill: #24402f; }
+.gallows .eye-x { stroke: #24402f; stroke-width: 3; stroke-linecap: round; }
+.gallows .mouth { stroke: #24402f; stroke-width: 3; fill: none; stroke-linecap: round; }
+
+.lives-left {
+  margin: 12px 0 0;
+  color: #d9f0e2;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.lives-left span { font-size: 20px; }
+
+/* ---------- Play column ---------- */
+
+.hint-box {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+  border-left: 5px solid var(--primary);
+  margin-bottom: 24px;
+}
+
+.hint-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.hint-box strong {
+  font-size: clamp(19px, 3vw, 26px);
+}
+
+.word-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 6px;
+  margin-bottom: 18px;
+  min-height: 58px;
+}
+
+/* Harfler JS tarafında büyütülür; CSS text-transform kullanılmaz çünkü
+   sayfa lang="tr" olduğu için "i" harfini "İ" yapıp İngilizce kelimeleri
+   yanlış gösteriyordu. */
+.letter-slot {
+  width: 38px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 4px solid var(--primary);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.letter-slot.space {
+  border-bottom: none;
+  width: 18px;
+}
+
+.letter-slot.punct {
+  border-bottom: none;
+  width: 16px;
+  color: var(--muted);
+}
+
+.letter-slot.revealed {
+  animation: slot-pop 0.3s ease;
+}
+
+.letter-slot.missed {
+  color: #dc2626;
+  border-bottom-color: #dc2626;
+}
+
+@keyframes slot-pop {
+  0% { transform: scale(0.4) translateY(8px); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.wrong-letters {
+  min-height: 22px;
+  color: #dc2626;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+/* ---------- Keyboard ---------- */
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.key {
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  border: 2px solid #d8dae6;
+  background: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.key:hover:not(:disabled) { border-color: var(--primary); }
+.key:active:not(:disabled) { transform: scale(0.93); }
+
+.key.hit {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #fff;
+}
+
+.key.miss {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+.key:disabled { cursor: default; opacity: 0.85; }
+
+/* ---------- Round result ---------- */
+
+.round-result {
+  text-align: center;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 18px;
+}
+
+.round-result p {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.round-result p .answer {
+  color: var(--primary);
+}
+
+.play-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}

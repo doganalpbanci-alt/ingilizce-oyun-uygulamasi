@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Kelime Yakala - İngilizce Oyun Merkezi</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header sky-header">
+  <span class="cloud cloud-1" aria-hidden="true"></span>
+  <span class="cloud cloud-2" aria-hidden="true"></span>
+  <h1>🦉 Kelime Yakala</h1>
+  <p class="tagline">Doğru anlamı yakala, baykuşu besle, seviye atla!</p>
+</header>
+
+<main>
+
+  <!-- 1) Sınıf / ünite seçimi -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+      <button id="start-btn" type="button" class="primary-btn">Oyunu Başlat</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyun ekranı -->
+  <section id="screen-game" class="screen" hidden>
+    <div class="hud">
+      <div class="hud-lives" id="hud-lives"></div>
+      <div class="hud-target">
+        <span class="hud-target-label">Yakala</span>
+        <span id="hud-target-word" class="hud-target-word"></span>
+      </div>
+      <div class="hud-score">
+        <span id="hud-score">0</span>
+        <span id="hud-combo" class="hud-combo"></span>
+      </div>
+    </div>
+
+    <div id="game-area" class="game-area">
+      <div id="level-toast" class="level-toast" hidden></div>
+
+      <div id="character" class="character">
+        <svg viewBox="0 0 120 120" class="owl-svg">
+          <ellipse class="owl-wing owl-wing-left" cx="22" cy="72" rx="15" ry="25"></ellipse>
+          <ellipse class="owl-wing owl-wing-right" cx="98" cy="72" rx="15" ry="25"></ellipse>
+          <path class="owl-ear" d="M30 24 L18 3 L41 17 Z"></path>
+          <path class="owl-ear" d="M90 24 L102 3 L79 17 Z"></path>
+          <ellipse class="owl-body" cx="60" cy="64" rx="40" ry="46"></ellipse>
+          <ellipse class="owl-belly" cx="60" cy="76" rx="24" ry="30"></ellipse>
+          <circle class="owl-cheek" cx="30" cy="62" r="7"></circle>
+          <circle class="owl-cheek" cx="90" cy="62" r="7"></circle>
+          <circle class="owl-eye-white" cx="42" cy="50" r="17"></circle>
+          <circle class="owl-eye-white" cx="78" cy="50" r="17"></circle>
+          <circle class="owl-pupil" id="pupil-left" cx="42" cy="50" r="8.5"></circle>
+          <circle class="owl-pupil" id="pupil-right" cx="78" cy="50" r="8.5"></circle>
+          <path class="owl-beak" d="M60 60 L51 73 L69 73 Z"></path>
+          <path class="owl-feet" d="M46 106 L40 118 M46 106 L46 120 M46 106 L52 118 M74 106 L68 118 M74 106 L74 120 M74 106 L80 118"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="touch-controls">
+      <button type="button" id="btn-left" class="touch-btn" aria-label="Sola git">◀</button>
+      <button type="button" id="btn-right" class="touch-btn" aria-label="Sağa git">▶</button>
+    </div>
+  </section>
+
+  <!-- 3) Oyun bitti ekranı -->
+  <section id="screen-over" class="screen" hidden>
+    <div class="panel over-panel">
+      <div class="owl-sad" aria-hidden="true">🦉</div>
+      <h2>Oyun Bitti!</h2>
+      <p class="over-score">Skor: <strong id="final-score">0</strong></p>
+      <p class="over-best">En iyi seri: <strong id="final-combo">0</strong></p>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Menüye Dön</button>
+        <button id="retry-btn" type="button" class="primary-btn">Tekrar Oyna</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../../data/curriculum.js"></script>
+<script src="sounds.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

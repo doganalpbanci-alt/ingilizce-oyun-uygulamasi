@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Kelime Turnuvası - İngilizce Oyun Merkezi</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header pitch-header">
+  <span class="pitch-ball pitch-ball-1" aria-hidden="true">⚽</span>
+  <span class="pitch-ball pitch-ball-2" aria-hidden="true">⚽</span>
+  <h1>🏆 Kelime Turnuvası</h1>
+  <p class="tagline">1'e 1 kelime maçı — raunt raunt geç, şampiyon ol!</p>
+  <button id="enable-sound-btn" type="button" class="enable-sound-btn">🔊 Sesi Etkinleştir (test düdüğü çalar)</button>
+</header>
+
+<main>
+
+  <!-- 1) Sınıf / ünite seçimi -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+      <label class="field">
+        <span>Sınıf</span>
+        <select id="grade-select"></select>
+      </label>
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+
+      <div class="field">
+        <span>Oyun Modu</span>
+        <div class="mode-options">
+          <label class="mode-option checked">
+            <input type="radio" name="game-mode" value="race" checked>
+            <span class="mode-option-title">🏁 Yarışma Modu</span>
+            <span class="mode-option-desc">İki öğrenci aynı kelimeyi aynı anda görür, doğru cevaba önce basan raundu kazanır.</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="game-mode" value="time-attack">
+            <span class="mode-option-title">⏱️ Bireysel Süre Modu</span>
+            <span class="mode-option-desc">Öğrenciler sırayla kendi süresinde yarışır, süre bitene kadar en çok doğru bilen raundu kazanır.</span>
+          </label>
+        </div>
+      </div>
+
+      <label class="field" id="time-per-player-field" hidden>
+        <span>Kişi başı süre</span>
+        <select id="time-per-player-select">
+          <option value="20">20 saniye</option>
+          <option value="30" selected>30 saniye</option>
+          <option value="45">45 saniye</option>
+          <option value="60">60 saniye</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Raunt sayısı</span>
+        <select id="round-count-select">
+          <option value="1">1 raunt (ani ölüm)</option>
+          <option value="3">3 raunt (2 kazanan maçı alır)</option>
+          <option value="5" selected>5 raunt (3 kazanan maçı alır)</option>
+          <option value="7">7 raunt (4 kazanan maçı alır)</option>
+        </select>
+      </label>
+
+      <button id="to-players-btn" type="button" class="primary-btn">Devam Et</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyuncu isimleri -->
+  <section id="screen-players" class="screen" hidden>
+    <div class="panel">
+      <h2>Katılımcılar</h2>
+      <p class="hint">Her satıra bir öğrenci adı yaz (en az 2 kişi).</p>
+      <textarea id="player-names" rows="8" placeholder="Ali&#10;Ayşe&#10;Mehmet&#10;Zeynep"></textarea>
+      <p id="players-error" class="error-text" hidden></p>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Geri</button>
+        <button id="start-tournament-btn" type="button" class="primary-btn">Turnuvayı Oluştur</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Turnuva ağacı / sıradaki maç -->
+  <section id="screen-bracket" class="screen" hidden>
+    <div class="panel">
+      <h2>Turnuva Durumu</h2>
+      <div id="bracket-view" class="bracket-view"></div>
+      <div id="next-match-box" class="next-match-box"></div>
+    </div>
+  </section>
+
+  <!-- 4) Maç ekranı -->
+  <section id="screen-match" class="screen" hidden>
+    <div class="match-header">
+      <div class="match-score">
+        <span id="player-a-name"></span>
+        <strong id="score-a">0</strong>
+        <span class="score-sep">:</span>
+        <strong id="score-b">0</strong>
+        <span id="player-b-name"></span>
+      </div>
+      <p id="round-progress" class="round-progress"></p>
+    </div>
+
+    <!-- Yarışma Modu arayüzü -->
+    <div id="race-ui" class="mode-ui" hidden>
+      <div class="timer-track"><div id="timer-bar" class="timer-bar"></div></div>
+      <div id="round-word" class="round-word"></div>
+      <div class="match-columns">
+        <div class="match-column">
+          <h3 id="col-a-name"></h3>
+          <div id="options-a" class="options"></div>
+        </div>
+        <div class="match-column">
+          <h3 id="col-b-name"></h3>
+          <div id="options-b" class="options"></div>
+        </div>
+      </div>
+      <p id="round-feedback" class="round-feedback"></p>
+    </div>
+
+    <!-- Bireysel Süre Modu arayüzü -->
+    <div id="time-attack-ui" class="mode-ui" hidden>
+      <div id="ta-ready" class="ta-ready">
+        <h3 id="ta-ready-name"></h3>
+        <p>Hazır olduğunda başlat!</p>
+        <button id="ta-start-btn" type="button" class="primary-btn">Başlat</button>
+      </div>
+
+      <div id="ta-playing" class="ta-playing" hidden>
+        <div class="ta-status">
+          <span id="ta-playing-name"></span>
+          <span class="ta-score">Doğru: <strong id="ta-live-score">0</strong></span>
+        </div>
+        <div class="timer-track"><div id="ta-timer-bar" class="timer-bar"></div></div>
+        <div id="ta-word" class="round-word"></div>
+        <div id="ta-options" class="options ta-options"></div>
+      </div>
+
+      <div id="ta-round-result" class="ta-round-result" hidden></div>
+    </div>
+  </section>
+
+  <!-- 5) Şampiyon ekranı -->
+  <section id="screen-champion" class="screen" hidden>
+    <div class="panel champion-panel">
+      <div class="champion-emoji">🏆</div>
+      <h2 id="champion-name"></h2>
+      <p>Turnuvanın şampiyonu!</p>
+      <button id="restart-btn" type="button" class="primary-btn">Yeni Turnuva</button>
+    </div>
+  </section>
+
+</main>
+
+<div id="goal-popup" class="goal-popup" hidden>GOL!</div>
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="sounds.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

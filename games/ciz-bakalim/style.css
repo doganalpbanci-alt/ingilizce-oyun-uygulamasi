@@ -1,0 +1,432 @@
+[hidden] {
+  display: none !important;
+}
+
+.screen {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+
+.panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.panel h2 { margin-top: 0; }
+
+.field { display: block; margin-bottom: 18px; }
+
+.field span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid #d8dae6;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.hint { color: var(--muted); margin-top: -6px; margin-bottom: 14px; }
+.error-text { color: #dc2626; font-weight: 700; }
+
+.unit-toggle-row { display: flex; gap: 10px; margin-bottom: 10px; }
+
+.ghost-btn {
+  background: transparent;
+  border: 2px solid #d8dae6;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.ghost-btn.small { padding: 7px 16px; font-size: 13px; }
+
+.primary-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.primary-btn.big { padding: 16px 40px; font-size: 19px; }
+.primary-btn:hover { filter: brightness(1.08); }
+
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.unit-checkboxes { display: grid; gap: 10px; margin-bottom: 6px; }
+
+.unit-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border: 2px solid #d8dae6;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.unit-checkbox.checked,
+.unit-checkbox:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.07);
+}
+
+.unit-checkbox input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
+.sound-toggle {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 30;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-md);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.paint-header {
+  background: linear-gradient(135deg, #ec4899 0%, #f472b6 45%, #f59e0b 100%);
+}
+
+/* Çizim ekranında tuval + aksiyon butonları tek ekrana sığsın diye
+   başlık küçültülür. */
+body.compact .hub-header {
+  padding: 16px 24px 14px;
+}
+
+body.compact .hub-header h1 {
+  font-size: clamp(19px, 3vw, 26px);
+  margin-bottom: 0;
+}
+
+body.compact .hub-header .tagline {
+  display: none;
+}
+
+body.compact main {
+  padding-top: 10px;
+}
+
+/* ---------- Turn screen ---------- */
+
+.turn-panel { text-align: center; }
+
+.turn-emoji {
+  font-size: 64px;
+  margin-bottom: 6px;
+  display: inline-block;
+  animation: wiggle 1.8s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.turn-round {
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  margin: 0 0 4px;
+}
+
+.turn-panel h2 {
+  font-size: clamp(26px, 5vw, 38px);
+  margin: 0 0 10px;
+}
+
+/* ---------- Draw screen ---------- */
+
+/* Çizim ekranı, başlığın altında kalan yüksekliğe tam oturur; tuval
+   esner, böylece "Bildi!" butonları her ekranda görünür kalır.
+   --draw-avail değeri script.js tarafından ölçülüp yazılır. */
+#screen-draw.screen {
+  max-width: 1150px;
+  padding: 12px 24px 14px;
+  height: var(--draw-avail, auto);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+#screen-draw .draw-topbar { margin-bottom: 0; }
+#screen-draw .tools { margin: 0; }
+
+.canvas-wrap {
+  flex: 1 1 auto;
+  min-height: 120px;
+}
+
+#screen-draw #board {
+  height: 100%;
+}
+
+.draw-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.draw-word-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  box-shadow: var(--shadow-sm);
+  border-left: 5px solid #ec4899;
+}
+
+.draw-word-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.draw-word {
+  font-size: clamp(20px, 3.2vw, 30px);
+  color: #db2777;
+}
+
+.draw-word.hidden-word {
+  filter: blur(9px);
+  user-select: none;
+}
+
+.draw-timer {
+  flex: 1;
+  min-width: 220px;
+}
+
+.timer-text {
+  display: block;
+  text-align: right;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.timer-text.low { color: #dc2626; animation: pulse-red 0.7s ease-in-out infinite; }
+
+@keyframes pulse-red {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
+}
+
+.timer-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #e4e6f2;
+  overflow: hidden;
+}
+
+.timer-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ec4899, #f59e0b);
+  transition: width 0.25s linear;
+}
+
+.canvas-wrap {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 3px solid #f9a8d4;
+}
+
+#board {
+  display: block;
+  width: 100%;
+  height: min(52vh, 430px);
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* ---------- Tools ---------- */
+
+.tools {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.tool-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.12s ease;
+}
+
+.color-swatch:hover { transform: scale(1.12); }
+
+.color-swatch.active {
+  border-color: var(--text);
+  transform: scale(1.15);
+}
+
+.size-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #d8dae6;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-btn.active { border-color: var(--text); background: #f3f4ff; }
+
+.size-dot {
+  background: var(--text);
+  border-radius: 50%;
+  display: block;
+}
+
+.tool-btn {
+  border: 2px solid #d8dae6;
+  background: #fff;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tool-btn:hover { border-color: var(--primary); }
+.tool-btn.wide { white-space: nowrap; }
+
+.draw-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Scoreboard ---------- */
+
+.scoreboard {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.score-row.leader {
+  background: linear-gradient(90deg, #fef3c7, #fde68a);
+  box-shadow: inset 0 0 0 2px #f59e0b;
+}
+
+.score-rank {
+  width: 30px;
+  color: var(--muted);
+}
+
+.score-name { flex: 1; }
+
+.score-points {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+/* ---------- Confetti ---------- */
+
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 40;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 9px;
+  height: 15px;
+  opacity: 0.9;
+  animation: confetti-fall linear forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(110vh) rotate(540deg);
+    opacity: 0.4;
+  }
+}

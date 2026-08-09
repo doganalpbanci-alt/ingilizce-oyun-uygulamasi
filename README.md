@@ -37,7 +37,7 @@ Hiçbir kurulum, sunucu veya internet bağlantısı gerekmez.
 | 5. Sınıf | 8 | 529 |
 | 6. Sınıf | 10 | 144 |
 | 7. Sınıf | 10 | 144 |
-| 8. Sınıf | 10 | 341 |
+| 8. Sınıf | 10 | 364 |
 
 Kaynaklar: öğretmenin gönderdiği MEB ders kitaplarının resmi sözlük/glossary bölümleri; 8. sınıf ayrıca LGS kapsamı için ünite ünite araştırmayla genişletildi.
 

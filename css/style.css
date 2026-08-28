@@ -176,6 +176,39 @@ main {
   margin-bottom: 52px;
 }
 
+/* ---------- Skill filter (beceriye göre filtrele) ---------- */
+
+.skill-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 34px;
+}
+
+.skill-chip {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.skill-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.skill-chip.active {
+  background: var(--primary);
+  color: #fff;
+}
+
 .section-title {
   display: flex;
   align-items: center;

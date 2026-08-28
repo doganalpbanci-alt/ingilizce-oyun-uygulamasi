@@ -17,13 +17,18 @@ proje bilgisi (mimari, kısıtlar, dosya yapısı) için `CLAUDE.md`'ye bak.
 ## Pivot özeti
 
 2026-08-28'de kullanıcı projenin amacını netleştirdi: hub artık sadece
-"kelime oyunu" değil, genel bir **İngilizce oyun ve pratik hub'ı**. Yeni
-içerikler kelime dışı becerileri (gramer, yazım, cümle kurma vb.) de
-kapsayabilir, ama hepsi mevcut "bağımsız oyun/araç klasörü" formatında
-kalacak. **Kapsam dışı:** soru bankası/quiz modülü, ders anlatım modülü —
-bunlar ayrı modül mimarisi olarak eklenmeyecek. Sınıf kapsamının (5-8.
-sınıf mi kalacak, lise eklenecek mi) genişletilip genişletilmeyeceği henüz
-karara bağlanmadı. Detaylar için `CLAUDE.md`.
+"kelime oyunu" değil, genel bir **İngilizce oyun ve pratik hub'ı**.
+
+- **Yeni beceri alanları** (Faz 1'de karara bağlandı) — öncelik sırasıyla:
+  **1) Cümle kurma  2) Gramer  3) Yazım/spelling**. Telaffuz şimdilik
+  kapsam dışı bırakıldı (teknik risk).
+- **Kapsam dışı:** soru bankası/quiz modülü, ders anlatım modülü — bunlar
+  ayrı bir modül mimarisi olarak eklenmeyecek, her şey mevcut "bağımsız
+  oyun/araç klasörü" formatında kalacak.
+- **Sınıf kapsamı** (Faz 1'de karara bağlandı): 5-8. sınıf (ortaokul/LGS)
+  aynı kalıyor, lise şimdilik yol planına girmiyor.
+
+Detaylar için `CLAUDE.md`.
 
 ## Yol Planı (Fazlar)
 
@@ -34,40 +39,58 @@ karara bağlanmadı. Detaylar için `CLAUDE.md`.
 - [x] Yol planı taslağı (Faz 0-3) çizildi
 
 ### Faz 1 — Karar Noktaları ve Mimari Hazırlık
-**Durum: ⬜ Başlanmadı**
+**Durum: ✅ Tamamlandı (2026-08-28)**
 
 Hedef: Pivotun somut gereksinimlerini kullanıcıyla birlikte netleştirmek ve
 gerekiyorsa mevcut mimariyi (registry, hub.js, branding metinleri) buna göre
-hazırlamak. Bu faz büyük ölçüde **karar/soru** fazı, kod değişikliği azdır.
+hazırlamak.
+
+Kararlar:
+- [x] Yeni beceri alanları: **Gramer, Yazım/spelling, Cümle kurma**.
+      Telaffuz kapsam dışı (tarayıcı desteğine bağlı, riskli bulundu).
+- [x] Öncelik sırası: **1) Cümle kurma  2) Gramer  3) Yazım/spelling**.
+- [x] Sınıf kapsamı: **5-8. sınıf aynı kalıyor**, lise şimdilik yol
+      planına girmiyor.
+- [x] Branding metinleri kontrol edildi (`index.html` tagline'ı: "Oyunlar,
+      kelime çalışması ve ders araçları — hepsi tek merkezde.") — zaten
+      genel bir dil kullanıyor, kelime-özel vurgu yok. Değişiklik
+      gerekmedi.
+- [x] `games-registry.js` şemasına **`skill`** alanı eklendi (tüm 7 mevcut
+      kayıt `skill: "kelime"` aldı) + `SKILL_LABELS` haritası eklendi.
+      `js/hub.js` artık `GAMES` içindeki farklı `skill` değerlerinden
+      otomatik bir filtre/sekme satırı (`#skill-filter`) üretiyor; tek
+      skill varken satır gizli kalıyor (bkz. `renderSkillFilter`).
+      `index.html`'e `#skill-filter` konteyneri, `css/style.css`'e
+      `.skill-filter` / `.skill-chip` stilleri eklendi.
+      Playwright ile doğrulandı: (a) bugünkü 1-skill durumda satır gizli,
+      sayaçlar doğru (6 oyun / 1 araç / 1181 kelime), konsol hatası yok;
+      (b) geçici 2. bir skill enjekte edilip filtre sekmelerinin doğru
+      göründüğü ve doğru filtrelediği test edildi, sonra test verisi geri
+      alındı (kalıcı değişiklik yok).
+
+### Faz 2 — İlk Yeni Oyun/Pratik Türü: Cümle Kurma
+**Durum: ⬜ Başlanmadı**
+
+Hedef: İlk kelime-dışı oyunu tasarlayıp hub'a eklemek — **cümle kurma**
+(Faz 1'de belirlenen öncelik). Konsept: karışık sırada verilen kelimelerden
+doğru İngilizce cümleyi kurma.
 
 Adımlar:
-- [ ] Kullanıcıyla karar ver: yeni oyunlar/pratikler hangi beceri
-      alanlarını kapsayacak (gramer? yazım? cümle kurma? telaffuz? başka?)
-      ve öncelik sırası ne olacak.
-- [ ] Sınıf kapsamı kararı: 5-8. sınıf aynı mı kalacak, lise (9-12) eklenecek
-      mi (kullanıcı "şimdilik karar verme" dedi — bu faz uygun bir nokta).
-- [ ] Hub metinlerinde "kelime oyunu" vurgusu geçen yerler var mı bak
-      (`index.html` başlık/açıklama, `README.md`) — genel "oyun ve pratik"
-      diline çekilmesi gerekip gerekmediğine karar ver.
-- [ ] Sadece ihtiyaç netleşirse: `games-registry.js` şemasına yeni bir alan
-      eklenip eklenmeyeceğine karar ver (örn. `skill: "vocab" | "grammar" | ...`
-      gibi bir filtreleme ihtiyacı doğar mı).
-
-### Faz 2 — İlk Yeni Oyun/Pratik Türü
-**Durum: ⬜ Başlanmadı (Faz 1'deki kararlara bağlı)**
-
-Hedef: Kelime dışı ilk oyun/pratik aracını tasarlayıp hub'a eklemek.
-
-Adımlar:
-- [ ] Oyun konsepti ve kuralları netleştir (kullaıcıyla birlikte)
+- [ ] Oyun konsepti ve kuralları netleştir (kullanıcıyla birlikte) —
+      cümleler nereden gelecek (elle mi girilecek bir veri dosyası, yoksa
+      `curriculum.js`'teki kelimelerden mi üretilecek?), zorluk
+      seviyeleri, tek kişi/sınıfça modu var mı.
 - [ ] Gerekiyorsa yeni bir veri dosyası oluştur (`data/...`) —
       `curriculum.js` deseniyle tutarlı, düz JS/`<script src>`
 - [ ] `games/<ad>/` altında `index.html` + `style.css` + `script.js`
       (+ gerekiyorsa `sounds.js`) yaz
-- [ ] `js/games-registry.js`'e kaydet
+- [ ] `js/games-registry.js`'e kaydet — **`skill: "cumle-kurma"`** ver ve
+      `SKILL_LABELS`'a `"cumle-kurma": "Cümle Kurma"` ekle (bu, hub'da
+      filtre sekmesinin otomatik belirmesini sağlayacak — Faz 1'de
+      kurulan mekanizma)
 - [ ] `sw.js` → `PRECACHE` listesine ekle, `CACHE_VERSION`'ı artır
 - [ ] Playwright ile uçtan uca test (masaüstü + iPad yatay/dikey), konsol
-      hatası kontrolü
+      hatası kontrolü, filtre sekmesinin göründüğünü doğrula
 
 ### Faz 3 — Genişleme ve Bakiye Maddeler
 **Durum: ⬜ Başlanmadı / sürekli açık**
@@ -96,3 +119,33 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
   istedi.
 - **Sıradaki oturumun hedefi:** Faz 1 — beceri alanı ve sınıf kapsamı
   kararlarını kullanıcıyla netleştirmek.
+
+### Oturum 2026-08-28 (devam) — Faz 1 tamamlandı
+- Kullanıcıyla Faz 1 kararları netleştirildi (bkz. yukarıdaki Faz 1 bölümü):
+  beceri alanları = Gramer, Yazım/spelling, Cümle kurma; öncelik sırası =
+  Cümle kurma → Gramer → Yazım; sınıf kapsamı 5-8 aynı kalıyor; hub'a
+  şimdiden skill filtreleme altyapısı kurulması istendi.
+- Kod değişikliği yapıldı:
+  - `js/games-registry.js`: her kayda `skill: "kelime"` eklendi,
+    `SKILL_LABELS` haritası eklendi.
+  - `js/hub.js`: `renderSkillFilter()` eklendi — `GAMES`'teki farklı
+    `skill` değerlerinden otomatik filtre/sekme satırı üretir, tek skill
+    varken satır gizli kalır; `render()` artık `activeSkill`'e göre
+    filtreliyor.
+  - `index.html`: `#skill-filter` konteyneri eklendi (main'in başında).
+  - `css/style.css`: `.skill-filter` / `.skill-chip` stilleri eklendi.
+  - `CLAUDE.md` güncellendi: pivot bölümü karar edilen beceri
+    alanları/önceliği ve sınıf kapsamını yansıtıyor; "yeni oyun ekleme"
+    adımlarına `skill` alanı ve `SKILL_LABELS` notu eklendi.
+- Test: Playwright ile doğrulandı — bugünkü tek-skill durumda filtre satırı
+  gizli, sayaçlar doğru (6 oyun/1 araç/1181 kelime), konsol hatası yok;
+  geçici olarak 2. bir skill enjekte edilip sekmelerin doğru göründüğü ve
+  doğru filtrelediği test edildi, ardından test verisi geri alındı
+  (`git diff` ile kalıcı değişiklik olmadığı teyit edildi).
+- `sw.js` `CACHE_VERSION` artırılmadı — yeni bir dosya eklenmedi, sadece
+  zaten precache'te olan dosyalar (`index.html`, `css/style.css`,
+  `js/games-registry.js`, `js/hub.js`) düzenlendi; network-first strateji
+  zaten güncel sürümü online kullanıcıya taşıyacak.
+- Commit + push yapılmadı — bu adım henüz onay bekliyor (bir sonraki mesajda).
+- **Sıradaki oturumun hedefi:** Faz 2 — Cümle Kurma oyununun konseptini
+  kullanıcıyla netleştirip inşa etmek (bkz. yukarıdaki Faz 2 adımları).

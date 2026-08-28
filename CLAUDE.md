@@ -14,16 +14,16 @@ hub'ı**.
 **Pivot (2026-08-28, kullanıcı kararı):** Proje başlangıçta "kelime oyunu
 hub'ı" olarak kuruldu. Artık kapsam kelimeyle sınırlı değil — hub, İngilizce
 üzerine her türlü **oyun ve pratik aracını** toplayan genel bir merkez.
-Yani yeni eklenecek içerikler sadece kelime ezberi değil, gramer, yazım,
-cümle kurma gibi başka İngilizce becerilerini de oyun/pratik formatında
-kapsayabilir.
+Planlanan yeni beceri alanları (öncelik sırasıyla): **cümle kurma → gramer →
+yazım/spelling** (bkz. `HANDOFF.md` Faz 2). Bunlar hep mevcut oyun/pratik
+formatında (bağımsız `games/<ad>/` klasörü) eklenecek.
 
-**Şu an kapsam dışı** (kullanıcı netleştirdi): soru bankası/quiz modülü,
-ders anlatım modülü. Bunlar ayrı bir "modül" mimarisi olarak eklenmeyecek —
-her şey mevcut oyun/pratik formatında (bağımsız `games/<ad>/` klasörü)
-kalacak. Sınıf kapsamının (5-8. sınıf mi kalacak, lise eklenecek mi)
-genişleyip genişlemeyeceği henüz kullanıcı tarafından karara bağlanmadı;
-bu, ileride bir oturumda netleştirilecek (bkz. `HANDOFF.md` Faz 1).
+**Kapsam dışı** (kullanıcı netleştirdi): soru bankası/quiz modülü, ders
+anlatım modülü, telaffuz pratiği. Bunlar ayrı bir "modül" mimarisi olarak
+eklenmeyecek.
+
+**Sınıf kapsamı** (kullanıcı netleştirdi, 2026-08-28): 5-8. sınıf
+(ortaokul/LGS) aynı kalıyor, lise şimdilik yol planına girmiyor.
 
 ## Değişmez mimari kısıtlar
 
@@ -104,7 +104,12 @@ tekilleştirilerek havuza alınır (her oyunda aynı `buildWordPool` deseni).
    bir veri dosyası düşünülebilir — bkz. `HANDOFF.md` Faz 1/2).
 3. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle.
 4. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle
-   (`category: "oyun"` veya `"arac"`).
+   (`category: "oyun"` veya `"arac"`, ve **`skill`** — hangi İngilizce
+   becerisini pratik ettiriyor, örn. `"kelime"`, `"cumle-kurma"`). Yeni bir
+   skill kodu kullanıyorsan `SKILL_LABELS` objesine görünür adını da ekle.
+   `GAMES` içinde ikinci farklı bir `skill` değeri belirdiği an hub
+   ana sayfasında otomatik olarak bir filtre/sekme satırı belirir (bkz.
+   `js/hub.js` → `renderSkillFilter`) — elle bir şey açmana gerek yok.
 5. `sw.js` → `PRECACHE` listesine yeni dosyaları ekle, `CACHE_VERSION`'ı artır.
 6. Playwright ile gerçek tarayıcıda uçtan uca test et (masaüstü + iPad
    yatay/dikey görünüm), konsol hatası olmadığını doğrula.

@@ -1,6 +1,12 @@
 (function () {
   var gameGrid = document.getElementById("game-grid");
   var toolGrid = document.getElementById("tool-grid");
+  var skillFilterEl = document.getElementById("skill-filter");
+  var activeSkill = "all";
+
+  function skillLabel(skill) {
+    return (typeof SKILL_LABELS !== "undefined" && SKILL_LABELS[skill]) || skill;
+  }
 
   function countWords() {
     if (typeof CURRICULUM === "undefined") return 0;
@@ -38,16 +44,62 @@
     grid.innerHTML = items.map(cardHtml).join("");
   }
 
+  function renderSkillFilter() {
+    if (!skillFilterEl) return;
+
+    var skills = [];
+    GAMES.forEach(function (g) {
+      if (g.skill && skills.indexOf(g.skill) === -1) skills.push(g.skill);
+    });
+
+    // Tek beceri varken (bugünkü durum: sadece "kelime") sekme satırı
+    // gösterilmez, gereksiz tek butonluk bir sıra oluşmaz. Yeni bir skill
+    // (örn. "cumle-kurma") eklenip GAMES'te ikinci farklı değer belirdiği an
+    // otomatik olarak sekmeler görünür hale gelir.
+    if (skills.length <= 1) {
+      skillFilterEl.hidden = true;
+      skillFilterEl.innerHTML = "";
+      return;
+    }
+
+    skillFilterEl.hidden = false;
+    var chips = [
+      '<button type="button" class="skill-chip' + (activeSkill === "all" ? " active" : "") +
+        '" data-skill="all">Tümü</button>'
+    ];
+    skills.forEach(function (s) {
+      chips.push(
+        '<button type="button" class="skill-chip' + (activeSkill === s ? " active" : "") +
+          '" data-skill="' + s + '">' + skillLabel(s) + "</button>"
+      );
+    });
+    skillFilterEl.innerHTML = chips.join("");
+  }
+
   function render() {
-    var games = GAMES.filter(function (g) { return g.category !== "arac"; });
-    var tools = GAMES.filter(function (g) { return g.category === "arac"; });
+    var visible = activeSkill === "all"
+      ? GAMES
+      : GAMES.filter(function (g) { return g.skill === activeSkill; });
+
+    var games = visible.filter(function (g) { return g.category !== "arac"; });
+    var tools = visible.filter(function (g) { return g.category === "arac"; });
 
     document.getElementById("game-count").textContent = games.length;
     document.getElementById("tool-count").textContent = tools.length;
     document.getElementById("word-count").textContent = countWords();
 
-    renderInto(gameGrid, games, "Henüz oyun eklenmedi.");
-    renderInto(toolGrid, tools, "Henüz araç eklenmedi.");
+    renderSkillFilter();
+    renderInto(gameGrid, games, "Bu beceride henüz oyun yok.");
+    renderInto(toolGrid, tools, "Bu beceride henüz araç yok.");
+  }
+
+  if (skillFilterEl) {
+    skillFilterEl.addEventListener("click", function (event) {
+      var btn = event.target.closest(".skill-chip");
+      if (!btn) return;
+      activeSkill = btn.getAttribute("data-skill");
+      render();
+    });
   }
 
   render();

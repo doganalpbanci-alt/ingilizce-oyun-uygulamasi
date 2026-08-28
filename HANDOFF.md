@@ -146,6 +146,6 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
   zaten precache'te olan dosyalar (`index.html`, `css/style.css`,
   `js/games-registry.js`, `js/hub.js`) düzenlendi; network-first strateji
   zaten güncel sürümü online kullanıcıya taşıyacak.
-- Commit + push yapılmadı — bu adım henüz onay bekliyor (bir sonraki mesajda).
+- Commit (`948db0c`) edilip `claude/ingilizce-hub-devam-1c0xgn` branch'ine push edildi.
 - **Sıradaki oturumun hedefi:** Faz 2 — Cümle Kurma oyununun konseptini
   kullanıcıyla netleştirip inşa etmek (bkz. yukarıdaki Faz 2 adımları).

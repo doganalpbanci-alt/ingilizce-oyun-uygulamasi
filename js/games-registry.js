@@ -10,10 +10,22 @@
  * tags:     kartın altında rozet olarak görünen kısa etiketler
  */
 var SKILL_LABELS = {
-  kelime: "Kelime"
+  kelime: "Kelime",
+  "cumle-kurma": "Cümle Kurma"
 };
 
 var GAMES = [
+  {
+    id: "cumle-kurma",
+    title: "Cümle Kurma",
+    description: "Karışık kelimelerden ünitenin yapısına uygun doğru cümleyi kur. Tek başına pratik yap ya da sınıfça takım takım yarış.",
+    icon: "🔤",
+    path: "games/cumle-kurma/index.html",
+    color: "#7c3aed",
+    category: "oyun",
+    skill: "cumle-kurma",
+    tags: ["Tek kişi", "Takımlı", "Gramer"]
+  },
   {
     id: "kelime-yakala",
     title: "Kelime Yakala",

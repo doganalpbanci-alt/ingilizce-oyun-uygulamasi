@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v2";
+var CACHE_VERSION = "v3";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -27,12 +27,17 @@ var PRECACHE = [
   "manifest.json",
   "css/style.css",
   "data/curriculum.js",
+  "data/sentences.js",
   "js/games-registry.js",
   "js/hub.js",
   "js/pwa.js",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",
+  "games/cumle-kurma/index.html",
+  "games/cumle-kurma/script.js",
+  "games/cumle-kurma/sounds.js",
+  "games/cumle-kurma/style.css",
   "games/adam-asmaca/index.html",
   "games/adam-asmaca/script.js",
   "games/adam-asmaca/sounds.js",

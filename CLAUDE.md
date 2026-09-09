@@ -61,6 +61,8 @@ index.html            Hub ana sayfası
 css/style.css         Ortak tema (hub + tüm oyunlar) — paylaşılan, değiştirince hepsini test et
 data/curriculum.js    Kelime veritabanı (MEB 5-8) — kelime oyunlarının kaynağı
 data/sentences.js     Cümle veritabanı (yapı/kazanım bazlı) — Cümle Kurma'nın kaynağı
+data/twinkl.js        Twinkl ESL kelimeleri — CURRICULUM'a eklenir (curriculum.js'ten SONRA yüklenir)
+data/twinkl-sentences.js  Twinkl ESL cümleleri — SENTENCES'a eklenir (sentences.js'ten SONRA yüklenir)
 js/games-registry.js  Hub içerik listesi (yeni oyun/araç = buraya 1 kayıt)
 js/hub.js             Kartları kategoriye + beceriye (skill) göre çizer
 js/pwa.js             Service worker kaydı (file:// korumalı)
@@ -92,6 +94,34 @@ objesine **yeni bir üst seviye anahtar eklemek** (örn. Twinkl seviyeleri)
 hiçbir oyun kodunu değiştirmeden tüm oyunlarda o içeriği seçilebilir yapar.
 Yeni içerik kaynağı eklerken bu desen korunmalı.
 
+Kayıtlardaki `group` alanı, oyunlardaki açılır listede `<optgroup>` başlığı
+olur ("MEB Ortaokul (5-8. Sınıf)" / "Twinkl ESL (Özel Ders)"). Yeni bir
+kaynak eklerken `group` ver, `populateGrades()` gerisini halleder.
+
+## Twinkl ESL veritabanı (`data/twinkl.js` + `data/twinkl-sentences.js`)
+
+`CURRICULUM` ve `SENTENCES` objelerine `twinkl-<seviye>` anahtarlarıyla
+eklenir; 15 seviyenin her birinde 12 ders vardır ama **6. ve 12. dersler
+review dersi olduğu için veriye girmez** → seviye başına 10 ders.
+
+| Seviye | CEFR | Ders | Kelime | Cümle |
+|---|---|---|---|---|
+| Level 1 | A1 | 10 | 111 | 34 |
+| Level 2 | A1 | 10 | 112 | 31 |
+| Level 3 | A1-A2 | 10 | 119 | 29 |
+| Level 4 | A1-A2 | 10 | 114 | 30 |
+| Level 5 | A1-A2 | 10 | 109 | 30 |
+| **Toplam** | | **50** | **565** | **154** |
+
+Level 6-15 henüz girilmedi (bkz. `HANDOFF.md` Faz T2/T3).
+
+- **Türkçe karşılıklar ve cümleler bu proje için yazıldı**, Twinkl tek dilli
+  bir müfredat — öğretmen onayından geçmedi.
+- Twinkl'ın anahtar cümleleri çoğunlukla kalıptır ("I'm from…"); veriye
+  girerken dersin kendi kelimeleriyle örneklenir.
+- **Kural:** Cümle Kurma tahtada kurulabilsin diye cümleler **12 kelimeyi
+  geçmez**. L8+ anahtar cümleleri 15-25 kelime olabiliyor, kısaltılmalı.
+
 ## Cümle veritabanı (`data/sentences.js`)
 
 Yapı: `SENTENCES[sınıf].units[] = { id, title, structures[], sentences[] }`
@@ -102,8 +132,9 @@ Yapı: `SENTENCES[sınıf].units[] = { id, title, structures[], sentences[] }`
 Kelime verisi olan her ünitenin cümle verisi olmak zorunda değil — Cümle
 Kurma oyunu yalnızca `SENTENCES`'ta karşılığı olan sınıf/üniteleri listeler.
 
-Mevcut kapsam: sadece **5. sınıf Ünite 1** (15 cümle, 4 yapı) — pilot,
-**öğretmen onayından geçmedi** (dosya başında TASLAK notu var).
+Mevcut kapsam: **MEB 5. sınıf Ünite 1** (15 cümle, 4 yapı) +
+**Twinkl Level 1-5** (50 ders, 154 cümle — `data/twinkl-sentences.js`).
+Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu var).
 
 ## Mevcut içerik (7 oyun + 1 araç)
 
@@ -126,7 +157,7 @@ Mevcut kapsam: sadece **5. sınıf Ünite 1** (15 cümle, 4 yapı) — pilot,
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v3`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v5`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)
@@ -168,6 +199,8 @@ Bu proje çok-oturumlu, adım adım bir yol planıyla geliştiriliyor:
 
 - iPad'de PWA'nın gerçek Safari'de doğrulanması henüz kullanıcı tarafından yapılmadı.
 - 7. sınıf çevirileri kullanıcıya (öğretmene) ait, resmi kaynaktan değil — gözden geçirilebilir.
-- `data/sentences.js`'teki 5. sınıf Ünite 1 cümleleri **taslak**, öğretmen onayı bekliyor.
+- `data/sentences.js` ve `data/twinkl-sentences.js` cümleleri **taslak**, öğretmen onayı bekliyor.
+- `data/twinkl.js` Türkçe karşılıkları bu proje için yazıldı, öğretmen onayı bekliyor.
+- Depo **public** — Twinkl içeriği herkese açık yayınlanıyor, kullanıcı bu kararı erteledi.
 - `kelime-eslestirme` ve `kelime-kartlari`'nda ses efekti yok (diğer 6 içerikte var).
 - `README.md` güncel değil: 8. sınıf kelime sayısı (341 → 364) ve Cümle Kurma eksik.

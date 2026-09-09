@@ -232,16 +232,47 @@ Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
       - iPad yatay/dikey taşma yok, konsol hatası yok
 
 ## Faz T1 — Level 1-5 tamamlama (A1-A2)
-**Durum: ⬜ Başlanmadı**
-- [ ] Level 2-5 kelimeleri (+ Türkçe) → `data/twinkl.js`
-- [ ] Level 1-5 anahtar cümleleri → `data/twinkl-sentences.js`
-      (her ders = 1 ünite, "Topic & Key Sentences" = `structures[]`)
-- [ ] Cümle Kurma'da Twinkl seviyeleri seçilebilir hale gelsin
+**Durum: ✅ Tamamlandı (2026-09-09)**
+- [x] Level 2-5 kelimeleri (+ Türkçe) → `data/twinkl.js`
+      (L2: 112, L3: 119, L4: 114, L5: 109 → Level 1-5 toplam **565 kelime**,
+      50 ders). "numbers 20-100", "days of the week", "January-December"
+      gibi yer tutucular gerçek listelere açıldı; L2 ders 10'daki
+      "turn your mic on/off" gibi çift komutlar ayrı girdilere bölündü.
+- [x] Level 1-5 anahtar cümleleri → `data/twinkl-sentences.js`
+      (**154 cümle**, 50 ders; her ders = 1 ünite + 1 yapı). Twinkl'ın
+      kalıpları ("I'm from…") dersin kendi kelimeleriyle örneklendi.
+      En uzun cümle 8 kelime — ≤12 kuralına uygun.
+- [x] `games/cumle-kurma/index.html`'e `twinkl-sentences.js` eklendi
+- [x] `sw.js` PRECACHE + `CACHE_VERSION` → `v5`
+- [x] Ünite `id`/`title` çapraz kontrolü: 50 dersin tamamı `twinkl.js` ile
+      birebir eşleşiyor, geçersiz `structure` referansı yok (script ile
+      doğrulandı)
+- [x] Playwright doğrulaması:
+      - Cümle Kurma'da iki optgroup, 5 Twinkl seviyesi seçilebiliyor;
+        L3 seçiminde 10 ders / 10 yapı / 29 cümle listeleniyor
+      - Tek kişilik akış (3 cümle) ve takımlı akış (2 takım × 2 tur) uçtan
+        uca çalışıyor
+      - 7 kelime oyununun hepsinde L1-L5 seçilebiliyor (her biri 10 ders),
+        MEB 8. sınıf regresyonu temiz
+      - Adam Asmaca Twinkl L1 "Renkler" dersinde Türkçe ipucu ("kırmızı")
+        gösteriyor
+      - Hub kelime sayacı 1292 → **1746** (MEB 1181 + Twinkl 565)
+      - Konsol hatası yok
 
 ## Faz T2 — Level 6-10 (A2-B1)
-**Durum: ⬜ Başlanmadı**
-- [ ] Kelime + cümle verisi (uzun cümle kuralına dikkat)
+**Durum: ⬜ Başlanmadı — sıradaki iş**
+- [ ] Kelime + Türkçe karşılık (Level 6, 7, 8, 9, 10 → `data/twinkl.js`)
+- [ ] Anahtar cümleler (`data/twinkl-sentences.js`) — **≤12 kelime kuralı**;
+      L8'den itibaren Twinkl'ın cümleleri uzuyor, kısaltılarak girilecek
+- [ ] **Level 8'de deyimler başlıyor** → `skill: "deyim"` kararının
+      uygulanacağı nokta (aşağıdaki nota bak)
 - [ ] Bu noktada Twinkl'ın kendi platformunun kapsamadığı alan başlıyor
+
+**Deyim kararının uygulanması (L8'e gelince):** Deyimler ayrı beceri olacak.
+Ama `skill` alanı `games-registry.js`'te **oyunlara** ait, veriye değil —
+yani "deyim" bir beceri olarak hub'da görünsün diye ya deyimlerle çalışan
+ayrı bir oyun/araç eklenmeli, ya da veri tarafına da bir etiket
+mekanizması kurulmalı. Faz T2'nin başında bu netleştirilmeli.
 
 ## Faz T3 — Level 11-15 (B1-B2) + Deyimler
 **Durum: ⬜ Başlanmadı**
@@ -333,7 +364,12 @@ Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
   `data/twinkl.js` + Level 1 (111 kelime), optgroup desteği 8 oyunda,
   script/precache/sürüm güncellemeleri, Playwright doğrulaması. Detaylar
   yukarıdaki Faz T0 bölümünde.
-- **Sıradaki oturumun hedefi:** Faz T1 — **Level 2**'den başlayarak sırayla
-  Twinkl seviyelerinin kelimelerini girmek, ardından Level 1-5 anahtar
-  cümlelerini `data/twinkl-sentences.js` olarak eklemek (Cümle Kurma'nın
-  Twinkl tarafını açmak).
+- **Faz T1 de aynı oturumda tamamlandı:** Level 2-5 kelimeleri (454 kelime,
+  Level 1-5 toplamı 565) ve Level 1-5 anahtar cümleleri (154 cümle, 50 ders)
+  girildi; Cümle Kurma'nın Twinkl tarafı açıldı; `CACHE_VERSION` → `v5`.
+  Detaylar yukarıdaki Faz T1 bölümünde. Hub artık **1746 kelime** içeriyor.
+- **Sıradaki oturumun hedefi:** Faz T2 — Level 6-10. İlk iş, Level 8'de
+  başlayan deyimler için `skill: "deyim"` kararının nasıl uygulanacağını
+  netleştirmek (bkz. Faz T2 altındaki not), sonra seviye seviye veri girişi.
+- **Kullanıcıdan beklenen:** Twinkl Level 1-5 kelime çevirilerini ve
+  cümlelerini gözden geçirmesi; ayrıca iPad'de PWA doğrulaması hâlâ açık.

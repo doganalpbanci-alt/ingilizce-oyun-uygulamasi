@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v4";
+var CACHE_VERSION = "v5";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -29,6 +29,7 @@ var PRECACHE = [
   "data/curriculum.js",
   "data/sentences.js",
   "data/twinkl.js",
+  "data/twinkl-sentences.js",
   "js/games-registry.js",
   "js/hub.js",
   "js/pwa.js",

@@ -125,8 +125,14 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
 - [ ] `data/sentences.js` 5/Ünite 1 cümlelerinin öğretmen onayı
 - [ ] Cümle Kurma için kalan MEB üniteleri (5. sınıf 7 ünite + 6/7/8. sınıf)
 - [ ] `kelime-eslestirme` ve `kelime-kartlari`'na ses efekti eklenmesi
-- [ ] `README.md` güncellemesi (8. sınıf 341 → 364, Cümle Kurma eksik)
+- [ ] `README.md` güncellemesi (8. sınıf 341 → 364, Cümle Kurma + Twinkl eksik)
 - [ ] Gramer ve Yazım/spelling oyunları (Faz 1'de belirlenen 2. ve 3. sıra)
+- [ ] ⚠️ **Depo görünürlüğü kararı** — depo public, Twinkl içeriği herkese
+      açık yayınlanıyor. Kullanıcı "şimdilik kalsın, sonra ilgilenmemiz
+      gerekir" dedi. Seçenekler: public kalması, private'a çekilip Pages
+      için alternatif yayın yolu kurulması, ya da Twinkl verisinin depodan
+      ayrılması.
+- [ ] Twinkl kelime çevirilerinin öğretmen tarafından gözden geçirilmesi
 
 ---
 
@@ -191,32 +197,39 @@ Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
 - Her oyunun `index.html`'ine ilgili `<script src>` + `sw.js` PRECACHE +
   `CACHE_VERSION` artışı.
 
-## Karara bağlanacak açık sorular
-- [ ] **Türkçe karşılık:** Twinkl İngilizce-İngilizce bir müfredat, ama
-      mevcut oyunların tamamı `en ↔ tr` eşleşmesi üzerine kurulu. Kelimelere
-      Türkçe karşılık yazılacak mı (önerilen), yoksa İngilizce-İngilizce
-      (tanım/örnek) bir varyant mı gerekiyor (yeni oyun mantığı gerektirir)?
-- [ ] **Seviye önceliği:** 15 seviyenin hepsi mi, yoksa öğretmenin fiilen
-      okuttuğu seviyeler mi önce girilecek?
-- [ ] **Deyimler:** L8+ "Idiom spotlight" içeriği ayrı bir beceri/oyun mu
-      (`skill: "deyim"`), yoksa normal kelime havuzuna mı katılsın?
-- [ ] **Depo görünürlüğü:** Depo şu an **public** (GitHub Pages oradan
-      yayınlanıyor). Twinkl verisi eklendiğinde herkese açık olacak. Kelime
-      listeleri büyük ölçüde genel İngilizce kelimeler, ama ders başlıkları
-      ve anahtar cümleler Twinkl'ın hazırladığı içerik. Depo public kalsın
-      mı, yoksa private'a mı çekilsin (Pages için farklı bir yayın yolu
-      gerekir) — kullanıcı karar verecek.
+## Kararlar (2026-09-09, kullanıcı)
+- [x] **Türkçe karşılık:** Yazılacak. Twinkl kelimelerine Türkçe anlam
+      eklenir → mevcut 7 oyun hiç değişmeden çalışır. (Çeviriler bu proje
+      için eklendi, öğretmen onayından geçmedi.)
+- [x] **Seviye önceliği:** **Level 1'den sırayla** ilerlenecek.
+- [x] **Deyimler:** **Ayrı beceri** olarak (`skill: "deyim"`) — hub'da kendi
+      filtre sekmesi olacak; L8'e gelindiğinde uygulanacak.
+- [x] **Depo görünürlüğü:** Şimdilik **public kalıyor**, ama bu bilinçli bir
+      erteleme — ⚠️ **ileride ele alınacak açık madde** (aşağıdaki backlog'da).
 
 ## Faz T0 — İskelet + Level 1 pilotu
-**Durum: ⬜ Başlanmadı**
-- [ ] `data/twinkl.js` oluştur; **Level 1**'in 10 içerik dersini gir
-      (kelime + Türkçe karşılık). "numbers 1-20" gibi yer tutucuları aç.
-- [ ] `group` alanı + 7 oyunda `populateGrades()` → `<optgroup>`
-      ("MEB Ortaokul (5-8)" / "Twinkl ESL (Level 1-15)")
-- [ ] 7 oyunun `index.html`'ine `<script src="../../data/twinkl.js">`
-- [ ] `sw.js` PRECACHE + `CACHE_VERSION` → `v4`
-- [ ] Playwright: her oyunda Twinkl Level 1 seçilip oynanabiliyor mu,
-      MEB tarafı bozulmamış mı (regresyon), iPad taşma kontrolü
+**Durum: ✅ Tamamlandı (2026-09-09)**
+- [x] `data/twinkl.js` oluşturuldu; **Level 1**'in 10 içerik dersi girildi
+      (**111 kelime** + Türkçe karşılıkları). "numbers 1-20" yer tutucusu
+      gerçek listeye açıldı (one…twenty). Review dersleri (6, 12) atlandı.
+      Dosya, `CURRICULUM`'a `twinkl-1` anahtarıyla ekleniyor (IIFE + guard).
+- [x] `group` alanı eklendi: MEB kayıtlarına "MEB Ortaokul (5-8. Sınıf)",
+      Twinkl'a "Twinkl ESL (Özel Ders)". **8 oyunun** `populateGrades()`
+      fonksiyonu `<optgroup>` üretecek şekilde güncellendi (7 CURRICULUM
+      oyunu + `cumle-kurma`'nın SENTENCES varyantı — ileride Twinkl
+      cümleleri gelince hazır olsun diye).
+- [x] 7 oyunun + hub'ın `index.html`'ine `<script src=".../data/twinkl.js">`
+- [x] `sw.js` PRECACHE + `CACHE_VERSION` → `v4`
+- [x] Playwright doğrulaması:
+      - 7 oyunun hepsinde açılır liste iki optgroup gösteriyor, Twinkl
+        Level 1 seçilebiliyor, 10 ders listeleniyor
+      - MEB regresyonu temiz (5. sınıf hâlâ 8 ünite)
+      - Hub kelime sayacı 1181 → **1292** (MEB 1181 + Twinkl L1 111)
+      - Kelime Avı Twinkl L1 ile bulmaca üretiyor (111 kelimenin 105'i
+        ızgaraya uygun; "the UK", "pencil case", "Türkiye" gibi çok
+        parçalı/aksanlı girdiler mevcut filtre tarafından eleniyor — beklenen)
+      - Kelime Eşleştirme Twinkl dersiyle kart üretiyor
+      - iPad yatay/dikey taşma yok, konsol hatası yok
 
 ## Faz T1 — Level 1-5 tamamlama (A1-A2)
 **Durum: ⬜ Başlanmadı**
@@ -316,6 +329,11 @@ Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
   Daha ayrıntılı materyal (ders PPT'leri / worksheet'ler) gelirse veri
   girişi hızlanır ama zorunlu değil — bu PDF veri girişi için yeterli.
 
-- **Sıradaki oturumun hedefi:** Faz T0 — üç açık sorunun cevabına göre
-  `data/twinkl.js` iskeletini kurmak ve **Level 1**'i (10 ders) pilot olarak
-  tüm oyunlarda çalışır hale getirmek.
+- **Faz T0 aynı oturumda tamamlandı** (kullanıcı 4 kararı da verdi):
+  `data/twinkl.js` + Level 1 (111 kelime), optgroup desteği 8 oyunda,
+  script/precache/sürüm güncellemeleri, Playwright doğrulaması. Detaylar
+  yukarıdaki Faz T0 bölümünde.
+- **Sıradaki oturumun hedefi:** Faz T1 — **Level 2**'den başlayarak sırayla
+  Twinkl seviyelerinin kelimelerini girmek, ardından Level 1-5 anahtar
+  cümlelerini `data/twinkl-sentences.js` olarak eklemek (Cümle Kurma'nın
+  Twinkl tarafını açmak).

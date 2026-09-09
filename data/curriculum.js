@@ -10,6 +10,7 @@
 var CURRICULUM = {
   "5": {
     label: "5. Sınıf",
+    group: "MEB Ortaokul (5-8. Sınıf)",
     units: [
       {
         id: "theme1-school-life",
@@ -592,6 +593,7 @@ var CURRICULUM = {
   },
   "6": {
     label: "6. Sınıf",
+    group: "MEB Ortaokul (5-8. Sınıf)",
     units: [
       {
         id: "unit1-life",
@@ -801,6 +803,7 @@ var CURRICULUM = {
   },
   "7": {
     label: "7. Sınıf",
+    group: "MEB Ortaokul (5-8. Sınıf)",
     units: [
       {
         id: "unit1-appearance-personality",
@@ -1010,6 +1013,7 @@ var CURRICULUM = {
   },
   "8": {
     label: "8. Sınıf",
+    group: "MEB Ortaokul (5-8. Sınıf)",
     units: [
       {
         id: "unit1-friendship",

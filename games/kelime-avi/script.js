@@ -63,12 +63,26 @@ refreshSoundToggleIcon();
 
 /* ---------- Setup ---------- */
 
+// Sınıf listesi iki kaynaktan gelir (MEB ve Twinkl), bu yüzden kayıtlardaki
+// `group` alanına göre <optgroup> başlıkları altında toplanır. `group`
+// taşımayan kayıtlar doğrudan listeye eklenir.
 function populateGrades() {
+  var groups = {};
   Object.keys(CURRICULUM).forEach(function (gradeKey) {
+    var groupName = CURRICULUM[gradeKey].group || "";
+    var parent = gradeSelect;
+    if (groupName) {
+      if (!groups[groupName]) {
+        groups[groupName] = document.createElement("optgroup");
+        groups[groupName].label = groupName;
+        gradeSelect.appendChild(groups[groupName]);
+      }
+      parent = groups[groupName];
+    }
     var option = document.createElement("option");
     option.value = gradeKey;
     option.textContent = CURRICULUM[gradeKey].label;
-    gradeSelect.appendChild(option);
+    parent.appendChild(option);
   });
   populateUnits();
 }

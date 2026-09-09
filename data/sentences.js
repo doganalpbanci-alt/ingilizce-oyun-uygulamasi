@@ -27,6 +27,7 @@
 var SENTENCES = {
   "5": {
     label: "5. Sınıf",
+    group: "MEB Ortaokul (5-8. Sınıf)",
     units: [
       {
         id: "theme1-school-life",

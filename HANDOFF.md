@@ -32,6 +32,20 @@ Detaylar için `CLAUDE.md`.
 
 ## Yol Planı (Fazlar)
 
+Yol planı iki paralel iz halinde ilerliyor:
+- **A) Hub ve oyunlar** (Faz 0-3) — oyun/pratik türlerini geliştirmek, MEB
+  5-8 içeriği.
+- **B) Twinkl ESL entegrasyonu** (Faz T0-T3) — özel derslerde kullanılan
+  müfredatın aynı oyunlarla çalışılabilir hale gelmesi.
+
+Bu ikisi birbirini beslemek üzere tasarlandı: yeni bir oyun eklendiğinde her
+iki müfredat da o oyunda otomatik çalışır, yeni bir müfredat eklendiğinde
+tüm oyunlarda otomatik görünür.
+
+---
+
+# A) Hub ve Oyunlar (MEB 5-8)
+
 ### Faz 0 — Dokümantasyon ve Temel Kurulum
 **Durum: ✅ Tamamlandı (2026-08-28)**
 - [x] `CLAUDE.md` güncellendi (proje amacı pivotu yansıtıyor)
@@ -69,28 +83,37 @@ Kararlar:
       alındı (kalıcı değişiklik yok).
 
 ### Faz 2 — İlk Yeni Oyun/Pratik Türü: Cümle Kurma
-**Durum: ⬜ Başlanmadı**
+**Durum: ✅ Oyun tamamlandı (2026-09-09) — içerik pilot aşamasında**
 
 Hedef: İlk kelime-dışı oyunu tasarlayıp hub'a eklemek — **cümle kurma**
 (Faz 1'de belirlenen öncelik). Konsept: karışık sırada verilen kelimelerden
 doğru İngilizce cümleyi kurma.
 
+Kullanıcı kararları: cümleler **ünite kazanımındaki konu/işlev/yapıya bağlı**
+olmalı (rastgele cümle işe yaramaz); **hem tek kişilik hem sınıfça** mod;
+**hem tıklama hem sürükleme**; içerik **tek ünite pilot** olarak başlasın;
+yapı/kazanım taslağını Claude hazırlayıp öğretmen onaylayacak.
+
 Adımlar:
-- [ ] Oyun konsepti ve kuralları netleştir (kullanıcıyla birlikte) —
-      cümleler nereden gelecek (elle mi girilecek bir veri dosyası, yoksa
-      `curriculum.js`'teki kelimelerden mi üretilecek?), zorluk
-      seviyeleri, tek kişi/sınıfça modu var mı.
-- [ ] Gerekiyorsa yeni bir veri dosyası oluştur (`data/...`) —
-      `curriculum.js` deseniyle tutarlı, düz JS/`<script src>`
-- [ ] `games/<ad>/` altında `index.html` + `style.css` + `script.js`
-      (+ gerekiyorsa `sounds.js`) yaz
-- [ ] `js/games-registry.js`'e kaydet — **`skill: "cumle-kurma"`** ver ve
-      `SKILL_LABELS`'a `"cumle-kurma": "Cümle Kurma"` ekle (bu, hub'da
-      filtre sekmesinin otomatik belirmesini sağlayacak — Faz 1'de
-      kurulan mekanizma)
-- [ ] `sw.js` → `PRECACHE` listesine ekle, `CACHE_VERSION`'ı artır
-- [ ] Playwright ile uçtan uca test (masaüstü + iPad yatay/dikey), konsol
-      hatası kontrolü, filtre sekmesinin göründüğünü doğrula
+- [x] Oyun konsepti ve kuralları netleştirildi (yukarıdaki kararlar)
+- [x] `data/sentences.js` oluşturuldu — `SENTENCES[sınıf].units[]` içinde
+      `structures[]` (kazanım) + `sentences[]`; 5. sınıf Ünite 1 için
+      4 yapı / 15 cümle (**TASLAK, öğretmen onayı bekliyor**)
+- [x] `games/cumle-kurma/` yazıldı (index.html + style.css + script.js +
+      sounds.js). Tıkla-yerleştir + pointer-event tabanlı sürükle-bırak
+      (iPad uyumlu, HTML5 DnD kullanılmadı), yapı rozeti + Türkçe anlam
+      ipucu, sıfırla/geç/kontrol butonları, yanlışta shake + tekrar deneme.
+- [x] Tek kişilik mod (skor + seri) ve takım modu (tur rotasyonu, süre
+      sayacı, puan + zaman bonusu, skor tablosu, şampiyon ekranı)
+- [x] `js/games-registry.js`'e `skill: "cumle-kurma"` ile kaydedildi,
+      `SKILL_LABELS`'a eklendi → hub'daki filtre satırı ilk kez göründü
+- [x] `sw.js` PRECACHE + `CACHE_VERSION` → `v3`
+- [x] Playwright ile uçtan uca test: solo akış (3 cümle, doğru/yanlış/
+      sıfırla/tekrar), takım akışı (2 takım × 2 tur, süre dolması, pas
+      geçme), sürükleyerek yeniden sıralama, hub filtresi + karttan
+      navigasyon, iPad yatay/dikey taşma kontrolü — konsol hatası yok
+- [ ] **Açık:** öğretmen cümleleri onaylasın; sonra kalan üniteler
+      (5. sınıfın 7 ünitesi + 6/7/8. sınıflar) aynı desenle eklensin
 
 ### Faz 3 — Genişleme ve Bakiye Maddeler
 **Durum: ⬜ Başlanmadı / sürekli açık**
@@ -99,8 +122,119 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
 - [ ] iPad'de gerçek Safari'de PWA doğrulaması (kullanıcı yapacak: kısayolu
       sil → siteyi Safari'de aç → "Ana Ekrana Ekle" → uçak modunda test)
 - [ ] 7. sınıf çevirilerinin öğretmen tarafından gözden geçirilmesi
+- [ ] `data/sentences.js` 5/Ünite 1 cümlelerinin öğretmen onayı
+- [ ] Cümle Kurma için kalan MEB üniteleri (5. sınıf 7 ünite + 6/7/8. sınıf)
 - [ ] `kelime-eslestirme` ve `kelime-kartlari`'na ses efekti eklenmesi
-- [ ] `README.md`'deki 8. sınıf kelime sayısını düzelt (341 → 364)
+- [ ] `README.md` güncellemesi (8. sınıf 341 → 364, Cümle Kurma eksik)
+- [ ] Gramer ve Yazım/spelling oyunları (Faz 1'de belirlenen 2. ve 3. sıra)
+
+---
+
+# B) Twinkl ESL Curriculum Entegrasyonu (Özel Dersler)
+
+**Bağlam (2026-09-09):** Öğretmen özel derslerinde **Twinkl ESL Curriculum**
+kullanıyor ve aynı içeriği bu hub'daki oyunlarla tekrar ettirmek istiyor.
+Kaynak doküman: Twinkl "ESL Curriculum — Guidance/Overview" (49 sayfa PDF,
+kullanıcı tarafından gönderildi, 2026-09-09'da incelendi).
+
+## Kaynak analizi (PDF'ten çıkan yapı)
+
+- **15 seviye**, CEFR **A1 → B2** eşlemesi:
+  L1-2 = A1 · L3-5 = A1-A2 · L6-7 = A2 · L8-10 = B1 · L11-12 = B1-B2 ·
+  L13-15 = B2
+- Her seviye **12 ders**; **6. ve 12. dersler review** (yeni içerik yok)
+  → seviye başına **10 içerik dersi**, toplam **150 ders**
+- Her dersin üç bileşeni var ve üçü de bizim veri modelimize birebir oturuyor:
+  | Twinkl sütunu | Bizim karşılığımız |
+  |---|---|
+  | Ders başlığı (örn. "What Time Is It?") | `units[].title` |
+  | Topic & Key Sentences (hedef yapı/işlev + örnek cümleler) | `SENTENCES` → `structures[]` + `sentences[]` |
+  | Vocabulary (virgülle ayrılmış liste) | `CURRICULUM` → `units[].words[]` |
+- **Level 8'den itibaren** her derste ayrıca **"Idiom spotlight"** (1-2 deyim)
+  → yaklaşık **80 deyim** ek içerik
+- Tahmini hacim: **L1-5 ≈ 580 kelime**, **L6-15 ≈ 800 kelime** →
+  toplam **~1400 kelime** (mevcut MEB veritabanı 1181 kelime; yani hub'ın
+  içeriği kabaca ikiye katlanır)
+- Twinkl'ın kendi oyun platformu **yalnızca Level 1-5**'i kapsıyor →
+  **Level 6-15 için oyunlaştırma bu hub'da olacak**, gerçek bir boşluk
+  dolduruyor (ayrıca bizimki offline + Türkçe destekli)
+
+### Veriye dönüştürürken dikkat edilecek 3 tuzak
+1. **Yer tutucu kelime listeleri:** "numbers 1-20", "days of the week",
+   "January - December" gibi girdiler tek kelime değil — gerçek listelere
+   açılmalı (one…twenty, Monday…Sunday, January…December).
+2. **Çok kelimeli ifadeler:** "go to the cinema", "turn your mic on/off"
+   gibi girdiler var. Kelime Avı zaten sadece tek parçalı/harf-içeren
+   kelimeleri ızgaraya alıyor (mevcut filtre bunu hallediyor), diğer
+   oyunlarda sorun değil.
+3. **Uzun anahtar cümleler:** L8+ cümleleri 15-25 kelimeye çıkabiliyor
+   (örn. "It was surprising that we got on like a house on fire, because
+   we hadn't spoken much before."). Cümle Kurma tahtada bu uzunlukta
+   zorlaşır → veri girerken **≤12 kelimelik** cümleler tercih edilmeli,
+   uzun olanlar ya kısaltılmalı ya da oyuna bir "cümle uzunluğu" filtresi
+   eklenmeli.
+
+## Mimari karar (doğrulandı)
+
+Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
+`CURRICULUM[key].label` ve `.units[]` okuyor. Dolayısıyla:
+
+- Twinkl seviyeleri `CURRICULUM`'a **`twinkl-1` … `twinkl-15`** anahtarlarıyla
+  eklenirse **hiçbir oyunun mantığı değişmeden** tüm oyunlarda seçilebilir olur.
+- Tek sorun UX: 4 MEB sınıfı + 15 Twinkl seviyesi = 19 düz seçenek. Çözüm:
+  kayıtlara `group` alanı eklenip her oyunun `populateGrades()` fonksiyonu
+  `<optgroup>` üretecek şekilde güncellenir (oyun başına ~8 satır, 7 oyun).
+- Dosyalar: **`data/twinkl.js`** (CURRICULUM'a ekler) ve
+  **`data/twinkl-sentences.js`** (SENTENCES'a ekler); ikisi de
+  `curriculum.js` / `sentences.js`'ten **sonra** yüklenmeli. Böylece
+  `curriculum.js` şişmez, tek veri modeli korunur.
+- Her oyunun `index.html`'ine ilgili `<script src>` + `sw.js` PRECACHE +
+  `CACHE_VERSION` artışı.
+
+## Karara bağlanacak açık sorular
+- [ ] **Türkçe karşılık:** Twinkl İngilizce-İngilizce bir müfredat, ama
+      mevcut oyunların tamamı `en ↔ tr` eşleşmesi üzerine kurulu. Kelimelere
+      Türkçe karşılık yazılacak mı (önerilen), yoksa İngilizce-İngilizce
+      (tanım/örnek) bir varyant mı gerekiyor (yeni oyun mantığı gerektirir)?
+- [ ] **Seviye önceliği:** 15 seviyenin hepsi mi, yoksa öğretmenin fiilen
+      okuttuğu seviyeler mi önce girilecek?
+- [ ] **Deyimler:** L8+ "Idiom spotlight" içeriği ayrı bir beceri/oyun mu
+      (`skill: "deyim"`), yoksa normal kelime havuzuna mı katılsın?
+- [ ] **Depo görünürlüğü:** Depo şu an **public** (GitHub Pages oradan
+      yayınlanıyor). Twinkl verisi eklendiğinde herkese açık olacak. Kelime
+      listeleri büyük ölçüde genel İngilizce kelimeler, ama ders başlıkları
+      ve anahtar cümleler Twinkl'ın hazırladığı içerik. Depo public kalsın
+      mı, yoksa private'a mı çekilsin (Pages için farklı bir yayın yolu
+      gerekir) — kullanıcı karar verecek.
+
+## Faz T0 — İskelet + Level 1 pilotu
+**Durum: ⬜ Başlanmadı**
+- [ ] `data/twinkl.js` oluştur; **Level 1**'in 10 içerik dersini gir
+      (kelime + Türkçe karşılık). "numbers 1-20" gibi yer tutucuları aç.
+- [ ] `group` alanı + 7 oyunda `populateGrades()` → `<optgroup>`
+      ("MEB Ortaokul (5-8)" / "Twinkl ESL (Level 1-15)")
+- [ ] 7 oyunun `index.html`'ine `<script src="../../data/twinkl.js">`
+- [ ] `sw.js` PRECACHE + `CACHE_VERSION` → `v4`
+- [ ] Playwright: her oyunda Twinkl Level 1 seçilip oynanabiliyor mu,
+      MEB tarafı bozulmamış mı (regresyon), iPad taşma kontrolü
+
+## Faz T1 — Level 1-5 tamamlama (A1-A2)
+**Durum: ⬜ Başlanmadı**
+- [ ] Level 2-5 kelimeleri (+ Türkçe) → `data/twinkl.js`
+- [ ] Level 1-5 anahtar cümleleri → `data/twinkl-sentences.js`
+      (her ders = 1 ünite, "Topic & Key Sentences" = `structures[]`)
+- [ ] Cümle Kurma'da Twinkl seviyeleri seçilebilir hale gelsin
+
+## Faz T2 — Level 6-10 (A2-B1)
+**Durum: ⬜ Başlanmadı**
+- [ ] Kelime + cümle verisi (uzun cümle kuralına dikkat)
+- [ ] Bu noktada Twinkl'ın kendi platformunun kapsamadığı alan başlıyor
+
+## Faz T3 — Level 11-15 (B1-B2) + Deyimler
+**Durum: ⬜ Başlanmadı**
+- [ ] Kelime + cümle verisi
+- [ ] ~80 "Idiom spotlight" deyiminin veriye girmesi + yukarıdaki
+      deyim kararının uygulanması
 
 ## Oturum Günlüğü
 
@@ -149,3 +283,39 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
 - Commit (`948db0c`) edilip `claude/ingilizce-hub-devam-1c0xgn` branch'ine push edildi.
 - **Sıradaki oturumun hedefi:** Faz 2 — Cümle Kurma oyununun konseptini
   kullanıcıyla netleştirip inşa etmek (bkz. yukarıdaki Faz 2 adımları).
+
+### Oturum 2026-09-09 — Faz 2 (Cümle Kurma) + Twinkl planı
+**Yapılanlar:**
+- **Cümle Kurma oyunu inşa edildi ve push edildi** (commit `5f698ce`).
+  Detaylar yukarıdaki Faz 2 bölümünde. Hub'daki beceri filtresi (Faz 1'de
+  kurulmuştu) ilk kez gerçek veriyle devreye girdi.
+- `data/sentences.js` oluşturuldu — 5. sınıf Ünite 1, 4 yapı / 15 cümle,
+  **TASLAK** (öğretmen onayı bekliyor).
+- Kullanıcı **Twinkl ESL Curriculum "Guidance/Overview"** PDF'ini gönderdi
+  (49 sayfa). Tamamı okundu ve analiz edildi → yeni **B izi (Faz T0-T3)**
+  yol planına eklendi. Kritik bulgular:
+  - 15 seviye × 12 ders, 6 ve 12 review → **150 içerik dersi**
+  - Ders yapısı (başlık / key sentences / vocabulary) mevcut veri modelimize
+    birebir oturuyor
+  - Tahmini **~1400 kelime + ~80 deyim** (mevcut veritabanının ~1.2 katı)
+  - `CURRICULUM`'a yeni üst anahtar eklemek **oyun kodu değiştirmeden**
+    çalışıyor — sadece `<optgroup>` için küçük bir UX değişikliği gerekiyor
+  - L8+ anahtar cümleleri çok uzun (15-25 kelime) → Cümle Kurma için
+    ≤12 kelime kuralı önerildi
+- `CLAUDE.md` güncellendi: iki ders ortamı (okul + özel ders), cümle
+  veritabanı bölümü, Cümle Kurma içerik tablosuna eklendi, `CACHE_VERSION`
+  notu v3, `CURRICULUM`'a anahtar ekleme deseni belgelendi.
+- `HANDOFF.md` (bu dosya) A/B izlerine ayrıldı, Twinkl analizi + fazları
+  eklendi.
+
+**Yapılmayanlar / açık:**
+- Twinkl verisinin hiçbiri henüz girilmedi — önce 3 karar gerekiyor
+  (Türkçe karşılık? seviye önceliği? deyimler nereye?), bkz. B izi
+  "Karara bağlanacak açık sorular".
+- Kullanıcı, "course overview atacağım" dedi; bu PDF geldi ve incelendi.
+  Daha ayrıntılı materyal (ders PPT'leri / worksheet'ler) gelirse veri
+  girişi hızlanır ama zorunlu değil — bu PDF veri girişi için yeterli.
+
+- **Sıradaki oturumun hedefi:** Faz T0 — üç açık sorunun cevabına göre
+  `data/twinkl.js` iskeletini kurmak ve **Level 1**'i (10 ders) pilot olarak
+  tüm oyunlarda çalışır hale getirmek.

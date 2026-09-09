@@ -11,11 +11,24 @@ Bir İngilizce öğretmeninin **akıllı tahtada ve tablette** sınıfta veya
 öğrencinin bireysel çalışmasında kullandığı bir **İngilizce oyun ve pratik
 hub'ı**.
 
+Hub **iki ayrı ders ortamına** hizmet ediyor (2026-09-09'da netleşti):
+
+1. **Okul dersleri** — MEB ortaokul müfredatı, 5-8. sınıf (LGS kapsamı).
+   Veri kaynağı: `data/curriculum.js` (+ `data/sentences.js`).
+2. **Özel dersler** — **Twinkl ESL Curriculum**, Level 1-15 (CEFR A1-B2).
+   Öğretmenin özel derslerinde kullandığı hazır müfredat; aynı oyunlarla
+   tekrar edilebilmesi için hub'a ikinci bir içerik kaynağı olarak
+   ekleniyor (bkz. `HANDOFF.md` Faz T0-T3).
+
+Her iki kaynak da **aynı oyunlar** tarafından kullanılır — oyun başına ayrı
+sürüm yok, oyunun içindeki sınıf/seviye seçicisinden hangi müfredatın
+çalışılacağı seçilir.
+
 **Pivot (2026-08-28, kullanıcı kararı):** Proje başlangıçta "kelime oyunu
 hub'ı" olarak kuruldu. Artık kapsam kelimeyle sınırlı değil — hub, İngilizce
 üzerine her türlü **oyun ve pratik aracını** toplayan genel bir merkez.
-Planlanan yeni beceri alanları (öncelik sırasıyla): **cümle kurma → gramer →
-yazım/spelling** (bkz. `HANDOFF.md` Faz 2). Bunlar hep mevcut oyun/pratik
+Planlanan yeni beceri alanları (öncelik sırasıyla): **cümle kurma (✅ yapıldı)
+→ gramer → yazım/spelling** (bkz. `HANDOFF.md`). Bunlar hep mevcut oyun/pratik
 formatında (bağımsız `games/<ad>/` klasörü) eklenecek.
 
 **Kapsam dışı** (kullanıcı netleştirdi): soru bankası/quiz modülü, ders
@@ -46,9 +59,10 @@ Bunlar hiçbir zaman ihlal edilmemeli — yeni oyun/pratik eklerken de geçerli:
 ```
 index.html            Hub ana sayfası
 css/style.css         Ortak tema (hub + tüm oyunlar) — paylaşılan, değiştirince hepsini test et
-data/curriculum.js    Kelime veritabanı — tek kaynak
+data/curriculum.js    Kelime veritabanı (MEB 5-8) — kelime oyunlarının kaynağı
+data/sentences.js     Cümle veritabanı (yapı/kazanım bazlı) — Cümle Kurma'nın kaynağı
 js/games-registry.js  Hub içerik listesi (yeni oyun/araç = buraya 1 kayıt)
-js/hub.js             Kartları kategoriye göre çizer
+js/hub.js             Kartları kategoriye + beceriye (skill) göre çizer
 js/pwa.js             Service worker kaydı (file:// korumalı)
 manifest.json, sw.js, icons/
 games/<ad>/           Her biri: index.html + style.css + script.js (+ sounds.js)
@@ -72,17 +86,37 @@ Bu sayılar `data/curriculum.js` üzerinde `node -e` ile 2026-08-28'de doğrulan
 Oyunlar sınıf seçer → ünite(ler) çoklu seçer → kelimeler `en+tr` bazında
 tekilleştirilerek havuza alınır (her oyunda aynı `buildWordPool` deseni).
 
-## Mevcut içerik (6 oyun + 1 araç)
+**Kritik mimari not:** Her oyun sınıf listesini `Object.keys(CURRICULUM)`
+ile üretir ve `CURRICULUM[key].label` / `.units[]` okur. Yani `CURRICULUM`
+objesine **yeni bir üst seviye anahtar eklemek** (örn. Twinkl seviyeleri)
+hiçbir oyun kodunu değiştirmeden tüm oyunlarda o içeriği seçilebilir yapar.
+Yeni içerik kaynağı eklerken bu desen korunmalı.
 
-| Ad | Klasör | Not |
-|---|---|---|
-| 🦉 Kelime Yakala | `kelime-yakala` | SVG baykuş, requestAnimationFrame döngüsü, can/seri/seviye. Ses var. |
-| 🏆 Kelime Turnuvası | `kelime-turnuvasi` | Eleme ağacı (bye destekli), 2 mod, raunt seçimi. Ses var. |
-| 🎯 Adam Asmaca | `adam-asmaca` | Türkçe ipucu → İngilizce kelime, SVG darağacı. Ses var. |
-| 🎨 Çiz Bakalım | `ciz-bakalim` | Canvas, takım skoru, süre bonusu. Ses var. |
-| 🔎 Kelime Avı | `kelime-avi` | Izgara üretici, 3 zorluk, sürükle veya iki dokunuş. Ses var. |
-| 🧩 Kelime Eşleştirme | `kelime-eslestirme` | Hafıza kartı. **Ses yok.** |
-| 📚 Kelime Kartları | `kelime-kartlari` | Araç: liste + flashcard (`category: "arac"`). **Ses yok.** |
+## Cümle veritabanı (`data/sentences.js`)
+
+Yapı: `SENTENCES[sınıf].units[] = { id, title, structures[], sentences[] }`
+- `structures[] = { id, label }` — ünitenin kazanımındaki dil yapıları
+- `sentences[] = { en, tr, structure }` — `structure`, `structures[].id`'lerinden biri
+
+`id`/`title`, `curriculum.js`'teki aynı ünite ile birebir aynı olmalı.
+Kelime verisi olan her ünitenin cümle verisi olmak zorunda değil — Cümle
+Kurma oyunu yalnızca `SENTENCES`'ta karşılığı olan sınıf/üniteleri listeler.
+
+Mevcut kapsam: sadece **5. sınıf Ünite 1** (15 cümle, 4 yapı) — pilot,
+**öğretmen onayından geçmedi** (dosya başında TASLAK notu var).
+
+## Mevcut içerik (7 oyun + 1 araç)
+
+| Ad | Klasör | Skill | Not |
+|---|---|---|---|
+| 🦉 Kelime Yakala | `kelime-yakala` | kelime | SVG baykuş, requestAnimationFrame döngüsü, can/seri/seviye. Ses var. |
+| 🏆 Kelime Turnuvası | `kelime-turnuvasi` | kelime | Eleme ağacı (bye destekli), 2 mod, raunt seçimi. Ses var. |
+| 🎯 Adam Asmaca | `adam-asmaca` | kelime | Türkçe ipucu → İngilizce kelime, SVG darağacı. Ses var. |
+| 🎨 Çiz Bakalım | `ciz-bakalim` | kelime | Canvas, takım skoru, süre bonusu. Ses var. |
+| 🔎 Kelime Avı | `kelime-avi` | kelime | Izgara üretici, 3 zorluk, sürükle veya iki dokunuş. Ses var. |
+| 🧩 Kelime Eşleştirme | `kelime-eslestirme` | kelime | Hafıza kartı. **Ses yok.** |
+| 🔤 Cümle Kurma | `cumle-kurma` | cumle-kurma | Karışık kelimelerden cümle kurma. Tek kişilik + takımlı mod, tıkla veya sürükle. `data/sentences.js` kullanır. Ses var. |
+| 📚 Kelime Kartları | `kelime-kartlari` | kelime | Araç: liste + flashcard (`category: "arac"`). **Ses yok.** |
 
 ## PWA / service worker
 
@@ -92,8 +126,10 @@ tekilleştirilerek havuza alınır (her oyunda aynı `buildWordPool` deseni).
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v2`). İkisi de yapılmazsa yeni dosya
-  önbelleğe girmez / eski sürüm servis edilmeye devam eder.
+  `CACHE_VERSION`'ı artır (şu an `v3`). İkisi de yapılmazsa yeni dosya
+  önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
+  bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
+  strateji güncel sürümü zaten taşır.)
 
 ## Yeni oyun/pratik ekleme deseni
 
@@ -132,5 +168,6 @@ Bu proje çok-oturumlu, adım adım bir yol planıyla geliştiriliyor:
 
 - iPad'de PWA'nın gerçek Safari'de doğrulanması henüz kullanıcı tarafından yapılmadı.
 - 7. sınıf çevirileri kullanıcıya (öğretmene) ait, resmi kaynaktan değil — gözden geçirilebilir.
-- `kelime-eslestirme` ve `kelime-kartlari`'nda ses efekti yok (diğer 5 içerikte var).
-- `README.md`'deki 8. sınıf kelime sayısı (341) güncel değil, gerçek sayı 364.
+- `data/sentences.js`'teki 5. sınıf Ünite 1 cümleleri **taslak**, öğretmen onayı bekliyor.
+- `kelime-eslestirme` ve `kelime-kartlari`'nda ses efekti yok (diğer 6 içerikte var).
+- `README.md` güncel değil: 8. sınıf kelime sayısı (341 → 364) ve Cümle Kurma eksik.

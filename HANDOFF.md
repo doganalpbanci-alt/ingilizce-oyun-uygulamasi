@@ -373,3 +373,60 @@ mekanizması kurulmalı. Faz T2'nin başında bu netleştirilmeli.
   netleştirmek (bkz. Faz T2 altındaki not), sonra seviye seviye veri girişi.
 - **Kullanıcıdan beklenen:** Twinkl Level 1-5 kelime çevirilerini ve
   cümlelerini gözden geçirmesi; ayrıca iPad'de PWA doğrulaması hâlâ açık.
+
+### Oturum 2026-09-10 — İçerik denetimi + seçim davranışı düzeltmesi
+Kullanıcı "kelime ve ifadeler gerçekten uysun" diyerek Twinkl verisinin
+doğruluğunu istedi. Yapılan denetim ve düzeltmeler:
+
+**1) Kaynak sadakati (script ile, PDF metnine karşı):**
+- Veride olup kaynakta olmayan kelime: **0** (43 "eşleşmedi" uyarısının
+  32'si bilerek açılan yer tutucular, 3'ü on/off komut ayrımı, 8'i PDF
+  satır kırılması kaynaklı yanlış alarmdı)
+- Kaynakta olup veride olmayan: **12 kelime bulundu ve eklendi** —
+  `squid`, `park` (L4/D11); `fast, slow, strong, weak, short` (L5/D8);
+  `suitcase, have, go` (L5/D9); `South Korea, Space X` (L5/D11).
+  Bunları "başka derste zaten var" diye atlamıştım; öğretmen tek ders
+  seçtiğinde eksik kalıyorlardı. → **577 kelime** (önce 565)
+
+**2) Çeviri denetimi (577 kelimenin tamamı elden geçti):**
+- **Belirsizlik (kritik):** L2'de `run/running`, `swim/swimming`,
+  `read/reading`, `write/writing`, `drive/driving` çiftleri aynı Türkçeye
+  düşüyordu → eşleştirme/asmacada iki kart aynı ipucunu veriyordu.
+  -ing biçimleri sürekli hâle çevrildi (`koşmak` → `koşuyor` vb., 9 kelime).
+- **Yanlış/yanıltıcı (4):** `athlete` atlet→**sporcu** (TR'de fanila
+  anlamı var), `older` daha yaşlı→**daha büyük (yaşça)** (bebek/çocuk/
+  ergen sıralamasında yanlıştı), `teenager`→ergen (genç), `noon`
+  öğlen→öğle vakti.
+- **İpucu olarak işe yaramayanlar (5):** tr = en olan `oval`, `tablet`,
+  `bungee jumping`, `scooter`, `diplomat` açıklama aldı.
+- **Türkçe kalitesi (4):** `drones` dronelar→dronlar, `trainers`→spor
+  ayakkabılar, `paintbrushes`→boya fırçaları, `park`→park (yeşil alan).
+- Kalan 6 tr=en (Türkiye, Vietnam, pizza, panda, ramen, paella) gerçekten
+  Türkçede de aynı — dokunulmadı.
+
+**3) Cümle denetimi (154 cümle):**
+- Hepsi ≤12 kelime kuralına uygun (en uzun 8).
+- Her cümlenin kendi dersinin kelimesini/anahtar sorusunu kullandığı
+  script ile doğrulandı.
+- 5 düzeltme: `Onlar elmalar/patatesler` → `Onlar elma/patates` (Türkçede
+  çoğul isim tekrar çoğullanmaz), `Those are bikes` → "Şunlar bisiklet"
+  (işaret zamiri ayrımı), `She baked a cake` → "bir kek pişirdi",
+  ve `We saw a big whale` → **`We ate at a restaurant`** (whale o dersin
+  değil D7'nin kelimesiydi).
+
+**4) Seçim davranışı tutarlılığı:**
+- Cümle Kurma'da dersler "hepsi seçili" başlıyordu, 7 kelime oyununda
+  "hiçbiri seçili değil". Cümle Kurma **işaretsiz başlayacak** şekilde
+  hizalandı (öğretmen genelde tek ders seçiyor; "hepsi seçili" fazladan
+  bir "Temizle" dokunuşu demekti). Hiç ders seçilmemişken yapı bölümü
+  artık "Önce yukarıdan en az bir ders seç." ipucu gösteriyor.
+
+**Test:** 8 oyunun tamamı aynı davranışta (10 ders, 0 varsayılan işaretli);
+Cümle Kurma'da boş seçim → hata mesajı, 1 ders seçimi → yapı otomatik
+işaretleniyor, 3 cümlelik tur uçtan uca oynandı; 7 kelime oyununda L1-L5 +
+MEB 5/8 regresyonu temiz; Adam Asmaca L2/D8'de düzeltilmiş ipucu
+("biniyor") görünüyor; hub sayacı **1758** (MEB 1181 + Twinkl 577).
+Konsol hatası yok.
+
+- **Sıradaki oturumun hedefi:** değişmedi — Faz T2 (Level 6-10), önce
+  deyim/`skill` kararının uygulanması.

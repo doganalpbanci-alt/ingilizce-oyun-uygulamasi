@@ -196,7 +196,7 @@
             { en: "square", tr: "kare" },
             { en: "circle", tr: "daire" },
             { en: "rectangle", tr: "dikdörtgen" },
-            { en: "oval", tr: "oval" },
+            { en: "oval", tr: "oval (uzun yuvarlak)" },
             { en: "star", tr: "yıldız" },
             { en: "heart", tr: "kalp" }
           ]
@@ -304,7 +304,7 @@
             { en: "next to", tr: "yanında" },
             { en: "in between", tr: "arasında" },
             { en: "phone", tr: "telefon" },
-            { en: "tablet", tr: "tablet" },
+            { en: "tablet", tr: "tablet (bilgisayar)" },
             { en: "laptop", tr: "dizüstü bilgisayar" },
             { en: "speaker", tr: "hoparlör" },
             { en: "mouse", tr: "fare" },
@@ -317,15 +317,15 @@
           id: "t2-l8-what-are-you-doing",
           title: "Ders 8 - What Are You Doing? (Şimdiki Zaman)",
           words: [
-            { en: "running", tr: "koşmak" },
-            { en: "hiking", tr: "doğa yürüyüşü yapmak" },
-            { en: "riding", tr: "binmek" },
-            { en: "driving", tr: "araba sürmek" },
-            { en: "playing", tr: "oynamak" },
-            { en: "swimming", tr: "yüzmek" },
-            { en: "writing", tr: "yazmak" },
-            { en: "reading", tr: "okumak" },
-            { en: "cooking", tr: "yemek pişirmek" }
+            { en: "running", tr: "koşuyor" },
+            { en: "hiking", tr: "doğa yürüyüşü yapıyor" },
+            { en: "riding", tr: "biniyor" },
+            { en: "driving", tr: "araba sürüyor" },
+            { en: "playing", tr: "oynuyor" },
+            { en: "swimming", tr: "yüzüyor" },
+            { en: "writing", tr: "yazıyor" },
+            { en: "reading", tr: "okuyor" },
+            { en: "cooking", tr: "yemek pişiriyor" }
           ]
         },
         {
@@ -343,7 +343,7 @@
             { en: "subway", tr: "metro" },
             { en: "train", tr: "tren" },
             { en: "truck", tr: "kamyon" },
-            { en: "drones", tr: "dronelar" }
+            { en: "drones", tr: "dronlar" }
           ]
         },
         {
@@ -368,7 +368,7 @@
             { en: "T-shirt", tr: "tişört" },
             { en: "trousers", tr: "pantolon" },
             { en: "jeans", tr: "kot pantolon" },
-            { en: "trainers", tr: "spor ayakkabı" },
+            { en: "trainers", tr: "spor ayakkabılar" },
             { en: "shoes", tr: "ayakkabılar" },
             { en: "jumper", tr: "kazak" },
             { en: "dress", tr: "elbise" },
@@ -405,7 +405,7 @@
           title: "Ders 2 - What Time Is It? (Saatler ve Günün Bölümleri)",
           words: [
             { en: "midnight", tr: "gece yarısı" },
-            { en: "noon", tr: "öğlen" },
+            { en: "noon", tr: "öğle vakti" },
             { en: "afternoon", tr: "öğleden sonra" },
             { en: "morning", tr: "sabah" },
             { en: "evening", tr: "akşam" },
@@ -505,7 +505,7 @@
             { en: "kayaking", tr: "kano yapmak" },
             { en: "surfing", tr: "sörf yapmak" },
             { en: "horse-riding", tr: "at binmek" },
-            { en: "bungee jumping", tr: "bungee jumping" }
+            { en: "bungee jumping", tr: "bungee jumping (ip atlayışı)" }
           ]
         },
         {
@@ -531,7 +531,7 @@
             { en: "shop", tr: "dükkan" },
             { en: "school", tr: "okul" },
             { en: "police station", tr: "karakol" },
-            { en: "park", tr: "park" },
+            { en: "park", tr: "park (yeşil alan)" },
             { en: "train station", tr: "tren istasyonu" },
             { en: "bus stop", tr: "otobüs durağı" },
             { en: "shopping centre", tr: "alışveriş merkezi" },
@@ -710,7 +710,7 @@
           words: [
             { en: "necklace", tr: "kolye" },
             { en: "watch", tr: "kol saati" },
-            { en: "scooter", tr: "scooter" },
+            { en: "scooter", tr: "scooter (tekmeli araç)" },
             { en: "board game", tr: "kutu oyunu" },
             { en: "perfume", tr: "parfüm" },
             { en: "medicine", tr: "ilaç" },
@@ -741,7 +741,9 @@
             { en: "restaurants", tr: "restoranlar" },
             { en: "subway station", tr: "metro istasyonu" },
             { en: "trains", tr: "trenler" },
-            { en: "maps", tr: "haritalar" }
+            { en: "maps", tr: "haritalar" },
+            { en: "squid", tr: "kalamar" },
+            { en: "park", tr: "park (yeşil alan)" }
           ]
         }
       ]
@@ -791,7 +793,7 @@
             { en: "flute", tr: "flüt" },
             { en: "paper", tr: "kağıt" },
             { en: "paint", tr: "boya" },
-            { en: "paintbrushes", tr: "fırçalar" },
+            { en: "paintbrushes", tr: "boya fırçaları" },
             { en: "glue", tr: "yapıştırıcı" }
           ]
         },
@@ -816,10 +818,10 @@
             { en: "dancer", tr: "dansçı" },
             { en: "actor", tr: "oyuncu" },
             { en: "lecturer", tr: "öğretim görevlisi" },
-            { en: "diplomat", tr: "diplomat" },
+            { en: "diplomat", tr: "diplomat (elçi)" },
             { en: "president", tr: "cumhurbaşkanı" },
             { en: "artist", tr: "sanatçı" },
-            { en: "athlete", tr: "atlet" }
+            { en: "athlete", tr: "sporcu" }
           ]
         },
         {
@@ -835,11 +837,11 @@
             { en: "brave", tr: "cesur" },
             { en: "baby", tr: "bebek" },
             { en: "child", tr: "çocuk" },
-            { en: "teenager", tr: "ergen" },
+            { en: "teenager", tr: "ergen (genç)" },
             { en: "adult", tr: "yetişkin" },
             { en: "taller", tr: "daha uzun" },
             { en: "shorter", tr: "daha kısa" },
-            { en: "older", tr: "daha yaşlı" },
+            { en: "older", tr: "daha büyük (yaşça)" },
             { en: "younger", tr: "daha genç" }
           ]
         },
@@ -860,7 +862,12 @@
             { en: "mouse", tr: "fare" },
             { en: "fish", tr: "balık" },
             { en: "sloth", tr: "tembel hayvan" },
-            { en: "tail", tr: "kuyruk" }
+            { en: "tail", tr: "kuyruk" },
+            { en: "fast", tr: "hızlı" },
+            { en: "slow", tr: "yavaş" },
+            { en: "strong", tr: "güçlü" },
+            { en: "weak", tr: "zayıf" },
+            { en: "short", tr: "kısa" }
           ]
         },
         {
@@ -877,7 +884,10 @@
             { en: "stay", tr: "kalmak" },
             { en: "relax", tr: "dinlenmek" },
             { en: "make", tr: "yapmak" },
-            { en: "try", tr: "denemek" }
+            { en: "try", tr: "denemek" },
+            { en: "suitcase", tr: "bavul" },
+            { en: "have", tr: "sahip olmak" },
+            { en: "go", tr: "gitmek" }
           ]
         },
         {
@@ -916,7 +926,9 @@
             { en: "quietly", tr: "sessizce" },
             { en: "neatly", tr: "düzgünce" },
             { en: "skilfully", tr: "ustaca" },
-            { en: "joyfully", tr: "neşeyle" }
+            { en: "joyfully", tr: "neşeyle" },
+            { en: "South Korea", tr: "Güney Kore" },
+            { en: "Space X", tr: "Space X (uzay şirketi)" }
           ]
         }
       ]

@@ -84,9 +84,9 @@
             { id: "they-are", label: "Çoğul biçim (They are...)" }
           ],
           sentences: [
-            { en: "They are apples.", tr: "Onlar elmalar.", structure: "they-are" },
+            { en: "They are apples.", tr: "Onlar elma.", structure: "they-are" },
             { en: "What are they?", tr: "Onlar nedir?", structure: "they-are" },
-            { en: "They are potatoes.", tr: "Onlar patatesler.", structure: "they-are" }
+            { en: "They are potatoes.", tr: "Onlar patates.", structure: "they-are" }
           ]
         },
         {
@@ -249,7 +249,7 @@
           ],
           sentences: [
             { en: "What are these?", tr: "Bunlar nedir?", structure: "demonstratives" },
-            { en: "Those are bikes.", tr: "Onlar bisikletler.", structure: "demonstratives" },
+            { en: "Those are bikes.", tr: "Şunlar bisiklet.", structure: "demonstratives" },
             { en: "This is a helicopter.", tr: "Bu bir helikopter.", structure: "demonstratives" }
           ]
         },
@@ -429,7 +429,7 @@
           sentences: [
             { en: "I watched a film yesterday.", tr: "Dün bir film izledim.", structure: "past-simple" },
             { en: "What did you do yesterday?", tr: "Dün ne yaptın?", structure: "past-simple" },
-            { en: "She baked a cake.", tr: "O kek yaptı.", structure: "past-simple" }
+            { en: "She baked a cake.", tr: "O bir kek pişirdi.", structure: "past-simple" }
           ]
         },
         {
@@ -453,7 +453,7 @@
           sentences: [
             { en: "I went to the zoo.", tr: "Hayvanat bahçesine gittim.", structure: "irregular-past" },
             { en: "Where did you go?", tr: "Nereye gittin?", structure: "irregular-past" },
-            { en: "We saw a big whale.", tr: "Büyük bir balina gördük.", structure: "irregular-past" }
+            { en: "We ate at a restaurant.", tr: "Bir restoranda yemek yedik.", structure: "irregular-past" }
           ]
         },
         {

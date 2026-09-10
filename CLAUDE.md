@@ -109,9 +109,9 @@ review dersi olduğu için veriye girmez** → seviye başına 10 ders.
 | Level 1 | A1 | 10 | 111 | 34 |
 | Level 2 | A1 | 10 | 112 | 31 |
 | Level 3 | A1-A2 | 10 | 119 | 29 |
-| Level 4 | A1-A2 | 10 | 114 | 30 |
-| Level 5 | A1-A2 | 10 | 109 | 30 |
-| **Toplam** | | **50** | **565** | **154** |
+| Level 4 | A1-A2 | 10 | 116 | 30 |
+| Level 5 | A1-A2 | 10 | 119 | 30 |
+| **Toplam** | | **50** | **577** | **154** |
 
 Level 6-15 henüz girilmedi (bkz. `HANDOFF.md` Faz T2/T3).
 
@@ -121,6 +121,11 @@ Level 6-15 henüz girilmedi (bkz. `HANDOFF.md` Faz T2/T3).
   girerken dersin kendi kelimeleriyle örneklenir.
 - **Kural:** Cümle Kurma tahtada kurulabilsin diye cümleler **12 kelimeyi
   geçmez**. L8+ anahtar cümleleri 15-25 kelime olabiliyor, kısaltılmalı.
+- **Kural:** Kaynaktaki kelime listesi birebir alınır — bir kelime başka
+  derste geçiyor diye atlanmaz (öğretmen tek ders seçtiğinde eksik kalır).
+- **Kural:** Aynı seviyede iki farklı İngilizce kelime **aynı Türkçe
+  karşılığa** sahip olmamalı (eşleştirme/asmaca oyunlarında belirsizlik
+  yaratır). Örn. `run`=koşmak iken `running`=koşuyor.
 
 ## Cümle veritabanı (`data/sentences.js`)
 
@@ -170,15 +175,17 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
    kelime veritabanını kullan (kelime dışı bir pratikse benzer desende yeni
    bir veri dosyası düşünülebilir — bkz. `HANDOFF.md` Faz 1/2).
 3. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle.
-4. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle
+4. Ünite/ders onay kutuları **işaretsiz** başlamalı (tüm oyunlarda ortak
+   davranış — öğretmen genelde tek ders seçer).
+5. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle
    (`category: "oyun"` veya `"arac"`, ve **`skill`** — hangi İngilizce
    becerisini pratik ettiriyor, örn. `"kelime"`, `"cumle-kurma"`). Yeni bir
    skill kodu kullanıyorsan `SKILL_LABELS` objesine görünür adını da ekle.
    `GAMES` içinde ikinci farklı bir `skill` değeri belirdiği an hub
    ana sayfasında otomatik olarak bir filtre/sekme satırı belirir (bkz.
    `js/hub.js` → `renderSkillFilter`) — elle bir şey açmana gerek yok.
-5. `sw.js` → `PRECACHE` listesine yeni dosyaları ekle, `CACHE_VERSION`'ı artır.
-6. Playwright ile gerçek tarayıcıda uçtan uca test et (masaüstü + iPad
+6. `sw.js` → `PRECACHE` listesine yeni dosyaları ekle, `CACHE_VERSION`'ı artır.
+7. Playwright ile gerçek tarayıcıda uçtan uca test et (masaüstü + iPad
    yatay/dikey görünüm), konsol hatası olmadığını doğrula.
 
 ## Oturum iş akışı (ÖNEMLİ)

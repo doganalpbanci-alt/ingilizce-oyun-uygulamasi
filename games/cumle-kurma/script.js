@@ -92,17 +92,19 @@ function populateGrades() {
   populateUnits();
 }
 
+// Dersler işaretsiz başlar (kelime oyunlarıyla aynı davranış): öğretmen
+// genelde tek bir ders çalıştırdığı için "hepsi seçili"den başlamak fazladan
+// bir "Temizle" dokunuşu demek olurdu.
 function populateUnits() {
   var grade = SENTENCES[gradeSelect.value];
   unitCheckboxesEl.innerHTML = "";
   grade.units.forEach(function (unit) {
     var label = document.createElement("label");
-    label.className = "unit-checkbox checked";
+    label.className = "unit-checkbox";
 
     var input = document.createElement("input");
     input.type = "checkbox";
     input.value = unit.id;
-    input.checked = true;
     input.addEventListener("change", function () {
       label.classList.toggle("checked", input.checked);
       populateStructures();
@@ -141,6 +143,15 @@ function populateStructures() {
     });
 
   structureCheckboxesEl.innerHTML = "";
+
+  // Hiç ders seçilmemişken bölüm boş görünmesin.
+  if (list.length === 0) {
+    structureCheckboxesEl.innerHTML =
+      '<p class="hint">Önce yukarıdan en az bir ders seç.</p>';
+    updatePoolCount();
+    return;
+  }
+
   list.forEach(function (s) {
     var label = document.createElement("label");
     label.className = "unit-checkbox checked";

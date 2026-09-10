@@ -118,6 +118,64 @@ Adımlar:
 ### Faz 3 — Genişleme ve Bakiye Maddeler
 **Durum: ⬜ Başlanmadı / sürekli açık**
 
+#### 🔴 Denetimde bulunan hatalar (2026-09-10, öncelikli)
+- [ ] **Cümle Kurma tek kişilik modda "Kontrol Et" kilitlenmiyor.** Doğru
+      cevaptan sonra `setTimeout(advanceSolo, 900)` kuruluyor ama buton açık
+      kalıyor; her ek tıklama tekrar doğru sayılıp yeni bir ilerleme
+      zamanlıyor. Testte 5 hızlı tıklama = **50 puan + 5 cümle atlandı**
+      (olması gereken 10 puan / 1 cümle). Akıllı tahtada çocuk üst üste
+      dokununca gerçekleşir. Takım modu etkilenmiyor (ekran hemen değişiyor).
+      → Çözüm: doğru cevap sonrası bir `locked` bayrağı + `checkBtn.disabled`.
+- [ ] **Eşanlamlı çakışması (MEB verisi).** Aynı ünite içinde iki farklı
+      İngilizce kelimenin Türkçesi birebir aynı: **16 grup**. Örn. 8/Ünite 2'de
+      `amusing`/`entertaining` = "eğlenceli". Ölçüm: 8/Ünite 2 + 12 çift ile
+      60 denemenin **%27'sinde** tahtada aynı Türkçeyi taşıyan iki kart
+      çıkıyor → öğrenci doğru eşleştirdiğini sanıp "yanlış" yiyor. Adam
+      Asmaca'da da tek ipucuna birden çok geçerli cevap oluyor.
+      → Seçenekler: (a) havuz kurulurken Türkçeye göre de tekilleştir,
+      (b) çakışan çevirilere ayırt edici ek yaz ("çöp (garbage)"),
+      (c) oyunlar eşanlamlıların hepsini doğru kabul etsin.
+      Twinkl verisinde bu sorun yok (denetlendi, 0 çakışma).
+- [ ] **Oyun ekranlarında çıkış yok.** Kelime Turnuvası'nda `screen-bracket`,
+      `screen-match`, `screen-champion`; Kelime Yakala'da `screen-game`;
+      Çiz Bakalım'da `screen-turn` + `screen-draw`; Cümle Kurma'da
+      `screen-turn` ekranlarında "← Seçimi Değiştir" yok. Turnuva başlayınca
+      öğretmen maçtan çıkamıyor (tek çıkış: sayfayı terk eden üstteki
+      "Menüye Dön"). Diğer 4 oyunda bu buton var — desen tutarsız.
+
+#### 🟡 Denetimde çıkan iyileştirme notları
+- [ ] **Kod tekrarı (en büyük bakım riski).** `populateGrades`,
+      `populateUnits`, `getCheckedUnitIds`, `shuffle`, `showScreen` **8
+      oyunda ayrı ayrı** duruyor; kurulum ekranı CSS bloğu (`.panel`,
+      `.unit-checkbox`, `.primary-btn`, `.ghost-btn`) **8 dosyada** kopya.
+      Twinkl `<optgroup>` değişikliği bu yüzden 8 dosyaya dokunmayı
+      gerektirdi. → `js/shared-setup.js` + `css/setup.css` çıkarılabilir;
+      "her oyun bağımsız" kuralı korunur çünkü ikisi de hub'ın ortak
+      varlıkları (tıpkı `css/style.css` gibi).
+- [ ] **Ses ayarı oyun başına ayrı.** 6 farklı localStorage anahtarı
+      (`ky-muted`, `kt-muted`, `aa-muted`, `cb-muted`, `kav-muted`,
+      `cmk-muted`). Öğretmen bir oyunda sesi kapatınca diğerinde geri
+      açılıyor. → Tek ortak anahtar (`hub-muted`).
+- [ ] **"Sesi Etkinleştir" düğmesi sadece Kelime Turnuvası'nda.** iPad'de
+      standalone modda Web Audio kilidi için eklenmişti; aynı sorun diğer
+      5 sesli oyunda da olabilir. iPad testinden sonra karar verilmeli.
+- [ ] **Klavye desteği 8 oyunun 2'sinde** (Adam Asmaca, Kelime Yakala).
+      Akıllı tahtada klavye kullanılmıyor olabilir; düşük öncelik.
+- [ ] **İngilizce içerikte `lang="en"` yok.** Ekran okuyucu/TTS İngilizce
+      kelimeleri Türkçe fonetikle okur. İleride sesli okuma eklenirse şart.
+- [ ] **Hub rozeti iki müfredatı tek sayıda topluyor** ("📖 1758 kelime").
+      MEB 1181 + Twinkl 577 ayrı gösterilebilir.
+
+#### Denetimde SORUNSUZ çıkanlar (2026-09-10)
+- `file://` çift tıklama: hub + 8 oyunun tamamı, konsol hatası yok
+- PWA: 44 dosya önbellekte, uçak modunda hub ve oyunlar tam açılıyor
+- `sw.js` PRECACHE listesi diskle **birebir** (eksik/fazla yok)
+- iPad yatay, iPad dikey ve telefon (390px): hiçbir oyunda yatay taşma yok
+- Sınır durumları: 7 kelimelik derste 9 kelime istenince net hata mesajı
+- Adam Asmaca aynı harfe tekrar basmayı, Kelime Avı aynı kelimeyi tekrar
+  bulmayı engelliyor; Kelime Yakala'nın rAF döngüsü tek ve bayrak korumalı
+- Twinkl verisi: kaynağa %100 sadık, 0 belirsiz çeviri
+
 Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
 - [ ] iPad'de gerçek Safari'de PWA doğrulaması (kullanıcı yapacak: kısayolu
       sil → siteyi Safari'de aç → "Ana Ekrana Ekle" → uçak modunda test)
@@ -133,6 +191,9 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
       için alternatif yayın yolu kurulması, ya da Twinkl verisinin depodan
       ayrılması.
 - [ ] Twinkl kelime çevirilerinin öğretmen tarafından gözden geçirilmesi
+- [ ] Çoklu seviye seçimi (tekrar dersi için "Level 1+2+3 karışık") —
+      seçici şu an tek seviye; MEB tarafında da 5. ve 6. sınıf birlikte
+      seçilemiyor
 
 ---
 
@@ -430,3 +491,24 @@ Konsol hatası yok.
 
 - **Sıradaki oturumun hedefi:** değişmedi — Faz T2 (Level 6-10), önce
   deyim/`skill` kararının uygulanması.
+
+### Oturum 2026-09-10 (devam) — Uçtan uca denetim
+Kullanıcı isteğiyle uygulamanın tamamı incelendi ve test edildi. Yöntem:
+`file://` + `http://` üzerinden Playwright ile 8 oyunun hepsi oynandı,
+sınır durumları zorlandı, PWA çevrimdışı denendi, 3 ekran boyutunda taşma
+kontrolü yapıldı, MEB + Twinkl verisi script'le denetlendi, kod tekrarı
+ölçüldü.
+
+**Sonuç:** Çökme yok, veri kaybı yok, offline ve `file://` sağlam.
+**3 gerçek hata** ve **6 iyileştirme notu** bulundu — hepsi yukarıdaki
+Faz 3 bölümüne işlendi. Öne çıkan:
+1. Cümle Kurma solo modda "Kontrol Et" kilitlenmiyor → hızlı tıklama
+   puanı katlıyor ve cümle atlıyor (reprodüksiyon: 5 tıklama = 50 puan).
+2. MEB verisinde ünite içi eşanlamlı çakışması (16 grup) → Eşleştirme'de
+   %27 oranında iki kart aynı Türkçeyi taşıyor.
+3. 4 oyunun bazı ekranlarında kurulum ekranına dönüş butonu yok.
+
+Kod değişikliği yapılmadı — kullanıcı raporu görüp önceliklendirecek.
+
+- **Sıradaki oturumun hedefi:** kullanıcının seçtiği düzeltmeler; sonrasında
+  Faz T2 (Twinkl Level 6-10) kaldığı yerden devam eder.

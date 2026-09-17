@@ -118,15 +118,15 @@ Adımlar:
 ### Faz 3 — Genişleme ve Bakiye Maddeler
 **Durum: ⬜ Başlanmadı / sürekli açık**
 
-#### 🔴 Denetimde bulunan hatalar (2026-09-10, öncelikli)
-- [ ] **Cümle Kurma tek kişilik modda "Kontrol Et" kilitlenmiyor.** Doğru
+#### ✅ Denetim hataları — 2026-09-17'de düzeltildi
+- [x] **Cümle Kurma tek kişilik modda "Kontrol Et" kilitlenmiyor.** ✅ DÜZELTİLDİ Doğru
       cevaptan sonra `setTimeout(advanceSolo, 900)` kuruluyor ama buton açık
       kalıyor; her ek tıklama tekrar doğru sayılıp yeni bir ilerleme
       zamanlıyor. Testte 5 hızlı tıklama = **50 puan + 5 cümle atlandı**
       (olması gereken 10 puan / 1 cümle). Akıllı tahtada çocuk üst üste
       dokununca gerçekleşir. Takım modu etkilenmiyor (ekran hemen değişiyor).
       → Çözüm: doğru cevap sonrası bir `locked` bayrağı + `checkBtn.disabled`.
-- [ ] **Eşanlamlı çakışması (MEB verisi).** Aynı ünite içinde iki farklı
+- [x] **Eşanlamlı çakışması (MEB verisi).** ✅ DÜZELTİLDİ Aynı ünite içinde iki farklı
       İngilizce kelimenin Türkçesi birebir aynı: **16 grup**. Örn. 8/Ünite 2'de
       `amusing`/`entertaining` = "eğlenceli". Ölçüm: 8/Ünite 2 + 12 çift ile
       60 denemenin **%27'sinde** tahtada aynı Türkçeyi taşıyan iki kart
@@ -136,7 +136,7 @@ Adımlar:
       (b) çakışan çevirilere ayırt edici ek yaz ("çöp (garbage)"),
       (c) oyunlar eşanlamlıların hepsini doğru kabul etsin.
       Twinkl verisinde bu sorun yok (denetlendi, 0 çakışma).
-- [ ] **Oyun ekranlarında çıkış yok.** Kelime Turnuvası'nda `screen-bracket`,
+- [x] **Oyun ekranlarında çıkış yok.** ✅ DÜZELTİLDİ Kelime Turnuvası'nda `screen-bracket`,
       `screen-match`, `screen-champion`; Kelime Yakala'da `screen-game`;
       Çiz Bakalım'da `screen-turn` + `screen-draw`; Cümle Kurma'da
       `screen-turn` ekranlarında "← Seçimi Değiştir" yok. Turnuva başlayınca
@@ -144,7 +144,7 @@ Adımlar:
       "Menüye Dön"). Diğer 4 oyunda bu buton var — desen tutarsız.
 
 #### 🟡 Denetimde çıkan iyileştirme notları
-- [ ] **Kod tekrarı (en büyük bakım riski).** `populateGrades`,
+- [x] **Kod tekrarı (en büyük bakım riski).** ✅ DÜZELTİLDİ `populateGrades`,
       `populateUnits`, `getCheckedUnitIds`, `shuffle`, `showScreen` **8
       oyunda ayrı ayrı** duruyor; kurulum ekranı CSS bloğu (`.panel`,
       `.unit-checkbox`, `.primary-btn`, `.ghost-btn`) **8 dosyada** kopya.
@@ -512,3 +512,54 @@ Kod değişikliği yapılmadı — kullanıcı raporu görüp önceliklendirecek
 
 - **Sıradaki oturumun hedefi:** kullanıcının seçtiği düzeltmeler; sonrasında
   Faz T2 (Twinkl Level 6-10) kaldığı yerden devam eder.
+
+### Oturum 2026-09-17 — Denetim hatalarının düzeltilmesi (1-4)
+Kullanıcı raporu görüp "hepsini sırayla yap, 1'den 4'e kadar" dedi.
+
+**1. Cümle Kurma "Kontrol Et" kilidi.** `state.locked` eklendi; doğru cevapta
+`lockBoard()` kontrol/sıfırla/geç düğmelerini kapatıyor, kelime sürükleme de
+bloke oluyor, `setupCurrent()` yeni cümlede `unlockBoard()` çağırıyor.
+Ölçüm: 6 hızlı tıklama artık 10 puan / 1 cümle (önce 60 puan / 6 cümle).
+Yanlış cevap yolu etkilenmiyor (kilit açık kalıyor, tekrar denenebiliyor).
+
+**2. Eşanlamlı çakışması.** 20 grubun tamamı ayrıştırıldı (16'sı ünite içi).
+İngilizce sızdıran "(garbage)" tarzı ek yerine gerçek Türkçe ayrımlar
+yazıldı: `delicious`=nefis / `tasty`=lezzetli, `seldom`=seyrek /
+`rarely`=nadiren, `meal`=öğün / `dish`=yemek, `count on`=bel bağlamak /
+`rely on`=-e dayanmak vb. Çöp ailesi kullanım farkıyla verildi
+(garbage=çöp, trash=çöp (Amerikan kullanımı), rubbish=çöp (İngiliz
+kullanımı), litter=yere atılmış çöp, waste=atık).
+Ölçüm: 8/Ünite 2'de 60 denemenin **0'ında** çakışma (önce 16 / %27).
+Her iki müfredatta (1758 kelime) ünite içi ve sınıf içi çakışma **sıfır**.
+
+**3. Eksik çıkış düğmeleri.** 9 ekrana eklendi: Turnuva'da bracket/maç/
+şampiyon, Kelime Yakala'da oyun, Çiz Bakalım'da sıra/çizim, Cümle Kurma'da
+sıra. Turnuva'nın `clearTimer()`'ı artık `taTimerId`'yi de temizliyor ve
+çıkış handler'ı onu çağırıyor — yarıda bırakılan maç arka planda ilerlemiyor
+(8 sn beklenerek doğrulandı). Kelime Yakala'nın HUD düğmesi dar ekranda
+sadece oka dönüyor (`.ghost-btn.small.hud-exit` — tek sınıflı seçici
+özgüllükte kaybediyordu). Artık 8 oyunun **her ekranında** çıkış var.
+
+**4. Ortak kod çıkarıldı.**
+- `js/shared-setup.js` (`HubSetup`): `shuffle`, `screenSwitcher`,
+  `unitPicker` (sınıf açılır listesi + `<optgroup>` + ünite onay kutuları +
+  Tümünü Seç/Temizle). 8 oyundan `populateGrades`, `populateUnits`,
+  `getCheckedUnitIds`, `shuffle` ve çoğunda `showScreen` kaldırıldı.
+  **Dikkat:** `picker.start()` ayrı çağrılır — `onChange` geri çağrısı oyunun
+  `picker` değişkenini kullanıyor ve o değişken `unitPicker()` dönmeden
+  atanmıyor.
+- `css/setup.css`: 28 ortak blok (panel, alanlar, onay kutuları, düğmeler,
+  ses düğmesi, konfeti). Oyun başına 16-25 blok silindi. `.screen` genişliği
+  ve Turnuva'nın futbol teması oyunlarda kaldı (sonra yüklendiği için kazanır).
+- Yükleme sırası: `css/style.css` → `css/setup.css` → oyunun `style.css`'i;
+  `shared-setup.js` → oyunun `script.js`'i. `sw.js` → `v6`, iki yeni dosya
+  precache'te (46 dosya).
+
+**Test:** 8 oyunda kurulum (optgroup, 10 ders, varsayılan işaretsiz, Tümünü
+Seç/Temizle, sayaç) + tam oyun akışları (Asmaca, Kelime Avı, Turnuva
+şampiyona kadar, Çiz Bakalım, Eşleştirme, Kartlar, Cümle Kurma solo+takım);
+`file://` hub + 8 oyun; PWA çevrimdışı (hub 1758 kelime, oyun açılıyor);
+1180/820/390px taşma yok; `sw.js` PRECACHE diskle birebir; konsol hatası yok.
+
+- **Sıradaki oturumun hedefi:** Faz T2 — Twinkl Level 6-10. İlk iş Level 8'de
+  başlayan deyimler için `skill: "deyim"` kararının nasıl uygulanacağı.

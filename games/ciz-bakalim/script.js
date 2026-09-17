@@ -24,8 +24,6 @@ var draw = {
 };
 
 var screens = document.querySelectorAll(".screen");
-var gradeSelect = document.getElementById("grade-select");
-var unitCheckboxesEl = document.getElementById("unit-checkboxes");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
 var teamNamesEl = document.getElementById("team-names");
@@ -55,15 +53,7 @@ function syncDrawHeight() {
   document.documentElement.style.setProperty("--draw-avail", avail + "px");
 }
 
-function shuffle(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = array[i];
-    array[i] = array[j];
-    array[j] = tmp;
-  }
-  return array;
-}
+var shuffle = HubSetup.shuffle;
 
 /* ---------- Sound toggle ---------- */
 
@@ -80,63 +70,8 @@ refreshSoundToggleIcon();
 
 /* ---------- Setup ---------- */
 
-// Sınıf listesi iki kaynaktan gelir (MEB ve Twinkl), bu yüzden kayıtlardaki
-// `group` alanına göre <optgroup> başlıkları altında toplanır. `group`
-// taşımayan kayıtlar doğrudan listeye eklenir.
-function populateGrades() {
-  var groups = {};
-  Object.keys(CURRICULUM).forEach(function (gradeKey) {
-    var groupName = CURRICULUM[gradeKey].group || "";
-    var parent = gradeSelect;
-    if (groupName) {
-      if (!groups[groupName]) {
-        groups[groupName] = document.createElement("optgroup");
-        groups[groupName].label = groupName;
-        gradeSelect.appendChild(groups[groupName]);
-      }
-      parent = groups[groupName];
-    }
-    var option = document.createElement("option");
-    option.value = gradeKey;
-    option.textContent = CURRICULUM[gradeKey].label;
-    parent.appendChild(option);
-  });
-  populateUnits();
-}
-
-function populateUnits() {
-  var grade = CURRICULUM[gradeSelect.value];
-  unitCheckboxesEl.innerHTML = "";
-  grade.units.forEach(function (unit) {
-    var label = document.createElement("label");
-    label.className = "unit-checkbox";
-
-    var input = document.createElement("input");
-    input.type = "checkbox";
-    input.value = unit.id;
-    input.addEventListener("change", function () {
-      label.classList.toggle("checked", input.checked);
-      updateWordCount();
-    });
-
-    var span = document.createElement("span");
-    span.textContent = unit.title;
-
-    label.appendChild(input);
-    label.appendChild(span);
-    unitCheckboxesEl.appendChild(label);
-  });
-  updateWordCount();
-}
-
-function getCheckedUnitIds() {
-  return Array.prototype.slice
-    .call(unitCheckboxesEl.querySelectorAll("input:checked"))
-    .map(function (input) { return input.value; });
-}
-
 function buildWordPool(unitIds) {
-  var grade = CURRICULUM[gradeSelect.value];
+  var grade = picker.grade();
   var seen = {};
   var words = [];
   grade.units
@@ -154,27 +89,9 @@ function buildWordPool(unitIds) {
 }
 
 function updateWordCount() {
-  var count = buildWordPool(getCheckedUnitIds()).length;
+  var count = buildWordPool(picker.checkedUnitIds()).length;
   unitWordCountEl.textContent = count > 0 ? count + " kelime seçildi" : "";
 }
-
-gradeSelect.addEventListener("change", populateUnits);
-
-document.getElementById("select-all-units").addEventListener("click", function () {
-  unitCheckboxesEl.querySelectorAll("input").forEach(function (input) {
-    input.checked = true;
-    input.closest(".unit-checkbox").classList.add("checked");
-  });
-  updateWordCount();
-});
-
-document.getElementById("clear-all-units").addEventListener("click", function () {
-  unitCheckboxesEl.querySelectorAll("input").forEach(function (input) {
-    input.checked = false;
-    input.closest(".unit-checkbox").classList.remove("checked");
-  });
-  updateWordCount();
-});
 
 document.querySelectorAll('[data-action="back-to-setup"]').forEach(function (btn) {
   btn.addEventListener("click", function () {
@@ -184,7 +101,7 @@ document.querySelectorAll('[data-action="back-to-setup"]').forEach(function (btn
 });
 
 document.getElementById("to-teams-btn").addEventListener("click", function () {
-  var unitIds = getCheckedUnitIds();
+  var unitIds = picker.checkedUnitIds();
   if (unitIds.length === 0) {
     unitErrorEl.textContent = "En az bir ünite seçmelisin.";
     unitErrorEl.hidden = false;
@@ -522,4 +439,5 @@ function triggerConfetti() {
 }
 
 buildTools();
-populateGrades();
+var picker = HubSetup.unitPicker({ source: CURRICULUM, onChange: updateWordCount });
+picker.start();

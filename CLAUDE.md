@@ -63,7 +63,9 @@ data/curriculum.js    Kelime veritabanı (MEB 5-8) — kelime oyunlarının kayn
 data/sentences.js     Cümle veritabanı (yapı/kazanım bazlı) — Cümle Kurma'nın kaynağı
 data/twinkl.js        Twinkl ESL kelimeleri — CURRICULUM'a eklenir (curriculum.js'ten SONRA yüklenir)
 data/twinkl-sentences.js  Twinkl ESL cümleleri — SENTENCES'a eklenir (sentences.js'ten SONRA yüklenir)
+css/setup.css         Kurulum ekranı ortak stilleri (panel, onay kutuları, düğmeler)
 js/games-registry.js  Hub içerik listesi (yeni oyun/araç = buraya 1 kayıt)
+js/shared-setup.js    Ortak kurulum mantığı (HubSetup: sınıf/ünite seçici, showScreen, shuffle)
 js/hub.js             Kartları kategoriye + beceriye (skill) göre çizer
 js/pwa.js             Service worker kaydı (file:// korumalı)
 manifest.json, sw.js, icons/
@@ -123,9 +125,12 @@ Level 6-15 henüz girilmedi (bkz. `HANDOFF.md` Faz T2/T3).
   geçmez**. L8+ anahtar cümleleri 15-25 kelime olabiliyor, kısaltılmalı.
 - **Kural:** Kaynaktaki kelime listesi birebir alınır — bir kelime başka
   derste geçiyor diye atlanmaz (öğretmen tek ders seçtiğinde eksik kalır).
-- **Kural:** Aynı seviyede iki farklı İngilizce kelime **aynı Türkçe
-  karşılığa** sahip olmamalı (eşleştirme/asmaca oyunlarında belirsizlik
-  yaratır). Örn. `run`=koşmak iken `running`=koşuyor.
+- **Kural (her iki müfredat için):** Aynı sınıf/seviyede iki farklı İngilizce
+  kelime **aynı Türkçe karşılığa** sahip olmamalı. Eşleştirmede iki kart aynı
+  etiketi taşır, asmacada tek ipucuna birden çok geçerli cevap olur. Örn.
+  `run`=koşmak iken `running`=koşuyor; `delicious`=nefis iken `tasty`=lezzetli.
+  Yeni veri girince şu kontrol çalıştırılmalı: her sınıf için `tr` değerlerini
+  grupla, bir `tr` altında birden çok `en` varsa ayrıştır.
 
 ## Cümle veritabanı (`data/sentences.js`)
 
@@ -162,7 +167,7 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v5`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v6`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)
@@ -171,12 +176,23 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
 
 1. `games/` altında yeni bir klasör aç.
 2. İçine `index.html`, `style.css`, `script.js` koy (gerekiyorsa `sounds.js`).
-   `../../css/style.css` ile ortak temayı, `../../data/curriculum.js` ile
-   kelime veritabanını kullan (kelime dışı bir pratikse benzer desende yeni
-   bir veri dosyası düşünülebilir — bkz. `HANDOFF.md` Faz 1/2).
-3. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle.
-4. Ünite/ders onay kutuları **işaretsiz** başlamalı (tüm oyunlarda ortak
-   davranış — öğretmen genelde tek ders seçer).
+   Stil sırası: `../../css/style.css` → `../../css/setup.css` → kendi
+   `style.css`'in. Veri için `../../data/curriculum.js` + `twinkl.js`
+   (kelime dışı bir pratikse benzer desende yeni bir veri dosyası).
+3. **Kurulum ekranını elle yazma** — `../../js/shared-setup.js` yükle ve
+   `HubSetup` kullan; sınıf açılır listesi, `<optgroup>`'lar, ünite onay
+   kutuları, "Tümünü Seç/Temizle" ve `showScreen` oradan gelir:
+   ```js
+   var showScreen = HubSetup.screenSwitcher();
+   var shuffle = HubSetup.shuffle;
+   var picker = HubSetup.unitPicker({ source: CURRICULUM, onChange: updateWordCount });
+   picker.start();   // picker ATANDIKTAN sonra çağrılmalı
+   ```
+   Sonra `picker.grade()`, `picker.checkedUnits()`, `picker.checkedUnitIds()`.
+4. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle,
+   ayrıca **her ekrana** `data-action="back-to-setup"` taşıyan bir çıkış
+   düğmesi koy (kurulum ekranı hariç). Oyun ortasında çıkılabiliyorsa
+   handler'da zamanlayıcıları durdur.
 5. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle
    (`category: "oyun"` veya `"arac"`, ve **`skill`** — hangi İngilizce
    becerisini pratik ettiriyor, örn. `"kelime"`, `"cumle-kurma"`). Yeni bir

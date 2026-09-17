@@ -28,9 +28,6 @@ var state = {
 
 var drag = { active: false };
 
-var screens = document.querySelectorAll(".screen");
-var gradeSelect = document.getElementById("grade-select");
-var unitCheckboxesEl = document.getElementById("unit-checkboxes");
 var structureCheckboxesEl = document.getElementById("structure-checkboxes");
 var poolCountEl = document.getElementById("pool-count");
 var setupErrorEl = document.getElementById("setup-error");
@@ -40,19 +37,9 @@ var sentenceAreaEl = document.getElementById("sentence-area");
 var checkBtn = document.getElementById("check-btn");
 var ghostEl = document.getElementById("drag-ghost");
 
-function showScreen(id) {
-  screens.forEach(function (el) { el.hidden = el.id !== id; });
-}
+var showScreen = HubSetup.screenSwitcher();
 
-function shuffle(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = array[i];
-    array[i] = array[j];
-    array[j] = tmp;
-  }
-  return array;
-}
+var shuffle = HubSetup.shuffle;
 
 /* ---------- Sound toggle ---------- */
 
@@ -69,67 +56,12 @@ refreshSoundToggleIcon();
 
 /* ---------- Setup: sınıf / ünite / yapı ---------- */
 
-// Sınıf listesi iki kaynaktan gelir (MEB ve Twinkl), bu yüzden kayıtlardaki
-// `group` alanına göre <optgroup> başlıkları altında toplanır. `group`
-// taşımayan kayıtlar doğrudan listeye eklenir.
-function populateGrades() {
-  var groups = {};
-  Object.keys(SENTENCES).forEach(function (gradeKey) {
-    var groupName = SENTENCES[gradeKey].group || "";
-    var parent = gradeSelect;
-    if (groupName) {
-      if (!groups[groupName]) {
-        groups[groupName] = document.createElement("optgroup");
-        groups[groupName].label = groupName;
-        gradeSelect.appendChild(groups[groupName]);
-      }
-      parent = groups[groupName];
-    }
-    var option = document.createElement("option");
-    option.value = gradeKey;
-    option.textContent = SENTENCES[gradeKey].label;
-    parent.appendChild(option);
-  });
-  populateUnits();
-}
-
 // Dersler işaretsiz başlar (kelime oyunlarıyla aynı davranış): öğretmen
 // genelde tek bir ders çalıştırdığı için "hepsi seçili"den başlamak fazladan
 // bir "Temizle" dokunuşu demek olurdu.
-function populateUnits() {
-  var grade = SENTENCES[gradeSelect.value];
-  unitCheckboxesEl.innerHTML = "";
-  grade.units.forEach(function (unit) {
-    var label = document.createElement("label");
-    label.className = "unit-checkbox";
-
-    var input = document.createElement("input");
-    input.type = "checkbox";
-    input.value = unit.id;
-    input.addEventListener("change", function () {
-      label.classList.toggle("checked", input.checked);
-      populateStructures();
-    });
-
-    var span = document.createElement("span");
-    span.textContent = unit.title;
-
-    label.appendChild(input);
-    label.appendChild(span);
-    unitCheckboxesEl.appendChild(label);
-  });
-  populateStructures();
-}
-
-function getCheckedUnitIds() {
-  return Array.prototype.slice
-    .call(unitCheckboxesEl.querySelectorAll("input:checked"))
-    .map(function (input) { return input.value; });
-}
-
 function populateStructures() {
-  var grade = SENTENCES[gradeSelect.value];
-  var unitIds = getCheckedUnitIds();
+  var grade = picker.grade();
+  var unitIds = picker.checkedUnitIds();
   var seen = {};
   var list = [];
   grade.units
@@ -205,27 +137,9 @@ function buildSentencePool(gradeKey, unitIds, structureIds) {
 }
 
 function updatePoolCount() {
-  var pool = buildSentencePool(gradeSelect.value, getCheckedUnitIds(), getCheckedStructureIds());
+  var pool = buildSentencePool(picker.gradeKey(), picker.checkedUnitIds(), getCheckedStructureIds());
   poolCountEl.textContent = pool.length > 0 ? pool.length + " cümle bu seçimde uygun" : "Bu seçimde uygun cümle yok.";
 }
-
-gradeSelect.addEventListener("change", populateUnits);
-
-document.getElementById("select-all-units").addEventListener("click", function () {
-  unitCheckboxesEl.querySelectorAll("input").forEach(function (input) {
-    input.checked = true;
-    input.closest(".unit-checkbox").classList.add("checked");
-  });
-  populateStructures();
-});
-
-document.getElementById("clear-all-units").addEventListener("click", function () {
-  unitCheckboxesEl.querySelectorAll("input").forEach(function (input) {
-    input.checked = false;
-    input.closest(".unit-checkbox").classList.remove("checked");
-  });
-  populateStructures();
-});
 
 document.querySelectorAll('[data-action="back-to-setup"]').forEach(function (btn) {
   btn.addEventListener("click", function () {
@@ -263,7 +177,7 @@ toggleModeFields();
 /* ---------- Kuruluştan devam ---------- */
 
 document.getElementById("to-next-btn").addEventListener("click", function () {
-  var unitIds = getCheckedUnitIds();
+  var unitIds = picker.checkedUnitIds();
   var structureIds = getCheckedStructureIds();
 
   if (unitIds.length === 0 || structureIds.length === 0) {
@@ -272,7 +186,7 @@ document.getElementById("to-next-btn").addEventListener("click", function () {
     return;
   }
 
-  var pool = buildSentencePool(gradeSelect.value, unitIds, structureIds);
+  var pool = buildSentencePool(picker.gradeKey(), unitIds, structureIds);
   if (pool.length === 0) {
     setupErrorEl.textContent = "Bu seçimde hiç cümle yok. Ünite veya yapı seçimini değiştir.";
     setupErrorEl.hidden = false;
@@ -771,4 +685,5 @@ function triggerConfetti() {
   }
 }
 
-populateGrades();
+var picker = HubSetup.unitPicker({ source: SENTENCES, onChange: populateStructures });
+picker.start();

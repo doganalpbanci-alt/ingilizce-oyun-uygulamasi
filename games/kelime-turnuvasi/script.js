@@ -215,6 +215,8 @@ document.getElementById("to-players-btn").addEventListener("click", function () 
 
 document.querySelectorAll('[data-action="back-to-setup"]').forEach(function (btn) {
   btn.addEventListener("click", function () {
+    // Maç ortasında çıkılabildiği için raunt sayaçları da durdurulmalı.
+    if (state.match) clearTimer();
     showScreen("screen-setup");
   });
 });
@@ -535,6 +537,12 @@ function clearTimer() {
   if (state.match.tickTimerIds) {
     state.match.tickTimerIds.forEach(clearTimeout);
     state.match.tickTimerIds = [];
+  }
+  // Bireysel süre modunun sayacı da burada durmalı: maç yarıda bırakılınca
+  // arkada çalışmaya devam edip ekranı değiştirmesin.
+  if (state.match.taTimerId) {
+    clearTimeout(state.match.taTimerId);
+    state.match.taTimerId = null;
   }
 }
 

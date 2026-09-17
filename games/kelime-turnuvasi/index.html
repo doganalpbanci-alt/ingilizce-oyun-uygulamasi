@@ -101,6 +101,9 @@
       <h2>Turnuva Durumu</h2>
       <div id="bracket-view" class="bracket-view"></div>
       <div id="next-match-box" class="next-match-box"></div>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+      </div>
     </div>
   </section>
 
@@ -115,6 +118,9 @@
         <span id="player-b-name"></span>
       </div>
       <p id="round-progress" class="round-progress"></p>
+      <div class="match-exit">
+        <button type="button" class="ghost-btn small" data-action="back-to-setup">← Turnuvadan Çık</button>
+      </div>
     </div>
 
     <!-- Yarışma Modu arayüzü -->
@@ -162,7 +168,10 @@
       <div class="champion-emoji">🏆</div>
       <h2 id="champion-name"></h2>
       <p>Turnuvanın şampiyonu!</p>
-      <button id="restart-btn" type="button" class="primary-btn">Yeni Turnuva</button>
+      <div class="btn-row" style="justify-content: center;">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Seçimi Değiştir</button>
+        <button id="restart-btn" type="button" class="primary-btn">Yeni Turnuva</button>
+      </div>
     </div>
   </section>
 

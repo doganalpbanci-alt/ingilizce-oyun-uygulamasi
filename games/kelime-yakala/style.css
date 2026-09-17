@@ -492,3 +492,23 @@ select {
   color: var(--primary);
   font-size: 24px;
 }
+
+/* HUD'daki "Seçimi Değiştir" — oyun ortasında kurulum ekranına dönüş. */
+.hud-exit {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Dar ekranda HUD tek satıra sığsın diye buton sadece oka döner. */
+/* Not: .ghost-btn.small iki sınıflı olduğu için tek sınıflı .hud-exit
+   özgüllükte kaybediyordu; bu yüzden seçici üç sınıflı yazıldı. */
+@media (max-width: 560px) {
+  .ghost-btn.small.hud-exit {
+    font-size: 0;
+    padding: 7px 11px;
+  }
+  .ghost-btn.small.hud-exit::before {
+    content: "←";
+    font-size: 15px;
+  }
+}

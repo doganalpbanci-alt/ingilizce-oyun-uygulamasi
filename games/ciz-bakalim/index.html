@@ -82,7 +82,10 @@
       <p class="turn-round" id="turn-round"></p>
       <h2 id="turn-team"></h2>
       <p class="hint">Takımdan bir kişi tahtaya gelsin. Kelimeyi sadece o görecek!</p>
-      <button id="reveal-btn" type="button" class="primary-btn">Kelimeyi Göster</button>
+      <div class="btn-row" style="justify-content: center;">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Seçimi Değiştir</button>
+        <button id="reveal-btn" type="button" class="primary-btn">Kelimeyi Göster</button>
+      </div>
     </div>
   </section>
 
@@ -116,6 +119,7 @@
     <div class="draw-actions">
       <button type="button" id="correct-btn" class="primary-btn big">✅ Bildi!</button>
       <button type="button" id="pass-btn" class="ghost-btn">⏭️ Bilemedi / Pas</button>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Çık</button>
     </div>
   </section>
 

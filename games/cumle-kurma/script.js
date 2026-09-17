@@ -4,6 +4,7 @@ var state = {
   mode: "solo",
   // ortak
   current: null,       // { sentence, tokens, poolTiles, placedTiles }
+  locked: false,       // doğru cevaptan sonra tahta kilitlenir (çift dokunuş koruması)
   // tek kişilik mod
   queue: [],
   index: 0,
@@ -507,6 +508,7 @@ function tokenize(en) {
 }
 
 function setupCurrent(sentenceObj) {
+  unlockBoard();
   var tokens = tokenize(sentenceObj.en);
   var tiles = tokens.map(function (t, i) { return { id: i, text: t }; });
   shuffle(tiles);
@@ -540,9 +542,24 @@ function renderPlay() {
   poolAreaEl.innerHTML = state.current.poolTiles.map(tileHtml).join("");
   sentenceAreaEl.innerHTML = state.current.placedTiles.map(tileHtml).join("") ||
     '<span class="sentence-placeholder">Kelimeleri buraya sırayla ekle</span>';
-  checkBtn.disabled = state.current.poolTiles.length > 0;
+  checkBtn.disabled = state.locked || state.current.poolTiles.length > 0;
   document.getElementById("structure-chip").textContent = state.current.sentence.structureLabel;
   document.getElementById("sentence-hint").textContent = "🇹🇷 " + state.current.sentence.tr;
+}
+
+// Doğru cevap verildikten sonra sıradaki cümle gelene kadar tahtayı dondurur;
+// böylece üst üste dokunmak puanı katlayamaz, kelimeler de oynatılamaz.
+function lockBoard() {
+  state.locked = true;
+  checkBtn.disabled = true;
+  document.getElementById("reset-btn").disabled = true;
+  document.getElementById("skip-btn").disabled = true;
+}
+
+function unlockBoard() {
+  state.locked = false;
+  document.getElementById("reset-btn").disabled = false;
+  document.getElementById("skip-btn").disabled = false;
 }
 
 function arraysEqual(a, b) {
@@ -554,6 +571,10 @@ function arraysEqual(a, b) {
 }
 
 checkBtn.addEventListener("click", function () {
+  // Doğru cevaptan sonra sıradaki cümleye geçiş 900 ms gecikmeli; o aralıkta
+  // tahtaya tekrar dokunulursa aynı cümle yeniden "doğru" sayılıp puan
+  // katlanıyor ve cümleler atlanıyordu. state.locked bunu engelliyor.
+  if (state.locked) return;
   if (state.current.poolTiles.length > 0) return;
   var attempt = state.current.placedTiles.map(function (t) { return t.text; });
   var correct = arraysEqual(attempt, state.current.tokens);
@@ -561,6 +582,7 @@ checkBtn.addEventListener("click", function () {
   if (correct) {
     document.getElementById("play-feedback").textContent = "🎉 Doğru!";
     sentenceAreaEl.classList.remove("shake");
+    lockBoard();
     if (state.mode === "solo") {
       state.score += 10;
       state.streak++;
@@ -641,6 +663,7 @@ function zoneFromPoint(x, y) {
 }
 
 function startTileDrag(e, zone) {
+  if (state.locked) return;
   var tileEl = e.target.closest(".tile");
   if (!tileEl) return;
   var id = tileEl.dataset.tileId;

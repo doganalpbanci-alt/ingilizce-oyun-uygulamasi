@@ -561,5 +561,40 @@ Seç/Temizle, sayaç) + tam oyun akışları (Asmaca, Kelime Avı, Turnuva
 `file://` hub + 8 oyun; PWA çevrimdışı (hub 1758 kelime, oyun açılıyor);
 1180/820/390px taşma yok; `sw.js` PRECACHE diskle birebir; konsol hatası yok.
 
+### Oturum 2026-09-17 (devam) — Yayına alma + GitHub Pages düzeltmesi
+Kullanıcının yakın zamanda öğrencisiyle **Twinkl Level 1 / Ders 12 tekrar
+dersi** vardı; "twinkl oyunları main sürümünde var mı, açıp oynayabilir
+miyim" diye sordu.
+
+**1. main güncel değildi.** `main` çalışma dalının **11 commit gerisindeydi**
+— Cümle Kurma, Twinkl verisi ve denetim düzeltmelerinin hiçbiri yoktu.
+Kullanıcı onayıyla merge edilip push edildi. `main` yerelde doğrulandı:
+hub 8 kart / 1758 kelime, Çiz Bakalım Level 1 Ders 7-11 seçimiyle 51 kelime,
+konsol hatası yok.
+
+**2. Asıl sorun: Pages "GitHub Actions" modunda ama iş akışı yoktu.**
+Kullanıcı Pages kaynağının dal seçimli değil **GitHub Actions** olduğunu
+söyledi. Depoda `.github/workflows/` **hiç yoktu** (ne main'de ne dallarda).
+Actions modunda GitHub dal tabanlı otomatik derleyiciyi
+(`dynamic/pages/pages-build-deployment`) çalıştırmaz, depodaki bir iş
+akışının ürettiği artefaktı yayınlar. Geçmişteki 23 çalışmanın hepsi eski
+dal modundan kalmaydı; **en son yayın 31 Temmuz 2026**, eski
+`claude/english-game-app-hub-r3he08` dalı, commit `50d4617`. Yani main'e
+yapılan hiçbir push aylardır siteye ulaşmıyordu.
+
+→ `.github/workflows/pages.yml` eklendi: `actions/checkout` →
+`configure-pages` → `upload-pages-artifact` (proje build gerektirmediği için
+`path: .`, depo kökü olduğu gibi) → `deploy-pages`. Tetikleyici `push`
+(main) + `workflow_dispatch`. `concurrency: pages`, `cancel-in-progress:
+false`.
+
+**Sonuç:** main'e push edilince iş akışı anında tetiklendi, 5 adımın hepsi
+`success`, 17 saniyede tamamlandı (çalışma no 1, commit `9cd4f41`). Actions
+modunda depodan yapılan ilk gerçek yayın. Kullanıcı canlı sitede doğruladı
+("evet gelmiş").
+
+**Not:** Bu ortamdan `github.io` proxy tarafından engelleniyor, canlı site
+doğrudan görülemiyor — yayın yalnızca Actions API'sinden doğrulanabiliyor.
+
 - **Sıradaki oturumun hedefi:** Faz T2 — Twinkl Level 6-10. İlk iş Level 8'de
   başlayan deyimler için `skill: "deyim"` kararının nasıl uygulanacağı.

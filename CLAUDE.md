@@ -70,7 +70,22 @@ js/hub.js             Kartları kategoriye + beceriye (skill) göre çizer
 js/pwa.js             Service worker kaydı (file:// korumalı)
 manifest.json, sw.js, icons/
 games/<ad>/           Her biri: index.html + style.css + script.js (+ sounds.js)
+.github/workflows/pages.yml   GitHub Pages yayın akışı (aşağıya bak)
 ```
+
+## Yayın (GitHub Pages)
+
+Depo ayarlarında Pages kaynağı **"GitHub Actions"** seçili. Bu modda GitHub
+dal tabanlı otomatik derleyiciyi çalıştırmaz — yayın **yalnızca** depodaki
+`.github/workflows/pages.yml` üzerinden olur. Akış `main`'e her push'ta
+çalışır, proje build gerektirmediği için depo kökünü olduğu gibi Pages
+artefaktı olarak yükler.
+
+- Canlı siteye bir değişiklik gitsin istiyorsan **`main`'e merge edilmeli**;
+  çalışma dalına push etmek siteyi güncellemez.
+- Bu iş akışı silinirse veya bozulursa site sessizce eski sürümde donar
+  (2026-09-17'de tam olarak bu yaşandı: iş akışı hiç yoktu, site Temmuz
+  sürümünde kalmıştı). Yayın durumu Actions sekmesinden doğrulanır.
 
 ## Kelime veritabanı (`data/curriculum.js`)
 

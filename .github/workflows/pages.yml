@@ -1,0 +1,48 @@
+# GitHub Pages yayınlama akışı.
+#
+# Depo ayarlarında Pages kaynağı "GitHub Actions" seçili. Bu modda Pages,
+# depoda bulunan bir iş akışının ürettiği artefaktı yayınlar; dal modundaki
+# otomatik ("dynamic/pages/pages-build-deployment") derleme çalışmaz.
+# Depoda böyle bir iş akışı olmadığı için main'e yapılan push'lar siteye
+# yansımıyordu. Bu dosya o boşluğu kapatıyor.
+#
+# Proje build gerektirmediği için depo kökü olduğu gibi yüklenir.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Aynı anda tek yayın çalışsın; sıradaki push öncekini iptal etmesin.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Pages yapılandırmasını hazırla
+        uses: actions/configure-pages@v5
+
+      - name: Site dosyalarını paketle
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Yayınla
+        id: deployment
+        uses: actions/deploy-pages@v4

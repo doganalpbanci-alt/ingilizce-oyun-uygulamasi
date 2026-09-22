@@ -321,25 +321,45 @@ Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
       - Konsol hatası yok
 
 ## Faz T2 — Level 6-10 (A2-B1)
-**Durum: ⬜ Başlanmadı — sıradaki iş**
-- [ ] Kelime + Türkçe karşılık (Level 6, 7, 8, 9, 10 → `data/twinkl.js`)
-- [ ] Anahtar cümleler (`data/twinkl-sentences.js`) — **≤12 kelime kuralı**;
-      L8'den itibaren Twinkl'ın cümleleri uzuyor, kısaltılarak girilecek
-- [ ] **Level 8'de deyimler başlıyor** → `skill: "deyim"` kararının
-      uygulanacağı nokta (aşağıdaki nota bak)
-- [ ] Bu noktada Twinkl'ın kendi platformunun kapsamadığı alan başlıyor
+**Durum: ✅ Veri tamamlandı (2026-09-22) — deyim oyunu bekliyor**
+- [x] Kelime + Türkçe karşılık (Level 6, 7, 8, 9, 10 → `data/twinkl.js`)
+      L6: 72, L7: 84, L8: 66, L9: 77, L10: 66 → **365 kelime**, 50 ders.
+      Twinkl L6-10'da ders başına kelime listesi L1-5'ten kısa, sayı bu
+      yüzden düşük — kaynakta ne varsa o girildi.
+- [x] Anahtar cümleler (`data/twinkl-sentences.js`) — L6: 35, L7: 37,
+      L8: 37, L9: 37, L10: 34 → **180 cümle**. En uzun cümle 12 kelime,
+      kural korundu (L8/L10'un uzun kaynak cümleleri kısaltıldı).
+- [x] **Deyimler** → `data/twinkl-idioms.js` (L8-10 için **31 deyim**)
+- [x] Yer tutucu/çift girdi temizliği: "rock/mountain", "visuals/ CGI"
+      ayrıştırıldı; L7 Ders 8'de kaynakta iki kez geçen "surprise" tekilleşti
+- [x] `sw.js` PRECACHE + `CACHE_VERSION` → `v7`
 
-**Deyim kararının uygulanması (L8'e gelince):** Deyimler ayrı beceri olacak.
-Ama `skill` alanı `games-registry.js`'te **oyunlara** ait, veriye değil —
-yani "deyim" bir beceri olarak hub'da görünsün diye ya deyimlerle çalışan
-ayrı bir oyun/araç eklenmeli, ya da veri tarafına da bir etiket
-mekanizması kurulmalı. Faz T2'nin başında bu netleştirilmeli.
+**Deyim kararı — nasıl uygulandı (2026-09-22):** Deyimler `CURRICULUM`'a
+**eklenmedi**. Eklenseydi kelime oyunlarına karışırlardı ve hiçbirinde
+çalışmazlardı: Kelime Avı çok parçalı girdileri zaten eliyor, Adam Asmaca
+"it's raining cats and dogs"u harf harf sordururdu, Eşleştirme'de dersin
+kelime tekrarını bozardı. Bunun yerine kendi `IDIOMS` objelerinde duruyorlar;
+dış iskelet `CURRICULUM` ile aynı (`label`, `group`, `units[].id/.title`)
+olduğu için `HubSetup.unitPicker({ source: IDIOMS })` hiç değiştirilmeden
+çalışır. Kayıt: `{ en, tr, meaning }`.
+
+`skill` alanı oyunlara ait olduğundan, "deyim" becerisinin hub'da bir sekme
+olarak belirmesi **bu veriyi kullanan bir oyun/araç eklenince** olacak.
+Veri hazır, sayfa tarafı bekliyor:
+- [ ] **Deyim oyunu/aracı** — `games/deyim-avi/` (ya da flashcard tarzı bir
+      araç). `js/games-registry.js`'e `skill: "deyim"` ile kaydedilecek,
+      `SKILL_LABELS`'a "Deyim" eklenecek; hub filtre satırı kendiliğinden
+      üçüncü sekmeyi gösterir. Sayfaya `data/twinkl-idioms.js` yüklenecek.
+      Öneri: Türkçe anlamı göster → 4 İngilizce deyim şıkkından doğruyu
+      seçtir (`meaning` alanı zaten açıklama taşıyor).
 
 ## Faz T3 — Level 11-15 (B1-B2) + Deyimler
 **Durum: ⬜ Başlanmadı**
-- [ ] Kelime + cümle verisi
-- [ ] ~80 "Idiom spotlight" deyiminin veriye girmesi + yukarıdaki
-      deyim kararının uygulanması
+- [ ] Kelime + cümle verisi (Level 11-15 → `twinkl.js` + `twinkl-sentences.js`)
+- [ ] Level 11-15 deyimleri → `data/twinkl-idioms.js` (L8-10'daki 31'in
+      üzerine ~50 daha; toplam ~80)
+- [ ] L11+ kaynak cümleleri 15-25 kelimeye çıkıyor — ≤12 kuralı gereği
+      kısaltılarak girilecek (L8-10'da bu şekilde yapıldı)
 
 ## Oturum Günlüğü
 
@@ -596,5 +616,54 @@ modunda depodan yapılan ilk gerçek yayın. Kullanıcı canlı sitede doğrulad
 **Not:** Bu ortamdan `github.io` proxy tarafından engelleniyor, canlı site
 doğrudan görülemiyor — yayın yalnızca Actions API'sinden doğrulanabiliyor.
 
-- **Sıradaki oturumun hedefi:** Faz T2 — Twinkl Level 6-10. İlk iş Level 8'de
-  başlayan deyimler için `skill: "deyim"` kararının nasıl uygulanacağı.
+### Oturum 2026-09-22 — Faz T2: Twinkl Level 6-10
+Kullanıcı "Faz T2'ye başla" dedi. Kaynak metin (`twinkl.txt`, PDF'ten
+çıkarılmış 2665 satır) scratchpad'de duruyordu, yeniden çıkarmaya gerek
+kalmadı.
+
+**Veri girildi (50 ders):**
+| Seviye | Kelime | Cümle | Deyim |
+|---|---|---|---|
+| Level 6 (A2) | 72 | 35 | — |
+| Level 7 (A2) | 84 | 37 | — |
+| Level 8 (B1) | 66 | 37 | 10 |
+| Level 9 (B1) | 77 | 37 | 11 |
+| Level 10 (B1) | 66 | 34 | 10 |
+| **Toplam** | **365** | **180** | **31** |
+
+Hub toplamı: kelime 1758 → **2123**, cümle 169 → **349**.
+Twinkl artık 100 ders / 942 kelime / 334 cümle.
+
+**Deyim kararı uygulandı** (detayı yukarıda Faz T2'de): `data/twinkl-idioms.js`
++ ayrı `IDIOMS` objesi, `CURRICULUM`'a karıştırılmadı. Dış iskelet aynı
+olduğu için `HubSetup.unitPicker` değişmeden okuyabiliyor. **Deyim oyunu
+henüz yok** — Faz T2'nin tek açık maddesi bu, sıradaki oturumun hedefi.
+
+**Kaynak tuzakları:** "rock/mountain" ve "visuals/ CGI" ayrı girdilere
+bölündü; L7 Ders 8'de kaynakta iki kez geçen "surprise" tekilleştirildi;
+L8/L10'un 15+ kelimelik anahtar cümleleri ≤12 kuralına göre kısaltıldı.
+
+**Çakışma denetimi:** `server`=sunucu ile `presenter`=sunucu çakışıyordu
+(L9) → `server`="sunucu (bilgisayar)", `presenter`="program sunucusu".
+Denetim sonrası **her iki müfredatta da (2123 kelime) seviye içi Türkçe
+çakışması sıfır**.
+
+**Test (Playwright, gerçek Chromium):**
+- 7 kelime oyununun hepsinde L6-L10 seçilebiliyor, her biri 10 ders
+  (açılır listede artık 14 seçenek: 4 MEB + 10 Twinkl)
+- Cümle Kurma'da 10 Twinkl seviyesi listeleniyor, L9 seçimiyle oyun
+  ekranına geçiliyor
+- Uçtan uca: Çiz Bakalım L8 (66 kelime, "console" çizime düştü),
+  Adam Asmaca L10/Ders 11 Türkçe ipucu veriyor ("güneş sistemi")
+- MEB regresyonu temiz (5. sınıf 8 ünite, 8. sınıf 10 ünite)
+- 1180 / 1024 / 768 / 390px: hub + 8 oyunda yatay taşma yok
+- `sw.js` PRECACHE ↔ disk birebir (47 girdi), konsol hatası yok
+
+**Not:** Doğrulama betiğimin ilk sürümünde `eval` bir geri çağrının içinde
+olduğu için MEB verisi düşüyordu ve toplam 942 görünüyordu; betik `vm`
+bağlamına taşınınca gerçek toplam 2123 çıktı. Veride sorun yoktu, ölçüm
+hatalıydı — yeni betik `scratchpad/check-t2.js`.
+
+- **Sıradaki oturumun hedefi:** Deyim oyunu/aracı (`skill: "deyim"`) —
+  veri hazır, `data/twinkl-idioms.js`'i kullanan bir sayfa eklenecek.
+  Ardından Faz T3 (Level 11-15).

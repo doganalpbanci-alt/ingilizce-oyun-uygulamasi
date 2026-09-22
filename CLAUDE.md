@@ -63,6 +63,7 @@ data/curriculum.js    Kelime veritabanı (MEB 5-8) — kelime oyunlarının kayn
 data/sentences.js     Cümle veritabanı (yapı/kazanım bazlı) — Cümle Kurma'nın kaynağı
 data/twinkl.js        Twinkl ESL kelimeleri — CURRICULUM'a eklenir (curriculum.js'ten SONRA yüklenir)
 data/twinkl-sentences.js  Twinkl ESL cümleleri — SENTENCES'a eklenir (sentences.js'ten SONRA yüklenir)
+data/twinkl-idioms.js Twinkl ESL deyimleri — AYRI bir IDIOMS objesi (CURRICULUM'a karışmaz)
 css/setup.css         Kurulum ekranı ortak stilleri (panel, onay kutuları, düğmeler)
 js/games-registry.js  Hub içerik listesi (yeni oyun/araç = buraya 1 kayıt)
 js/shared-setup.js    Ortak kurulum mantığı (HubSetup: sınıf/ünite seçici, showScreen, shuffle)
@@ -128,9 +129,33 @@ review dersi olduğu için veriye girmez** → seviye başına 10 ders.
 | Level 3 | A1-A2 | 10 | 119 | 29 |
 | Level 4 | A1-A2 | 10 | 116 | 30 |
 | Level 5 | A1-A2 | 10 | 119 | 30 |
-| **Toplam** | | **50** | **577** | **154** |
+| Level 6 | A2 | 10 | 72 | 35 |
+| Level 7 | A2 | 10 | 84 | 37 |
+| Level 8 | B1 | 10 | 66 | 37 |
+| Level 9 | B1 | 10 | 77 | 37 |
+| Level 10 | B1 | 10 | 66 | 34 |
+| **Toplam** | | **100** | **942** | **334** |
 
-Level 6-15 henüz girilmedi (bkz. `HANDOFF.md` Faz T2/T3).
+Level 11-15 henüz girilmedi (bkz. `HANDOFF.md` Faz T3).
+Hub'ın toplam kelime sayısı: MEB 1181 + Twinkl 942 = **2123**.
+
+### Deyimler (`data/twinkl-idioms.js`)
+
+Level 8'den itibaren her derste bir "Idiom spotlight" var (L8-10'da 31 deyim;
+L11-15 ile ~80'e çıkacak). Bunlar **bilinçli olarak `CURRICULUM`'a
+eklenmez** — kelime oyunlarına karışsalardı hiçbirinde işe yaramazlardı
+(Kelime Avı çok parçalı girdileri eliyor, Asmaca 20+ harfli bir ifadeyi harf
+harf sordurur, Eşleştirme'de dersin kelime tekrarını bozar).
+
+Kendi `IDIOMS` objesinde durur; dış iskeleti `CURRICULUM` ile aynıdır
+(`label`, `group`, `units[].id/.title`), böylece
+`HubSetup.unitPicker({ source: IDIOMS })` hiç değiştirilmeden çalışır.
+Kayıtlar `{ en, tr, meaning }` taşır. Ünite `id`/`title` değerleri
+`twinkl.js` ile birebir aynıdır.
+
+**Henüz hiçbir sayfa bu dosyayı yüklemiyor** — kullanıcının `skill: "deyim"`
+kararının karşılığı, bu veriyi kullanan ayrı bir oyun/araç eklemek
+(bkz. `HANDOFF.md` Faz T2 sonu).
 
 - **Türkçe karşılıklar ve cümleler bu proje için yazıldı**, Twinkl tek dilli
   bir müfredat — öğretmen onayından geçmedi.
@@ -158,7 +183,7 @@ Kelime verisi olan her ünitenin cümle verisi olmak zorunda değil — Cümle
 Kurma oyunu yalnızca `SENTENCES`'ta karşılığı olan sınıf/üniteleri listeler.
 
 Mevcut kapsam: **MEB 5. sınıf Ünite 1** (15 cümle, 4 yapı) +
-**Twinkl Level 1-5** (50 ders, 154 cümle — `data/twinkl-sentences.js`).
+**Twinkl Level 1-10** (100 ders, 334 cümle — `data/twinkl-sentences.js`).
 Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu var).
 
 ## Mevcut içerik (7 oyun + 1 araç)
@@ -182,7 +207,7 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v6`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v7`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)

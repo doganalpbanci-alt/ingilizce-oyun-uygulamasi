@@ -921,6 +921,405 @@
           ]
         }
       ]
+    },
+
+    "twinkl-8": {
+      label: "Level 8 (B1) — Karşılaştırma ve Varsayım",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t8-l1-comparisons-with-creatures",
+          title: "Ders 1 - Comparisons with Creatures (Karşılaştırma)",
+          structures: [
+            { id: "comparatives", label: "Karşılaştırma ve üstünlük (more, -er, the most, as...as)" }
+          ],
+          sentences: [
+            { en: "Krakens are stronger than griffins.", tr: "Krakenler grifonlardan daha güçlüdür.", structure: "comparatives" },
+            { en: "I believe they are the most impressive creatures.", tr: "Bence onlar en etkileyici yaratıklar.", structure: "comparatives" },
+            { en: "It's as strong as a lion.", tr: "Bir aslan kadar güçlü.", structure: "comparatives" },
+            { en: "The griffin is more frightening than the kraken.", tr: "Grifon krakenden daha korkutucu.", structure: "comparatives" }
+          ]
+        },
+        {
+          id: "t8-l2-whats-it-like-outside",
+          title: "Ders 2 - What's It Like Outside? (Hava Durumu, Olasılık)",
+          structures: [
+            { id: "probability", label: "Olasılık belirtme (might, may, will, probably)" }
+          ],
+          sentences: [
+            { en: "It might hail tomorrow.", tr: "Yarın dolu yağabilir.", structure: "probability" },
+            { en: "It will probably be freezing tonight.", tr: "Bu gece muhtemelen dondurucu olacak.", structure: "probability" },
+            { en: "It may be misty in the morning.", tr: "Sabah sisli olabilir.", structure: "probability" }
+          ]
+        },
+        {
+          id: "t8-l3-video-games-or-board-games",
+          title: "Ders 3 - Video Games or Board Games? (Katılma ve Karşı Çıkma)",
+          structures: [
+            { id: "agreeing", label: "Katılma ve karşı çıkma kalıpları" }
+          ],
+          sentences: [
+            { en: "I'm on the same page.", tr: "Ben de aynı fikirdeyim.", structure: "agreeing" },
+            { en: "That's a good point.", tr: "Bu iyi bir nokta.", structure: "agreeing" },
+            { en: "That's true, but the graphics are better.", tr: "Doğru ama grafikler daha iyi.", structure: "agreeing" },
+            { en: "I'm not so sure about that.", tr: "Bundan pek emin değilim.", structure: "agreeing" },
+            { en: "I'm sorry, but I disagree.", tr: "Üzgünüm ama katılmıyorum.", structure: "agreeing" }
+          ]
+        },
+        {
+          id: "t8-l4-what-are-you-doing-this-weekend",
+          title: "Ders 4 - What Are You Doing This Weekend? (Gelecekte Sürekli)",
+          structures: [
+            { id: "future-continuous", label: "Gelecekte sürekli zamanla plan anlatma (will be + -ing)" }
+          ],
+          sentences: [
+            { en: "I will be moving house at the weekend.", tr: "Hafta sonu taşınıyor olacağım.", structure: "future-continuous" },
+            { en: "We will be visiting a museum on Sunday.", tr: "Pazar günü müze geziyor olacağız.", structure: "future-continuous" },
+            { en: "She will be staying in this weekend.", tr: "Bu hafta sonu evde kalıyor olacak.", structure: "future-continuous" }
+          ]
+        },
+        {
+          id: "t8-l5-putting-it-all-together",
+          title: "Ders 5 - Putting It All Together (put Öbek Fiilleri)",
+          structures: [
+            { id: "put-phrasal-verbs", label: "put ile öbek fiiller (put away, put up, put off, put up with)" }
+          ],
+          sentences: [
+            { en: "Han put up two shelves last weekend.", tr: "Han geçen hafta sonu iki raf astı.", structure: "put-phrasal-verbs" },
+            { en: "Let's not put off the chores.", tr: "Ev işlerini ertelemeyelim.", structure: "put-phrasal-verbs" },
+            { en: "Remember to put away your things.", tr: "Eşyalarını kaldırmayı unutma.", structure: "put-phrasal-verbs" },
+            { en: "I'm tired of putting up with the mess.", tr: "Dağınıklığa katlanmaktan yoruldum.", structure: "put-phrasal-verbs" }
+          ]
+        },
+        {
+          id: "t8-l7-what-am-i-doing-today",
+          title: "Ders 7 - What Am I Doing Today? (should have / might have)",
+          structures: [
+            { id: "past-modals", label: "Geçmişe yönelik kipler (should have, might have)" }
+          ],
+          sentences: [
+            { en: "I should have cleaned my cluttered room.", tr: "Eşya dolu odamı toplamalıydım.", structure: "past-modals" },
+            { en: "She might have gone to the bustling market.", tr: "Hareketli pazara gitmiş olabilir.", structure: "past-modals" },
+            { en: "We should have chosen a peaceful place.", tr: "Huzurlu bir yer seçmeliydik.", structure: "past-modals" }
+          ]
+        },
+        {
+          id: "t8-l8-hypotheticals",
+          title: "Ders 8 - Hypotheticals (2. ve 3. Koşul, Teknoloji)",
+          structures: [
+            { id: "hypotheticals", label: "İkinci ve üçüncü koşul cümleleri (varsayım)" }
+          ],
+          sentences: [
+            { en: "What would you do if you were a gamer?", tr: "Oyuncu olsan ne yapardın?", structure: "hypotheticals" },
+            { en: "If I were a gamer, I would have the best gear.", tr: "Oyuncu olsaydım en iyi ekipmana sahip olurdum.", structure: "hypotheticals" },
+            { en: "If I had been faster, I would have won.", tr: "Daha hızlı olsaydım kazanırdım.", structure: "hypotheticals" }
+          ]
+        },
+        {
+          id: "t8-l9-a-letter-to-a-pen-pal",
+          title: "Ders 9 - A Letter to a Pen Pal (Mektup Yazma)",
+          structures: [
+            { id: "letter-writing", label: "Mektup kalıpları (Dear..., Best wishes, write back)" }
+          ],
+          sentences: [
+            { en: "Dear Ali, I hope you are well.", tr: "Sevgili Ali, umarım iyisindir.", structure: "letter-writing" },
+            { en: "Please write back soon.", tr: "Lütfen yakında cevap yaz.", structure: "letter-writing" },
+            { en: "I look forward to hearing back from you.", tr: "Senden haber almayı dört gözle bekliyorum.", structure: "letter-writing" },
+            { en: "Best wishes, your pen pal.", tr: "En iyi dileklerimle, mektup arkadaşın.", structure: "letter-writing" }
+          ]
+        },
+        {
+          id: "t8-l10-seriously-fun-rides",
+          title: "Ders 10 - Seriously Fun Rides (Pekiştiriciler, Lunapark)",
+          structures: [
+            { id: "intensifiers-adverbs", label: "Pekiştirici ve zarflar (too, enough, totally, absolutely)" }
+          ],
+          sentences: [
+            { en: "The Ferris wheel was tall enough to see the city.", tr: "Dönme dolap şehri görecek kadar yüksekti.", structure: "intensifiers-adverbs" },
+            { en: "The water slide was too scary for little kids.", tr: "Su kaydırağı küçük çocuklar için fazla korkutucuydu.", structure: "intensifiers-adverbs" },
+            { en: "The theme park was totally crowded at the weekend.", tr: "Lunapark hafta sonu tamamen kalabalıktı.", structure: "intensifiers-adverbs" },
+            { en: "I was absolutely amazed by the view.", tr: "Manzara karşısında kesinlikle hayran kaldım.", structure: "intensifiers-adverbs" }
+          ]
+        },
+        {
+          id: "t8-l11-looking-around-london",
+          title: "Ders 11 - Looking around London (look Öbek Fiilleri)",
+          structures: [
+            { id: "look-phrasal-verbs", label: "look ile öbek fiiller (look into, look through, look around)" }
+          ],
+          sentences: [
+            { en: "The investigator looked into the mystery.", tr: "Araştırmacı gizemi araştırdı.", structure: "look-phrasal-verbs" },
+            { en: "She looked through the old photographs.", tr: "Eski fotoğraflara göz gezdirdi.", structure: "look-phrasal-verbs" },
+            { en: "We looked around the house for a clue.", tr: "Bir ipucu için evin içini gezdik.", structure: "look-phrasal-verbs" },
+            { en: "Look out for the suspect.", tr: "Şüpheliye dikkat et.", structure: "look-phrasal-verbs" }
+          ]
+        }
+      ]
+    },
+
+    "twinkl-9": {
+      label: "Level 9 (B1) — Aktarma ve Tahmin",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t9-l1-how-the-internet-started",
+          title: "Ders 1 - How the Internet Started (Zaman Edatları)",
+          structures: [
+            { id: "time-prepositions-9", label: "Zaman edatlarıyla olayları sıralama (before, during, since, until)" }
+          ],
+          sentences: [
+            { en: "Before the internet, people sent letters.", tr: "İnternetten önce insanlar mektup gönderirdi.", structure: "time-prepositions-9" },
+            { en: "From the 1960s to the 1990s.", tr: "1960'lardan 1990'lara kadar.", structure: "time-prepositions-9" },
+            { en: "Since then, the internet has been available to everyone.", tr: "O zamandan beri internet herkese açık.", structure: "time-prepositions-9" },
+            { en: "We have been using the internet every day until now.", tr: "Şimdiye kadar her gün interneti kullanıyoruz.", structure: "time-prepositions-9" }
+          ]
+        },
+        {
+          id: "t9-l2-lets-help-ourselves-relax",
+          title: "Ders 2 - Let's Help Ourselves Relax (Dönüşlü Zamirler)",
+          structures: [
+            { id: "reflexive-pronouns", label: "Dönüşlü zamirler (myself, yourself, ourselves)" }
+          ],
+          sentences: [
+            { en: "I try to tell myself to relax.", tr: "Kendime rahatlamamı söylemeye çalışıyorum.", structure: "reflexive-pronouns" },
+            { en: "It's important to look after ourselves.", tr: "Kendimize iyi bakmamız önemli.", structure: "reflexive-pronouns" },
+            { en: "Remember to take care of yourself!", tr: "Kendine iyi bakmayı unutma!", structure: "reflexive-pronouns" }
+          ]
+        },
+        {
+          id: "t9-l3-he-said-you-should-visit-the-island",
+          title: "Ders 3 - He Said You Should Visit the Island (Aktarma Cümleleri)",
+          structures: [
+            { id: "reported-speech", label: "Aktarma cümleleri (said, told, mentioned, suggested)" }
+          ],
+          sentences: [
+            { en: "He said that the ferry was late.", tr: "Feribotun geciktiğini söyledi.", structure: "reported-speech" },
+            { en: "He suggested visiting the rainforest.", tr: "Yağmur ormanını gezmeyi önerdi.", structure: "reported-speech" },
+            { en: "A friend of mine told me about the coasts.", tr: "Bir arkadaşım bana kıyılardan bahsetti.", structure: "reported-speech" },
+            { en: "He recommended a tour of the port.", tr: "Limanda bir tur önerdi.", structure: "reported-speech" }
+          ]
+        },
+        {
+          id: "t9-l4-sign-up-for-an-online-course",
+          title: "Ders 4 - Sign Up for an Online Course (Teknoloji Öbek Fiilleri)",
+          structures: [
+            { id: "tech-phrasal-verbs", label: "Teknoloji öbek fiilleri (sign up, log in, click on, plug in)" }
+          ],
+          sentences: [
+            { en: "Click on the icon.", tr: "Simgeye tıkla.", structure: "tech-phrasal-verbs" },
+            { en: "You can sign up for many online courses.", tr: "Birçok çevrimiçi kursa kaydolabilirsin.", structure: "tech-phrasal-verbs" },
+            { en: "Remember to log out of your account.", tr: "Hesabından çıkış yapmayı unutma.", structure: "tech-phrasal-verbs" },
+            { en: "Plug in the headphones and scroll down.", tr: "Kulaklığı fişe tak ve aşağı kaydır.", structure: "tech-phrasal-verbs" }
+          ]
+        },
+        {
+          id: "t9-l5-ancient-mysteries",
+          title: "Ders 5 - Ancient Mysteries (Geçmişe Yönelik Tahmin)",
+          structures: [
+            { id: "speculation", label: "Geçmişe yönelik tahmin (might have, could have, must have been)" }
+          ],
+          sentences: [
+            { en: "It might have been an ancient civilisation.", tr: "Antik bir uygarlık olmuş olabilir.", structure: "speculation" },
+            { en: "The story could have been a myth.", tr: "Hikâye bir efsane olabilirdi.", structure: "speculation" },
+            { en: "They must have found new evidence.", tr: "Yeni kanıt bulmuş olmalılar.", structure: "speculation" }
+          ]
+        },
+        {
+          id: "t9-l7-the-end-of-school-celebration",
+          title: "Ders 7 - The End of School Celebration (Koşullu Teklif)",
+          structures: [
+            { id: "conditional-offers", label: "Koşullu teklif yapma (If you bring..., I can bring...)" }
+          ],
+          sentences: [
+            { en: "If you bring the refreshments, I can bring the games.", tr: "İkramlıkları sen getirirsen oyunları ben getirebilirim.", structure: "conditional-offers" },
+            { en: "If I make the flyers, will you hand them out?", tr: "El ilanlarını ben yaparsam sen dağıtır mısın?", structure: "conditional-offers" },
+            { en: "If you put up the balloons, I can help.", tr: "Balonları asarsan yardım edebilirim.", structure: "conditional-offers" }
+          ]
+        },
+        {
+          id: "t9-l8-stick-with-it",
+          title: "Ders 8 - Stick With It (Spor Öbek Fiilleri)",
+          structures: [
+            { id: "exercise-phrasal-verbs", label: "Spor öbek fiilleri (warm up, cool down, work out, keep up)" }
+          ],
+          sentences: [
+            { en: "Have you been working out lately?", tr: "Son zamanlarda spor yapıyor musun?", structure: "exercise-phrasal-verbs" },
+            { en: "Warm up properly before you start.", tr: "Başlamadan önce düzgünce ısın.", structure: "exercise-phrasal-verbs" },
+            { en: "I've been trying to build up my strength.", tr: "Gücümü kademeli olarak artırmaya çalışıyorum.", structure: "exercise-phrasal-verbs" },
+            { en: "Maybe we can motivate each other to stick with it.", tr: "Belki bırakmamak için birbirimizi motive ederiz.", structure: "exercise-phrasal-verbs" }
+          ]
+        },
+        {
+          id: "t9-l9-has-the-festival-started-already",
+          title: "Ders 9 - Has the Festival Started Already? (yet, still, just, already)",
+          structures: [
+            { id: "present-perfect-adverbs", label: "Yakın geçmiş zarfları (yet, still, just, already)" }
+          ],
+          sentences: [
+            { en: "Have you finished the preparations yet?", tr: "Hazırlıkları bitirdin mi?", structure: "present-perfect-adverbs" },
+            { en: "I still have a lot of work to do.", tr: "Hâlâ yapacak çok işim var.", structure: "present-perfect-adverbs" },
+            { en: "I've already found a venue.", tr: "Çoktan bir mekân buldum.", structure: "present-perfect-adverbs" },
+            { en: "I've just finished my homework.", tr: "Ödevimi yeni bitirdim.", structure: "present-perfect-adverbs" }
+          ]
+        },
+        {
+          id: "t9-l10-behind-the-scenes",
+          title: "Ders 10 - Behind the Scenes (Ön Ekler)",
+          structures: [
+            { id: "prefixes", label: "Fiillerde ön ekler (redo, rewrite, underline, re-record)" }
+          ],
+          sentences: [
+            { en: "Please redo the last scene.", tr: "Son sahneyi lütfen yeniden çek.", structure: "prefixes" },
+            { en: "Underline the presenter's lines.", tr: "Sunucunun repliklerinin altını çiz.", structure: "prefixes" },
+            { en: "We must rewrite this episode.", tr: "Bu bölümü yeniden yazmalıyız.", structure: "prefixes" },
+            { en: "The producer asked us to re-record it.", tr: "Yapımcı onu yeniden kaydetmemizi istedi.", structure: "prefixes" }
+          ]
+        },
+        {
+          id: "t9-l11-lost-treasure",
+          title: "Ders 11 - Lost Treasure (Soru Ekleri)",
+          structures: [
+            { id: "question-tags", label: "Soru ekleri (is there?, isn't she?, don't you?)" }
+          ],
+          sentences: [
+            { en: "There's nothing strange about that, is there?", tr: "Bunda tuhaf bir şey yok, değil mi?", structure: "question-tags" },
+            { en: "She's such a great crew member, isn't she?", tr: "O harika bir mürettebat üyesi, değil mi?", structure: "question-tags" },
+            { en: "I think it's a little odd, don't you?", tr: "Bence biraz tuhaf, sence de öyle değil mi?", structure: "question-tags" },
+            { en: "We're ready to solve this mystery, aren't we?", tr: "Bu gizemi çözmeye hazırız, değil mi?", structure: "question-tags" }
+          ]
+        }
+      ]
+    },
+
+    "twinkl-10": {
+      label: "Level 10 (B1) — Edilgen Çatı ve Geçmişin Geçmişi",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t10-l1-how-can-i-make-dinner",
+          title: "Ders 1 - How Can I Make Dinner? (Emir Kipiyle Tarif)",
+          structures: [
+            { id: "imperatives", label: "Emir kipiyle yemek tarifi verme" }
+          ],
+          sentences: [
+            { en: "Take the mat.", tr: "Hasırı al.", structure: "imperatives" },
+            { en: "Place the seaweed on top.", tr: "Deniz yosununu üstüne yerleştir.", structure: "imperatives" },
+            { en: "Mix the rice and sauce together.", tr: "Pirinci ve sosu birlikte karıştır.", structure: "imperatives" }
+          ]
+        },
+        {
+          id: "t10-l2-what-were-people-doing-in-1986",
+          title: "Ders 2 - What Were People Doing in 1986? (Geçmişte Sürekli)",
+          structures: [
+            { id: "past-continuous", label: "Geçmişte sürekli ve geçmiş zamanı birlikte kullanma" }
+          ],
+          sentences: [
+            { en: "The couple was standing under a tree.", tr: "Çift bir ağacın altında duruyordu.", structure: "past-continuous" },
+            { en: "I was digging a hole when I hit something hard.", tr: "Bir çukur kazarken sert bir şeye çarptım.", structure: "past-continuous" },
+            { en: "People were wearing bright clothes back then.", tr: "İnsanlar o zamanlar parlak kıyafetler giyiyordu.", structure: "past-continuous" }
+          ]
+        },
+        {
+          id: "t10-l3-all-on-board-to-the-isle-of-lewis",
+          title: "Ders 3 - All On Board to the Isle of Lewis (Yolculuk Edatları)",
+          structures: [
+            { id: "travel-prepositions", label: "Yolculuk edat ve öbek fiilleri (get on, get off, get in, get out, by)" }
+          ],
+          sentences: [
+            { en: "We packed all our bags in the car.", tr: "Bütün çantalarımızı arabaya yerleştirdik.", structure: "travel-prepositions" },
+            { en: "We got on the ferry just in time.", tr: "Feribota tam zamanında bindik.", structure: "travel-prepositions" },
+            { en: "It was time to get out of the car.", tr: "Arabadan inme vaktiydi.", structure: "travel-prepositions" },
+            { en: "After travelling by sea, it was nice to be on land.", tr: "Deniz yolculuğundan sonra karada olmak güzeldi.", structure: "travel-prepositions" }
+          ]
+        },
+        {
+          id: "t10-l4-finding-the-cafe-in-twinklton",
+          title: "Ders 4 - Finding the Cafe in Twinklton (Yer Zarfları)",
+          structures: [
+            { id: "place-adverbs", label: "Yer zarflarıyla yol tarifi (nearby, ahead, across, straight)" }
+          ],
+          sentences: [
+            { en: "What do you see nearby?", tr: "Yakınında ne görüyorsun?", structure: "place-adverbs" },
+            { en: "Keep going straight until you reach the corner.", tr: "Köşeye varana kadar düz devam et.", structure: "place-adverbs" },
+            { en: "You should see a river ahead.", tr: "İleride bir nehir görmelisin.", structure: "place-adverbs" },
+            { en: "The food truck is across the street.", tr: "Yemek arabası caddenin karşısında.", structure: "place-adverbs" }
+          ]
+        },
+        {
+          id: "t10-l5-remember-to-order",
+          title: "Ders 5 - Remember to Order (Mastar ve -ing Farkı)",
+          structures: [
+            { id: "gerund-infinitive", label: "Anlamı değiştiren mastar / -ing (remember, forget, stop, try)" }
+          ],
+          sentences: [
+            { en: "I have to remember to order sticky notes.", tr: "Yapışkan not sipariş etmeyi unutmamalıyım.", structure: "gerund-infinitive" },
+            { en: "Do you remember ordering the coloured tape?", tr: "Renkli bandı sipariş ettiğini hatırlıyor musun?", structure: "gerund-infinitive" },
+            { en: "Try putting the pens next to the diaries.", tr: "Kalemleri ajandaların yanına koymayı dene.", structure: "gerund-infinitive" },
+            { en: "I stopped to buy you a little cake.", tr: "Sana küçük bir kek almak için durdum.", structure: "gerund-infinitive" }
+          ]
+        },
+        {
+          id: "t10-l7-when-books-are-made-into-movies",
+          title: "Ders 7 - When Books Are Made Into Movies (Edilgen Çatı)",
+          structures: [
+            { id: "passive-voice", label: "Edilgen çatı (is based on, was written by, has been translated)" }
+          ],
+          sentences: [
+            { en: "Many movies are based on books these days.", tr: "Bugünlerde birçok film kitaplara dayanıyor.", structure: "passive-voice" },
+            { en: "The script was written by the author.", tr: "Senaryo yazar tarafından yazıldı.", structure: "passive-voice" },
+            { en: "The book has been translated into fifty languages.", tr: "Kitap elli dile çevrildi.", structure: "passive-voice" },
+            { en: "The plot must be kept secret.", tr: "Olay örgüsü gizli tutulmalı.", structure: "passive-voice" }
+          ]
+        },
+        {
+          id: "t10-l8-they-told-us-to-be-calm",
+          title: "Ders 8 - They Told Us to Be Calm (Aktarma, Güvenlik)",
+          structures: [
+            { id: "reported-instructions", label: "Aktarılan talimatlar (told us to, warned us not to, reminded us)" }
+          ],
+          sentences: [
+            { en: "She told us to stay calm.", tr: "Bize sakin kalmamızı söyledi.", structure: "reported-instructions" },
+            { en: "The officer warned us not to use lifts.", tr: "Görevli bizi asansör kullanmamamız için uyardı.", structure: "reported-instructions" },
+            { en: "She reminded us to check the poster.", tr: "Bize afişi kontrol etmemizi hatırlattı.", structure: "reported-instructions" }
+          ]
+        },
+        {
+          id: "t10-l9-i-used-to-love-pottery",
+          title: "Ders 9 - I Used to Love Pottery (used to)",
+          structures: [
+            { id: "used-to", label: "Geçmişteki alışkanlıklar (used to, would)" }
+          ],
+          sentences: [
+            { en: "I used to be super into pottery.", tr: "Eskiden çömlekçiliğe çok meraklıydım.", structure: "used-to" },
+            { en: "We would go to art galleries every weekend.", tr: "Her hafta sonu sanat galerilerine giderdik.", structure: "used-to" },
+            { en: "I used to like painting sometimes.", tr: "Eskiden bazen resim yapmayı severdim.", structure: "used-to" }
+          ]
+        },
+        {
+          id: "t10-l10-where-had-you-been-before",
+          title: "Ders 10 - Where Had You Been Before? (Geçmişin Geçmişi)",
+          structures: [
+            { id: "past-perfect", label: "Geçmişin geçmişi (had + 3. hâl)" }
+          ],
+          sentences: [
+            { en: "By the time we got home, the movie had begun.", tr: "Biz eve vardığımızda film başlamıştı.", structure: "past-perfect" },
+            { en: "I missed the bus because I had left home late.", tr: "Otobüsü kaçırdım çünkü evden geç çıkmıştım.", structure: "past-perfect" },
+            { en: "She had finished her homework before she went out.", tr: "Dışarı çıkmadan önce ödevini bitirmişti.", structure: "past-perfect" }
+          ]
+        },
+        {
+          id: "t10-l11-a-trip-to-the-moon",
+          title: "Ders 11 - A Trip to the Moon (Birleşik İsimler)",
+          structures: [
+            { id: "compound-nouns", label: "Birleşik isimler (space station, solar system, outer space)" }
+          ],
+          sentences: [
+            { en: "Space exploration tells us a lot about our solar system.", tr: "Uzay araştırmaları bize güneş sistemimiz hakkında çok şey anlatır.", structure: "compound-nouns" },
+            { en: "We are preparing to visit the space station.", tr: "Uzay istasyonunu ziyaret etmeye hazırlanıyoruz.", structure: "compound-nouns" },
+            { en: "I was excited to return home from outer space.", tr: "Uzay boşluğundan eve dönmek için heyecanlıydım.", structure: "compound-nouns" }
+          ]
+        }
+      ]
     }
   };
 

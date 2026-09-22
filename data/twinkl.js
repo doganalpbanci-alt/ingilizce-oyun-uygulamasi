@@ -1222,6 +1222,416 @@
           ]
         }
       ]
+    },
+
+    "twinkl-8": {
+      label: "Level 8 (B1) — Karşılaştırma ve Varsayım",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t8-l1-comparisons-with-creatures",
+          title: "Ders 1 - Comparisons with Creatures (Karşılaştırma)",
+          words: [
+            { en: "mighty", tr: "kudretli" },
+            { en: "wise", tr: "bilge" },
+            { en: "impressive", tr: "etkileyici" },
+            { en: "frightening", tr: "korkutucu" },
+            { en: "griffin", tr: "grifon (efsanevi yaratık)" },
+            { en: "kraken", tr: "kraken (efsanevi deniz canavarı)" }
+          ]
+        },
+        {
+          id: "t8-l2-whats-it-like-outside",
+          title: "Ders 2 - What's It Like Outside? (Hava Durumu, Olasılık)",
+          words: [
+            { en: "hail", tr: "dolu" },
+            { en: "sleet", tr: "sulu kar" },
+            { en: "freezing", tr: "dondurucu" },
+            { en: "frost", tr: "kırağı" },
+            { en: "misty", tr: "sisli" },
+            { en: "thunderstorms", tr: "gök gürültülü fırtınalar" },
+            { en: "chilly", tr: "serin" },
+            { en: "humid", tr: "nemli" }
+          ]
+        },
+        {
+          id: "t8-l3-video-games-or-board-games",
+          title: "Ders 3 - Video Games or Board Games? (Katılma ve Karşı Çıkma)",
+          words: [
+            { en: "console", tr: "oyun konsolu" },
+            { en: "virtual", tr: "sanal" },
+            { en: "multiplayer", tr: "çok oyunculu" },
+            { en: "simulator", tr: "simülatör" },
+            { en: "graphics", tr: "grafikler" },
+            { en: "strategies", tr: "stratejiler" }
+          ]
+        },
+        {
+          id: "t8-l4-what-are-you-doing-this-weekend",
+          title: "Ders 4 - What Are You Doing This Weekend? (Gelecekte Sürekli)",
+          words: [
+            { en: "move house", tr: "taşınmak" },
+            { en: "stay in", tr: "evde kalmak" },
+            { en: "go to a yoga class", tr: "yoga dersine gitmek" },
+            { en: "take a road trip", tr: "arabayla geziye çıkmak" },
+            { en: "watch a sports match", tr: "spor maçı izlemek" },
+            { en: "visit a museum", tr: "müze gezmek" },
+            { en: "knit", tr: "örgü örmek" }
+          ]
+        },
+        {
+          id: "t8-l5-putting-it-all-together",
+          title: "Ders 5 - Putting It All Together (put Öbek Fiilleri)",
+          words: [
+            { en: "chores", tr: "ev işleri" },
+            { en: "schedule", tr: "çizelge" },
+            { en: "messy", tr: "dağınık" },
+            { en: "shelves", tr: "raflar" },
+            { en: "wipe down", tr: "silip temizlemek" },
+            { en: "dustbin", tr: "çöp kovası" },
+            { en: "take out the rubbish", tr: "çöpü dışarı çıkarmak" }
+          ]
+        },
+        {
+          id: "t8-l7-what-am-i-doing-today",
+          title: "Ders 7 - What Am I Doing Today? (should have / might have)",
+          words: [
+            { en: "bustling", tr: "hareketli (kalabalık ve canlı)" },
+            { en: "organised", tr: "düzenli" },
+            { en: "cosy", tr: "sıcak ve rahat" },
+            { en: "cluttered", tr: "eşya dolu" },
+            { en: "peaceful", tr: "huzurlu" },
+            { en: "adventurous", tr: "maceracı" }
+          ]
+        },
+        {
+          id: "t8-l8-hypotheticals",
+          title: "Ders 8 - Hypotheticals (2. ve 3. Koşul, Teknoloji)",
+          words: [
+            { en: "influencer", tr: "sosyal medya fenomeni" },
+            { en: "gamer", tr: "oyuncu (video oyunu)" },
+            { en: "video drone", tr: "kameralı drone" },
+            { en: "electric scooter", tr: "elektrikli scooter" },
+            { en: "wireless headphones", tr: "kablosuz kulaklık" },
+            { en: "smartwatch", tr: "akıllı saat" },
+            { en: "artificial intelligence (AI)", tr: "yapay zekâ" }
+          ]
+        },
+        {
+          id: "t8-l9-a-letter-to-a-pen-pal",
+          title: "Ders 9 - A Letter to a Pen Pal (Mektup Yazma)",
+          words: [
+            { en: "pen pal", tr: "mektup arkadaşı" },
+            { en: "letter", tr: "mektup" },
+            { en: "envelope", tr: "zarf" },
+            { en: "mailbox", tr: "posta kutusu" },
+            { en: "address", tr: "adres" },
+            { en: "reply", tr: "cevap" },
+            { en: "continent", tr: "kıta" },
+            { en: "time zones", tr: "saat dilimleri" },
+            { en: "stamp", tr: "pul" }
+          ]
+        },
+        {
+          id: "t8-l10-seriously-fun-rides",
+          title: "Ders 10 - Seriously Fun Rides (Pekiştiriciler, Lunapark)",
+          words: [
+            { en: "theme park", tr: "lunapark" },
+            { en: "roller coaster", tr: "hız treni" },
+            { en: "merry-go-round", tr: "atlıkarınca" },
+            { en: "water slide", tr: "su kaydırağı" },
+            { en: "bumper cars", tr: "çarpışan arabalar" },
+            { en: "Ferris wheel", tr: "dönme dolap" }
+          ]
+        },
+        {
+          id: "t8-l11-looking-around-london",
+          title: "Ders 11 - Looking around London (look Öbek Fiilleri)",
+          words: [
+            { en: "clue", tr: "ipucu" },
+            { en: "suspect", tr: "şüpheli" },
+            { en: "investigator", tr: "araştırmacı" },
+            { en: "fingerprint", tr: "parmak izi" }
+          ]
+        }
+      ]
+    },
+
+    "twinkl-9": {
+      label: "Level 9 (B1) — Aktarma ve Tahmin",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t9-l1-how-the-internet-started",
+          title: "Ders 1 - How the Internet Started (Zaman Edatları)",
+          words: [
+            { en: "invention", tr: "icat" },
+            { en: "communicate", tr: "iletişim kurmak" },
+            { en: "period", tr: "dönem" },
+            { en: "server", tr: "sunucu (bilgisayar)" },
+            { en: "the cloud", tr: "bulut (veri depolama)" },
+            { en: "search engine", tr: "arama motoru" },
+            { en: "entertainment", tr: "eğlence" },
+            { en: "connected", tr: "bağlı" },
+            { en: "dust", tr: "toz" }
+          ]
+        },
+        {
+          id: "t9-l2-lets-help-ourselves-relax",
+          title: "Ders 2 - Let's Help Ourselves Relax (Dönüşlü Zamirler)",
+          words: [
+            { en: "mood", tr: "ruh hâli" },
+            { en: "stress", tr: "stres" },
+            { en: "support network", tr: "destek çevresi" },
+            { en: "balance", tr: "denge" },
+            { en: "mental health", tr: "ruh sağlığı" },
+            { en: "relaxation technique", tr: "rahatlama tekniği" }
+          ]
+        },
+        {
+          id: "t9-l3-he-said-you-should-visit-the-island",
+          title: "Ders 3 - He Said You Should Visit the Island (Aktarma Cümleleri)",
+          words: [
+            { en: "port", tr: "liman" },
+            { en: "abroad", tr: "yurt dışı" },
+            { en: "ferry", tr: "feribot" },
+            { en: "coasts", tr: "kıyılar" },
+            { en: "tours", tr: "turlar" },
+            { en: "deck", tr: "güverte" },
+            { en: "rainforest", tr: "yağmur ormanı" },
+            { en: "lifejackets", tr: "can yelekleri" }
+          ]
+        },
+        {
+          id: "t9-l4-sign-up-for-an-online-course",
+          title: "Ders 4 - Sign Up for an Online Course (Teknoloji Öbek Fiilleri)",
+          words: [
+            { en: "sign up", tr: "kaydolmak" },
+            { en: "log in", tr: "oturum açmak" },
+            { en: "log out", tr: "oturumu kapatmak" },
+            { en: "click on", tr: "tıklamak" },
+            { en: "set up", tr: "kurmak" },
+            { en: "plug in", tr: "fişe takmak" },
+            { en: "scroll down", tr: "aşağı kaydırmak" },
+            { en: "app", tr: "uygulama" },
+            { en: "email address", tr: "e-posta adresi" },
+            { en: "password", tr: "şifre" }
+          ]
+        },
+        {
+          id: "t9-l5-ancient-mysteries",
+          title: "Ders 5 - Ancient Mysteries (Geçmişe Yönelik Tahmin)",
+          words: [
+            { en: "civilisation", tr: "uygarlık" },
+            { en: "myth", tr: "efsane" },
+            { en: "fact", tr: "olgu (gerçek bilgi)" },
+            { en: "research", tr: "araştırma" },
+            { en: "documented", tr: "belgelenmiş" },
+            { en: "mystery", tr: "gizem" },
+            { en: "ancient", tr: "antik" },
+            { en: "evidence", tr: "kanıt" },
+            { en: "social studies", tr: "sosyal bilgiler" }
+          ]
+        },
+        {
+          id: "t9-l7-the-end-of-school-celebration",
+          title: "Ders 7 - The End of School Celebration (Koşullu Teklif)",
+          words: [
+            { en: "flyer", tr: "el ilanı" },
+            { en: "plan", tr: "plan" },
+            { en: "celebration", tr: "kutlama" },
+            { en: "refreshments", tr: "ikramlıklar" },
+            { en: "speech", tr: "konuşma (hitap)" },
+            { en: "guests", tr: "konuklar" },
+            { en: "fairy lights", tr: "süs ışıkları" }
+          ]
+        },
+        {
+          id: "t9-l8-stick-with-it",
+          title: "Ders 8 - Stick With It (Spor Öbek Fiilleri)",
+          words: [
+            { en: "warm up", tr: "ısınmak" },
+            { en: "cool down", tr: "soğuma hareketi yapmak" },
+            { en: "work out", tr: "spor yapmak" },
+            { en: "keep up", tr: "ayak uydurmak" },
+            { en: "get into", tr: "merak sarmak" },
+            { en: "build up", tr: "kademeli olarak artırmak" },
+            { en: "stick with", tr: "bırakmamak" },
+            { en: "workout", tr: "antrenman" },
+            { en: "routine", tr: "rutin" }
+          ]
+        },
+        {
+          id: "t9-l9-has-the-festival-started-already",
+          title: "Ders 9 - Has the Festival Started Already? (yet, still, just, already)",
+          words: [
+            { en: "festival", tr: "festival" },
+            { en: "annual", tr: "yıllık" },
+            { en: "postpone", tr: "ertelemek" },
+            { en: "venue", tr: "etkinlik mekânı" },
+            { en: "programme", tr: "program (akış)" },
+            { en: "genre", tr: "tür (sanatta)" },
+            { en: "sci-fi", tr: "bilim kurgu" },
+            { en: "documentary", tr: "belgesel" }
+          ]
+        },
+        {
+          id: "t9-l10-behind-the-scenes",
+          title: "Ders 10 - Behind the Scenes (Ön Ekler)",
+          words: [
+            { en: "episode", tr: "bölüm (dizi)" },
+            { en: "presenter", tr: "program sunucusu" },
+            { en: "producer", tr: "yapımcı" },
+            { en: "competitor", tr: "yarışmacı" }
+          ]
+        },
+        {
+          id: "t9-l11-lost-treasure",
+          title: "Ders 11 - Lost Treasure (Soru Ekleri)",
+          words: [
+            { en: "gold", tr: "altın" },
+            { en: "pirate", tr: "korsan" },
+            { en: "treasure", tr: "hazine" },
+            { en: "crew", tr: "mürettebat" },
+            { en: "treasure chest", tr: "hazine sandığı" },
+            { en: "pirate ship", tr: "korsan gemisi" },
+            { en: "captain", tr: "kaptan" }
+          ]
+        }
+      ]
+    },
+
+    "twinkl-10": {
+      label: "Level 10 (B1) — Edilgen Çatı ve Geçmişin Geçmişi",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t10-l1-how-can-i-make-dinner",
+          title: "Ders 1 - How Can I Make Dinner? (Emir Kipiyle Tarif)",
+          words: [
+            { en: "vinegar", tr: "sirke" },
+            { en: "sour", tr: "ekşi" },
+            { en: "seaweed", tr: "deniz yosunu" },
+            { en: "sushi mat", tr: "suşi hasırı" },
+            { en: "spread", tr: "sürmek (yaymak)" },
+            { en: "sticky", tr: "yapışkan" },
+            { en: "salmon", tr: "somon" },
+            { en: "avocado", tr: "avokado" },
+            { en: "cucumber", tr: "salatalık" }
+          ]
+        },
+        {
+          id: "t10-l2-what-were-people-doing-in-1986",
+          title: "Ders 2 - What Were People Doing in 1986? (Geçmişte Sürekli)",
+          words: [
+            { en: "time capsule", tr: "zaman kapsülü" },
+            { en: "dig", tr: "kazmak" },
+            { en: "bury", tr: "gömmek" },
+            { en: "stick", tr: "yapıştırmak" },
+            { en: "locket", tr: "madalyon" },
+            { en: "cassette tape", tr: "kaset" },
+            { en: "stuff", tr: "eşya" }
+          ]
+        },
+        {
+          id: "t10-l3-all-on-board-to-the-isle-of-lewis",
+          title: "Ders 3 - All On Board to the Isle of Lewis (Yolculuk Edatları)",
+          words: [
+            { en: "backseat", tr: "arka koltuk" },
+            { en: "seasick", tr: "deniz tutmuş" },
+            { en: "on board", tr: "gemide" },
+            { en: "departure", tr: "kalkış" }
+          ]
+        },
+        {
+          id: "t10-l4-finding-the-cafe-in-twinklton",
+          title: "Ders 4 - Finding the Cafe in Twinklton (Yer Zarfları)",
+          words: [
+            { en: "roundabout", tr: "göbekli kavşak" },
+            { en: "corner", tr: "köşe" },
+            { en: "crossing", tr: "yaya geçidi" },
+            { en: "bridge", tr: "köprü" },
+            { en: "food truck", tr: "yemek arabası" },
+            { en: "street", tr: "cadde" },
+            { en: "metro", tr: "metro" }
+          ]
+        },
+        {
+          id: "t10-l5-remember-to-order",
+          title: "Ders 5 - Remember to Order (Mastar ve -ing Farkı)",
+          words: [
+            { en: "tape", tr: "bant" },
+            { en: "files", tr: "dosyalar" },
+            { en: "sticky notes", tr: "yapışkan notlar" },
+            { en: "shelf", tr: "raf" },
+            { en: "stickers", tr: "çıkartmalar" },
+            { en: "backpack", tr: "sırt çantası" }
+          ]
+        },
+        {
+          id: "t10-l7-when-books-are-made-into-movies",
+          title: "Ders 7 - When Books Are Made Into Movies (Edilgen Çatı)",
+          words: [
+            { en: "adapt", tr: "uyarlamak" },
+            { en: "release", tr: "piyasaya sürmek" },
+            { en: "author", tr: "yazar" },
+            { en: "bestseller", tr: "çok satan kitap" },
+            { en: "publish", tr: "yayımlamak" }
+          ]
+        },
+        {
+          id: "t10-l8-they-told-us-to-be-calm",
+          title: "Ders 8 - They Told Us to Be Calm (Aktarma, Güvenlik)",
+          words: [
+            { en: "safety", tr: "güvenlik" },
+            { en: "calm", tr: "sakin" },
+            { en: "remind", tr: "hatırlatmak" },
+            { en: "warn", tr: "uyarmak" },
+            { en: "lift", tr: "asansör" },
+            { en: "exit", tr: "çıkış" }
+          ]
+        },
+        {
+          id: "t10-l9-i-used-to-love-pottery",
+          title: "Ders 9 - I Used to Love Pottery (used to)",
+          words: [
+            { en: "art gallery", tr: "sanat galerisi" },
+            { en: "debate club", tr: "münazara kulübü" },
+            { en: "member", tr: "üye" },
+            { en: "pottery", tr: "çömlekçilik" },
+            { en: "clay", tr: "kil" },
+            { en: "sculpture", tr: "heykel" },
+            { en: "artistic", tr: "sanatsal" }
+          ]
+        },
+        {
+          id: "t10-l10-where-had-you-been-before",
+          title: "Ders 10 - Where Had You Been Before? (Geçmişin Geçmişi)",
+          words: [
+            { en: "farmers' market", tr: "semt pazarı" },
+            { en: "monument", tr: "anıt" },
+            { en: "time machine", tr: "zaman makinesi" },
+            { en: "programme", tr: "program (akış)" },
+            { en: "device", tr: "cihaz" },
+            { en: "marathon", tr: "maraton" }
+          ]
+        },
+        {
+          id: "t10-l11-a-trip-to-the-moon",
+          title: "Ders 11 - A Trip to the Moon (Birleşik İsimler)",
+          words: [
+            { en: "astronaut", tr: "astronot" },
+            { en: "planet", tr: "gezegen" },
+            { en: "Earth", tr: "Dünya (gezegen)" },
+            { en: "return", tr: "geri dönmek" },
+            { en: "spaceship", tr: "uzay gemisi" },
+            { en: "solar system", tr: "güneş sistemi" },
+            { en: "outer space", tr: "uzay boşluğu" },
+            { en: "space station", tr: "uzay istasyonu" },
+            { en: "space exploration", tr: "uzay araştırmaları" }
+          ]
+        }
+      ]
     }
   };
 

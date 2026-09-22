@@ -321,7 +321,7 @@ Her oyun sınıf listesini `Object.keys(CURRICULUM)` ile üretip
       - Konsol hatası yok
 
 ## Faz T2 — Level 6-10 (A2-B1)
-**Durum: ✅ Veri tamamlandı (2026-09-22) — deyim oyunu bekliyor**
+**Durum: ✅ Tamamlandı (2026-09-22)**
 - [x] Kelime + Türkçe karşılık (Level 6, 7, 8, 9, 10 → `data/twinkl.js`)
       L6: 72, L7: 84, L8: 66, L9: 77, L10: 66 → **365 kelime**, 50 ders.
       Twinkl L6-10'da ders başına kelime listesi L1-5'ten kısa, sayı bu
@@ -345,13 +345,12 @@ olduğu için `HubSetup.unitPicker({ source: IDIOMS })` hiç değiştirilmeden
 
 `skill` alanı oyunlara ait olduğundan, "deyim" becerisinin hub'da bir sekme
 olarak belirmesi **bu veriyi kullanan bir oyun/araç eklenince** olacak.
-Veri hazır, sayfa tarafı bekliyor:
-- [ ] **Deyim oyunu/aracı** — `games/deyim-avi/` (ya da flashcard tarzı bir
-      araç). `js/games-registry.js`'e `skill: "deyim"` ile kaydedilecek,
-      `SKILL_LABELS`'a "Deyim" eklenecek; hub filtre satırı kendiliğinden
-      üçüncü sekmeyi gösterir. Sayfaya `data/twinkl-idioms.js` yüklenecek.
-      Öneri: Türkçe anlamı göster → 4 İngilizce deyim şıkkından doğruyu
-      seçtir (`meaning` alanı zaten açıklama taşıyor).
+- [x] **Deyim oyunu** — `games/deyim-avi/` yapıldı (2026-09-22). Türkçe
+      açıklamayı gösterir, 4 İngilizce deyim şıkkından doğruyu seçtirir.
+      `skill: "deyim"` ile kaydedildi → hub'da **üçüncü filtre sekmesi
+      kendiliğinden belirdi** (Tümü | Deyim | Cümle Kurma | Kelime).
+
+**Faz T2 kapandı.**
 
 ## Faz T3 — Level 11-15 (B1-B2) + Deyimler
 **Durum: ⬜ Başlanmadı**
@@ -664,6 +663,36 @@ olduğu için MEB verisi düşüyordu ve toplam 942 görünüyordu; betik `vm`
 bağlamına taşınınca gerçek toplam 2123 çıktı. Veride sorun yoktu, ölçüm
 hatalıydı — yeni betik `scratchpad/check-t2.js`.
 
-- **Sıradaki oturumun hedefi:** Deyim oyunu/aracı (`skill: "deyim"`) —
-  veri hazır, `data/twinkl-idioms.js`'i kullanan bir sayfa eklenecek.
-  Ardından Faz T3 (Level 11-15).
+### Oturum 2026-09-22 (devam) — Deyim Avı, Faz T2 kapandı
+Kullanıcı "devam" dedi; Faz T2'nin tek açık maddesi olan deyim oyunu yapıldı.
+
+**`games/deyim-avi/` (🗝️ Deyim Avı)** — 4 dosya (index.html, style.css,
+script.js, sounds.js). Türkçe açıklamayı + Türkçe karşılığı gösterir,
+4 İngilizce deyim şıkkından doğruyu seçtirir. Skor, seri, soru sayacı;
+sonunda o turdaki deyimlerin tekrar listesi.
+
+**Çözülmesi gereken tasarım sorunu — çeldiriciler:** Bir derste yalnızca
+1 deyim var, yani seçili derslerden 4 şık üretilemiyor. Çözüm: doğru cevap
+seçili derslerden, **çeldiriciler seviyenin tamamından** (yetmezse tüm
+seviyelerden) alınıyor. Test: tek ders seçiminde bile 4 şık üretiliyor.
+
+**`skill: "deyim"`** `games-registry.js`'e eklendi + `SKILL_LABELS`'a
+"Deyim". Hub'ın filtre satırı elle hiçbir şey yapılmadan üçüncü sekmeyi
+gösterdi — Faz 1'de kurulan mekanizma amacına göre çalıştı.
+
+Seviye açılır listesi `IDIOMS`'u okuduğu için **yalnızca deyimi olan
+seviyeler** listeleniyor (L8, L9, L10) — öğretmen boş seviye seçemiyor.
+
+Cevap ilk dokunuştan sonra kilitleniyor (Cümle Kurma'daki `state.locked`
+deseni); testte ikinci şıkka basmak skoru değiştirmedi.
+
+`sw.js` → `v8`, 4 yeni dosya precache'te (50 girdi, diskle birebir).
+
+**Test:** hub'da 3 sekme + 8 oyun/1 araç; deyim filtresi yalnızca Deyim
+Avı'yı gösteriyor; tek ders akışı; L9 ile 10 soruluk tam tur → sonuç ekranı
++ 10 satırlık tekrar listesi; çıkış düğmesi kurulum ekranına dönüyor;
+1180/1024/768/390px taşma yok; konsol hatası yok.
+
+- **Sıradaki oturumun hedefi:** Faz T3 — Twinkl Level 11-15 (kelime, cümle
+  ve ~50 deyim daha). L11+ kaynak cümleleri uzun, ≤12 kuralına göre
+  kısaltılacak.

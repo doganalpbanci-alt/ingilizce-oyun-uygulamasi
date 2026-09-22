@@ -153,9 +153,13 @@ Kendi `IDIOMS` objesinde durur; dış iskeleti `CURRICULUM` ile aynıdır
 Kayıtlar `{ en, tr, meaning }` taşır. Ünite `id`/`title` değerleri
 `twinkl.js` ile birebir aynıdır.
 
-**Henüz hiçbir sayfa bu dosyayı yüklemiyor** — kullanıcının `skill: "deyim"`
-kararının karşılığı, bu veriyi kullanan ayrı bir oyun/araç eklemek
-(bkz. `HANDOFF.md` Faz T2 sonu).
+Bu veriyi **Deyim Avı** (`games/deyim-avi/`) kullanır; `skill: "deyim"`
+olarak kayıtlı olduğu için hub'da kendi filtre sekmesi var.
+
+**Çeldirici kuralı:** Bir derste yalnızca 1 deyim olduğundan şıklar seçili
+derslerden üretilemez. Deyim Avı doğru cevabı seçili derslerden, çeldiricileri
+**seviyenin tamamından** (yetmezse tüm seviyelerden) alır. Deyim verisini
+kullanan yeni bir şey yazarken bu tuzağı hatırla.
 
 - **Türkçe karşılıklar ve cümleler bu proje için yazıldı**, Twinkl tek dilli
   bir müfredat — öğretmen onayından geçmedi.
@@ -186,7 +190,7 @@ Mevcut kapsam: **MEB 5. sınıf Ünite 1** (15 cümle, 4 yapı) +
 **Twinkl Level 1-10** (100 ders, 334 cümle — `data/twinkl-sentences.js`).
 Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu var).
 
-## Mevcut içerik (7 oyun + 1 araç)
+## Mevcut içerik (8 oyun + 1 araç)
 
 | Ad | Klasör | Skill | Not |
 |---|---|---|---|
@@ -197,6 +201,7 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
 | 🔎 Kelime Avı | `kelime-avi` | kelime | Izgara üretici, 3 zorluk, sürükle veya iki dokunuş. Ses var. |
 | 🧩 Kelime Eşleştirme | `kelime-eslestirme` | kelime | Hafıza kartı. **Ses yok.** |
 | 🔤 Cümle Kurma | `cumle-kurma` | cumle-kurma | Karışık kelimelerden cümle kurma. Tek kişilik + takımlı mod, tıkla veya sürükle. `data/sentences.js` kullanır. Ses var. |
+| 🗝️ Deyim Avı | `deyim-avi` | deyim | Türkçe anlamdan doğru İngilizce deyimi seçme (4 şık). `data/twinkl-idioms.js` kullanır. Ses var. |
 | 📚 Kelime Kartları | `kelime-kartlari` | kelime | Araç: liste + flashcard (`category: "arac"`). **Ses yok.** |
 
 ## PWA / service worker
@@ -207,7 +212,7 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v7`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v8`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)
@@ -265,5 +270,5 @@ Bu proje çok-oturumlu, adım adım bir yol planıyla geliştiriliyor:
 - `data/sentences.js` ve `data/twinkl-sentences.js` cümleleri **taslak**, öğretmen onayı bekliyor.
 - `data/twinkl.js` Türkçe karşılıkları bu proje için yazıldı, öğretmen onayı bekliyor.
 - Depo **public** — Twinkl içeriği herkese açık yayınlanıyor, kullanıcı bu kararı erteledi.
-- `kelime-eslestirme` ve `kelime-kartlari`'nda ses efekti yok (diğer 6 içerikte var).
+- `kelime-eslestirme` ve `kelime-kartlari`'nda ses efekti yok (diğer 7 içerikte var).
 - `README.md` güncel değil: 8. sınıf kelime sayısı (341 → 364) ve Cümle Kurma eksik.

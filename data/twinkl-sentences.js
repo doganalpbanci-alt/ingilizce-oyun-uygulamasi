@@ -655,6 +655,272 @@
           ]
         }
       ]
+    },
+
+    "twinkl-6": {
+      label: "Level 6 (A2) — Geçmiş Yetenek ve Edatlar",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t6-l1-how-do-you-feel",
+          title: "Ders 1 - How Do You Feel? (Pekiştiriciler)",
+          structures: [
+            { id: "intensifiers", label: "Pekiştiricilerle duygu anlatma (very, really, quite, extremely)" }
+          ],
+          sentences: [
+            { en: "I am very tired today.", tr: "Bugün çok yorgunum.", structure: "intensifiers" },
+            { en: "She is really happy.", tr: "O gerçekten mutlu.", structure: "intensifiers" },
+            { en: "The film was quite good.", tr: "Film oldukça iyiydi.", structure: "intensifiers" },
+            { en: "It is extremely cold outside.", tr: "Dışarısı son derece soğuk.", structure: "intensifiers" }
+          ]
+        },
+        {
+          id: "t6-l2-making-requests",
+          title: "Ders 2 - Making Requests (Otelde Rica Etme)",
+          structures: [
+            { id: "requests", label: "Kibarca rica etme ve karşılık verme" }
+          ],
+          sentences: [
+            { en: "What would you like?", tr: "Ne istersiniz?", structure: "requests" },
+            { en: "Could I have some towels, please?", tr: "Biraz havlu alabilir miyim, lütfen?", structure: "requests" },
+            { en: "How can I help you?", tr: "Size nasıl yardımcı olabilirim?", structure: "requests" },
+            { en: "I would like room service.", tr: "Oda servisi istiyorum.", structure: "requests" }
+          ]
+        },
+        {
+          id: "t6-l3-could-and-couldnt",
+          title: "Ders 3 - Could and Couldn't (Geçmişteki Yetenek)",
+          structures: [
+            { id: "past-ability", label: "Geçmişteki yeteneği anlatma (could / couldn't)" }
+          ],
+          sentences: [
+            { en: "I could climb the tree.", tr: "Ağaca tırmanabiliyordum.", structure: "past-ability" },
+            { en: "She couldn't fix the bicycle.", tr: "O bisikleti tamir edemedi.", structure: "past-ability" },
+            { en: "We could catch the ball.", tr: "Topu yakalayabiliyorduk.", structure: "past-ability" },
+            { en: "He couldn't understand the language.", tr: "O dili anlayamıyordu.", structure: "past-ability" }
+          ]
+        },
+        {
+          id: "t6-l4-have-you-been-to-paris",
+          title: "Ders 4 - Have You Been to Paris? (Yaşanmışlıklar)",
+          structures: [
+            { id: "experience", label: "Yaşanmışlık sorma ve anlatma (Have you been...?)" }
+          ],
+          sentences: [
+            { en: "Have you been to Paris?", tr: "Paris'e gittin mi?", structure: "experience" },
+            { en: "I have been to London.", tr: "Londra'ya gittim.", structure: "experience" },
+            { en: "We have seen a fantastic waterfall.", tr: "Harika bir şelale gördük.", structure: "experience" }
+          ]
+        },
+        {
+          id: "t6-l5-i-have-been-living-here",
+          title: "Ders 5 - I Have Been Living Here for Three Years (Süre)",
+          structures: [
+            { id: "duration", label: "Ne zamandır sürdüğünü anlatma (for / how long)" }
+          ],
+          sentences: [
+            { en: "I have been living here for three years.", tr: "Üç yıldır burada yaşıyorum.", structure: "duration" },
+            { en: "How long have you been a journalist?", tr: "Ne zamandır gazetecisin?", structure: "duration" },
+            { en: "She has been reading about the huge castle.", tr: "O kocaman kale hakkında okuyor.", structure: "duration" }
+          ]
+        },
+        {
+          id: "t6-l7-the-bee-flew-to-the-flowers",
+          title: "Ders 7 - The Bee Flew to the Flowers (Yer Edatları)",
+          structures: [
+            { id: "place-prepositions", label: "Yer edatlarıyla anlatma (in, on, along, to)" }
+          ],
+          sentences: [
+            { en: "The bee flew to the flowers.", tr: "Arı çiçeklere uçtu.", structure: "place-prepositions" },
+            { en: "The mouse ran along the street.", tr: "Fare sokak boyunca koştu.", structure: "place-prepositions" },
+            { en: "The duck is on the boat.", tr: "Ördek teknenin üstünde.", structure: "place-prepositions" }
+          ]
+        },
+        {
+          id: "t6-l8-prepositions-of-time",
+          title: "Ders 8 - Prepositions of Time (Zaman Edatları)",
+          structures: [
+            { id: "time-prepositions", label: "Zaman edatlarıyla program anlatma (in, at, on)" }
+          ],
+          sentences: [
+            { en: "I get up in the morning.", tr: "Sabahları kalkarım.", structure: "time-prepositions" },
+            { en: "We play football at the weekend.", tr: "Hafta sonu futbol oynarız.", structure: "time-prepositions" },
+            { en: "My birthday is in summer.", tr: "Doğum günüm yazın.", structure: "time-prepositions" },
+            { en: "She studies at night.", tr: "O geceleri ders çalışır.", structure: "time-prepositions" }
+          ]
+        },
+        {
+          id: "t6-l9-adverbs-order",
+          title: "Ders 9 - Adverbs Order (Zarf Sıralaması)",
+          structures: [
+            { id: "adverb-order", label: "Zarfları sıraya koyma (yer, zaman, sıklık, tarz)" }
+          ],
+          sentences: [
+            { en: "He takes pictures carefully in the city.", tr: "Şehirde dikkatlice fotoğraf çeker.", structure: "adverb-order" },
+            { en: "The photographer works quickly every morning.", tr: "Fotoğrafçı her sabah hızlıca çalışır.", structure: "adverb-order" },
+            { en: "She often puts her tripod on the stairs.", tr: "Tripodunu sık sık merdivene koyar.", structure: "adverb-order" }
+          ]
+        },
+        {
+          id: "t6-l10-which-milkshake-did-you-order",
+          title: "Ders 10 - Which Milkshake Did You Order? (Geçmiş Zaman Soruları)",
+          structures: [
+            { id: "past-questions", label: "Geçmiş zamanda soru sorma (which, where, who, why)" }
+          ],
+          sentences: [
+            { en: "Which milkshake did you order?", tr: "Hangi milkshake'i sipariş ettin?", structure: "past-questions" },
+            { en: "Where did they eat the pancakes?", tr: "Krepleri nerede yediler?", structure: "past-questions" },
+            { en: "Who cooked the meatballs?", tr: "Köfteleri kim pişirdi?", structure: "past-questions" },
+            { en: "Why did he buy a mango?", tr: "Neden mango aldı?", structure: "past-questions" }
+          ]
+        },
+        {
+          id: "t6-l11-zero-conditional",
+          title: "Ders 11 - Zero Conditional (Sıfır Koşul Cümlesi)",
+          structures: [
+            { id: "zero-conditional", label: "Genel doğruları anlatma (if / when + geniş zaman)" }
+          ],
+          sentences: [
+            { en: "If you run fast, you get tired.", tr: "Hızlı koşarsan yorulursun.", structure: "zero-conditional" },
+            { en: "When we win, we get a prize.", tr: "Kazandığımızda ödül alırız.", structure: "zero-conditional" },
+            { en: "If he scores a goal, the team cheers.", tr: "Gol atarsa takım tezahürat yapar.", structure: "zero-conditional" }
+          ]
+        }
+      ]
+    },
+
+    "twinkl-7": {
+      label: "Level 7 (A2) — Koşul, Öneri ve Bağlaçlar",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t7-l1-a-day-in-the-life-of-sally",
+          title: "Ders 1 - A Day in the Life of Sally (Öbek Fiiller)",
+          structures: [
+            { id: "phrasal-verbs", label: "Öbek fiillerle günlük olayları anlatma (take up, get to, get over)" }
+          ],
+          sentences: [
+            { en: "She took up volleyball last year.", tr: "Geçen yıl voleybola başladı.", structure: "phrasal-verbs" },
+            { en: "He gets to work at eight.", tr: "Sekizde işe varır.", structure: "phrasal-verbs" },
+            { en: "She is getting better after her illness.", tr: "Hastalığından sonra iyileşiyor.", structure: "phrasal-verbs" },
+            { en: "My parents brought me up in a flat.", tr: "Ailem beni bir dairede büyüttü.", structure: "phrasal-verbs" }
+          ]
+        },
+        {
+          id: "t7-l2-first-conditional",
+          title: "Ders 2 - First Conditional (Birinci Koşul, Güvenlik)",
+          structures: [
+            { id: "first-conditional", label: "Olası durumları anlatma (if + geniş zaman, will)" }
+          ],
+          sentences: [
+            { en: "If I don't understand, I will ask you.", tr: "Anlamazsam sana sorarım.", structure: "first-conditional" },
+            { en: "If a fire starts, I will leave quickly.", tr: "Yangın çıkarsa hızlıca çıkarım.", structure: "first-conditional" },
+            { en: "She will not pass if she doesn't study.", tr: "Çalışmazsa sınıfı geçemeyecek.", structure: "first-conditional" },
+            { en: "If you wear a seatbelt, you will be safe.", tr: "Emniyet kemeri takarsan güvende olursun.", structure: "first-conditional" }
+          ]
+        },
+        {
+          id: "t7-l3-giving-opinions",
+          title: "Ders 3 - Giving Opinions (Film ve Kitap Yorumu)",
+          structures: [
+            { id: "opinions", label: "Film ve kitap hakkında görüş bildirme" }
+          ],
+          sentences: [
+            { en: "I loved it.", tr: "Bayıldım.", structure: "opinions" },
+            { en: "The characters were fascinating.", tr: "Karakterler büyüleyiciydi.", structure: "opinions" },
+            { en: "The plot was creative.", tr: "Olay örgüsü yaratıcıydı.", structure: "opinions" },
+            { en: "The costumes were not good.", tr: "Kostümler iyi değildi.", structure: "opinions" }
+          ]
+        },
+        {
+          id: "t7-l4-making-suggestions",
+          title: "Ders 4 - Making Suggestions (Öneride Bulunma)",
+          structures: [
+            { id: "suggestions", label: "Öneri yapma (could, should, shall)" }
+          ],
+          sentences: [
+            { en: "What should we do on a day off?", tr: "İzin gününde ne yapmalıyız?", structure: "suggestions" },
+            { en: "When shall we go sightseeing?", tr: "Ne zaman gezmeye gidelim?", structure: "suggestions" },
+            { en: "Who could we invite to the party?", tr: "Partiye kimi davet edebiliriz?", structure: "suggestions" }
+          ]
+        },
+        {
+          id: "t7-l5-busy-mondays-at-school",
+          title: "Ders 5 - Busy Mondays at School (Edat + Sıfat)",
+          structures: [
+            { id: "adjective-prepositions", label: "Sıfat + edat kalıpları (good at, worried about, afraid of)" }
+          ],
+          sentences: [
+            { en: "I am good at chemistry.", tr: "Kimyada iyiyim.", structure: "adjective-prepositions" },
+            { en: "She is worried about the assignment.", tr: "Ödev konusunda endişeli.", structure: "adjective-prepositions" },
+            { en: "He is afraid of the maths test.", tr: "Matematik sınavından korkuyor.", structure: "adjective-prepositions" },
+            { en: "They are interested in rugby.", tr: "Ragbi ile ilgileniyorlar.", structure: "adjective-prepositions" }
+          ]
+        },
+        {
+          id: "t7-l7-you-dont-have-to-bring-a-blanket",
+          title: "Ders 7 - You Don't Have to Bring a Blanket (Zorunluluk)",
+          structures: [
+            { id: "obligation", label: "Zorunluluk ve yasak (must, have to, mustn't)" }
+          ],
+          sentences: [
+            { en: "You must bring a water bottle.", tr: "Su şişesi getirmelisin.", structure: "obligation" },
+            { en: "You don't have to bring a blanket.", tr: "Battaniye getirmek zorunda değilsin.", structure: "obligation" },
+            { en: "We mustn't hurt the environment.", tr: "Çevreye zarar vermemeliyiz.", structure: "obligation" },
+            { en: "I have to pack my sleeping bag.", tr: "Uyku tulumumu toplamak zorundayım.", structure: "obligation" }
+          ]
+        },
+        {
+          id: "t7-l8-negative-future-tense",
+          title: "Ders 8 - Negative Future Tense (Olumsuz Gelecek Zaman)",
+          structures: [
+            { id: "negative-future", label: "Olumsuz gelecek zaman (won't, definitely, probably)" }
+          ],
+          sentences: [
+            { en: "I will not be a pilot.", tr: "Pilot olmayacağım.", structure: "negative-future" },
+            { en: "She will definitely win the competition.", tr: "Yarışmayı kesinlikle kazanacak.", structure: "negative-future" },
+            { en: "He will probably not finish the race.", tr: "Yarışı muhtemelen bitirmeyecek.", structure: "negative-future" },
+            { en: "They won't watch television tonight.", tr: "Bu akşam televizyon izlemeyecekler.", structure: "negative-future" }
+          ]
+        },
+        {
+          id: "t7-l9-prepositional-phrase-island",
+          title: "Ders 9 - Prepositional Phrase Island (Edat Öbekleri)",
+          structures: [
+            { id: "prepositional-phrases", label: "Edat öbekleri (above, below, far, since, until, get on/off)" }
+          ],
+          sentences: [
+            { en: "The rainbow is above the skyscraper.", tr: "Gökkuşağı gökdelenin üstünde.", structure: "prepositional-phrases" },
+            { en: "We get off the bus at the airport.", tr: "Otobüsten havalimanında ineriz.", structure: "prepositional-phrases" },
+            { en: "I have been here since Monday.", tr: "Pazartesiden beri buradayım.", structure: "prepositional-phrases" },
+            { en: "The caves are far below the castles.", tr: "Mağaralar kalelerin çok altında.", structure: "prepositional-phrases" }
+          ]
+        },
+        {
+          id: "t7-l10-sentence-connectors",
+          title: "Ders 10 - Sentence Connectors (Bağlaçlar, İklim)",
+          structures: [
+            { id: "connectors", label: "Cümleleri bağlama (and, because, then, and then)" }
+          ],
+          sentences: [
+            { en: "Climate change is real, and we must act.", tr: "İklim değişikliği gerçek ve harekete geçmeliyiz.", structure: "connectors" },
+            { en: "We use renewable energy because it is clean.", tr: "Yenilenebilir enerji kullanıyoruz çünkü temiz.", structure: "connectors" },
+            { en: "Plant trees, and then our carbon footprint falls.", tr: "Ağaç dikin, sonra karbon ayak izimiz düşer.", structure: "connectors" }
+          ]
+        },
+        {
+          id: "t7-l11-storytelling",
+          title: "Ders 11 - Storytelling (Hikâye Anlatımı)",
+          structures: [
+            { id: "storytelling", label: "Hikâye ögeleri (karakter, olay örgüsü, mekân)" }
+          ],
+          sentences: [
+            { en: "The main character was a brave king.", tr: "Ana karakter cesur bir kraldı.", structure: "storytelling" },
+            { en: "The story is set in a dark castle.", tr: "Hikâye karanlık bir kalede geçiyor.", structure: "storytelling" },
+            { en: "A dragon and a witch fought the queen.", tr: "Bir ejderha ve bir cadı kraliçeyle savaştı.", structure: "storytelling" }
+          ]
+        }
+      ]
     }
   };
 

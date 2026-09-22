@@ -932,6 +932,296 @@
           ]
         }
       ]
+    },
+
+    "twinkl-6": {
+      label: "Level 6 (A2) — Geçmiş Yetenek ve Edatlar",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t6-l1-how-do-you-feel",
+          title: "Ders 1 - How Do You Feel? (Pekiştiriciler)",
+          words: [
+            { en: "very", tr: "çok" },
+            { en: "really", tr: "gerçekten" },
+            { en: "quite", tr: "oldukça" },
+            { en: "extremely", tr: "son derece" }
+          ]
+        },
+        {
+          id: "t6-l2-making-requests",
+          title: "Ders 2 - Making Requests (Otelde Rica Etme)",
+          words: [
+            { en: "towels", tr: "havlular" },
+            { en: "Wi-Fi password", tr: "Wi-Fi şifresi" },
+            { en: "volleyball", tr: "voleybol" },
+            { en: "watermelon", tr: "karpuz" },
+            { en: "fan", tr: "vantilatör" },
+            { en: "boat", tr: "tekne" },
+            { en: "room service", tr: "oda servisi" },
+            { en: "blanket", tr: "battaniye" }
+          ]
+        },
+        {
+          id: "t6-l3-could-and-couldnt",
+          title: "Ders 3 - Could and Couldn't (Geçmişteki Yetenek)",
+          words: [
+            { en: "catch", tr: "yakalamak" },
+            { en: "fix", tr: "tamir etmek" },
+            { en: "carry", tr: "taşımak" },
+            { en: "climb", tr: "tırmanmak" },
+            { en: "smell", tr: "koklamak" },
+            { en: "understand", tr: "anlamak" },
+            { en: "ball", tr: "top" },
+            { en: "fish", tr: "balık" },
+            { en: "bed", tr: "yatak" },
+            { en: "table", tr: "masa" },
+            { en: "language", tr: "dil (lisan)" },
+            { en: "bag", tr: "çanta" },
+            { en: "rock", tr: "kaya" },
+            { en: "mountain", tr: "dağ" },
+            { en: "tree", tr: "ağaç" },
+            { en: "laptop", tr: "dizüstü bilgisayar" },
+            { en: "bicycle", tr: "bisiklet" },
+            { en: "bread", tr: "ekmek" },
+            { en: "flowers", tr: "çiçekler" }
+          ]
+        },
+        {
+          id: "t6-l4-have-you-been-to-paris",
+          title: "Ders 4 - Have You Been to Paris? (Yaşanmışlıklar)",
+          words: [
+            { en: "Europe", tr: "Avrupa" },
+            { en: "Paris", tr: "Paris" },
+            { en: "London", tr: "Londra" },
+            { en: "village", tr: "köy" },
+            { en: "countryside", tr: "kırsal kesim" },
+            { en: "fantastic", tr: "harika" },
+            { en: "waterfall", tr: "şelale" }
+          ]
+        },
+        {
+          id: "t6-l5-i-have-been-living-here",
+          title: "Ders 5 - I Have Been Living Here for Three Years (Süre)",
+          words: [
+            { en: "castle", tr: "kale" },
+            { en: "huge", tr: "kocaman" },
+            { en: "adventure", tr: "macera" },
+            { en: "journalist", tr: "gazeteci" }
+          ]
+        },
+        {
+          id: "t6-l7-the-bee-flew-to-the-flowers",
+          title: "Ders 7 - The Bee Flew to the Flowers (Yer Edatları)",
+          words: [
+            { en: "duck", tr: "ördek" },
+            { en: "bee", tr: "arı" },
+            { en: "cow", tr: "inek" },
+            { en: "horse", tr: "at" },
+            { en: "frog", tr: "kurbağa" },
+            { en: "mouse", tr: "fare" }
+          ]
+        },
+        {
+          id: "t6-l8-prepositions-of-time",
+          title: "Ders 8 - Prepositions of Time (Zaman Edatları)",
+          words: [
+            { en: "morning", tr: "sabah" },
+            { en: "night", tr: "gece" },
+            { en: "summer", tr: "yaz" },
+            { en: "weekend", tr: "hafta sonu" },
+            { en: "birthday", tr: "doğum günü" }
+          ]
+        },
+        {
+          id: "t6-l9-adverbs-order",
+          title: "Ders 9 - Adverbs Order (Zarf Sıralaması)",
+          words: [
+            { en: "photographer", tr: "fotoğrafçı" },
+            { en: "picture", tr: "fotoğraf" },
+            { en: "tripod", tr: "tripod" },
+            { en: "city", tr: "şehir" },
+            { en: "stairs", tr: "merdiven" },
+            { en: "street", tr: "sokak" },
+            { en: "website", tr: "web sitesi" }
+          ]
+        },
+        {
+          id: "t6-l10-which-milkshake-did-you-order",
+          title: "Ders 10 - Which Milkshake Did You Order? (Geçmiş Zaman Soruları)",
+          words: [
+            { en: "pancakes", tr: "krep" },
+            { en: "meatballs", tr: "köfte" },
+            { en: "sausages", tr: "sosis" },
+            { en: "pie", tr: "turta" },
+            { en: "mango", tr: "mango" },
+            { en: "milkshake", tr: "milkshake" }
+          ]
+        },
+        {
+          id: "t6-l11-zero-conditional",
+          title: "Ders 11 - Zero Conditional (Sıfır Koşul Cümlesi)",
+          words: [
+            { en: "prize", tr: "ödül" },
+            { en: "gym", tr: "spor salonu" },
+            { en: "goal", tr: "gol" },
+            { en: "cry", tr: "ağlamak" },
+            { en: "team", tr: "takım" },
+            { en: "tired", tr: "yorgun" }
+          ]
+        }
+      ]
+    },
+
+    "twinkl-7": {
+      label: "Level 7 (A2) — Koşul, Öneri ve Bağlaçlar",
+      group: TWINKL_GROUP,
+      units: [
+        {
+          id: "t7-l1-a-day-in-the-life-of-sally",
+          title: "Ders 1 - A Day in the Life of Sally (Öbek Fiiller)",
+          words: [
+            { en: "volleyball", tr: "voleybol" },
+            { en: "assistant", tr: "asistan" },
+            { en: "make-up", tr: "makyaj" },
+            { en: "photographer", tr: "fotoğrafçı" },
+            { en: "jeans", tr: "kot pantolon" },
+            { en: "flat", tr: "daire (ev)" },
+            { en: "anxious", tr: "endişeli" },
+            { en: "model", tr: "manken" },
+            { en: "career", tr: "kariyer" },
+            { en: "evening", tr: "akşam" }
+          ]
+        },
+        {
+          id: "t7-l2-first-conditional",
+          title: "Ders 2 - First Conditional (Birinci Koşul, Güvenlik)",
+          words: [
+            { en: "burglars", tr: "hırsızlar" },
+            { en: "smoke detector", tr: "duman dedektörü" },
+            { en: "seatbelt", tr: "emniyet kemeri" },
+            { en: "speed limit", tr: "hız sınırı" },
+            { en: "emergency", tr: "acil durum" },
+            { en: "fire drills", tr: "yangın tatbikatları" }
+          ]
+        },
+        {
+          id: "t7-l3-giving-opinions",
+          title: "Ders 3 - Giving Opinions (Film ve Kitap Yorumu)",
+          words: [
+            { en: "plot", tr: "olay örgüsü" },
+            { en: "characters", tr: "karakterler" },
+            { en: "visuals", tr: "görseller" },
+            { en: "CGI", tr: "bilgisayar efektleri" },
+            { en: "acting", tr: "oyunculuk" },
+            { en: "costumes", tr: "kostümler" },
+            { en: "story", tr: "hikâye" }
+          ]
+        },
+        {
+          id: "t7-l4-making-suggestions",
+          title: "Ders 4 - Making Suggestions (Öneride Bulunma)",
+          words: [
+            { en: "itinerary", tr: "gezi programı" },
+            { en: "sightseeing", tr: "gezip görme" },
+            { en: "exchange rate", tr: "döviz kuru" },
+            { en: "reservations", tr: "rezervasyonlar" },
+            { en: "attractions", tr: "gezilecek yerler" },
+            { en: "souvenirs", tr: "hediyelik eşyalar" }
+          ]
+        },
+        {
+          id: "t7-l5-busy-mondays-at-school",
+          title: "Ders 5 - Busy Mondays at School (Edat + Sıfat)",
+          words: [
+            { en: "chemistry", tr: "kimya" },
+            { en: "school", tr: "okul" },
+            { en: "maths", tr: "matematik" },
+            { en: "revise", tr: "tekrar etmek" },
+            { en: "assignment", tr: "ödev" },
+            { en: "rugby", tr: "ragbi" },
+            { en: "classmates", tr: "sınıf arkadaşları" },
+            { en: "textbook", tr: "ders kitabı" }
+          ]
+        },
+        {
+          id: "t7-l7-you-dont-have-to-bring-a-blanket",
+          title: "Ders 7 - You Don't Have to Bring a Blanket (Zorunluluk)",
+          words: [
+            { en: "flashlight", tr: "el feneri" },
+            { en: "tent", tr: "çadır" },
+            { en: "sleeping bag", tr: "uyku tulumu" },
+            { en: "water bottle", tr: "su şişesi" },
+            { en: "boots", tr: "botlar" },
+            { en: "the environment", tr: "çevre (doğa)" }
+          ]
+        },
+        {
+          id: "t7-l8-negative-future-tense",
+          title: "Ders 8 - Negative Future Tense (Olumsuz Gelecek Zaman)",
+          words: [
+            { en: "engineer", tr: "mühendis" },
+            { en: "nest", tr: "kuş yuvası" },
+            { en: "pilot", tr: "pilot" },
+            { en: "alone", tr: "yalnız" },
+            { en: "honey", tr: "bal" },
+            { en: "surprise", tr: "sürpriz" },
+            { en: "competition", tr: "yarışma" },
+            { en: "channel", tr: "kanal" },
+            { en: "remote control", tr: "kumanda" },
+            { en: "television", tr: "televizyon" },
+            { en: "love", tr: "sevgi" },
+            { en: "anger", tr: "öfke" },
+            { en: "race", tr: "yarış" },
+            { en: "finish", tr: "bitirmek" },
+            { en: "stand", tr: "ayakta durmak" }
+          ]
+        },
+        {
+          id: "t7-l9-prepositional-phrase-island",
+          title: "Ders 9 - Prepositional Phrase Island (Edat Öbekleri)",
+          words: [
+            { en: "rainbow", tr: "gökkuşağı" },
+            { en: "skyscraper", tr: "gökdelen" },
+            { en: "gold", tr: "altın" },
+            { en: "warm", tr: "ılık" },
+            { en: "soft", tr: "yumuşak" },
+            { en: "airport", tr: "havalimanı" },
+            { en: "umbrella", tr: "şemsiye" },
+            { en: "key", tr: "anahtar" },
+            { en: "caves", tr: "mağaralar" },
+            { en: "castles", tr: "kaleler" }
+          ]
+        },
+        {
+          id: "t7-l10-sentence-connectors",
+          title: "Ders 10 - Sentence Connectors (Bağlaçlar, İklim)",
+          words: [
+            { en: "climate change", tr: "iklim değişikliği" },
+            { en: "greenhouse gases", tr: "sera gazları" },
+            { en: "carbon footprint", tr: "karbon ayak izi" },
+            { en: "renewable energy", tr: "yenilenebilir enerji" },
+            { en: "deforestation", tr: "ormansızlaşma" },
+            { en: "ecovillage", tr: "ekoköy" }
+          ]
+        },
+        {
+          id: "t7-l11-storytelling",
+          title: "Ders 11 - Storytelling (Hikâye Anlatımı)",
+          words: [
+            { en: "character", tr: "karakter" },
+            { en: "plot", tr: "olay örgüsü" },
+            { en: "setting", tr: "hikâyenin geçtiği yer" },
+            { en: "vampire", tr: "vampir" },
+            { en: "dragon", tr: "ejderha" },
+            { en: "fairy", tr: "peri" },
+            { en: "witch", tr: "cadı" },
+            { en: "king", tr: "kral" },
+            { en: "queen", tr: "kraliçe" },
+            { en: "ghost", tr: "hayalet" }
+          ]
+        }
+      ]
     }
   };
 

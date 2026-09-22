@@ -11,10 +11,22 @@
  */
 var SKILL_LABELS = {
   kelime: "Kelime",
-  "cumle-kurma": "Cümle Kurma"
+  "cumle-kurma": "Cümle Kurma",
+  deyim: "Deyim"
 };
 
 var GAMES = [
+  {
+    id: "deyim-avi",
+    title: "Deyim Avı",
+    description: "Türkçe anlamı oku, dört İngilizce deyimden doğrusunu seç. Twinkl Level 8'den itibaren gelen deyimleri çalıştırır.",
+    icon: "🗝️",
+    path: "games/deyim-avi/index.html",
+    color: "#0d9488",
+    category: "oyun",
+    skill: "deyim",
+    tags: ["Tek kişi", "Sınıfça", "B1"]
+  },
   {
     id: "cumle-kurma",
     title: "Cümle Kurma",

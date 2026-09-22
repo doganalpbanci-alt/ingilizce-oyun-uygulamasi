@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v7";
+var CACHE_VERSION = "v8";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -39,6 +39,10 @@ var PRECACHE = [
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",
+  "games/deyim-avi/index.html",
+  "games/deyim-avi/script.js",
+  "games/deyim-avi/sounds.js",
+  "games/deyim-avi/style.css",
   "games/cumle-kurma/index.html",
   "games/cumle-kurma/script.js",
   "games/cumle-kurma/sounds.js",

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Deyim Avı - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/setup.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header idiom-header">
+  <h1>🗝️ Deyim Avı</h1>
+  <p class="tagline">Türkçe anlamı oku, doğru İngilizce deyimi yakala.</p>
+</header>
+
+<main>
+
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Seviye ve Ders Seç</h2>
+      <p class="hint">
+        Deyimler Twinkl müfredatında Level 8'den itibaren başlıyor, o yüzden
+        burada yalnızca deyim içeren seviyeler listelenir.
+      </p>
+
+      <label class="field">
+        <span>Seviye</span>
+        <select id="grade-select"></select>
+      </label>
+
+      <div class="field">
+        <span>Dersler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="unit-word-count" class="hint"></p>
+        <p id="unit-error" class="error-text" hidden></p>
+      </div>
+
+      <label class="field">
+        <span>Kaç soru sorulsun?</span>
+        <select id="question-count-select">
+          <option value="5">5 soru</option>
+          <option value="10" selected>10 soru</option>
+          <option value="15">15 soru</option>
+          <option value="0">Seçilen tüm deyimler</option>
+        </select>
+      </label>
+
+      <button id="start-btn" type="button" class="primary-btn">Başla</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyun -->
+  <section id="screen-game" class="screen" hidden>
+    <div class="game-status">
+      <span>Soru: <strong id="question-index">1</strong>/<strong id="question-total">10</strong></span>
+      <span>Doğru: <strong id="score">0</strong></span>
+      <span>Seri: <strong id="streak">0</strong></span>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+    </div>
+
+    <div class="idiom-card">
+      <p class="idiom-prompt-label">Bu anlama gelen deyim hangisi?</p>
+      <p id="idiom-meaning" class="idiom-meaning"></p>
+      <p id="idiom-turkish" class="idiom-turkish"></p>
+    </div>
+
+    <div id="options" class="idiom-options"></div>
+
+    <p id="feedback" class="idiom-feedback" hidden></p>
+    <button id="next-btn" type="button" class="primary-btn" hidden>Sonraki Soru</button>
+  </section>
+
+  <!-- 3) Sonuç -->
+  <section id="screen-result" class="screen" hidden>
+    <div class="panel">
+      <h2 id="result-title">Bitti!</h2>
+      <p class="result-line">
+        <strong id="result-score">0</strong> / <strong id="result-total">0</strong> doğru
+      </p>
+      <p id="result-comment" class="hint"></p>
+
+      <h3 class="review-title">Bu turdaki deyimler</h3>
+      <ul id="review-list" class="review-list"></ul>
+
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Seçimi Değiştir</button>
+        <button id="again-btn" type="button" class="primary-btn">Tekrar Oyna</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="../../data/twinkl.js"></script>
+<script src="../../data/twinkl-idioms.js"></script>
+<script src="../../js/shared-setup.js"></script>
+<script src="sounds.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

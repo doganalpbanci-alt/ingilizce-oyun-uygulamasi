@@ -572,7 +572,7 @@ Seç/Temizle, sayaç) + tam oyun akışları (Asmaca, Kelime Avı, Turnuva
 - **Sıradaki oturumun hedefi:** Faz T2 — Twinkl Level 6-10. İlk iş Level 8'de
   başlayan deyimler için `skill: "deyim"` kararının nasıl uygulanacağı.
 
-### Oturum 2026-11-18 — Otonom geliştirme: 4 yeni oyun + gramer veritabanı
+### Oturum 2026-11-18 — Otonom geliştirme: 5 yeni oyun + gramer veritabanı
 Kullanıcı "limit dolana kadar geliştir, yönetim sende" dedi (uyumadan önce);
 kararlar Claude'a bırakıldı. Twinkl L6-10 (Faz T2) **yapılmadı**: kaynak PDF
 depoda yok ve "kaynaktaki kelime listesi birebir alınır" kuralı tahminle veri
@@ -607,9 +607,12 @@ yazım) ve backlog ele alındı.
 - Cümle Kurma: `and`/`or` yer değişimini kabul ediyor; iki sırada da doğru
   okunan 6 cümle yeniden yazıldı.
 
+5. 🎡 **Kelime Çarkı** (kelime, konuşma) — görev çarkı + seçili üniteden
+   kelime; "Canlandır/Çiz"de kelime gizli gelir; takım girilirse puan tutar.
+
 **Diğer:** Kelime Eşleştirme'ye ses; Kelime Kartları'na 🔊 sesli okuma; hub
 rozetinde MEB/Twinkl ayrımı; README yeniden yazıldı; CLAUDE.md güncellendi;
-`sw.js` → `v9` (PRECACHE diskle birebir, 63 dosya).
+`sw.js` → `v10` (PRECACHE diskle birebir).
 
 **Test:** Her yeni oyun Playwright ile uçtan uca oynandı (solo + takım, süre
 dolması, çıkış, Twinkl + MEB), 1180×820 / 820×1180 / 390px'de yatay taşma yok,

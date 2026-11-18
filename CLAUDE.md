@@ -171,13 +171,14 @@ Yapı: `GRAMMAR[sınıf].units[] = { id, title, topic, rule, items[] }`
   kural orada da kritik.
 - Kapsam: MEB 38 ünite / 266 madde, Twinkl 50 ders / 200 madde. **Taslak.**
 
-## Mevcut içerik (11 oyun + 1 araç)
+## Mevcut içerik (12 oyun + 1 araç)
 
 | Ad | Klasör | Skill | Not |
 |---|---|---|---|
 | ⚡ Doğru mu Yanlış mı? | `dogru-yanlis` | kelime, gramer | Süreli hızlı karar, seri çarpanı, rekor (localStorage). Klavye ← →. |
 | 🧱 Gramer Kulesi | `gramer-kulesi` | gramer | `GRAMMAR` kullanır. Doğru = kuleye blok. Tek kişi + takımlı (2-6 takım). |
 | 🔠 Harf Karıştır | `harf-karistir` | yazim | Karışık harflerden kelime yazma, ipucu, klavye, çözünce sesli okuma. |
+| 🎡 Kelime Çarkı | `kelime-carki` | kelime | Görev çarkı (söyle/hecele/cümle/canlandır/çiz/bonus/pas), isteğe bağlı takım puanı. CSS `conic-gradient` çark. |
 | 🪢 Halat Çekme | `halat-cekme` | kelime, gramer | İki takım aynı tahtada, `pointerdown` (çoklu dokunuş). `picker.setSource` ile kelime↔gramer. |
 | 🦉 Kelime Yakala | `kelime-yakala` | kelime | SVG baykuş, requestAnimationFrame döngüsü, can/seri/seviye. Ses var. |
 | 🏆 Kelime Turnuvası | `kelime-turnuvasi` | kelime | Eleme ağacı (bye destekli), 2 mod, raunt seçimi. Ses var. |
@@ -201,7 +202,7 @@ anahtarını paylaşır); yeni oyunlar `js/shared-sound.js` kullanır.
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v9`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v10`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)

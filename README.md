@@ -24,6 +24,7 @@ Hiçbir kurulum, sunucu veya internet bağlantısı gerekmez.
 | ⚡ Doğru mu Yanlış mı? | Kelime, Gramer | Süreye karşı hızlı karar: eşleşme / cümle doğru mu? Seri çarpanı, cihazda rekor. |
 | 🧱 Gramer Kulesi | Gramer | Boşluğa doğru kalıbı seç, kuleni yükselt. Yanlışta kısa Türkçe kural. Tek kişi + takımlı. |
 | 🔠 Harf Karıştır | Yazım | Türkçe ipucundan karışık harflerle İngilizce kelimeyi yaz. Klavye destekli. |
+| 🎡 Kelime Çarkı | Kelime (konuşma) | Çark görevi seçer: Türkçesini söyle, hecele, cümle kur, canlandır, çiz. Takım puanı isteğe bağlı. |
 | 🪢 Halat Çekme | Kelime, Gramer | İki takım tahtanın iki yanında aynı soruya yarışır; ilk doğru cevap ipi çeker. |
 | 🔤 Cümle Kurma | Cümle | Karışık kelimelerden ünitenin yapısına uygun cümleyi kur. Tek kişi + takımlı. |
 | 🦉 Kelime Yakala | Kelime | Baykuşu yönet, düşen kelimelerden doğru anlamı yakala. |

@@ -52,6 +52,17 @@ var GAMES = [
     tags: ["Tek kişi", "Takımlı", "Yazım"]
   },
   {
+    id: "kelime-carki",
+    title: "Kelime Çarkı",
+    description: "Çarkı çevir, görevi kap: Türkçesini söyle, hecele, cümle kur, canlandır ya da çiz. Sınıfı konuşturan takım oyunu.",
+    icon: "🎡",
+    path: "games/kelime-carki/index.html",
+    color: "#be185d",
+    category: "oyun",
+    skill: "kelime",
+    tags: ["Sınıfça", "Konuşma", "Takımlı"]
+  },
+  {
     id: "cumle-kurma",
     title: "Cümle Kurma",
     description: "Karışık kelimelerden ünitenin yapısına uygun doğru cümleyi kur. Tek başına pratik yap ya da sınıfça takım takım yarış.",

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Kelime Çarkı - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/setup.css">
+<link rel="stylesheet" href="../../css/play.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header kc-header" id="kc-header">
+  <h1>🎡 Kelime Çarkı</h1>
+  <p class="tagline">Çarkı çevir, görevi kap: söyle, hecele, cümle kur, çiz ya da canlandır!</p>
+</header>
+
+<main>
+
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+
+      <label class="field">
+        <span>Sınıf / Seviye</span>
+        <select id="grade-select"></select>
+      </label>
+
+      <div class="field">
+        <span>Üniteler</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="word-count" class="hint"></p>
+      </div>
+
+      <div class="field">
+        <span>Çarktaki görevler</span>
+        <div id="task-checkboxes" class="unit-checkboxes kc-tasks"></div>
+      </div>
+
+      <label class="field">
+        <span>Takımlar (isteğe bağlı — her satıra bir takım; boş bırakırsan puan tutulmaz)</span>
+        <textarea id="team-names" rows="3" placeholder="Kırmızı Takım&#10;Mavi Takım"></textarea>
+      </label>
+
+      <p id="setup-error" class="error-text" hidden></p>
+      <button id="start-btn" type="button" class="primary-btn">Çarka Geç</button>
+    </div>
+  </section>
+
+  <section id="screen-wheel" class="screen kc-play" hidden>
+    <div class="play-topbar">
+      <span class="play-chip" id="turn-chip" hidden></span>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+    </div>
+
+    <div class="kc-layout">
+      <div class="kc-wheel-wrap">
+        <div class="kc-pointer" aria-hidden="true">▼</div>
+        <div id="kc-wheel" class="kc-wheel"></div>
+        <button id="spin-btn" type="button" class="kc-spin">ÇEVİR</button>
+      </div>
+
+      <div class="kc-side">
+        <div id="kc-card" class="play-card kc-card">
+          <p class="hint kc-placeholder" id="kc-placeholder">Çarkı çevirmek için ortadaki düğmeye dokun.</p>
+          <div id="kc-result" hidden>
+            <p id="kc-task" class="kc-task"></p>
+            <p id="kc-word" class="kc-word"></p>
+            <button id="reveal-btn" type="button" class="ghost-btn">👁️ Cevabı Göster</button>
+            <p id="kc-answer" class="kc-answer" hidden></p>
+            <button id="say-btn" type="button" class="ghost-btn small" hidden>🔊 Dinle</button>
+          </div>
+        </div>
+
+        <div id="kc-scoring" class="kc-scoring" hidden>
+          <div class="btn-row kc-score-btns">
+            <button id="score-ok" type="button" class="primary-btn">✅ Bildi (+puan)</button>
+            <button id="score-no" type="button" class="ghost-btn">❌ Bilemedi</button>
+          </div>
+          <div id="scoreboard" class="scoreboard"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="../../data/twinkl.js"></script>
+<script src="../../js/shared-setup.js"></script>
+<script src="../../js/shared-sound.js"></script>
+<script src="../../js/shared-play.js"></script>
+<script src="../../js/shared-speech.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

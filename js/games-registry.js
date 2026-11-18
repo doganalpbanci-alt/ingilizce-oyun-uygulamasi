@@ -19,6 +19,17 @@ var SKILL_LABELS = {
 
 var GAMES = [
   {
+    id: "dogru-yanlis",
+    title: "Doğru mu Yanlış mı?",
+    description: "Süreye karşı hızlı karar: kelime-anlam eşleşmesi ya da gramer cümlesi doğru mu? Seri yap, puanı katla. Ders başı ısınması için ideal.",
+    icon: "⚡",
+    path: "games/dogru-yanlis/index.html",
+    color: "#4338ca",
+    category: "oyun",
+    skill: ["kelime", "gramer"],
+    tags: ["Tek kişi", "Hız", "Isınma"]
+  },
+  {
     id: "gramer-kulesi",
     title: "Gramer Kulesi",
     description: "Ünitenin dil yapısına göre boşluğa doğru kalıbı seç; her doğru cevap kuleye bir kat ekler. Yanlışta kısa kural çıkar.",

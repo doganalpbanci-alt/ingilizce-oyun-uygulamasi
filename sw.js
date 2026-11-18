@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v8";
+var CACHE_VERSION = "v9";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -44,6 +44,9 @@ var PRECACHE = [
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",
+  "games/dogru-yanlis/index.html",
+  "games/dogru-yanlis/script.js",
+  "games/dogru-yanlis/style.css",
   "games/gramer-kulesi/index.html",
   "games/gramer-kulesi/script.js",
   "games/gramer-kulesi/style.css",

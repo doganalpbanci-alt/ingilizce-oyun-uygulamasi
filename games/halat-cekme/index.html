@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Halat Çekme - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/setup.css">
+<link rel="stylesheet" href="../../css/play.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header tw-header" id="tw-header">
+  <h1>🪢 Halat Çekme</h1>
+  <p class="tagline">İki takım, tek tahta: ilk doğru cevabı veren ipi kendine çeker!</p>
+</header>
+
+<main>
+
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+
+      <label class="field">
+        <span>Sınıf / Seviye</span>
+        <select id="grade-select"></select>
+      </label>
+
+      <div class="field">
+        <span>Üniteler (bir veya daha fazla seçebilirsin)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="word-count" class="hint"></p>
+      </div>
+
+      <label class="field">
+        <span>Soru yönü</span>
+        <select id="direction-select">
+          <option value="tr-en" selected>Türkçe → İngilizce (şıklar İngilizce)</option>
+          <option value="en-tr">İngilizce → Türkçe (şıklar Türkçe)</option>
+          <option value="mixed">Karışık</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Kazanmak için kaç çekiş?</span>
+        <select id="goal-select">
+          <option value="3">3 çekiş (kısa oyun)</option>
+          <option value="5" selected>5 çekiş</option>
+          <option value="7">7 çekiş (uzun oyun)</option>
+        </select>
+      </label>
+
+      <div class="tw-names">
+        <label class="field">
+          <span>🔴 Sol takım</span>
+          <input id="team-a-name" class="tw-input" type="text" value="Kırmızı Takım" maxlength="24">
+        </label>
+        <label class="field">
+          <span>🔵 Sağ takım</span>
+          <input id="team-b-name" class="tw-input" type="text" value="Mavi Takım" maxlength="24">
+        </label>
+      </div>
+
+      <p id="setup-error" class="error-text" hidden></p>
+      <button id="start-btn" type="button" class="primary-btn">Oyunu Başlat</button>
+    </div>
+  </section>
+
+  <!-- 2) Oyun -->
+  <section id="screen-play" class="screen tw-play" hidden>
+    <div class="tw-top">
+      <span class="tw-score tw-score-a"><span id="name-a"></span> <strong id="score-a">0</strong></span>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+      <span class="tw-score tw-score-b"><strong id="score-b">0</strong> <span id="name-b"></span></span>
+    </div>
+
+    <div class="tw-arena" aria-hidden="true">
+      <div class="tw-zone tw-zone-a"></div>
+      <div class="tw-zone tw-zone-b"></div>
+      <div class="tw-center-line"></div>
+      <span id="tw-knot" class="tw-knot">🎀</span>
+      <div id="tw-rope" class="tw-rope">
+        <span class="tw-puller tw-puller-a">🧒🧒🧒</span>
+        <span class="tw-rope-line"></span>
+        <span class="tw-puller tw-puller-b">🧒🧒🧒</span>
+      </div>
+    </div>
+
+    <div class="tw-question">
+      <p id="tw-prompt-label" class="tw-prompt-label"></p>
+      <p id="tw-prompt" class="tw-prompt"></p>
+      <p id="tw-status" class="tw-status"></p>
+    </div>
+
+    <div class="tw-sides">
+      <div class="tw-side tw-side-a" id="side-a"></div>
+      <div class="tw-side tw-side-b" id="side-b"></div>
+    </div>
+  </section>
+
+  <!-- 3) Bitiş -->
+  <section id="screen-end" class="screen" hidden>
+    <div class="panel champion-panel">
+      <div class="champion-emoji">🏆</div>
+      <h2 id="end-title"></h2>
+      <p id="end-summary"></p>
+      <div class="btn-row" style="justify-content: center;">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Menüye Dön</button>
+        <button id="restart-btn" type="button" class="primary-btn">Rövanş!</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="../../data/twinkl.js"></script>
+<script src="../../js/shared-setup.js"></script>
+<script src="../../js/shared-sound.js"></script>
+<script src="../../js/shared-play.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

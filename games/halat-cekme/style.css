@@ -1,0 +1,209 @@
+.tw-header {
+  background: linear-gradient(135deg, #dc2626 0%, #9333ea 50%, #2563eb 100%);
+}
+
+.tw-names {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.tw-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid #d8dae6;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+/* ---------- Oyun ekranı ---------- */
+
+.screen.tw-play {
+  max-width: 1280px;
+  padding-top: 56px;
+  padding-bottom: 24px;
+}
+
+.tw-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.tw-score {
+  font-weight: 800;
+  font-size: clamp(16px, 2.2vw, 22px);
+  padding: 8px 18px;
+  border-radius: 999px;
+  color: #fff;
+}
+
+.tw-score strong { font-size: 1.3em; margin: 0 4px; }
+.tw-score-a { background: #dc2626; }
+.tw-score-b { background: #2563eb; }
+
+/* İp alanı */
+.tw-arena {
+  position: relative;
+  height: 92px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #ecfccb;
+  box-shadow: inset 0 0 0 2px #d9f99d;
+  margin-bottom: 14px;
+}
+
+/* Kurdele bu çizgilerden birine ulaşınca o takım kazanır (ip arenanın
+   %18'i kadar kayar, bkz. script.js -> updateRope). */
+.tw-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32%;
+}
+
+.tw-zone-a { left: 0; border-right: 4px solid rgba(220, 38, 38, 0.55); background: repeating-linear-gradient(45deg, rgba(220, 38, 38, 0.08) 0 12px, transparent 12px 24px); }
+.tw-zone-b { right: 0; border-left: 4px solid rgba(37, 99, 235, 0.55); background: repeating-linear-gradient(45deg, rgba(37, 99, 235, 0.08) 0 12px, transparent 12px 24px); }
+
+.tw-center-line {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  border-left: 3px dashed #65a30d;
+}
+
+.tw-rope {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 50%;
+  margin-top: -22px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.tw-puller {
+  font-size: 30px;
+  flex: none;
+  white-space: nowrap;
+  padding: 0 6px;
+}
+
+.tw-puller-a { transform: scaleX(-1); }
+
+.tw-rope-line {
+  flex: 1;
+  height: 10px;
+  border-radius: 6px;
+  background: repeating-linear-gradient(60deg, #a16207 0 8px, #ca8a04 8px 16px);
+}
+
+/* İp yerinde durur, kurdele kayar: ipin uçları ekran dışına taşmasın. */
+.tw-knot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  font-size: 34px;
+  transform: translate(-50%, -50%);
+  transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tw-rope.tug-a .tw-puller-a,
+.tw-rope.tug-b .tw-puller-b { animation: tw-heave 0.5s ease; }
+
+@keyframes tw-heave {
+  40% { letter-spacing: -6px; }
+}
+
+/* Soru */
+.tw-question { text-align: center; margin-bottom: 14px; }
+
+.tw-prompt-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.tw-prompt {
+  margin: 2px 0 4px;
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.tw-status {
+  min-height: 26px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.tw-status.a { color: #dc2626; }
+.tw-status.b { color: #2563eb; }
+
+/* Şıklar */
+.tw-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.tw-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tw-side-a { background: rgba(220, 38, 38, 0.08); box-shadow: inset 0 0 0 3px rgba(220, 38, 38, 0.25); }
+.tw-side-b { background: rgba(37, 99, 235, 0.08); box-shadow: inset 0 0 0 3px rgba(37, 99, 235, 0.25); }
+
+.tw-option {
+  min-height: 84px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 0 rgba(30, 27, 46, 0.12);
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.tw-option:active { transform: translateY(3px); }
+.tw-side-a .tw-option { border-bottom: 4px solid #fca5a5; }
+.tw-side-b .tw-option { border-bottom: 4px solid #93c5fd; }
+
+.tw-option.right,
+.tw-option.reveal { background: #22c55e; color: #fff; }
+.tw-option.wrong { background: #fecaca; color: #991b1b; animation: hub-shake 0.4s ease; }
+
+.tw-side.locked { opacity: 0.45; }
+.tw-side.winner { transform: scale(1.02); opacity: 1; }
+
+@media (max-width: 700px) {
+  .tw-names { grid-template-columns: 1fr; gap: 0; }
+  .tw-sides { gap: 10px; }
+  .tw-side { grid-template-columns: 1fr; padding: 10px; gap: 8px; }
+  .tw-option { min-height: 56px; }
+  .tw-puller { font-size: 20px; }
+  .tw-top .ghost-btn { order: 3; width: 100%; }
+  .tw-top { flex-wrap: wrap; }
+}

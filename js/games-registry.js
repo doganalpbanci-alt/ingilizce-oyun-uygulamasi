@@ -39,6 +39,17 @@ var GAMES = [
     tags: ["Tek kişi", "Takımlı", "Gramer"]
   },
   {
+    id: "halat-cekme",
+    title: "Halat Çekme",
+    description: "İki takım tahtanın iki yanında aynı soruya yarışır; ilk doğru cevabı veren ipi kendi tarafına çeker.",
+    icon: "🪢",
+    path: "games/halat-cekme/index.html",
+    color: "#dc2626",
+    category: "oyun",
+    skill: "kelime",
+    tags: ["Takımlı", "Akıllı tahta", "Hız"]
+  },
+  {
     id: "kelime-yakala",
     title: "Kelime Yakala",
     description: "Sevimli baykuşu yönet, doğru anlamı yakala, yanlışlardan kaç.",

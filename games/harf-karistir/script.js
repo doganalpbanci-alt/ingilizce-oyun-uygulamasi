@@ -383,8 +383,16 @@ function showSoloWord() {
   document.getElementById("play-streak").textContent = state.streak;
 }
 
+// Çözülen kelime bir kez sesli okunur (ses kapalıysa okunmaz): öğrenci
+// yazdığı kelimenin telaffuzunu da duymuş olur.
+function sayWord() {
+  if (typeof HubSpeech === "undefined" || !HubSpeech.available() || HubSound.isMuted()) return;
+  HubSpeech.speak(state.word.en);
+}
+
 function onSolved() {
   HubSound.correct();
+  setTimeout(sayWord, 350);
   if (state.mode === "solo") {
     var earned = Math.max(10 - state.hintsUsed * 3, 2);
     state.score += earned;

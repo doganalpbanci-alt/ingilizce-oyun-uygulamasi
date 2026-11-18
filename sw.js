@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v7";
+var CACHE_VERSION = "v8";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -38,6 +38,7 @@ var PRECACHE = [
   "js/shared-setup.js",
   "js/shared-sound.js",
   "js/shared-play.js",
+  "js/shared-speech.js",
   "js/hub.js",
   "js/pwa.js",
   "icons/icon-192.png",

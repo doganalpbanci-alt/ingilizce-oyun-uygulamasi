@@ -65,12 +65,13 @@
         <span id="flashcard-progress" class="flashcard-progress"></span>
         <button type="button" id="shuffle-btn" class="ghost-btn small">🔀 Karıştır</button>
         <button type="button" id="restart-cards-btn" class="ghost-btn small">↺ Baştan</button>
+        <button type="button" id="speak-card-btn" class="ghost-btn small speak-only" hidden>🔊 Dinle</button>
       </div>
 
       <div class="flashcard-scene">
         <div id="flashcard" class="flashcard">
           <div class="flashcard-face flashcard-front">
-            <span id="flashcard-front-text"></span>
+            <span id="flashcard-front-text" lang="en"></span>
           </div>
           <div class="flashcard-face flashcard-back">
             <span id="flashcard-back-text"></span>
@@ -91,6 +92,7 @@
 <script src="../../data/curriculum.js"></script>
 <script src="../../data/twinkl.js"></script>
 <script src="../../js/shared-setup.js"></script>
+<script src="../../js/shared-speech.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

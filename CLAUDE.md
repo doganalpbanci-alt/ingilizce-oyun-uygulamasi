@@ -171,7 +171,7 @@ Yapı: `GRAMMAR[sınıf].units[] = { id, title, topic, rule, items[] }`
   kural orada da kritik.
 - Kapsam: MEB 38 ünite / 266 madde, Twinkl 50 ders / 200 madde. **Taslak.**
 
-## Mevcut içerik (12 oyun + 1 araç)
+## Mevcut içerik (12 oyun + 2 araç)
 
 | Ad | Klasör | Skill | Not |
 |---|---|---|---|
@@ -187,6 +187,7 @@ Yapı: `GRAMMAR[sınıf].units[] = { id, title, topic, rule, items[] }`
 | 🔎 Kelime Avı | `kelime-avi` | kelime | Izgara üretici, 3 zorluk, sürükle veya iki dokunuş. Ses var. |
 | 🧩 Kelime Eşleştirme | `kelime-eslestirme` | kelime | Hafıza kartı. Ses: `HubSound`. |
 | 🔤 Cümle Kurma | `cumle-kurma` | cumle-kurma | Karışık kelimelerden cümle kurma. Tek kişilik + takımlı mod, tıkla veya sürükle. `data/sentences.js` kullanır. Ses var. |
+| 📋 İçerik İnceleme | `icerik-inceleme` | kelime, cumle-kurma, gramer | Araç (öğretmen): kelime/cümle/gramer listesi, ⚑ işaret + not (localStorage `hub-review-flags`), "Notları Kopyala" metni, yazdırma. |
 | 📚 Kelime Kartları | `kelime-kartlari` | kelime | Araç: liste + flashcard (`category: "arac"`). 🔊 sesli okuma (`HubSpeech`). |
 
 İlk 6 sesli oyun kendi `sounds.js`'lerini kullanıyor (hepsi `hub-muted`
@@ -202,7 +203,7 @@ anahtarını paylaşır); yeni oyunlar `js/shared-sound.js` kullanır.
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v10`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v11`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)

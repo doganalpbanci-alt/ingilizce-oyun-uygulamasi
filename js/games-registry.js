@@ -160,5 +160,16 @@ var GAMES = [
     category: "arac",
     skill: "kelime",
     tags: ["Çalışma", "Flashcard"]
+  },
+  {
+    id: "icerik-inceleme",
+    title: "İçerik İnceleme",
+    description: "Öğretmen için: ünite ünite kelime, cümle ve gramer maddelerini gözden geçir, sorunlu olanı işaretleyip not al, listeyi kopyala ya da yazdır.",
+    icon: "📋",
+    path: "games/icerik-inceleme/index.html",
+    color: "#475569",
+    category: "arac",
+    skill: ["kelime", "cumle-kurma", "gramer"],
+    tags: ["Öğretmen", "Onay", "Yazdır"]
   }
 ];

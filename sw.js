@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v10";
+var CACHE_VERSION = "v11";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -56,6 +56,9 @@ var PRECACHE = [
   "games/halat-cekme/index.html",
   "games/halat-cekme/script.js",
   "games/halat-cekme/style.css",
+  "games/icerik-inceleme/index.html",
+  "games/icerik-inceleme/script.js",
+  "games/icerik-inceleme/style.css",
   "games/kelime-carki/index.html",
   "games/kelime-carki/script.js",
   "games/kelime-carki/style.css",

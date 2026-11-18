@@ -38,6 +38,7 @@ Hiçbir kurulum, sunucu veya internet bağlantısı gerekmez.
 | Araç | Açıklama |
 |---|---|
 | 📚 Kelime Kartları | Ünite ünite kelime listesi + flashcard; 🔊 ile kelimeyi sesli dinleme. |
+| 📋 İçerik İnceleme | Öğretmen için: taslak kelime/cümle/gramer maddelerini gözden geçir, sorunluyu işaretle + not al, listeyi kopyala ya da yazdır. |
 
 ## Veritabanları
 

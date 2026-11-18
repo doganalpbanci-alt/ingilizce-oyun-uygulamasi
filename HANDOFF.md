@@ -610,6 +610,14 @@ yazım) ve backlog ele alındı.
 5. 🎡 **Kelime Çarkı** (kelime, konuşma) — görev çarkı + seçili üniteden
    kelime; "Canlandır/Çiz"de kelime gizli gelir; takım girilirse puan tutar.
 
+**📋 İçerik İnceleme aracı (öğretmen onayını hızlandırmak için):** Ünite
+seçilir; kelimeler, cümleler ve gramer maddeleri (doğru cevap yeşil,
+çeldiriciler gri) tek sayfada listelenir. Satır ⚑ ile işaretlenip not
+yazılır (bu cihazda saklanır), "Notları Kopyala" düz metin liste üretir,
+"Yazdır" kâğıda döker. **Önerilen akış:** öğretmen inceler → notları kopyalar
+→ bir sonraki oturumda Claude'a yapıştırır → düzeltmeler veriye işlenir ve
+onaylanan dosyalardan TASLAK notu kaldırılır.
+
 **Karışık seviye seçimi:** Seçicide her müfredatın sonunda "🔀 Karışık"
 seçeneği; tüm sınıf/seviyelerin üniteleri başlıkta sınıf adıyla listelenir
 ("Level 2 · Ders 3 - ..."). `HubSetup` içinde sanal kayıt olarak çözüldü, oyun
@@ -625,8 +633,9 @@ dolması, çıkış, Twinkl + MEB), 1180×820 / 820×1180 / 390px'de yatay taşm
 konsol hatası yok. Hub sekme filtresi 4 beceriyle doğrulandı.
 
 **Kullanıcıdan beklenen:**
-- Gramer maddelerini ve yeni cümleleri gözden geçirmek (özellikle 5. sınıf:
-  2024 tema üniteleri için yapı eşleştirmesi tahmine dayalı).
+- Gramer maddelerini ve yeni cümleleri **📋 İçerik İnceleme** aracıyla gözden
+  geçirip notları bir sonraki oturuma yapıştırmak (özellikle 5. sınıf: 2024
+  tema üniteleri için yapı eşleştirmesi tahmine dayalı).
 - Yeni oyunları tahtada/iPad'de denemek (özellikle Halat Çekme'de iki kişinin
   aynı anda dokunması — gerçek çoklu dokunuş ekranında test edilmedi).
 - Twinkl L6-10 için kaynak PDF'i tekrar paylaşmak (Faz T2 bunu bekliyor).

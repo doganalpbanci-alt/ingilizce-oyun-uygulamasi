@@ -1,0 +1,78 @@
+.ii-header {
+  background: linear-gradient(135deg, #334155 0%, #475569 50%, #0ea5e9 100%);
+}
+
+.screen.ii-screen { max-width: 1000px; }
+
+.ii-units { max-height: 260px; overflow-y: auto; padding-right: 4px; }
+
+.ii-types { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.ii-types label { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; cursor: pointer; }
+.ii-types input { width: 18px; height: 18px; accent-color: var(--primary); }
+
+.ii-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ii-status { margin: 10px 0 0; min-height: 1em; }
+.ii-fallback { margin-top: 8px; font-family: monospace; font-size: 13px; }
+
+.ii-review { margin-top: 22px; display: grid; gap: 18px; }
+.ii-empty { text-align: center; }
+
+.ii-unit {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ii-unit h3 { margin: 0 0 6px; }
+.ii-unit h4 { margin: 18px 0 8px; color: var(--muted); font-size: 15px; }
+.ii-rule { margin: -2px 0 10px; font-size: 14px; color: #1e40af; }
+
+.ii-words { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 14px; }
+
+.ii-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 10px;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border-bottom: 1px solid #eef0f6;
+}
+
+.ii-row.flagged { background: #fef3c7; border-bottom-color: #fde68a; }
+
+.ii-flag {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #cbd5e1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.ii-flag:hover { background: #f1f5f9; color: #f59e0b; }
+.ii-row.flagged .ii-flag { color: #d97706; }
+
+.ii-note {
+  grid-column: 1 / -1;
+  padding: 8px 10px;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.ii-answer { color: #15803d; }
+.ii-tag { color: var(--muted); }
+
+@media print {
+  .no-print, .ii-flag { display: none !important; }
+  body { background: #fff; }
+  main { padding: 0; }
+  .screen { padding: 0; }
+  .ii-unit { box-shadow: none; border: 1px solid #ddd; break-inside: avoid-page; }
+  .ii-row { break-inside: avoid; }
+  .ii-row.flagged { background: #fff7d6; }
+}

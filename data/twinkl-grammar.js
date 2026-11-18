@@ -53,7 +53,7 @@
         items: [
           ["I am ___ Türkiye.", "from", "at", "of"],
           ["Where ___ you from?", "are", "is", "am"],
-          ["Where is she ___?", "from", "of", "at"],
+          ["Where is she ___?", "from", "of", "in"],
           ["They ___ from Japan.", "are", "is", "am"]
         ]
       },
@@ -217,7 +217,7 @@
           ["Where ___ the laptop?", "is", "are", "am"],
           ["Where ___ my headphones?", "are", "is", "am"],
           ["The phone is ___ the bag. I can't see it.", "in", "on", "at"],
-          ["The cat is ___ the table. It's hiding.", "under", "on", "at"]
+          ["The cat is ___ the table. It's hiding.", "under", "on", "in"]
         ]
       },
       {

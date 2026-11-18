@@ -378,7 +378,7 @@ var GRAMMAR = {
           ["She ___ soap operas. She thinks they are boring.", "hates", "hate", "hating"],
           ["The news ___ at 7 p.m.", "starts", "start", "starting"],
           ["I can't stand ___ reality shows.", "watching", "watch", "to watched"],
-          ["___ your favourite TV programme?", "What's", "Who's", "How's"]
+          ["___ your favourite TV programme?", "What's", "Who's", "Whose"]
         ]
       },
       {

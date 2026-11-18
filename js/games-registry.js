@@ -11,10 +11,22 @@
  */
 var SKILL_LABELS = {
   kelime: "Kelime",
-  "cumle-kurma": "Cümle Kurma"
+  "cumle-kurma": "Cümle Kurma",
+  yazim: "Yazım"
 };
 
 var GAMES = [
+  {
+    id: "harf-karistir",
+    title: "Harf Karıştır",
+    description: "Türkçe ipucuna bak, karışık harflerden İngilizce kelimeyi doğru yaz. Yazım (spelling) pratiği; tek başına ya da takımlı.",
+    icon: "🔠",
+    path: "games/harf-karistir/index.html",
+    color: "#0d9488",
+    category: "oyun",
+    skill: "yazim",
+    tags: ["Tek kişi", "Takımlı", "Yazım"]
+  },
   {
     id: "cumle-kurma",
     title: "Cümle Kurma",

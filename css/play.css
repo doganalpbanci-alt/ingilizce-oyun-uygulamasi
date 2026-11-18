@@ -1,0 +1,160 @@
+/*
+ * Oyun ekranı ortak stilleri (yeni oyunlar için).
+ *
+ * Üst bilgi çipleri, süre çubuğu, "sıra kimde" paneli, skor tablosu,
+ * şampiyon paneli ve konfeti animasyonu. Yükleme sırası:
+ *   css/style.css -> css/setup.css -> css/play.css -> games/<ad>/style.css
+ */
+
+.screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+
+.primary-btn:disabled { opacity: 0.45; cursor: default; filter: none; }
+
+.play-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.play-chip {
+  background: var(--card-bg);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.play-chip strong { font-size: 16px; }
+
+.timer-track {
+  margin: 0 auto 18px;
+  height: 12px;
+  border-radius: 999px;
+  background: #e4e6f2;
+  overflow: hidden;
+}
+
+.timer-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.25s linear;
+}
+
+.play-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+}
+
+.play-feedback {
+  min-height: 26px;
+  margin: 16px 0 0;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+}
+
+.play-feedback.good { color: #15803d; }
+.play-feedback.bad { color: #dc2626; }
+
+/* ---------- Sıra kimde ---------- */
+
+.turn-panel { text-align: center; }
+
+.turn-emoji {
+  font-size: 64px;
+  margin-bottom: 6px;
+  display: inline-block;
+  animation: hub-wiggle 1.8s ease-in-out infinite;
+}
+
+@keyframes hub-wiggle {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.turn-round {
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  margin: 0 0 4px;
+}
+
+.turn-panel h2 { font-size: clamp(26px, 5vw, 38px); margin: 0 0 10px; }
+
+/* ---------- Skor tablosu / şampiyon ---------- */
+
+.scoreboard {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.score-row.leader {
+  background: linear-gradient(90deg, #ede9fe, #ddd6fe);
+  box-shadow: inset 0 0 0 2px #7c3aed;
+}
+
+.score-rank { width: 30px; color: var(--muted); }
+.score-name { flex: 1; }
+.score-points { font-size: 22px; color: var(--primary); }
+
+.champion-panel { text-align: center; }
+
+.champion-emoji {
+  font-size: 64px;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: hub-glow 1.6s ease-in-out infinite;
+}
+
+@keyframes hub-glow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(110vh) rotate(540deg);
+    opacity: 0.4;
+  }
+}
+
+@keyframes hub-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.shake { animation: hub-shake 0.4s ease; }
+
+@media (max-width: 600px) {
+  .screen { padding: 20px 14px 48px; }
+  .panel, .play-card { padding: 20px; }
+}

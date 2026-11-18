@@ -27,8 +27,8 @@ sürüm yok, oyunun içindeki sınıf/seviye seçicisinden hangi müfredatın
 **Pivot (2026-08-28, kullanıcı kararı):** Proje başlangıçta "kelime oyunu
 hub'ı" olarak kuruldu. Artık kapsam kelimeyle sınırlı değil — hub, İngilizce
 üzerine her türlü **oyun ve pratik aracını** toplayan genel bir merkez.
-Planlanan yeni beceri alanları (öncelik sırasıyla): **cümle kurma (✅ yapıldı)
-→ gramer → yazım/spelling** (bkz. `HANDOFF.md`). Bunlar hep mevcut oyun/pratik
+Beceri alanları: **kelime, cümle kurma, yazım/spelling, gramer** — dördü de
+oyunlarla kapsandı (2026-11-18). Bkz. `HANDOFF.md`. Bunlar hep mevcut oyun/pratik
 formatında (bağımsız `games/<ad>/` klasörü) eklenecek.
 
 **Kapsam dışı** (kullanıcı netleştirdi): soru bankası/quiz modülü, ders
@@ -63,9 +63,15 @@ data/curriculum.js    Kelime veritabanı (MEB 5-8) — kelime oyunlarının kayn
 data/sentences.js     Cümle veritabanı (yapı/kazanım bazlı) — Cümle Kurma'nın kaynağı
 data/twinkl.js        Twinkl ESL kelimeleri — CURRICULUM'a eklenir (curriculum.js'ten SONRA yüklenir)
 data/twinkl-sentences.js  Twinkl ESL cümleleri — SENTENCES'a eklenir (sentences.js'ten SONRA yüklenir)
+data/grammar.js       Gramer maddeleri (MEB 5-8) — Gramer Kulesi / Halat Çekme / Doğru-Yanlış
+data/twinkl-grammar.js  Twinkl gramer maddeleri — GRAMMAR'a eklenir (grammar.js'ten SONRA)
 css/setup.css         Kurulum ekranı ortak stilleri (panel, onay kutuları, düğmeler)
+css/play.css          Oyun ekranı ortak stilleri (çipler, süre çubuğu, skor tablosu, konfeti animasyonu)
 js/games-registry.js  Hub içerik listesi (yeni oyun/araç = buraya 1 kayıt)
-js/shared-setup.js    Ortak kurulum mantığı (HubSetup: sınıf/ünite seçici, showScreen, shuffle)
+js/shared-setup.js    Ortak kurulum mantığı (HubSetup: sınıf/ünite seçici, showScreen, shuffle, setSource)
+js/shared-sound.js    Ortak ses efektleri (HubSound) + ortak sessiz ayarı (`hub-muted`)
+js/shared-play.js     HubPlay: konfeti, escapeHtml, takım listesi, skor tablosu, pickFresh
+js/shared-speech.js   HubSpeech: İngilizce sesli okuma (cihaz sesi; yoksa düğme gizlenir)
 js/hub.js             Kartları kategoriye + beceriye (skill) göre çizer
 js/pwa.js             Service worker kaydı (file:// korumalı)
 manifest.json, sw.js, icons/
@@ -142,22 +148,50 @@ Yapı: `SENTENCES[sınıf].units[] = { id, title, structures[], sentences[] }`
 Kelime verisi olan her ünitenin cümle verisi olmak zorunda değil — Cümle
 Kurma oyunu yalnızca `SENTENCES`'ta karşılığı olan sınıf/üniteleri listeler.
 
-Mevcut kapsam: **MEB 5. sınıf Ünite 1** (15 cümle, 4 yapı) +
+Mevcut kapsam: **MEB 5-8'in 38 ünitesinin tamamı** (208 cümle) +
 **Twinkl Level 1-5** (50 ders, 154 cümle — `data/twinkl-sentences.js`).
 Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu var).
 
-## Mevcut içerik (7 oyun + 1 araç)
+- Cümle Kurma, tek kelimelik iki öğenin `and`/`or` etrafında yer değiştirmesini
+  doğru kabul eder (`isAcceptable`). Başka türlü iki sırada da doğru okunan
+  cümle ("I like A but I don't like B", "X. Y." iki ayrı cümle) **yazma** —
+  doğru cevap yanlış sayılır.
+
+## Gramer veritabanı (`data/grammar.js` + `data/twinkl-grammar.js`)
+
+Yapı: `GRAMMAR[sınıf].units[] = { id, title, topic, rule, items[] }`
+- `id`/`title` `curriculum.js` / `twinkl.js` ile birebir aynı (her ünite/ders var).
+- `topic`: ünitenin hedef yapısı (oyunda rozet), `rule`: yanlıştan sonra çıkan
+  tek satır Türkçe kural.
+- `items[] = [cümle, doğru, çeldirici1, çeldirici2]`; cümlede tek bir `___`.
+  **Doğru cevap her zaman 2. eleman.**
+- **Kural:** Çeldirici dilbilgisel olarak YANLIŞ olmalı, "anlamca tuhaf ama
+  doğru" olmamalı — yoksa iki doğru şık olur. Doğru mu Yanlış mı oyunu
+  çeldiriciyle doldurulmuş cümleyi "yanlış cümle" olarak gösterdiği için bu
+  kural orada da kritik.
+- Kapsam: MEB 38 ünite / 266 madde, Twinkl 50 ders / 200 madde. **Taslak.**
+
+## Mevcut içerik (11 oyun + 1 araç)
 
 | Ad | Klasör | Skill | Not |
 |---|---|---|---|
+| ⚡ Doğru mu Yanlış mı? | `dogru-yanlis` | kelime, gramer | Süreli hızlı karar, seri çarpanı, rekor (localStorage). Klavye ← →. |
+| 🧱 Gramer Kulesi | `gramer-kulesi` | gramer | `GRAMMAR` kullanır. Doğru = kuleye blok. Tek kişi + takımlı (2-6 takım). |
+| 🔠 Harf Karıştır | `harf-karistir` | yazim | Karışık harflerden kelime yazma, ipucu, klavye, çözünce sesli okuma. |
+| 🪢 Halat Çekme | `halat-cekme` | kelime, gramer | İki takım aynı tahtada, `pointerdown` (çoklu dokunuş). `picker.setSource` ile kelime↔gramer. |
 | 🦉 Kelime Yakala | `kelime-yakala` | kelime | SVG baykuş, requestAnimationFrame döngüsü, can/seri/seviye. Ses var. |
 | 🏆 Kelime Turnuvası | `kelime-turnuvasi` | kelime | Eleme ağacı (bye destekli), 2 mod, raunt seçimi. Ses var. |
 | 🎯 Adam Asmaca | `adam-asmaca` | kelime | Türkçe ipucu → İngilizce kelime, SVG darağacı. Ses var. |
 | 🎨 Çiz Bakalım | `ciz-bakalim` | kelime | Canvas, takım skoru, süre bonusu. Ses var. |
 | 🔎 Kelime Avı | `kelime-avi` | kelime | Izgara üretici, 3 zorluk, sürükle veya iki dokunuş. Ses var. |
-| 🧩 Kelime Eşleştirme | `kelime-eslestirme` | kelime | Hafıza kartı. **Ses yok.** |
+| 🧩 Kelime Eşleştirme | `kelime-eslestirme` | kelime | Hafıza kartı. Ses: `HubSound`. |
 | 🔤 Cümle Kurma | `cumle-kurma` | cumle-kurma | Karışık kelimelerden cümle kurma. Tek kişilik + takımlı mod, tıkla veya sürükle. `data/sentences.js` kullanır. Ses var. |
-| 📚 Kelime Kartları | `kelime-kartlari` | kelime | Araç: liste + flashcard (`category: "arac"`). **Ses yok.** |
+| 📚 Kelime Kartları | `kelime-kartlari` | kelime | Araç: liste + flashcard (`category: "arac"`). 🔊 sesli okuma (`HubSpeech`). |
+
+İlk 6 sesli oyun kendi `sounds.js`'lerini kullanıyor (hepsi `hub-muted`
+anahtarını paylaşır); yeni oyunlar `js/shared-sound.js` kullanır.
+`skill` tek kod ya da dizi olabilir (`["kelime", "gramer"]`); hub sekmeleri
+`SKILL_LABELS` sırasıyla dizilir.
 
 ## PWA / service worker
 
@@ -167,7 +201,7 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
   ulaşmayabilir. Bunun için `new Request(url, {cache: "no-cache"})`
   kullanılıyor — sakın düz `fetch(request)`'e geri dönme.
 - **Yeni dosya eklenince:** `sw.js` içindeki `PRECACHE` listesine ekle **ve**
-  `CACHE_VERSION`'ı artır (şu an `v6`). İkisi de yapılmazsa yeni dosya
+  `CACHE_VERSION`'ı artır (şu an `v9`). İkisi de yapılmazsa yeni dosya
   önbelleğe girmez / eski sürüm servis edilmeye devam eder. (Sadece mevcut
   bir dosyayı düzenlediysen sürüm artırmak şart değil — network-first
   strateji güncel sürümü zaten taşır.)
@@ -176,9 +210,15 @@ Hepsi **taslak**, öğretmen onayından geçmedi (dosya başlarında TASLAK notu
 
 1. `games/` altında yeni bir klasör aç.
 2. İçine `index.html`, `style.css`, `script.js` koy (gerekiyorsa `sounds.js`).
-   Stil sırası: `../../css/style.css` → `../../css/setup.css` → kendi
-   `style.css`'in. Veri için `../../data/curriculum.js` + `twinkl.js`
-   (kelime dışı bir pratikse benzer desende yeni bir veri dosyası).
+   Stil sırası: `../../css/style.css` → `../../css/setup.css` →
+   `../../css/play.css` → kendi `style.css`'in. Veri için
+   `../../data/curriculum.js` + `twinkl.js` (gramer için `grammar.js` +
+   `twinkl-grammar.js`). Ses için kendi `sounds.js` yazma:
+   `../../js/shared-sound.js` (`HubSound.bindToggle(btn)`, `HubSound.correct()`…);
+   konfeti/skor tablosu/takım listesi için `../../js/shared-play.js`.
+   Gecikmeli geçişlerde (`setTimeout`) yeni oyunlardaki `later()` +
+   `generation` desenini kullan: oyuncu çıkıp yeni oyun başlatırsa eski
+   zamanlayıcı yeni oyunu ilerletmesin.
 3. **Kurulum ekranını elle yazma** — `../../js/shared-setup.js` yükle ve
    `HubSetup` kullan; sınıf açılır listesi, `<optgroup>`'lar, ünite onay
    kutuları, "Tümünü Seç/Temizle" ve `showScreen` oradan gelir:
@@ -225,5 +265,4 @@ Bu proje çok-oturumlu, adım adım bir yol planıyla geliştiriliyor:
 - `data/sentences.js` ve `data/twinkl-sentences.js` cümleleri **taslak**, öğretmen onayı bekliyor.
 - `data/twinkl.js` Türkçe karşılıkları bu proje için yazıldı, öğretmen onayı bekliyor.
 - Depo **public** — Twinkl içeriği herkese açık yayınlanıyor, kullanıcı bu kararı erteledi.
-- `kelime-eslestirme` ve `kelime-kartlari`'nda ses efekti yok (diğer 6 içerikte var).
-- `README.md` güncel değil: 8. sınıf kelime sayısı (341 → 364) ve Cümle Kurma eksik.
+- `data/grammar.js` / `data/twinkl-grammar.js` gramer maddeleri **taslak**, öğretmen onayı bekliyor.

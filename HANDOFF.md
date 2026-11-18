@@ -112,8 +112,9 @@ Adımlar:
       sıfırla/tekrar), takım akışı (2 takım × 2 tur, süre dolması, pas
       geçme), sürükleyerek yeniden sıralama, hub filtresi + karttan
       navigasyon, iPad yatay/dikey taşma kontrolü — konsol hatası yok
-- [ ] **Açık:** öğretmen cümleleri onaylasın; sonra kalan üniteler
-      (5. sınıfın 7 ünitesi + 6/7/8. sınıflar) aynı desenle eklensin
+- [x] Kalan 37 MEB ünitesinin cümleleri eklendi (2026-11-18, 193 cümle,
+      gramer veritabanıyla aynı yapı eşleştirmesi) — MEB 38/38 ünite
+- [ ] **Açık:** öğretmen cümleleri onaylasın
 
 ### Faz 3 — Genişleme ve Bakiye Maddeler
 **Durum: ⬜ Başlanmadı / sürekli açık**
@@ -152,7 +153,7 @@ Adımlar:
       gerektirdi. → `js/shared-setup.js` + `css/setup.css` çıkarılabilir;
       "her oyun bağımsız" kuralı korunur çünkü ikisi de hub'ın ortak
       varlıkları (tıpkı `css/style.css` gibi).
-- [ ] **Ses ayarı oyun başına ayrı.** 6 farklı localStorage anahtarı
+- [x] ✅ 2026-11-18 (tek anahtar: `hub-muted`) **Ses ayarı oyun başına ayrı.** 6 farklı localStorage anahtarı
       (`ky-muted`, `kt-muted`, `aa-muted`, `cb-muted`, `kav-muted`,
       `cmk-muted`). Öğretmen bir oyunda sesi kapatınca diğerinde geri
       açılıyor. → Tek ortak anahtar (`hub-muted`).
@@ -161,9 +162,10 @@ Adımlar:
       5 sesli oyunda da olabilir. iPad testinden sonra karar verilmeli.
 - [ ] **Klavye desteği 8 oyunun 2'sinde** (Adam Asmaca, Kelime Yakala).
       Akıllı tahtada klavye kullanılmıyor olabilir; düşük öncelik.
-- [ ] **İngilizce içerikte `lang="en"` yok.** Ekran okuyucu/TTS İngilizce
+- [ ] (Kısmen: yeni 4 oyun + Kelime Kartları'nda var, eski 6 oyunda yok)
+      **İngilizce içerikte `lang="en"` yok.** Ekran okuyucu/TTS İngilizce
       kelimeleri Türkçe fonetikle okur. İleride sesli okuma eklenirse şart.
-- [ ] **Hub rozeti iki müfredatı tek sayıda topluyor** ("📖 1758 kelime").
+- [x] ✅ 2026-11-18 ("1758 kelime (MEB 1181 · Twinkl 577)") **Hub rozeti iki müfredatı tek sayıda topluyor** ("📖 1758 kelime").
       MEB 1181 + Twinkl 577 ayrı gösterilebilir.
 
 #### Denetimde SORUNSUZ çıkanlar (2026-09-10)
@@ -181,10 +183,16 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
       sil → siteyi Safari'de aç → "Ana Ekrana Ekle" → uçak modunda test)
 - [ ] 7. sınıf çevirilerinin öğretmen tarafından gözden geçirilmesi
 - [ ] `data/sentences.js` 5/Ünite 1 cümlelerinin öğretmen onayı
-- [ ] Cümle Kurma için kalan MEB üniteleri (5. sınıf 7 ünite + 6/7/8. sınıf)
-- [ ] `kelime-eslestirme` ve `kelime-kartlari`'na ses efekti eklenmesi
-- [ ] `README.md` güncellemesi (8. sınıf 341 → 364, Cümle Kurma + Twinkl eksik)
-- [ ] Gramer ve Yazım/spelling oyunları (Faz 1'de belirlenen 2. ve 3. sıra)
+- [x] ✅ Cümle Kurma için kalan MEB üniteleri (2026-11-18)
+- [x] ✅ `kelime-eslestirme`'ye ses efekti; `kelime-kartlari`'na ses efekti
+      yerine 🔊 sesli okuma (2026-11-18)
+- [x] ✅ `README.md` güncellemesi (2026-11-18)
+- [x] ✅ Gramer ve Yazım/spelling oyunları (2026-11-18: Gramer Kulesi,
+      Harf Karıştır; ayrıca Halat Çekme + Doğru mu Yanlış mı gramer modu)
+- [ ] `data/grammar.js` + `data/twinkl-grammar.js` maddelerinin öğretmen onayı
+      (özellikle 5. sınıf 2024 tema yapısı → yapı eşleştirmesi tahmine dayalı)
+- [ ] Eski 6 oyunun `sounds.js`'lerini `js/shared-sound.js`'e taşımak
+      (çalışıyorlar; acil değil, bakım kolaylığı)
 - [ ] ⚠️ **Depo görünürlüğü kararı** — depo public, Twinkl içeriği herkese
       açık yayınlanıyor. Kullanıcı "şimdilik kalsın, sonra ilgilenmemiz
       gerekir" dedi. Seçenekler: public kalması, private'a çekilip Pages
@@ -563,3 +571,56 @@ Seç/Temizle, sayaç) + tam oyun akışları (Asmaca, Kelime Avı, Turnuva
 
 - **Sıradaki oturumun hedefi:** Faz T2 — Twinkl Level 6-10. İlk iş Level 8'de
   başlayan deyimler için `skill: "deyim"` kararının nasıl uygulanacağı.
+
+### Oturum 2026-11-18 — Otonom geliştirme: 4 yeni oyun + gramer veritabanı
+Kullanıcı "limit dolana kadar geliştir, yönetim sende" dedi (uyumadan önce);
+kararlar Claude'a bırakıldı. Twinkl L6-10 (Faz T2) **yapılmadı**: kaynak PDF
+depoda yok ve "kaynaktaki kelime listesi birebir alınır" kuralı tahminle veri
+girmeyi yasaklıyor. Bunun yerine yol planındaki sıradaki beceriler (gramer,
+yazım) ve backlog ele alındı.
+
+**Yeni ortak altyapı**
+- `js/shared-sound.js` (HubSound), `js/shared-play.js` (HubPlay),
+  `js/shared-speech.js` (HubSpeech), `css/play.css`. Yeni oyunlar kendi
+  `sounds.js`/skor tablosu/konfeti kodunu yazmıyor.
+- `HubSetup.unitPicker(...).setSource(obj)`: aynı oyunda kelime ↔ gramer
+  kaynağı değişimi (seçili sınıf korunur).
+- Hub: `skill` dizi olabilir; sekmeler `SKILL_LABELS` sırasıyla.
+- 6 eski oyunun sessiz ayarı tek anahtara (`hub-muted`) bağlandı.
+
+**Yeni oyunlar (hepsi MEB + Twinkl ile çalışır)**
+1. 🔠 **Harf Karıştır** (yazım) — karışık harf kartları, ipucu (puan düşürür),
+   klavye, takım modu, çözünce kelime sesli okunur.
+2. 🪢 **Halat Çekme** (kelime + gramer) — iki takım tahtanın iki yanında aynı
+   soruya yarışır; şık sırası iki tarafta farklı; `pointerdown` ile eşzamanlı
+   dokunuş; yanlış veren taraf o soruda kilitlenir.
+3. 🧱 **Gramer Kulesi** (gramer) — boşluk doldurma, doğru = kuleye blok,
+   yanlışta ünitenin Türkçe kuralı + "Devam"; takım modunda kuleler yan yana.
+4. ⚡ **Doğru mu Yanlış mı?** (kelime + gramer) — 30/60/90 sn, seri çarpanı
+   (×2/×3), cihazda rekor, sonda yanlış kararlar listesi.
+
+**Yeni içerik (hepsi TASLAK)**
+- `data/grammar.js`: MEB 38 ünite, 266 madde; `data/twinkl-grammar.js`:
+  50 ders, 200 madde. Ünite başına hedef yapı + tek satır Türkçe kural.
+  Script ile doğrulandı: ID/başlık birebir, tek `___`, tekrarsız şıklar.
+- `data/sentences.js`: kalan 37 MEB ünitesi, 193 cümle (≤12 kelime).
+- Cümle Kurma: `and`/`or` yer değişimini kabul ediyor; iki sırada da doğru
+  okunan 6 cümle yeniden yazıldı.
+
+**Diğer:** Kelime Eşleştirme'ye ses; Kelime Kartları'na 🔊 sesli okuma; hub
+rozetinde MEB/Twinkl ayrımı; README yeniden yazıldı; CLAUDE.md güncellendi;
+`sw.js` → `v9` (PRECACHE diskle birebir, 63 dosya).
+
+**Test:** Her yeni oyun Playwright ile uçtan uca oynandı (solo + takım, süre
+dolması, çıkış, Twinkl + MEB), 1180×820 / 820×1180 / 390px'de yatay taşma yok,
+konsol hatası yok. Hub sekme filtresi 4 beceriyle doğrulandı.
+
+**Kullanıcıdan beklenen:**
+- Gramer maddelerini ve yeni cümleleri gözden geçirmek (özellikle 5. sınıf:
+  2024 tema üniteleri için yapı eşleştirmesi tahmine dayalı).
+- Yeni oyunları tahtada/iPad'de denemek (özellikle Halat Çekme'de iki kişinin
+  aynı anda dokunması — gerçek çoklu dokunuş ekranında test edilmedi).
+- Twinkl L6-10 için kaynak PDF'i tekrar paylaşmak (Faz T2 bunu bekliyor).
+
+- **Sıradaki oturumun hedefi:** kullanıcı geri bildirimi; ardından Faz T2
+  (PDF gelirse) veya eski oyunların `shared-sound.js`'e taşınması.

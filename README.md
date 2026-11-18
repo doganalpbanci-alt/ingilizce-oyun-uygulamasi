@@ -1,8 +1,13 @@
 # İngilizce Hub
 
-Akıllı tahtada ve tablette kullanmak için hazırlanan, hem **internetsiz (dosya olarak çift tıklayıp)** hem de **internet üzerinden (web sitesi olarak)** açılabilen İngilizce öğrenme merkezi.
+Akıllı tahtada ve tablette kullanmak için hazırlanan, hem **internetsiz (dosya olarak çift tıklayıp)** hem de **internet üzerinden (web sitesi olarak)** açılabilen İngilizce oyun ve pratik merkezi.
 
-İçinde sınıfça oynanan oyunlar, tek kişilik alıştırmalar ve kelime çalışma araçları bulunur. Tüm içerik, MEB ders kitaplarından çıkarılmış ortak kelime veritabanını kullanır.
+İki müfredatı aynı oyunlarla çalıştırır:
+
+- **MEB Ortaokul (5-8. sınıf, LGS kapsamı)** — okul dersleri
+- **Twinkl ESL Curriculum (Level 1-5, A1-A2)** — özel dersler
+
+Her oyunun içindeki sınıf/seviye listesinden hangi müfredatın, hangi ünitenin çalışılacağı seçilir.
 
 ## Nasıl açılır
 
@@ -14,63 +19,65 @@ Hiçbir kurulum, sunucu veya internet bağlantısı gerekmez.
 ## İçerik
 
 ### Oyunlar
-| Oyun | Açıklama |
-|---|---|
-| 🦉 Kelime Yakala | Baykuşu yönet, düşen kelimelerden doğru anlamı yakala. Gerçek zamanlı arcade oyunu. |
-| 🏆 Kelime Turnuvası | 1'e 1 eleme usulü sınıf turnuvası. Yarışma ve bireysel süre modları. |
-| 🎯 Adam Asmaca | Türkçe ipucundan İngilizce kelimeyi harf harf bul. |
-| 🎨 Çiz Bakalım | Kelimeyi tahtaya çiz, takımın tahmin etsin. Takım skoru tutulur. |
-| 🔎 Kelime Avı | Harf bulmacasında gizli İngilizce kelimeleri bul. Sürükle veya iki dokunuşla seç. |
-| 🧩 Kelime Eşleştirme | Hafıza kartlarıyla kelime-anlam eşleştirme. |
+| Oyun | Beceri | Açıklama |
+|---|---|---|
+| ⚡ Doğru mu Yanlış mı? | Kelime, Gramer | Süreye karşı hızlı karar: eşleşme / cümle doğru mu? Seri çarpanı, cihazda rekor. |
+| 🧱 Gramer Kulesi | Gramer | Boşluğa doğru kalıbı seç, kuleni yükselt. Yanlışta kısa Türkçe kural. Tek kişi + takımlı. |
+| 🔠 Harf Karıştır | Yazım | Türkçe ipucundan karışık harflerle İngilizce kelimeyi yaz. Klavye destekli. |
+| 🪢 Halat Çekme | Kelime, Gramer | İki takım tahtanın iki yanında aynı soruya yarışır; ilk doğru cevap ipi çeker. |
+| 🔤 Cümle Kurma | Cümle | Karışık kelimelerden ünitenin yapısına uygun cümleyi kur. Tek kişi + takımlı. |
+| 🦉 Kelime Yakala | Kelime | Baykuşu yönet, düşen kelimelerden doğru anlamı yakala. |
+| 🏆 Kelime Turnuvası | Kelime | 1'e 1 eleme usulü sınıf turnuvası. |
+| 🎯 Adam Asmaca | Kelime | Türkçe ipucundan İngilizce kelimeyi harf harf bul. |
+| 🎨 Çiz Bakalım | Kelime | Kelimeyi tahtaya çiz, takımın tahmin etsin. |
+| 🔎 Kelime Avı | Kelime | Harf bulmacasında gizli kelimeleri bul. |
+| 🧩 Kelime Eşleştirme | Kelime | Hafıza kartlarıyla kelime-anlam eşleştirme. |
 
 ### Çalışma Araçları
 | Araç | Açıklama |
 |---|---|
-| 📚 Kelime Kartları | Ünite ünite kelime listesi + flashcard modu. |
+| 📚 Kelime Kartları | Ünite ünite kelime listesi + flashcard; 🔊 ile kelimeyi sesli dinleme. |
 
-## Kelime veritabanı
+## Veritabanları
 
-`data/curriculum.js` tüm oyunların ortak kaynağıdır. Sınıf → ünite → kelime yapısındadır.
-
-| Sınıf | Ünite | Kelime |
+| Dosya | İçerik | Kullanan |
 |---|---|---|
-| 5. Sınıf | 8 | 529 |
-| 6. Sınıf | 10 | 144 |
-| 7. Sınıf | 10 | 144 |
-| 8. Sınıf | 10 | 341 |
+| `data/curriculum.js` | MEB 5-8 kelimeleri (1181) | Kelime oyunları, Harf Karıştır |
+| `data/twinkl.js` | Twinkl L1-5 kelimeleri (577) | Kelime oyunları, Harf Karıştır |
+| `data/sentences.js` | MEB 5-8 cümleleri (38 ünitenin tamamı) | Cümle Kurma |
+| `data/twinkl-sentences.js` | Twinkl L1-5 cümleleri (154) | Cümle Kurma |
+| `data/grammar.js` | MEB 5-8 gramer maddeleri (266) | Gramer Kulesi, Halat Çekme, Doğru mu Yanlış mı |
+| `data/twinkl-grammar.js` | Twinkl L1-5 gramer maddeleri (200) | Aynı |
 
-Kaynaklar: öğretmenin gönderdiği MEB ders kitaplarının resmi sözlük/glossary bölümleri; 8. sınıf ayrıca LGS kapsamı için ünite ünite araştırmayla genişletildi.
+MEB kelime dağılımı: 5. sınıf 529 · 6. sınıf 144 · 7. sınıf 144 · 8. sınıf 364.
 
-Yeni ünite eklemek için ilgili sınıfın `units` dizisine şunu ekle:
-
-```js
-{ id: "benzersiz-id", title: "Ünite Başlığı", words: [{ en: "word", tr: "anlam" }] }
-```
+⚠️ Cümle ve gramer verileri ile Twinkl Türkçe karşılıkları **taslaktır**, öğretmen onayı bekler.
 
 ## Klasör yapısı
 
 ```
 index.html              -> Hub ana sayfası
 css/style.css           -> Ortak tema (hub + tüm oyunlar)
-data/curriculum.js      -> Sınıf/ünite/kelime veritabanı
-js/games-registry.js    -> Hub içerik listesi (yeni oyun eklerken burayı güncelle)
-js/hub.js               -> Hub kartlarını çizen kod
-games/
-  kelime-yakala/        -> her oyun kendi klasöründe, kendi teması ve sesleriyle
-  kelime-turnuvasi/
-  adam-asmaca/
-  ciz-bakalim/
-  kelime-avi/
-  kelime-eslestirme/
-  kelime-kartlari/
+css/setup.css           -> Kurulum ekranı ortak stilleri
+css/play.css            -> Oyun ekranı ortak stilleri (skor tablosu, süre çubuğu...)
+data/                   -> Veritabanları (yukarıdaki tablo)
+js/games-registry.js    -> Hub içerik listesi (yeni oyun = buraya 1 kayıt)
+js/hub.js               -> Hub kartlarını ve beceri sekmelerini çizer
+js/shared-setup.js      -> Sınıf/ünite seçici (HubSetup)
+js/shared-sound.js      -> Ses efektleri + ortak sessiz ayarı (HubSound)
+js/shared-play.js       -> Konfeti, takım listesi, skor tablosu (HubPlay)
+js/shared-speech.js     -> İngilizce sesli okuma (HubSpeech)
+games/<oyun>/           -> Her oyun kendi klasöründe: index.html + style.css + script.js
 ```
 
 ## Yeni oyun ekleme
 
-1. `games/` altında yeni bir klasör aç.
-2. İçine `index.html`, `style.css`, `script.js` koy. `../../css/style.css` ile ortak temayı, `../../data/curriculum.js` ile kelime veritabanını kullan.
-3. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle.
-4. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle (`category: "oyun"` veya `"arac"`).
+Ayrıntılı desen `CLAUDE.md` → "Yeni oyun/pratik ekleme deseni" bölümünde. Kısaca:
+
+1. `games/` altında yeni bir klasör aç; `index.html`, `style.css`, `script.js` koy.
+2. Ortak dosyaları yükle (`css/style.css`, `css/setup.css`, `css/play.css`, `js/shared-*.js`) ve kurulum ekranı için `HubSetup.unitPicker` kullan.
+3. `js/games-registry.js` içindeki `GAMES` dizisine kaydını ekle.
+4. `sw.js` → `PRECACHE` listesine dosyaları ekle, `CACHE_VERSION`'ı artır.
 
 ## PWA / güncelleme
 
@@ -78,16 +85,11 @@ Uygulama `manifest.json` + `sw.js` (service worker) içerir. Ana ekrana eklendi�
 tam ekran bir uygulama gibi açılır ve internetsiz çalışır.
 
 Güncelleme stratejisi **önce ağ, olmazsa önbellek**: internet varken her açılışta
-sunucudaki güncel dosyalar alınır (yani yeni sürüm anında ulaşır), internet yokken
-önbellekteki son sürüm gösterilir.
-
-Yeni bir dosya eklendiğinde `sw.js` içindeki `PRECACHE` listesine eklemeyi ve
-`CACHE_VERSION` değerini artırmayı unutma.
+sunucudaki güncel dosyalar alınır, internet yokken önbellekteki son sürüm gösterilir.
 
 ## Teknik notlar
 
-- Sayfalar arası geçiş `<a href="...">` ile, veriler düz JS dosyalarıyla yüklenir (`fetch` kullanılmaz). Sebep: tarayıcılar `file://` üzerinden açılan sayfalarda yerel dosya okuma isteklerini güvenlik gereği engeller. Bu yapı sayesinde uygulama hem dosya olarak hem site olarak çalışır.
-- `<script type="module">` kullanılmaz, çünkü modüller de `file://` üzerinde engellenir.
-- Ses efektleri Web Audio API ile kod içinde üretilir; ses dosyası indirilmez, telif sorunu olmaz, offline çalışır. Safari/iOS'ta ses açılışı ilk dokunuşta yapılır.
-- Service worker sadece http(s) üzerinden çalışır; klasörü USB ile taşıyıp `index.html`'e çift tıklama (file://) senaryosu bundan etkilenmez, orada kayıt sessizce atlanır.
-- Her oyun bağımsızdır (kendi CSS/JS/ses dosyaları) — biri değişince diğerleri etkilenmez.
+- Veriler düz JS dosyalarıyla yüklenir (`fetch` ve `<script type="module">` yok): tarayıcılar `file://` üzerinde ikisini de engeller. Bu yapı sayesinde uygulama hem dosya olarak hem site olarak çalışır.
+- Ses efektleri Web Audio API ile kod içinde üretilir; ses dosyası yok, telif sorunu yok, offline çalışır. Sessiz ayarı tüm oyunlarda ortaktır.
+- Sesli okuma cihazın yerleşik İngilizce sesini kullanır; desteklemeyen cihazda düğme görünmez.
+- Service worker sadece http(s) üzerinden çalışır; `file://` senaryosunda kayıt sessizce atlanır.

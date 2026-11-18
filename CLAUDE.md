@@ -230,6 +230,11 @@ anahtarını paylaşır); yeni oyunlar `js/shared-sound.js` kullanır.
    picker.start();   // picker ATANDIKTAN sonra çağrılmalı
    ```
    Sonra `picker.grade()`, `picker.checkedUnits()`, `picker.checkedUnitIds()`.
+   **Veriye her zaman `picker.grade()` / `picker.checkedUnits()` üzerinden eriş,
+   `SOURCE[picker.gradeKey()]` yazma:** seçicide her müfredatın sonunda
+   "🔀 Karışık" seçeneği var (`mix:<group>`); o seçiliyken `grade()` tüm
+   sınıfların ünitelerini taşıyan sanal bir kayıt döndürür ve `gradeKey()`
+   gerçek bir anahtar değildir.
 4. Sayfaya `<a class="back-link" href="../../index.html">← Menüye Dön</a>` ekle,
    ayrıca **her ekrana** `data-action="back-to-setup"` taşıyan bir çıkış
    düğmesi koy (kurulum ekranı hariç). Oyun ortasında çıkılabiliyorsa

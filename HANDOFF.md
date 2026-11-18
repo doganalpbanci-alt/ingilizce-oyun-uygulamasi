@@ -199,7 +199,7 @@ Backlog (yeni maddeler oturumlar ilerledikçe buraya eklenecek):
       için alternatif yayın yolu kurulması, ya da Twinkl verisinin depodan
       ayrılması.
 - [ ] Twinkl kelime çevirilerinin öğretmen tarafından gözden geçirilmesi
-- [ ] Çoklu seviye seçimi (tekrar dersi için "Level 1+2+3 karışık") —
+- [x] ✅ 2026-11-18 ("🔀 Karışık" seçeneği, tüm oyunlarda) Çoklu seviye seçimi (tekrar dersi için "Level 1+2+3 karışık") —
       seçici şu an tek seviye; MEB tarafında da 5. ve 6. sınıf birlikte
       seçilemiyor
 
@@ -609,6 +609,12 @@ yazım) ve backlog ele alındı.
 
 5. 🎡 **Kelime Çarkı** (kelime, konuşma) — görev çarkı + seçili üniteden
    kelime; "Canlandır/Çiz"de kelime gizli gelir; takım girilirse puan tutar.
+
+**Karışık seviye seçimi:** Seçicide her müfredatın sonunda "🔀 Karışık"
+seçeneği; tüm sınıf/seviyelerin üniteleri başlıkta sınıf adıyla listelenir
+("Level 2 · Ders 3 - ..."). `HubSetup` içinde sanal kayıt olarak çözüldü, oyun
+kodu değişmedi (yalnızca Cümle Kurma `SENTENCES[gradeKey]` yerine
+`picker.grade()` kullanacak şekilde düzeltildi). 13 sayfada test edildi.
 
 **Diğer:** Kelime Eşleştirme'ye ses; Kelime Kartları'na 🔊 sesli okuma; hub
 rozetinde MEB/Twinkl ayrımı; README yeniden yazıldı; CLAUDE.md güncellendi;

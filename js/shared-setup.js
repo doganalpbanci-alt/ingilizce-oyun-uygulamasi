@@ -18,12 +18,15 @@
  *     onChange: updateWordCount    // seçim değişince çağrılır
  *   });
  *   picker.start();                // listeleri doldurur (atamadan SONRA çağır)
- *   picker.grade()            -> seçili sınıf/seviye kaydı
+ *   picker.grade()            -> seçili sınıf/seviye kaydı ("karışık" seçiliyse
+ *                                o müfredatın tüm ünitelerini taşıyan sanal kayıt)
  *   picker.checkedUnits()     -> işaretli ünite nesneleri
  *   picker.checkedUnitIds()   -> işaretli ünite id'leri
  *   picker.setSource(OBJ)     -> içerik kaynağını değiştirir (sınıf korunur)
  */
 var HubSetup = (function () {
+
+  var MIX_PREFIX = "mix:";
 
   function shuffle(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -81,13 +84,49 @@ var HubSetup = (function () {
         option.textContent = source[key].label;
         parent.appendChild(option);
       });
+
+      // Birden çok sınıf/seviyesi olan her müfredatın sonuna "karışık"
+      // seçeneği: tekrar dersinde Level 1+2+3 ya da 5.+6. sınıf birlikte.
+      Object.keys(groups).forEach(function (groupName) {
+        if (groups[groupName].children.length < 2) return;
+        var mix = document.createElement("option");
+        mix.value = MIX_PREFIX + groupName;
+        mix.textContent = "🔀 Karışık (birden çok " + (groupName.indexOf("Twinkl") === 0 ? "seviye" : "sınıf") + ")";
+        groups[groupName].appendChild(mix);
+      });
+    }
+
+    // Seçili kaydı döndürür. "Karışık" seçiliyse o müfredatın tüm
+    // sınıflarındaki üniteleri tek bir sanal kayıtta toplar; ünite başlığına
+    // sınıf adı eklenir ("Level 2 · Ders 3 - ..."). Ünite id'leri müfredat
+    // içinde benzersiz olduğu için oyunlar farkı görmez.
+    var mixCache = {};
+    function currentGrade() {
+      var key = gradeSelect.value;
+      if (key.indexOf(MIX_PREFIX) !== 0) return source[key];
+      if (mixCache[key] && mixCache[key].source === source) return mixCache[key].grade;
+      var groupName = key.slice(MIX_PREFIX.length);
+      var units = [];
+      Object.keys(source).forEach(function (k) {
+        if (source[k].group !== groupName) return;
+        var prefix = source[k].label.split(/ \(| —/)[0];
+        source[k].units.forEach(function (u) {
+          var copy = {};
+          for (var f in u) if (Object.prototype.hasOwnProperty.call(u, f)) copy[f] = u[f];
+          copy.title = prefix + " · " + u.title;
+          units.push(copy);
+        });
+      });
+      var grade = { label: "Karışık — " + groupName, group: groupName, units: units };
+      mixCache[key] = { source: source, grade: grade };
+      return grade;
     }
 
     // Üniteler işaretsiz başlar: öğretmen genelde tek bir ders çalıştırıyor,
     // "hepsi seçili"den başlamak fazladan bir "Temizle" dokunuşu demek olurdu.
     function populateUnits() {
       unitBox.innerHTML = "";
-      source[gradeSelect.value].units.forEach(function (unit) {
+      currentGrade().units.forEach(function (unit) {
         var label = document.createElement("label");
         label.className = "unit-checkbox";
 
@@ -136,7 +175,10 @@ var HubSetup = (function () {
       var previous = gradeSelect.value;
       source = newSource;
       buildGradeOptions();
-      if (source[previous]) gradeSelect.value = previous;
+      if (source[previous] || (previous.indexOf(MIX_PREFIX) === 0 &&
+          gradeSelect.querySelector('option[value="' + previous + '"]'))) {
+        gradeSelect.value = previous;
+      }
       populateUnits();
     }
 
@@ -147,11 +189,12 @@ var HubSetup = (function () {
       start: populateGrades,
       setSource: setSource,
       gradeKey: function () { return gradeSelect.value; },
-      grade: function () { return source[gradeSelect.value]; },
+      grade: currentGrade,
+      isMixed: function () { return gradeSelect.value.indexOf(MIX_PREFIX) === 0; },
       checkedUnitIds: checkedUnitIds,
       checkedUnits: function () {
         var ids = checkedUnitIds();
-        return source[gradeSelect.value].units.filter(function (u) {
+        return currentGrade().units.filter(function (u) {
           return ids.indexOf(u.id) !== -1;
         });
       }

@@ -116,7 +116,8 @@ function getCheckedStructureIds() {
 }
 
 function buildSentencePool(gradeKey, unitIds, structureIds) {
-  var grade = SENTENCES[gradeKey];
+  // gradeKey yerine picker.grade(): "karışık" seçimde sanal kayıt gelir.
+  var grade = picker.grade();
   var pool = [];
   grade.units
     .filter(function (u) { return unitIds.indexOf(u.id) !== -1; })

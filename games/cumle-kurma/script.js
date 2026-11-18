@@ -484,6 +484,30 @@ function arraysEqual(a, b) {
   return true;
 }
 
+/*
+ * "plants and fruit" ile "fruit and plants" eşit derecede doğru: tek
+ * kelimelik iki öğe and / or ile bağlanıyorsa yer değiştirmeleri kabul
+ * edilir. Karşılaştırma noktalama ve büyük/küçük harf yok sayılarak yapılır
+ * (kartlar noktalamayı taşıdığı için "fruit." ortaya gelebilir).
+ */
+function normalizeToken(t) {
+  return t.toLowerCase().replace(/[.,!?]/g, "");
+}
+
+function isAcceptable(attempt, tokens) {
+  if (arraysEqual(attempt, tokens)) return true;
+  var a = attempt.map(normalizeToken);
+  var target = tokens.map(normalizeToken);
+  for (var i = 1; i < target.length - 1; i++) {
+    if (target[i] !== "and" && target[i] !== "or") continue;
+    var swapped = target.slice();
+    swapped[i - 1] = target[i + 1];
+    swapped[i + 1] = target[i - 1];
+    if (arraysEqual(a, swapped)) return true;
+  }
+  return false;
+}
+
 checkBtn.addEventListener("click", function () {
   // Doğru cevaptan sonra sıradaki cümleye geçiş 900 ms gecikmeli; o aralıkta
   // tahtaya tekrar dokunulursa aynı cümle yeniden "doğru" sayılıp puan
@@ -491,7 +515,7 @@ checkBtn.addEventListener("click", function () {
   if (state.locked) return;
   if (state.current.poolTiles.length > 0) return;
   var attempt = state.current.placedTiles.map(function (t) { return t.text; });
-  var correct = arraysEqual(attempt, state.current.tokens);
+  var correct = isAcceptable(attempt, state.current.tokens);
 
   if (correct) {
     document.getElementById("play-feedback").textContent = "🎉 Doğru!";

@@ -21,6 +21,7 @@
  *   picker.grade()            -> seçili sınıf/seviye kaydı
  *   picker.checkedUnits()     -> işaretli ünite nesneleri
  *   picker.checkedUnitIds()   -> işaretli ünite id'leri
+ *   picker.setSource(OBJ)     -> içerik kaynağını değiştirir (sınıf korunur)
  */
 var HubSetup = (function () {
 
@@ -57,6 +58,12 @@ var HubSetup = (function () {
     // kayıtlardaki `group` alanına göre <optgroup> başlıkları altında
     // toplanır. `group` taşımayan kayıtlar doğrudan listeye eklenir.
     function populateGrades() {
+      buildGradeOptions();
+      populateUnits();
+    }
+
+    function buildGradeOptions() {
+      gradeSelect.innerHTML = "";
       var groups = {};
       Object.keys(source).forEach(function (key) {
         var groupName = source[key].group || "";
@@ -74,7 +81,6 @@ var HubSetup = (function () {
         option.textContent = source[key].label;
         parent.appendChild(option);
       });
-      populateUnits();
     }
 
     // Üniteler işaretsiz başlar: öğretmen genelde tek bir ders çalıştırıyor,
@@ -124,11 +130,22 @@ var HubSetup = (function () {
     if (selectAllBtn) selectAllBtn.addEventListener("click", function () { setAll(true); });
     if (clearAllBtn) clearAllBtn.addEventListener("click", function () { setAll(false); });
 
+    // Aynı oyunda iki içerik kaynağı arasında geçiş (örn. Halat Çekme:
+    // kelime <-> gramer). Seçili sınıf yeni kaynakta da varsa korunur.
+    function setSource(newSource) {
+      var previous = gradeSelect.value;
+      source = newSource;
+      buildGradeOptions();
+      if (source[previous]) gradeSelect.value = previous;
+      populateUnits();
+    }
+
     // populateGrades BURADA çağrılmaz: onChange geri çağrısı oyunun `picker`
     // değişkenini kullanıyor ve o değişken bu fonksiyon dönmeden atanmıyor.
     // Oyun, picker'ı atadıktan sonra picker.start() çağırır.
     return {
       start: populateGrades,
+      setSource: setSource,
       gradeKey: function () { return gradeSelect.value; },
       grade: function () { return source[gradeSelect.value]; },
       checkedUnitIds: checkedUnitIds,

@@ -13,6 +13,7 @@
 var OPTION_COUNT = 4;
 
 var state = {
+  content: "kelime",  // "kelime" | "gramer"
   pool: [],
   used: [],
   direction: "tr-en",
@@ -45,6 +46,28 @@ HubSound.bindToggle(document.getElementById("sound-toggle"));
 
 /* ---------- Havuz ---------- */
 
+function selectedContent() {
+  var c = document.querySelector('input[name="content"]:checked');
+  return c ? c.value : "kelime";
+}
+
+// Gramer modunda her madde [cümle, doğru, çeldirici1, çeldirici2].
+function buildGrammarPool() {
+  var pool = [];
+  picker.checkedUnits().forEach(function (u) {
+    u.items.forEach(function (it) { pool.push({ q: it[0], answer: it[1], wrong: [it[2], it[3]] }); });
+  });
+  return pool;
+}
+
+function buildPool() {
+  return selectedContent() === "gramer" ? buildGrammarPool() : buildWordPool();
+}
+
+function minPool() {
+  return selectedContent() === "gramer" ? 1 : OPTION_COUNT;
+}
+
 function buildWordPool() {
   var seenEn = {};
   var seenTr = {};
@@ -65,11 +88,22 @@ function buildWordPool() {
 }
 
 function updateWordCount() {
-  var n = buildWordPool().length;
+  var n = buildPool().length;
   var el = document.getElementById("word-count");
   if (picker.checkedUnitIds().length === 0) { el.textContent = ""; return; }
-  el.textContent = n >= OPTION_COUNT ? n + " kelime seçildi" : "En az " + OPTION_COUNT + " kelime gerekiyor — bir ünite daha seç.";
+  var unit = selectedContent() === "gramer" ? " gramer sorusu" : " kelime";
+  el.textContent = n >= minPool() ? n + unit + " seçildi" : "En az " + OPTION_COUNT + " kelime gerekiyor — bir ünite daha seç.";
 }
+
+document.querySelectorAll('input[name="content"]').forEach(function (r) {
+  r.addEventListener("change", function () {
+    document.querySelectorAll(".tw-content .mode-option").forEach(function (el) { el.classList.remove("checked"); });
+    r.closest(".mode-option").classList.add("checked");
+    var gramer = r.value === "gramer";
+    document.getElementById("direction-field").hidden = gramer;
+    picker.setSource(gramer ? GRAMMAR : CURRICULUM);
+  });
+});
 
 document.querySelectorAll('[data-action="back-to-setup"]').forEach(function (btn) {
   btn.addEventListener("click", function () {
@@ -81,19 +115,20 @@ document.querySelectorAll('[data-action="back-to-setup"]').forEach(function (btn
 /* ---------- Başlat ---------- */
 
 document.getElementById("start-btn").addEventListener("click", function () {
-  var pool = buildWordPool();
+  var pool = buildPool();
   if (picker.checkedUnitIds().length === 0) {
     setupErrorEl.textContent = "En az bir ünite seçmelisin.";
     setupErrorEl.hidden = false;
     return;
   }
-  if (pool.length < OPTION_COUNT) {
+  if (pool.length < minPool()) {
     setupErrorEl.textContent = "Bu seçimde yeterli kelime yok (en az " + OPTION_COUNT + "). Bir ünite daha seç.";
     setupErrorEl.hidden = false;
     return;
   }
   setupErrorEl.hidden = true;
   state.pool = pool;
+  state.content = selectedContent();
   state.direction = document.getElementById("direction-select").value;
   state.goal = parseInt(document.getElementById("goal-select").value, 10);
   state.names.a = document.getElementById("team-a-name").value.trim() || "Sol Takım";
@@ -119,7 +154,23 @@ function startGame() {
 
 /* ---------- Soru ---------- */
 
+function makeGrammarQuestion() {
+  var item = HubPlay.pickFresh(state.pool, state.used);
+  return {
+    label: "Boşluğa hangisi gelir?",
+    prompt: item.q,
+    promptLang: "en",
+    sentence: true,
+    optionLang: "en",
+    options: [{ text: item.answer, correct: true }].concat(item.wrong.map(function (w) {
+      return { text: w, correct: false };
+    })),
+    answer: item.answer
+  };
+}
+
 function makeQuestion() {
+  if (state.content === "gramer") return makeGrammarQuestion();
   var word = HubPlay.pickFresh(state.pool, state.used);
   var dir = state.direction === "mixed" ? (Math.random() < 0.5 ? "tr-en" : "en-tr") : state.direction;
   var askField = dir === "tr-en" ? "tr" : "en";
@@ -150,7 +201,13 @@ function nextQuestion() {
   var q = state.question;
   document.getElementById("tw-prompt-label").textContent = q.label;
   var promptEl = document.getElementById("tw-prompt");
-  promptEl.textContent = q.prompt;
+  promptEl.classList.toggle("sentence", !!q.sentence);
+  if (q.sentence) {
+    var parts = q.prompt.split("___");
+    promptEl.innerHTML = HubPlay.escapeHtml(parts[0]) + '<span class="tw-gap">?</span>' + HubPlay.escapeHtml(parts[1] || "");
+  } else {
+    promptEl.textContent = q.prompt;
+  }
   promptEl.setAttribute("lang", q.promptLang);
   setStatus("", "");
   renderSide("a");
@@ -165,6 +222,7 @@ function renderSide(side) {
       (o.correct ? "1" : "0") + '">' + HubPlay.escapeHtml(o.text) + "</button>";
   }).join("");
   el.classList.remove("locked", "winner");
+  el.classList.toggle("three", opts.length === 3);
 }
 
 function setStatus(text, cls) {
@@ -181,6 +239,7 @@ function onAnswer(side, btn) {
   if (btn.getAttribute("data-correct") === "1") {
     state.answered = true;
     btn.classList.add("right");
+    fillGap();
     sideEl.classList.add("winner");
     document.getElementById("side-" + other).classList.add("locked");
     state.scores[side]++;
@@ -213,7 +272,13 @@ function onAnswer(side, btn) {
   }
 }
 
+function fillGap() {
+  var gap = document.querySelector("#tw-prompt .tw-gap");
+  if (gap) gap.textContent = state.question.answer;
+}
+
 function revealCorrect() {
+  fillGap();
   document.querySelectorAll('.tw-option[data-correct="1"]').forEach(function (b) { b.classList.add("reveal"); });
 }
 

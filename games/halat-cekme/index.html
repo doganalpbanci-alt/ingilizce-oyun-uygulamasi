@@ -26,6 +26,20 @@
     <div class="panel">
       <h2>Sınıf ve Ünite Seç</h2>
 
+      <div class="field">
+        <span>Ne yarışalım?</span>
+        <div class="mode-options tw-content">
+          <label class="mode-option checked">
+            <input type="radio" name="content" value="kelime" checked>
+            <span class="mode-option-title">📖 Kelime anlamı</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="content" value="gramer">
+            <span class="mode-option-title">🧱 Gramer (boşluk doldurma)</span>
+          </label>
+        </div>
+      </div>
+
       <label class="field">
         <span>Sınıf / Seviye</span>
         <select id="grade-select"></select>
@@ -41,7 +55,7 @@
         <p id="word-count" class="hint"></p>
       </div>
 
-      <label class="field">
+      <label class="field" id="direction-field">
         <span>Soru yönü</span>
         <select id="direction-select">
           <option value="tr-en" selected>Türkçe → İngilizce (şıklar İngilizce)</option>
@@ -126,6 +140,8 @@
 
 <script src="../../data/curriculum.js"></script>
 <script src="../../data/twinkl.js"></script>
+<script src="../../data/grammar.js"></script>
+<script src="../../data/twinkl-grammar.js"></script>
 <script src="../../js/shared-setup.js"></script>
 <script src="../../js/shared-sound.js"></script>
 <script src="../../js/shared-play.js"></script>

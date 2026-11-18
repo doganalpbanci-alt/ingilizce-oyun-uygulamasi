@@ -367,3 +367,9 @@ main {
   transform: translateX(-3px);
   box-shadow: var(--shadow-md);
 }
+
+.badge-split {
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: 0.88em;
+}

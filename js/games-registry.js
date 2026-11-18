@@ -3,7 +3,8 @@
  *
  * category: "oyun"  -> Oyunlar bölümünde görünür
  *           "arac"  -> Çalışma Araçları bölümünde görünür
- * skill:    hangi İngilizce becerisini pratik ettiriyor. hub.js bu alandan
+ * skill:    hangi İngilizce becerisini pratik ettiriyor (tek kod ya da
+ *           birden çok beceri çalıştıran oyunlar için dizi: ["kelime", "gramer"]). hub.js bu alandan
  *           farklı değerler görürse otomatik olarak bir filtre/sekme satırı
  *           gösterir (tek skill varken satır gizli kalır). Yeni bir skill
  *           kodu eklerken SKILL_LABELS'a görünür ad karşılığını da ekle.
@@ -53,12 +54,12 @@ var GAMES = [
   {
     id: "halat-cekme",
     title: "Halat Çekme",
-    description: "İki takım tahtanın iki yanında aynı soruya yarışır; ilk doğru cevabı veren ipi kendi tarafına çeker.",
+    description: "İki takım tahtanın iki yanında aynı soruya yarışır; ilk doğru cevabı veren ipi kendi tarafına çeker. Kelime ya da gramer.",
     icon: "🪢",
     path: "games/halat-cekme/index.html",
     color: "#dc2626",
     category: "oyun",
-    skill: "kelime",
+    skill: ["kelime", "gramer"],
     tags: ["Takımlı", "Akıllı tahta", "Hız"]
   },
   {

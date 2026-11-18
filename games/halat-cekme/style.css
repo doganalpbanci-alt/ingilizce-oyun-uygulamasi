@@ -8,6 +8,9 @@
   gap: 14px;
 }
 
+.tw-content { grid-template-columns: 1fr 1fr; }
+.tw-content .mode-option-title { font-size: 15px; }
+
 .tw-input {
   width: 100%;
   padding: 12px 14px;
@@ -125,13 +128,16 @@
 .tw-question { text-align: center; margin-bottom: 14px; }
 
 .tw-prompt-label {
-  margin: 0;
+  margin: 0 0 6px;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
 }
+
+.tw-prompt.sentence { font-size: clamp(22px, 3.4vw, 36px); }
+.tw-prompt .tw-gap { color: #9333ea; border-bottom: 4px solid #d8b4fe; padding: 0 12px; }
 
 .tw-prompt {
   margin: 2px 0 4px;
@@ -169,6 +175,9 @@
 .tw-side-a { background: rgba(220, 38, 38, 0.08); box-shadow: inset 0 0 0 3px rgba(220, 38, 38, 0.25); }
 .tw-side-b { background: rgba(37, 99, 235, 0.08); box-shadow: inset 0 0 0 3px rgba(37, 99, 235, 0.25); }
 
+.tw-side.three { grid-template-columns: 1fr; }
+.tw-side.three .tw-option { min-height: 64px; }
+
 .tw-option {
   min-height: 84px;
   padding: 10px 12px;
@@ -200,6 +209,7 @@
 
 @media (max-width: 700px) {
   .tw-names { grid-template-columns: 1fr; gap: 0; }
+  .tw-content { grid-template-columns: 1fr; }
   .tw-sides { gap: 10px; }
   .tw-side { grid-template-columns: 1fr; padding: 10px; gap: 8px; }
   .tw-option { min-height: 56px; }

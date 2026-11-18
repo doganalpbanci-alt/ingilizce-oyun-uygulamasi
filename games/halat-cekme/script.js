@@ -36,6 +36,7 @@ var headerEl = document.getElementById("tw-header");
 var showScreen = HubSetup.screenSwitcher(function (id) {
   // Oyun sırasında başlık gizlenir: tahtada dikey alan değerli.
   headerEl.hidden = id === "screen-play";
+  document.body.classList.toggle("tw-playing", id === "screen-play");
 });
 var shuffle = HubSetup.shuffle;
 var setupErrorEl = document.getElementById("setup-error");

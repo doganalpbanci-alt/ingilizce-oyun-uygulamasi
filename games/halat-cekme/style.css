@@ -21,7 +21,7 @@
 
 .screen.tw-play {
   max-width: 1280px;
-  padding-top: 56px;
+  padding-top: 0;
   padding-bottom: 24px;
 }
 
@@ -207,3 +207,5 @@
   .tw-top .ghost-btn { order: 3; width: 100%; }
   .tw-top { flex-wrap: wrap; }
 }
+
+body.tw-playing main { padding-top: 16px; }

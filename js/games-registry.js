@@ -12,10 +12,22 @@
 var SKILL_LABELS = {
   kelime: "Kelime",
   "cumle-kurma": "Cümle Kurma",
-  yazim: "Yazım"
+  yazim: "Yazım",
+  gramer: "Gramer"
 };
 
 var GAMES = [
+  {
+    id: "gramer-kulesi",
+    title: "Gramer Kulesi",
+    description: "Ünitenin dil yapısına göre boşluğa doğru kalıbı seç; her doğru cevap kuleye bir kat ekler. Yanlışta kısa kural çıkar.",
+    icon: "🧱",
+    path: "games/gramer-kulesi/index.html",
+    color: "#ea580c",
+    category: "oyun",
+    skill: "gramer",
+    tags: ["Tek kişi", "Takımlı", "Gramer"]
+  },
   {
     id: "harf-karistir",
     title: "Harf Karıştır",

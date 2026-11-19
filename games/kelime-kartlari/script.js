@@ -7,15 +7,10 @@ var state = {
   flipped: false
 };
 
-var screens = document.querySelectorAll(".screen");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
 
-function showScreen(id) {
-  screens.forEach(function (el) {
-    el.hidden = el.id !== id;
-  });
-}
+var showScreen = HubSetup.screenSwitcher();
 
 /* ---------- Setup screen ---------- */
 
@@ -107,8 +102,8 @@ function renderListView() {
     var rows = group.words.map(function (w) {
       return (
         '<div class="word-row">' +
-          '<span class="word-en">' + w.en + "</span>" +
-          '<span class="word-tr" data-tr="' + escapeHtml(w.tr) + '">' + w.tr + "</span>" +
+          '<span class="word-en" lang="en">' + escapeHtml(w.en) + speakBtn(w.en) + "</span>" +
+          '<span class="word-tr" data-tr="' + escapeHtml(w.tr) + '">' + escapeHtml(w.tr) + "</span>" +
         "</div>"
       );
     }).join("");
@@ -127,7 +122,30 @@ function renderListView() {
 function escapeHtml(str) {
   var div = document.createElement("div");
   div.textContent = str;
-  return div.innerHTML;
+  return div.innerHTML.replace(/"/g, "&quot;");
+}
+
+/* ---------- Sesli okuma (cihaz destekliyorsa) ---------- */
+
+var canSpeak = typeof HubSpeech !== "undefined" && HubSpeech.available();
+
+function speakBtn(text) {
+  if (!canSpeak) return "";
+  return ' <button type="button" class="speak-btn" data-say="' + escapeHtml(text) + '" aria-label="Sesli oku">🔊</button>';
+}
+
+document.getElementById("list-container").addEventListener("click", function (e) {
+  var btn = e.target.closest(".speak-btn");
+  if (btn) HubSpeech.speak(btn.getAttribute("data-say"));
+});
+
+if (canSpeak) {
+  var speakCardBtn = document.getElementById("speak-card-btn");
+  speakCardBtn.hidden = false;
+  speakCardBtn.addEventListener("click", function () {
+    var word = state.flashcards[state.cardIndex];
+    if (word) HubSpeech.speak(word.en);
+  });
 }
 
 function applyHideMeanings(hide) {

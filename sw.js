@@ -18,7 +18,7 @@
  * Yeni dosya eklendiğinde PRECACHE listesini ve CACHE_VERSION'ı güncelle.
  */
 
-var CACHE_VERSION = "v6";
+var CACHE_VERSION = "v11";
 var CACHE_NAME = "ingilizce-hub-" + CACHE_VERSION;
 
 var PRECACHE = [
@@ -27,17 +27,41 @@ var PRECACHE = [
   "manifest.json",
   "css/style.css",
   "css/setup.css",
+  "css/play.css",
   "data/curriculum.js",
   "data/sentences.js",
   "data/twinkl.js",
   "data/twinkl-sentences.js",
+  "data/grammar.js",
+  "data/twinkl-grammar.js",
   "js/games-registry.js",
   "js/shared-setup.js",
+  "js/shared-sound.js",
+  "js/shared-play.js",
+  "js/shared-speech.js",
   "js/hub.js",
   "js/pwa.js",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",
+  "games/dogru-yanlis/index.html",
+  "games/dogru-yanlis/script.js",
+  "games/dogru-yanlis/style.css",
+  "games/gramer-kulesi/index.html",
+  "games/gramer-kulesi/script.js",
+  "games/gramer-kulesi/style.css",
+  "games/harf-karistir/index.html",
+  "games/harf-karistir/script.js",
+  "games/harf-karistir/style.css",
+  "games/halat-cekme/index.html",
+  "games/halat-cekme/script.js",
+  "games/halat-cekme/style.css",
+  "games/icerik-inceleme/index.html",
+  "games/icerik-inceleme/script.js",
+  "games/icerik-inceleme/style.css",
+  "games/kelime-carki/index.html",
+  "games/kelime-carki/script.js",
+  "games/kelime-carki/style.css",
   "games/cumle-kurma/index.html",
   "games/cumle-kurma/script.js",
   "games/cumle-kurma/sounds.js",

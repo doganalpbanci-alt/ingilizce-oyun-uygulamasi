@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Doğru mu Yanlış mı - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/setup.css">
+<link rel="stylesheet" href="../../css/play.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header dy-header" id="dy-header">
+  <h1>⚡ Doğru mu Yanlış mı?</h1>
+  <p class="tagline">Süre işliyor! Eşleşme ya da cümle doğruysa ✓, yanlışsa ✗ — seri yap, puanı katla.</p>
+</header>
+
+<main>
+
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Ayarlar</h2>
+
+      <div class="field">
+        <span>Ne çalışalım?</span>
+        <div class="mode-options dy-content">
+          <label class="mode-option checked">
+            <input type="radio" name="content" value="kelime" checked>
+            <span class="mode-option-title">📖 Kelime anlamı</span>
+            <span class="mode-option-desc">"apple = elma" doğru mu?</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="content" value="gramer">
+            <span class="mode-option-title">🧱 Gramer</span>
+            <span class="mode-option-desc">"She go to school." doğru mu?</span>
+          </label>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Sınıf / Seviye</span>
+        <select id="grade-select"></select>
+      </label>
+
+      <div class="field">
+        <span>Üniteler</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <p id="pool-count" class="hint"></p>
+      </div>
+
+      <label class="field">
+        <span>Süre</span>
+        <select id="duration-select">
+          <option value="30">30 saniye</option>
+          <option value="60" selected>60 saniye</option>
+          <option value="90">90 saniye</option>
+        </select>
+      </label>
+
+      <p id="setup-error" class="error-text" hidden></p>
+      <button id="start-btn" type="button" class="primary-btn">Başla!</button>
+    </div>
+  </section>
+
+  <section id="screen-ready" class="screen" hidden>
+    <div class="panel turn-panel">
+      <p class="turn-round">Hazır mısın?</p>
+      <div id="countdown" class="dy-countdown">3</div>
+      <p class="hint">Doğruysa <strong>✓</strong> (→), yanlışsa <strong>✗</strong> (←)</p>
+    </div>
+  </section>
+
+  <section id="screen-play" class="screen dy-play" hidden>
+    <div class="play-topbar">
+      <span class="play-chip">⭐ <strong id="score">0</strong></span>
+      <span class="play-chip" id="streak-chip">🔥 <strong id="streak">0</strong> <span id="multiplier" class="dy-mult"></span></span>
+      <span class="play-chip">⏱️ <strong id="time-left">60</strong> sn</span>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Çık</button>
+    </div>
+    <div class="timer-track"><div id="timer-bar" class="timer-bar dy-timer"></div></div>
+
+    <div id="dy-card" class="dy-card">
+      <div id="dy-prompt" class="dy-prompt"></div>
+      <div id="dy-correction" class="dy-correction"></div>
+    </div>
+
+    <div class="dy-buttons">
+      <button type="button" id="no-btn" class="dy-btn dy-no" aria-label="Yanlış">✗<small>Yanlış</small></button>
+      <button type="button" id="yes-btn" class="dy-btn dy-yes" aria-label="Doğru">✓<small>Doğru</small></button>
+    </div>
+  </section>
+
+  <section id="screen-end" class="screen" hidden>
+    <div class="panel champion-panel">
+      <div class="champion-emoji" id="end-emoji">⚡</div>
+      <h2 id="end-title"></h2>
+      <p id="end-summary"></p>
+      <p id="end-record" class="dy-record"></p>
+      <div id="end-review" class="dy-review"></div>
+      <div class="btn-row" style="justify-content: center;">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Ayarlar</button>
+        <button id="restart-btn" type="button" class="primary-btn">Tekrar!</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/curriculum.js"></script>
+<script src="../../data/twinkl.js"></script>
+<script src="../../data/grammar.js"></script>
+<script src="../../data/twinkl-grammar.js"></script>
+<script src="../../js/shared-setup.js"></script>
+<script src="../../js/shared-sound.js"></script>
+<script src="../../js/shared-play.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

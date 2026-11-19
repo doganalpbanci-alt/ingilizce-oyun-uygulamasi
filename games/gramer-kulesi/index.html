@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Gramer Kulesi - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/setup.css">
+<link rel="stylesheet" href="../../css/play.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link" href="../../index.html">← Menüye Dön</a>
+<button id="sound-toggle" type="button" class="sound-toggle" aria-label="Sesi aç/kapat">🔊</button>
+
+<header class="hub-header gk-header" id="gk-header">
+  <h1>🧱 Gramer Kulesi</h1>
+  <p class="tagline">Boşluğa doğru kalıbı koy, her doğru cevapla kuleni bir kat yükselt!</p>
+</header>
+
+<main>
+
+  <!-- 1) Kurulum -->
+  <section id="screen-setup" class="screen">
+    <div class="panel">
+      <h2>Sınıf ve Ünite Seç</h2>
+
+      <label class="field">
+        <span>Sınıf / Seviye</span>
+        <select id="grade-select"></select>
+      </label>
+
+      <div class="field">
+        <span>Üniteler (her ünite kendi dil yapısını getirir)</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes"></div>
+        <div id="topic-list" class="gk-topic-list"></div>
+      </div>
+
+      <div class="field">
+        <span>Oyun Modu</span>
+        <div class="mode-options">
+          <label class="mode-option checked">
+            <input type="radio" name="game-mode" value="solo" checked>
+            <span class="mode-option-title">🧑‍🎓 Tek Kişilik Pratik</span>
+            <span class="mode-option-desc">Soruları sırayla cevapla; yanlışta kuralı gör, sonda tekrar listesini al.</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="game-mode" value="team">
+            <span class="mode-option-title">🏫 Sınıfça Yarışma (Takımlı)</span>
+            <span class="mode-option-desc">Takımlar sırayla cevaplar; her doğru cevap takımın kulesine bir kat ekler.</span>
+          </label>
+        </div>
+      </div>
+
+      <label class="field" id="solo-count-field">
+        <span>Kaç soru?</span>
+        <select id="solo-count-select">
+          <option value="10" selected>10 soru</option>
+          <option value="15">15 soru</option>
+          <option value="20">20 soru</option>
+          <option value="999">Seçimdeki tüm sorular</option>
+        </select>
+      </label>
+
+      <label class="field" id="team-duration-field" hidden>
+        <span>Soru başına süre</span>
+        <select id="team-duration-select">
+          <option value="15">15 saniye</option>
+          <option value="20" selected>20 saniye</option>
+          <option value="30">30 saniye</option>
+        </select>
+      </label>
+
+      <label class="field" id="team-rounds-field" hidden>
+        <span>Her takım kaç soru cevaplasın?</span>
+        <select id="team-rounds-select">
+          <option value="3">3 soru</option>
+          <option value="5" selected>5 soru</option>
+          <option value="8">8 soru</option>
+        </select>
+      </label>
+
+      <p id="setup-error" class="error-text" hidden></p>
+      <button id="to-next-btn" type="button" class="primary-btn">Devam Et</button>
+    </div>
+  </section>
+
+  <!-- 2) Takımlar -->
+  <section id="screen-teams" class="screen" hidden>
+    <div class="panel">
+      <h2>Takımlar</h2>
+      <p class="hint">Her satıra bir takım adı yaz (2-6 takım).</p>
+      <textarea id="team-names" rows="6">Kırmızı Takım
+Mavi Takım</textarea>
+      <p id="teams-error" class="error-text" hidden></p>
+      <div class="btn-row">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Geri</button>
+        <button id="start-team-btn" type="button" class="primary-btn">Oyunu Başlat</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Oyun -->
+  <section id="screen-play" class="screen gk-play" hidden>
+    <div class="play-topbar">
+      <span class="play-chip" id="play-progress"></span>
+      <span class="play-chip" id="play-streak-chip">🔥 Seri: <strong id="play-streak">0</strong></span>
+      <button type="button" class="ghost-btn small" data-action="back-to-setup">← Seçimi Değiştir</button>
+    </div>
+
+    <div class="gk-layout">
+      <div class="gk-towers" id="gk-towers" aria-label="Kuleler"></div>
+
+      <div class="play-card gk-card">
+        <div id="play-timer-wrap" class="timer-track" hidden>
+          <div id="play-timer-bar" class="timer-bar"></div>
+        </div>
+        <p id="gk-turn" class="gk-turn" hidden></p>
+        <span id="gk-topic" class="gk-topic"></span>
+        <p id="gk-sentence" class="gk-sentence" lang="en"></p>
+        <div id="gk-options" class="gk-options" lang="en"></div>
+        <p id="play-feedback" class="play-feedback"></p>
+        <div id="gk-rule" class="gk-rule" hidden></div>
+        <div class="btn-row gk-next-row">
+          <button id="next-btn" type="button" class="primary-btn" hidden>Devam →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Bitiş -->
+  <section id="screen-end" class="screen" hidden>
+    <div class="panel champion-panel">
+      <div class="champion-emoji" id="end-emoji">🏆</div>
+      <h2 id="end-title"></h2>
+      <p id="end-summary"></p>
+      <div id="end-towers" class="gk-towers gk-towers-end"></div>
+      <div id="end-review" class="gk-review"></div>
+      <div class="btn-row" style="justify-content: center;">
+        <button type="button" class="ghost-btn" data-action="back-to-setup">← Menüye Dön</button>
+        <button id="restart-btn" type="button" class="primary-btn">Tekrar Oyna</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="../../data/grammar.js"></script>
+<script src="../../data/twinkl-grammar.js"></script>
+<script src="../../js/shared-setup.js"></script>
+<script src="../../js/shared-sound.js"></script>
+<script src="../../js/shared-play.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

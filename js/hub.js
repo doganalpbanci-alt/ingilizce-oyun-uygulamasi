@@ -8,15 +8,27 @@
     return (typeof SKILL_LABELS !== "undefined" && SKILL_LABELS[skill]) || skill;
   }
 
+  // `skill` tek bir kod ya da kod dizisi olabilir (Halat Çekme hem kelime
+  // hem gramer çalıştırıyor).
+  function skillsOf(item) {
+    if (!item.skill) return [];
+    return Array.isArray(item.skill) ? item.skill : [item.skill];
+  }
+
+  // Kelime sayısı müfredata (group) göre ayrı ayrı da tutulur: rozet
+  // "1758 kelime (MEB 1181 · Twinkl 577)" gibi okunur.
   function countWords() {
-    if (typeof CURRICULUM === "undefined") return 0;
-    var total = 0;
+    var result = { total: 0, byGroup: {} };
+    if (typeof CURRICULUM === "undefined") return result;
     Object.keys(CURRICULUM).forEach(function (gradeKey) {
+      var group = CURRICULUM[gradeKey].group || "";
+      var short = group.indexOf("Twinkl") === 0 ? "Twinkl" : (group.indexOf("MEB") === 0 ? "MEB" : group);
       CURRICULUM[gradeKey].units.forEach(function (unit) {
-        total += unit.words.length;
+        result.total += unit.words.length;
+        result.byGroup[short] = (result.byGroup[short] || 0) + unit.words.length;
       });
     });
-    return total;
+    return result;
   }
 
   function cardHtml(item, index) {
@@ -49,7 +61,16 @@
 
     var skills = [];
     GAMES.forEach(function (g) {
-      if (g.skill && skills.indexOf(g.skill) === -1) skills.push(g.skill);
+      skillsOf(g).forEach(function (s) {
+        if (skills.indexOf(s) === -1) skills.push(s);
+      });
+    });
+
+    // Sekmeler SKILL_LABELS'taki sırayla dizilir (registry sırasından bağımsız).
+    var order = typeof SKILL_LABELS !== "undefined" ? Object.keys(SKILL_LABELS) : [];
+    skills.sort(function (a, b) {
+      var ia = order.indexOf(a), ib = order.indexOf(b);
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
 
     // Tek beceri varken (bugünkü durum: sadece "kelime") sekme satırı
@@ -79,14 +100,22 @@
   function render() {
     var visible = activeSkill === "all"
       ? GAMES
-      : GAMES.filter(function (g) { return g.skill === activeSkill; });
+      : GAMES.filter(function (g) { return skillsOf(g).indexOf(activeSkill) !== -1; });
 
     var games = visible.filter(function (g) { return g.category !== "arac"; });
     var tools = visible.filter(function (g) { return g.category === "arac"; });
 
     document.getElementById("game-count").textContent = games.length;
     document.getElementById("tool-count").textContent = tools.length;
-    document.getElementById("word-count").textContent = countWords();
+    var words = countWords();
+    document.getElementById("word-count").textContent = words.total;
+    var split = document.getElementById("word-split");
+    var groups = Object.keys(words.byGroup);
+    if (split) {
+      split.textContent = groups.length > 1
+        ? "(" + groups.map(function (g) { return g + " " + words.byGroup[g]; }).join(" · ") + ")"
+        : "";
+    }
 
     renderSkillFilter();
     renderInto(gameGrid, games, "Bu beceride henüz oyun yok.");

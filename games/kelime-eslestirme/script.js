@@ -21,6 +21,8 @@ var showScreen = HubSetup.screenSwitcher();
 
 var shuffle = HubSetup.shuffle;
 
+HubSound.bindToggle(document.getElementById("sound-toggle"));
+
 /* ---------- Setup ---------- */
 
 function buildWordPool(unitIds) {
@@ -117,6 +119,7 @@ function onCardClick(event) {
   card.classList.remove("is-face-down");
   card.classList.add("is-face-up-selected");
   state.flippedCards.push(card);
+  HubSound.tap();
 
   if (state.flippedCards.length === 2) {
     state.moveCount++;
@@ -137,8 +140,10 @@ function checkMatch() {
     state.flippedCards = [];
     state.matchedCount++;
     matchCountEl.textContent = state.matchedCount;
+    if (state.matchedCount < state.pairs.length) HubSound.correct();
 
     if (state.matchedCount === state.pairs.length) {
+      HubSound.win();
       finalMovesEl.textContent = state.moveCount;
       winMessageEl.hidden = false;
       triggerConfetti();
@@ -147,6 +152,7 @@ function checkMatch() {
   }
 
   state.locked = true;
+  HubSound.wrong();
   setTimeout(function () {
     first.classList.remove("is-face-up-selected");
     second.classList.remove("is-face-up-selected");

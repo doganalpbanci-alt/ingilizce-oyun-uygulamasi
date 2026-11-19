@@ -1,6 +1,6 @@
 var SoundManager = (function () {
   var ctx = null;
-  var muted = localStorage.getItem("kt-muted") === "1";
+  var muted = localStorage.getItem("hub-muted") === "1";
 
   function getCtx() {
     if (!ctx) {
@@ -104,7 +104,7 @@ var SoundManager = (function () {
 
   function setMuted(value) {
     muted = value;
-    localStorage.setItem("kt-muted", value ? "1" : "0");
+    localStorage.setItem("hub-muted", value ? "1" : "0");
     if (!value) primeOnce();
   }
 

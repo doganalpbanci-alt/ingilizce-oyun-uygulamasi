@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>İçerik İnceleme - İngilizce Hub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/setup.css">
+<link rel="stylesheet" href="../../css/play.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back-link no-print" href="../../index.html">← Menüye Dön</a>
+
+<header class="hub-header ii-header no-print">
+  <h1>📋 İçerik İnceleme</h1>
+  <p class="tagline">Kelime, cümle ve gramer maddelerini ünite ünite gözden geçir; sorunlu olanı işaretle, notunu yaz.</p>
+</header>
+
+<main>
+  <section id="screen-setup" class="screen ii-screen">
+    <div class="panel no-print">
+      <label class="field">
+        <span>Sınıf / Seviye</span>
+        <select id="grade-select"></select>
+      </label>
+
+      <div class="field">
+        <span>Üniteler</span>
+        <div class="unit-toggle-row">
+          <button type="button" id="select-all-units" class="ghost-btn small">Tümünü Seç</button>
+          <button type="button" id="clear-all-units" class="ghost-btn small">Temizle</button>
+        </div>
+        <div id="unit-checkboxes" class="unit-checkboxes ii-units"></div>
+      </div>
+
+      <div class="field">
+        <span>Gösterilecekler</span>
+        <div class="ii-types">
+          <label><input type="checkbox" value="words" checked> 📖 Kelimeler</label>
+          <label><input type="checkbox" value="sentences" checked> 🔤 Cümleler</label>
+          <label><input type="checkbox" value="grammar" checked> 🧱 Gramer</label>
+          <label><input type="checkbox" id="only-flagged"> ⚑ Sadece işaretliler</label>
+        </div>
+      </div>
+
+      <div class="ii-actions">
+        <span id="flag-count" class="play-chip">⚑ 0 işaretli</span>
+        <button type="button" id="copy-btn" class="primary-btn">📋 Notları Kopyala</button>
+        <button type="button" id="print-btn" class="ghost-btn">🖨️ Yazdır</button>
+        <button type="button" id="clear-flags-btn" class="ghost-btn small">İşaretleri temizle</button>
+      </div>
+      <p id="copy-status" class="hint ii-status"></p>
+      <textarea id="copy-fallback" class="ii-fallback" rows="6" readonly hidden></textarea>
+      <p class="hint">İşaretler yalnızca bu cihazda saklanır. "Notları Kopyala" ile listeyi kopyalayıp bir sonraki geliştirme oturumunda Claude'a yapıştırabilirsin.</p>
+    </div>
+
+    <div id="review" class="ii-review"></div>
+  </section>
+</main>
+
+<script src="../../data/curriculum.js"></script>
+<script src="../../data/twinkl.js"></script>
+<script src="../../data/sentences.js"></script>
+<script src="../../data/twinkl-sentences.js"></script>
+<script src="../../data/grammar.js"></script>
+<script src="../../data/twinkl-grammar.js"></script>
+<script src="../../js/shared-setup.js"></script>
+<script src="../../js/shared-play.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

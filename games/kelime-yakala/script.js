@@ -24,18 +24,13 @@ var state = {
   lastTs: null
 };
 
-var screens = document.querySelectorAll(".screen");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
 var gameAreaEl = document.getElementById("game-area");
 var characterEl = document.getElementById("character");
 var soundToggleBtn = document.getElementById("sound-toggle");
 
-function showScreen(id) {
-  screens.forEach(function (el) {
-    el.hidden = el.id !== id;
-  });
-}
+var showScreen = HubSetup.screenSwitcher();
 
 function clamp(v, min, max) {
   return Math.max(min, Math.min(max, v));

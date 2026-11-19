@@ -1,0 +1,139 @@
+.kc-header {
+  background: linear-gradient(135deg, #be185d 0%, #7c3aed 50%, #0ea5e9 100%);
+}
+
+.kc-tasks .unit-checkbox span { font-weight: 500; }
+.kc-tasks .unit-checkbox strong { font-weight: 800; }
+
+body.kc-playing main { padding-top: 70px; }
+/* Dönen çarkın kutusu köşegen boyunca büyür; ekranı yatay kaydırmasın. */
+.screen.kc-play { max-width: 1180px; padding-top: 0; overflow: hidden; }
+
+.kc-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+/* ---------- Çark ---------- */
+
+.kc-wheel-wrap {
+  --size: min(520px, 44vw, 72vh);
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  margin: 0 auto;
+}
+
+.kc-pointer {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: 40px;
+  color: #1e1b2e;
+  text-shadow: 0 2px 0 #fff;
+}
+
+.kc-wheel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  box-shadow: var(--shadow-lg), inset 0 0 0 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Her etiket merkezden kenara uzanan görünmez bir çubuk; yazı dış uca yakın. */
+.kc-label {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 50%;
+  transform-origin: 50% 100%;
+}
+
+.kc-label span {
+  position: absolute;
+  top: 9%;
+  left: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #fff;
+  font-weight: 800;
+  font-size: calc(var(--size) * 0.04);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.kc-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 26%;
+  height: 26%;
+  transform: translate(-50%, -50%);
+  border: 6px solid #fff;
+  border-radius: 50%;
+  background: #1e1b2e;
+  color: #fff;
+  font-size: calc(var(--size) * 0.045);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+}
+
+.kc-spin:disabled { opacity: 0.6; cursor: default; }
+
+/* ---------- Görev kartı ---------- */
+
+.kc-card {
+  --task-color: var(--primary);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-top: 8px solid #e4e6f2;
+}
+
+.kc-card.landed { border-top-color: var(--task-color); animation: hk-pop-in 0.35s ease; }
+
+@keyframes hk-pop-in {
+  from { transform: scale(0.95); opacity: 0.5; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.kc-task {
+  margin: 0 0 10px;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--task-color);
+}
+
+.kc-word {
+  margin: 4px 0 18px;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.kc-answer {
+  margin: 14px 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #15803d;
+}
+
+.kc-scoring { margin-top: 18px; }
+.kc-score-btns { justify-content: center; margin-top: 0; margin-bottom: 14px; }
+
+@media (max-width: 760px) {
+  .kc-layout { grid-template-columns: 1fr; }
+  .kc-wheel-wrap { --size: min(88vw, 420px); }
+}

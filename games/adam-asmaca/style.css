@@ -18,6 +18,7 @@
   background-image:
     repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 7px);
   pointer-events: none;
+  opacity: 1; /* ortak harf deseninin opaklığını ezer; tebeşir dokusu kalır */
 }
 
 /* ---------- Score bar ---------- */
@@ -211,8 +212,10 @@
 .key {
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  border: 2px solid #d8dae6;
+  border: 2px solid #e1e3ee;
   background: #fff;
+  box-shadow: 0 4px 0 #d8dae6;
+  font-family: inherit;
   font-size: 17px;
   font-weight: 800;
   text-transform: uppercase;
@@ -221,18 +224,21 @@
 }
 
 .key:hover:not(:disabled) { border-color: var(--primary); }
-.key:active:not(:disabled) { transform: scale(0.93); }
+.key:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 #d8dae6; }
 
 .key.hit {
-  background: #22c55e;
-  border-color: #22c55e;
+  background: linear-gradient(180deg, #4ade80, #22c55e);
+  border-color: #16a34a;
+  box-shadow: 0 4px 0 #15803d;
   color: #fff;
 }
 
 .key.miss {
-  background: #ef4444;
-  border-color: #ef4444;
+  background: linear-gradient(180deg, #f87171, #ef4444);
+  border-color: #dc2626;
+  box-shadow: 0 4px 0 #b91c1c;
   color: #fff;
+  opacity: 0.7;
 }
 
 .key:disabled { cursor: default; opacity: 0.85; }

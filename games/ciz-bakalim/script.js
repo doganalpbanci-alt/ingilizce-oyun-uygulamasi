@@ -23,7 +23,6 @@ var draw = {
   size: SIZES[1]
 };
 
-var screens = document.querySelectorAll(".screen");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
 var teamNamesEl = document.getElementById("team-names");
@@ -33,14 +32,13 @@ var soundToggleBtn = document.getElementById("sound-toggle");
 var canvas = document.getElementById("board");
 var ctx2d = canvas.getContext("2d");
 
-function showScreen(id) {
-  screens.forEach(function (el) { el.hidden = el.id !== id; });
+var showScreen = HubSetup.screenSwitcher(function (id) {
   document.body.classList.toggle("compact", id === "screen-draw");
   if (id === "screen-draw") {
     syncDrawHeight();
     resizeCanvas();
   }
-}
+});
 
 // Çizim ekranının sayfadaki gerçek başlangıç noktasını ölçüp altında kalan
 // yüksekliği CSS'e aktarır; böylece tuval + araçlar + aksiyon butonları

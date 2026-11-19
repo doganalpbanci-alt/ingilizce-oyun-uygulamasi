@@ -8,16 +8,6 @@
   padding: 28px 24px 60px;
 }
 
-select, textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid #d8dae6;
-  font-size: 16px;
-  font-family: inherit;
-  resize: vertical;
-}
-
 .primary-btn:disabled { opacity: 0.45; cursor: default; filter: none; }
 
 /* ---------- Turn screen (takım modu) ---------- */

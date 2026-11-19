@@ -18,6 +18,7 @@
   background-image:
     repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 7px);
   pointer-events: none;
+  opacity: 1; /* ortak harf deseninin opaklığını ezer; tebeşir dokusu kalır */
 }
 
 /* ---------- Score bar ---------- */

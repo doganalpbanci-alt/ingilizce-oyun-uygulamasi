@@ -4,7 +4,7 @@
 
 .dy-content { grid-template-columns: 1fr 1fr; }
 
-body.dy-playing main { padding-top: 16px; }
+body.dy-playing main { padding-top: 70px; }
 .screen.dy-play { padding-top: 0; max-width: 960px; }
 
 .dy-countdown {

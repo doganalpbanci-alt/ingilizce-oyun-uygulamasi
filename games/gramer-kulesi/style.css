@@ -20,7 +20,7 @@
 /* ---------- Oyun ---------- */
 
 .screen.gk-play { max-width: 1180px; padding-top: 0; }
-body.gk-playing main { padding-top: 16px; }
+body.gk-playing main { padding-top: 70px; }
 
 .gk-layout {
   display: grid;

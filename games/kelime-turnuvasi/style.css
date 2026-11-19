@@ -250,17 +250,20 @@ body {
 .option-btn {
   padding: 16px;
   border-radius: var(--radius-md);
-  border: 2px solid #d8dae6;
+  border: 2px solid #e1e3ee;
   background: #fff;
-  font-size: 16px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.18);
+  font-size: 17px;
   font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
   text-align: center;
-  transition: transform 0.08s ease;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
 .option-btn:active {
-  transform: scale(0.97);
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
 }
 
 .option-btn:hover:not(:disabled) {
@@ -268,14 +271,16 @@ body {
 }
 
 .option-btn.correct {
-  background: #22c55e;
-  border-color: #22c55e;
+  background: linear-gradient(180deg, #4ade80, #22c55e);
+  border-color: #16a34a;
+  box-shadow: 0 5px 0 #15803d;
   color: #fff;
 }
 
 .option-btn.wrong {
-  background: #ef4444;
-  border-color: #ef4444;
+  background: linear-gradient(180deg, #f87171, #ef4444);
+  border-color: #dc2626;
+  box-shadow: 0 5px 0 #b91c1c;
   color: #fff;
 }
 
@@ -435,3 +440,4 @@ body {
 .match-exit .ghost-btn {
   background: rgba(255, 255, 255, 0.9);
 }
+body.in-game .enable-sound-btn { display: none; }

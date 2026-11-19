@@ -231,6 +231,10 @@ anahtarını paylaşır); yeni oyunlar `js/shared-sound.js` kullanır.
    picker.start();   // picker ATANDIKTAN sonra çağrılmalı
    ```
    Sonra `picker.grade()`, `picker.checkedUnits()`, `picker.checkedUnitIds()`.
+   `showScreen` için de kendi fonksiyonunu yazma, `HubSetup.screenSwitcher()`
+   kullan: ekran değişince sayfayı en üste kaydırır ve kurulum dışındaki
+   ekranlarda `body.in-game` sınıfı koyar (başlık ince şeride iner). Kurulum
+   ekranının id'si bu yüzden `screen-setup` olmalı.
    **Veriye her zaman `picker.grade()` / `picker.checkedUnits()` üzerinden eriş,
    `SOURCE[picker.gradeKey()]` yazma:** seçicide her müfredatın sonunda
    "🔀 Karışık" seçeneği var (`mix:<group>`); o seçiliyken `grade()` tüm

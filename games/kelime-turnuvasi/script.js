@@ -12,7 +12,6 @@ var state = {
   match: null
 };
 
-var screens = document.querySelectorAll(".screen");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
 var timePerPlayerField = document.getElementById("time-per-player-field");
@@ -24,11 +23,7 @@ var bracketViewEl = document.getElementById("bracket-view");
 var nextMatchBoxEl = document.getElementById("next-match-box");
 var soundToggleBtn = document.getElementById("sound-toggle");
 
-function showScreen(id) {
-  screens.forEach(function (el) {
-    el.hidden = el.id !== id;
-  });
-}
+var showScreen = HubSetup.screenSwitcher();
 
 /* ---------- Sound toggle & effects ---------- */
 

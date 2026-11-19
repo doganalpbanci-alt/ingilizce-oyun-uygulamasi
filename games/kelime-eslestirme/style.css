@@ -22,19 +22,13 @@
   flex-wrap: wrap;
 }
 
-.game-status #restart-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: var(--radius-md, 10px);
-  background: var(--accent);
-  color: #fff;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm, none);
-}
-
-.game-status #restart-btn:hover {
-  filter: brightness(1.1);
+.game-status > span {
+  background: var(--card-bg);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
 }
 
 .board {
@@ -45,11 +39,14 @@
   margin: 0 auto;
 }
 
+/* Kart sırtı: degrade + silik "?" deseni, basılınca çöken 3B görünüm. */
 .card {
   aspect-ratio: 3 / 2;
-  border-radius: 14px;
+  border-radius: 16px;
   border: none;
-  background: var(--accent);
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 1.6px) 0 0 / 14px 14px,
+    linear-gradient(145deg, #6366f1 0%, #4f46e5 55%, #2563eb 100%);
   color: #fff;
   font-size: clamp(16px, 2.4vw, 22px);
   font-weight: 600;
@@ -59,12 +56,15 @@
   justify-content: center;
   padding: 8px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  transition: transform 0.1s ease;
+  box-shadow: 0 6px 0 #3730a3, 0 10px 18px rgba(55, 48, 163, 0.22);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
 }
 
+.card:hover:not(.is-matched) { transform: translateY(-3px); }
+
 .card:active {
-  transform: scale(0.97);
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #3730a3, 0 4px 8px rgba(55, 48, 163, 0.2);
 }
 
 .card.is-face-down .card-label {
@@ -73,19 +73,39 @@
 
 .card.is-face-down::before {
   content: "?";
-  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  font-size: 26px;
+  font-weight: 900;
 }
 
 .card.is-face-up-selected {
   background: #fff;
   color: var(--text);
-  border: 3px solid var(--accent);
+  box-shadow: inset 0 0 0 3px #4f46e5, 0 6px 0 #c7d2fe, 0 10px 18px rgba(55, 48, 163, 0.15);
+  animation: card-flip 0.25s ease;
 }
 
 .card.is-matched {
-  background: #35c37f;
+  background: linear-gradient(145deg, #4ade80, #16a34a);
+  box-shadow: 0 6px 0 #15803d, 0 10px 18px rgba(21, 128, 61, 0.22);
   cursor: default;
-  opacity: 0.85;
+  animation: card-pop 0.35s ease;
+}
+
+@keyframes card-flip {
+  from { transform: rotateY(90deg); }
+  to { transform: rotateY(0deg); }
+}
+
+@keyframes card-pop {
+  50% { transform: scale(1.07); }
 }
 
 .win-message {
@@ -110,3 +130,5 @@
     opacity: 0.4;
   }
 }
+
+.primary-btn.small-btn { padding: 10px 20px; font-size: 15px; }

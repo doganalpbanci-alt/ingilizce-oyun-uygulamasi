@@ -45,8 +45,16 @@ var HubSetup = (function () {
    */
   function screenSwitcher(afterShow) {
     var screens = document.querySelectorAll(".screen");
+    var currentId = null;
     return function (id) {
       screens.forEach(function (el) { el.hidden = el.id !== id; });
+      // Kurulum ekranı uzun; "Başla"ya en altta basılınca yeni ekran
+      // kaydırılmış konumda açılıp üstü kesik görünüyordu.
+      if (id !== currentId) window.scrollTo(0, 0);
+      currentId = id;
+      // Kurulum dışındaki ekranlarda başlık ince şeride iner (css/style.css
+      // -> body.in-game): tahtada oyun alanı ekrana sığsın.
+      document.body.classList.toggle("in-game", id !== "screen-setup");
       if (afterShow) afterShow(id);
     };
   }

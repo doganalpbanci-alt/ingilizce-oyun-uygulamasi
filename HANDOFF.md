@@ -642,3 +642,27 @@ konsol hatası yok. Hub sekme filtresi 4 beceriyle doğrulandı.
 
 - **Sıradaki oturumun hedefi:** kullanıcı geri bildirimi; ardından Faz T2
   (PDF gelirse) veya eski oyunların `shared-sound.js`'e taşınması.
+
+### Oturum 2026-11-19 — Görsel yenileme (hub + tüm oyunlar)
+Kullanıcı "siteyi ve oyunları görsel olarak daha çekici hale getir", ardından
+"eski 6 oyunu da yeni tarza getir" dedi.
+
+- **Ortak katman** (`css/style.css`, `css/setup.css` sonundaki "Görsel
+  cilalama" blokları): beyaz + oklu açılır liste, iki sütunlu kart tarzı
+  ünite seçimi, 3B basılan düğmeler, renk tonlu hub kartları + degrade ikon
+  kutuları, başlıklarda silik harf deseni, oyun sayfalarında kavisli başlık
+  ve üstüne binen "Menüye Dön", hub'da yüzen harfler, nokta desenli arka
+  plan, `prefers-reduced-motion` desteği.
+- **Oyun içi:** `HubSetup.screenSwitcher` artık ekran değişince en üste
+  kaydırıyor (önceden "Başla" sonrası oyun alanı kesik açılıyordu) ve oyun
+  ekranında başlığı ince şeride indiriyor (`body.in-game`). Kelime Yakala,
+  Turnuva, Çiz Bakalım, Kelime Kartları kendi `showScreen`'lerini bırakıp
+  bunu kullanıyor.
+- **Oyuna özel:** Eşleştirme kartları (degrade sırt, çevirme/eşleşme
+  animasyonu, çip tarzı sayaçlar), Kelime Avı hücreleri (+ ızgara ekran
+  yüksekliğine sığıyor), Adam Asmaca ve Turnuva'nın 3B tuş/şıkları, Cümle
+  Kurma'nın 3B kelime kartları.
+- **Test:** 15 sayfa `file://` 1180×820 ve 820×1180'de hatasız; eski
+  oyunlarda oyun ekranı 390px ve 820px'de taşmasız ve en üstten açılıyor;
+  Kelime Avı sürükleyerek seçme, Eşleştirme, Cümle Kurma, karışık seçim ve
+  yeni oyun testleri tekrar geçti.

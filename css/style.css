@@ -425,6 +425,21 @@ body {
 
 .back-link ~ .hub-header .tagline { margin-bottom: 0; }
 
+/* Oyun ekranında başlık ince bir şeride iner. */
+body.in-game .back-link ~ .hub-header {
+  padding: 16px 70px 18px 190px;
+  border-radius: 0 0 26px 26px;
+  text-align: left;
+}
+
+body.in-game .back-link ~ .hub-header h1 { font-size: 26px; margin: 0; }
+body.in-game .back-link ~ .hub-header .tagline { display: none; }
+body.in-game main { padding-top: 24px; }
+
+@media (max-width: 600px) {
+  body.in-game .back-link ~ .hub-header { padding: 62px 20px 14px; text-align: center; }
+}
+
 /* Hub başlığında yüzen harfler. */
 .header-letters span {
   position: absolute;

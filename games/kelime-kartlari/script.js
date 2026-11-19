@@ -7,15 +7,10 @@ var state = {
   flipped: false
 };
 
-var screens = document.querySelectorAll(".screen");
 var unitWordCountEl = document.getElementById("unit-word-count");
 var unitErrorEl = document.getElementById("unit-error");
 
-function showScreen(id) {
-  screens.forEach(function (el) {
-    el.hidden = el.id !== id;
-  });
-}
+var showScreen = HubSetup.screenSwitcher();
 
 /* ---------- Setup screen ---------- */
 
